@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69088fb284534fe08527ce003d3c400b" Name="Diagram1">
+        <EntityTypeShape EntityType="PayrollModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.UserType" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EntityType" Width="1.5" PointX="8" PointY="15.875" />
+        <EntityTypeShape EntityType="PayrollModel.ErrorLog" Width="1.5" PointX="3" PointY="10.125" />
+        <EntityTypeShape EntityType="PayrollModel.LogDetail" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="PayrollModel.LogDetailType" Width="1.5" PointX="3" PointY="16.875" />
+        <EntityTypeShape EntityType="PayrollModel.LogMaster" Width="1.5" PointX="10.25" PointY="1.25" />
+        <EntityTypeShape EntityType="PayrollModel.MasterBank" Width="1.5" PointX="5.375" PointY="8.375" />
+        <EntityTypeShape EntityType="PayrollModel.MasterBankBranch" Width="1.5" PointX="7.625" PointY="7.125" />
+        <EntityTypeShape EntityType="PayrollModel.MasterCity" Width="1.5" PointX="5.375" PointY="13.375" />
+        <EntityTypeShape EntityType="PayrollModel.MasterCountry" Width="1.5" PointX="0.875" PointY="13.75" />
+        <EntityTypeShape EntityType="PayrollModel.MasterEmployee" Width="1.5" PointX="9.875" PointY="5.875" />
+        <EntityTypeShape EntityType="PayrollModel.MasterNubeBranch" Width="1.5" PointX="5.375" PointY="4.875" />
+        <EntityTypeShape EntityType="PayrollModel.MasterPosition" Width="1.5" PointX="7.625" PointY="12.75" />
+        <EntityTypeShape EntityType="PayrollModel.MasterRace" Width="1.5" PointX="7.625" PointY="4.125" />
+        <EntityTypeShape EntityType="PayrollModel.MasterState" Width="1.5" PointX="3.125" PointY="13.5" />
+        <EntityTypeShape EntityType="PayrollModel.UserTypeDetail" Width="1.5" PointX="2.875" PointY="3.75" />
+        <EntityTypeShape EntityType="PayrollModel.UserTypeFormDetail" Width="1.5" PointX="0.75" PointY="17" />
+        <AssociationConnector Association="PayrollModel.FK_CompanId" />
+        <AssociationConnector Association="PayrollModel.FK_ErrorLog_CompanyDetails" />
+        <AssociationConnector Association="PayrollModel.FK_ErrorLog_EntityType" />
+        <AssociationConnector Association="PayrollModel.FK_LogMaster_EntityType" />
+        <AssociationConnector Association="PayrollModel.FK_LogDetail_LogDetailType" />
+        <AssociationConnector Association="PayrollModel.FK_LogDetail_LogMaster" />
+        <AssociationConnector Association="PayrollModel.FK_MasterBankBranch_MasterBank" />
+        <AssociationConnector Association="PayrollModel.FK_MasterEmployee_MasterBank" />
+        <AssociationConnector Association="PayrollModel.FK_MasterBankBranch_MasterCity" />
+        <AssociationConnector Association="PayrollModel.FK_MasterBankBranch_MasterNubeBranch" />
+        <AssociationConnector Association="PayrollModel.FK_MasterEmployee_MasterBankBranch" />
+        <AssociationConnector Association="PayrollModel.FK_MasterCity_MasterState" />
+        <AssociationConnector Association="PayrollModel.FK_MasterEmployee_MasterCity" />
+        <AssociationConnector Association="PayrollModel.FK_MasterState_MasterCountry" />
+        <AssociationConnector Association="PayrollModel.FK_MasterEmployee_MasterPosition" />
+        <AssociationConnector Association="PayrollModel.FK_MasterEmployee_MasterRace" />
+        <AssociationConnector Association="PayrollModel.FK_UserTypeDetail_UserType" />
+        <AssociationConnector Association="PayrollModel.FK_UserTypeDetail_UserTypeFormDetail" />
+        <EntityTypeShape EntityType="PayrollModel.ViewMasterbankbranch" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PayrollModel.ViewMasterCity" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PayrollModel.ViewMasterState" Width="1.5" PointX="12.375" PointY="6.75" />
+        <EntityTypeShape EntityType="PayrollModel.UserAccount" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="PayrollModel.FK_LogDetail_UserAccount" />
+        <AssociationConnector Association="PayrollModel.FK_LogMaster_UserAccount" />
+        <AssociationConnector Association="PayrollModel.FK_LogMaster_UserAccount1" />
+        <AssociationConnector Association="PayrollModel.FK_LogMaster_UserAccount2" />
+        <AssociationConnector Association="PayrollModel.FK_UserAccount_UserType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

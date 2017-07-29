@@ -1,0 +1,1805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PayrollModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CompanyDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityCode" Type="int" />
+          <Property Name="StateCode" Type="int" />
+          <Property Name="CountryCode" Type="int" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelephoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMailId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="GSTNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EntityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Entity" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntityTypeId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="ErrorBy" Type="int" />
+          <Property Name="ErrorAt" Type="datetime" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LogDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogMasterId" Type="bigint" />
+          <Property Name="RecordDetail" Type="nvarchar(max)" />
+          <Property Name="EntryBy" Type="int" />
+          <Property Name="EntryAt" Type="datetime" />
+          <Property Name="LogDetailTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="LogDetailType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LogMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntityId" Type="bigint" />
+          <Property Name="EntityTypeId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="DeletedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MasterBank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MasterBankBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BankBranchName" Type="varchar" MaxLength="50" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="Address1" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="Address3" Type="varchar" MaxLength="50" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Phone1" Type="varchar" MaxLength="50" />
+          <Property Name="Phone2" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="NubeBranchId" Type="int" />
+          <Property Name="IsHeadQuarters" Type="bit" />
+        </EntityType>
+        <EntityType Name="MasterCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="StateId" Type="int" />
+        </EntityType>
+        <EntityType Name="MasterCountry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MasterEmployee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MembershipNo" Type="int" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
+          <Property Name="FatherName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="NRIC" Type="varchar" MaxLength="50" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="20" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="BankBranchId" Type="int" />
+          <Property Name="PositionId" Type="int" />
+          <Property Name="RaceId" Type="int" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="DateOfJoining" Type="datetime" />
+          <Property Name="IdentyMark" Type="varchar" MaxLength="50" />
+          <Property Name="Address1" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="Address3" Type="varchar" MaxLength="50" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+          <Property Name="TelephoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="GSTNo" Type="varchar" MaxLength="50" />
+          <Property Name="BankAccountNo" Type="varchar" MaxLength="50" />
+          <Property Name="OpeningBalance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="BasicSalary" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="POB" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NEC" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="SECONDMENT" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="SPECIAL" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="COLA" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="IsOverTimeEligible" Type="bit" />
+          <Property Name="EPFContributionRate" Type="bit" />
+          <Property Name="EPFContribution" Type="bit" />
+          <Property Name="SOCSOContribution" Type="bit" />
+          <Property Name="KOPERASI" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NubeSubscription" Type="bit" />
+          <Property Name="GMIS" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="BIMBLoan" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="GELA" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="HomeCarLoans" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PCB" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="UnpaidLeave" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="IsOtherEligible" Type="bit" />
+          <Property Name="Others" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="RatioOfContribution" Type="bit" />
+          <Property Name="EPF" Type="bit" />
+          <Property Name="SOCSO" Type="bit" />
+        </EntityType>
+        <EntityType Name="MasterNubeBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NubeBranchName" Type="varchar" MaxLength="50" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MasterPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MasterRace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaceName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MasterState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nchar" MaxLength="100" />
+          <Property Name="CompanyId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTypeDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="UserTypeFormDetailId" Type="int" />
+          <Property Name="IsViewForm" Type="bit" />
+          <Property Name="AllowInsert" Type="bit" />
+          <Property Name="AllowUpdate" Type="bit" />
+          <Property Name="AllowDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserTypeFormDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FormType" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderNo" Type="nvarchar" MaxLength="5" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsInsert" Type="bit" />
+          <Property Name="IsUpdate" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsMenu" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Payroll.dbo.ViewMasterbankbranch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewMasterbankbranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BankBranchName" Type="varchar" MaxLength="50" />
+          <Property Name="UserCode" Type="varchar" MaxLength="50" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="Address1" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="Address3" Type="varchar" MaxLength="50" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Phone1" Type="varchar" MaxLength="50" />
+          <Property Name="Phone2" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="NubeBranchId" Type="int" />
+          <Property Name="IsHeadQuarters" Type="bit" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="NubeBranchName" Type="varchar" MaxLength="50" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Payroll.dbo.ViewMasterCity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewMasterCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Payroll.dbo.ViewMasterState' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewMasterState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" />
+          <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CompanId">
+          <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="0..1" />
+          <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ErrorLog_CompanyDetails">
+          <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="0..1" />
+          <End Role="ErrorLog" Type="Self.ErrorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ErrorLog">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ErrorLog_EntityType">
+          <End Role="EntityType" Type="Self.EntityType" Multiplicity="0..1" />
+          <End Role="ErrorLog" Type="Self.ErrorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ErrorLog">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogDetail_LogDetailType">
+          <End Role="LogDetailType" Type="Self.LogDetailType" Multiplicity="0..1" />
+          <End Role="LogDetail" Type="Self.LogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogDetailType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogDetail">
+              <PropertyRef Name="LogDetailTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogDetail_LogMaster">
+          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="0..1" />
+          <End Role="LogDetail" Type="Self.LogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogDetail">
+              <PropertyRef Name="LogMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogDetail_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="LogDetail" Type="Self.LogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogDetail">
+              <PropertyRef Name="EntryBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_EntityType">
+          <End Role="EntityType" Type="Self.EntityType" Multiplicity="0..1" />
+          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_UserAccount">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_UserAccount1">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_UserAccount2">
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="0..1" />
+          <End Role="LogMaster" Type="Self.LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterBankBranch_MasterBank">
+          <End Role="MasterBank" Type="Self.MasterBank" Multiplicity="0..1" />
+          <End Role="MasterBankBranch" Type="Self.MasterBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterBankBranch">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterBankBranch_MasterCity">
+          <End Role="MasterCity" Type="Self.MasterCity" Multiplicity="0..1" />
+          <End Role="MasterBankBranch" Type="Self.MasterBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterBankBranch">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterBankBranch_MasterNubeBranch">
+          <End Role="MasterNubeBranch" Type="Self.MasterNubeBranch" Multiplicity="0..1" />
+          <End Role="MasterBankBranch" Type="Self.MasterBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterNubeBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterBankBranch">
+              <PropertyRef Name="NubeBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterCity_MasterState">
+          <End Role="MasterState" Type="Self.MasterState" Multiplicity="0..1" />
+          <End Role="MasterCity" Type="Self.MasterCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterCity">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterBank">
+          <End Role="MasterBank" Type="Self.MasterBank" Multiplicity="0..1" />
+          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterBankBranch">
+          <End Role="MasterBankBranch" Type="Self.MasterBankBranch" Multiplicity="0..1" />
+          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterBankBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="BankBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterCity">
+          <End Role="MasterCity" Type="Self.MasterCity" Multiplicity="0..1" />
+          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterPosition">
+          <End Role="MasterPosition" Type="Self.MasterPosition" Multiplicity="0..1" />
+          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterRace">
+          <End Role="MasterRace" Type="Self.MasterRace" Multiplicity="0..1" />
+          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterRace">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterState_MasterCountry">
+          <End Role="MasterCountry" Type="Self.MasterCountry" Multiplicity="0..1" />
+          <End Role="MasterState" Type="Self.MasterState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCountry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterState">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypeDetail_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="UserTypeDetail" Type="Self.UserTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypeDetail">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypeDetail_UserTypeFormDetail">
+          <End Role="UserTypeFormDetail" Type="Self.UserTypeFormDetail" Multiplicity="0..1" />
+          <End Role="UserTypeDetail" Type="Self.UserTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeFormDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypeDetail">
+              <PropertyRef Name="UserTypeFormDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PayrollModelStoreContainer">
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntityType" EntityType="Self.EntityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogDetail" EntityType="Self.LogDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogDetailType" EntityType="Self.LogDetailType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogMaster" EntityType="Self.LogMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterBank" EntityType="Self.MasterBank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterBankBranch" EntityType="Self.MasterBankBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterCity" EntityType="Self.MasterCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterCountry" EntityType="Self.MasterCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterEmployee" EntityType="Self.MasterEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterNubeBranch" EntityType="Self.MasterNubeBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterPosition" EntityType="Self.MasterPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterRace" EntityType="Self.MasterRace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterState" EntityType="Self.MasterState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypeDetail" EntityType="Self.UserTypeDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypeFormDetail" EntityType="Self.UserTypeFormDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewMasterbankbranch" EntityType="Self.ViewMasterbankbranch" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewMasterbankbranch].[Id] AS [Id], 
+    [ViewMasterbankbranch].[BankBranchName] AS [BankBranchName], 
+    [ViewMasterbankbranch].[UserCode] AS [UserCode], 
+    [ViewMasterbankbranch].[BankId] AS [BankId], 
+    [ViewMasterbankbranch].[Address1] AS [Address1], 
+    [ViewMasterbankbranch].[Address2] AS [Address2], 
+    [ViewMasterbankbranch].[Address3] AS [Address3], 
+    [ViewMasterbankbranch].[CityId] AS [CityId], 
+    [ViewMasterbankbranch].[ZipCode] AS [ZipCode], 
+    [ViewMasterbankbranch].[Phone1] AS [Phone1], 
+    [ViewMasterbankbranch].[Phone2] AS [Phone2], 
+    [ViewMasterbankbranch].[Email] AS [Email], 
+    [ViewMasterbankbranch].[NubeBranchId] AS [NubeBranchId], 
+    [ViewMasterbankbranch].[IsHeadQuarters] AS [IsHeadQuarters], 
+    [ViewMasterbankbranch].[BankName] AS [BankName], 
+    [ViewMasterbankbranch].[NubeBranchName] AS [NubeBranchName], 
+    [ViewMasterbankbranch].[StateId] AS [StateId], 
+    [ViewMasterbankbranch].[CountryId] AS [CountryId]
+    FROM [dbo].[ViewMasterbankbranch] AS [ViewMasterbankbranch]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewMasterCity" EntityType="Self.ViewMasterCity" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewMasterCity].[Id] AS [Id], 
+    [ViewMasterCity].[CityName] AS [CityName], 
+    [ViewMasterCity].[ShortName] AS [ShortName], 
+    [ViewMasterCity].[StateName] AS [StateName], 
+    [ViewMasterCity].[CountryName] AS [CountryName], 
+    [ViewMasterCity].[StateId] AS [StateId], 
+    [ViewMasterCity].[CountryId] AS [CountryId]
+    FROM [dbo].[ViewMasterCity] AS [ViewMasterCity]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewMasterState" EntityType="Self.ViewMasterState" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewMasterState].[Id] AS [Id], 
+    [ViewMasterState].[StateName] AS [StateName], 
+    [ViewMasterState].[ShortName] AS [ShortName], 
+    [ViewMasterState].[CountryId] AS [CountryId], 
+    [ViewMasterState].[CountryName] AS [CountryName]
+    FROM [dbo].[ViewMasterState] AS [ViewMasterState]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CompanId" Association="Self.FK_CompanId">
+            <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+            <End Role="UserType" EntitySet="UserType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ErrorLog_CompanyDetails" Association="Self.FK_ErrorLog_CompanyDetails">
+            <End Role="CompanyDetails" EntitySet="CompanyDetails" />
+            <End Role="ErrorLog" EntitySet="ErrorLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ErrorLog_EntityType" Association="Self.FK_ErrorLog_EntityType">
+            <End Role="EntityType" EntitySet="EntityType" />
+            <End Role="ErrorLog" EntitySet="ErrorLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_LogDetailType" Association="Self.FK_LogDetail_LogDetailType">
+            <End Role="LogDetailType" EntitySet="LogDetailType" />
+            <End Role="LogDetail" EntitySet="LogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_LogMaster" Association="Self.FK_LogDetail_LogMaster">
+            <End Role="LogMaster" EntitySet="LogMaster" />
+            <End Role="LogDetail" EntitySet="LogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_UserAccount" Association="Self.FK_LogDetail_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="LogDetail" EntitySet="LogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_EntityType" Association="Self.FK_LogMaster_EntityType">
+            <End Role="EntityType" EntitySet="EntityType" />
+            <End Role="LogMaster" EntitySet="LogMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_UserAccount" Association="Self.FK_LogMaster_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="LogMaster" EntitySet="LogMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_UserAccount1" Association="Self.FK_LogMaster_UserAccount1">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="LogMaster" EntitySet="LogMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_UserAccount2" Association="Self.FK_LogMaster_UserAccount2">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="LogMaster" EntitySet="LogMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterBankBranch_MasterBank" Association="Self.FK_MasterBankBranch_MasterBank">
+            <End Role="MasterBank" EntitySet="MasterBank" />
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterBankBranch_MasterCity" Association="Self.FK_MasterBankBranch_MasterCity">
+            <End Role="MasterCity" EntitySet="MasterCity" />
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterBankBranch_MasterNubeBranch" Association="Self.FK_MasterBankBranch_MasterNubeBranch">
+            <End Role="MasterNubeBranch" EntitySet="MasterNubeBranch" />
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterCity_MasterState" Association="Self.FK_MasterCity_MasterState">
+            <End Role="MasterState" EntitySet="MasterState" />
+            <End Role="MasterCity" EntitySet="MasterCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterBank" Association="Self.FK_MasterEmployee_MasterBank">
+            <End Role="MasterBank" EntitySet="MasterBank" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterBankBranch" Association="Self.FK_MasterEmployee_MasterBankBranch">
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranch" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterCity" Association="Self.FK_MasterEmployee_MasterCity">
+            <End Role="MasterCity" EntitySet="MasterCity" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterPosition" Association="Self.FK_MasterEmployee_MasterPosition">
+            <End Role="MasterPosition" EntitySet="MasterPosition" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterRace" Association="Self.FK_MasterEmployee_MasterRace">
+            <End Role="MasterRace" EntitySet="MasterRace" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterState_MasterCountry" Association="Self.FK_MasterState_MasterCountry">
+            <End Role="MasterCountry" EntitySet="MasterCountry" />
+            <End Role="MasterState" EntitySet="MasterState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserType" Association="Self.FK_UserAccount_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeDetail_UserType" Association="Self.FK_UserTypeDetail_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="UserTypeDetail" EntitySet="UserTypeDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeDetail_UserTypeFormDetail" Association="Self.FK_UserTypeDetail_UserTypeFormDetail">
+            <End Role="UserTypeFormDetail" EntitySet="UserTypeFormDetail" />
+            <End Role="UserTypeDetail" EntitySet="UserTypeDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PayrollModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityCode" Type="Int32" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="CountryCode" Type="Int32" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserTypes" Relationship="PayrollModel.FK_CompanId" FromRole="CompanyDetail" ToRole="UserType" />
+          <NavigationProperty Name="ErrorLogs" Relationship="PayrollModel.FK_ErrorLog_CompanyDetails" FromRole="CompanyDetail" ToRole="ErrorLog" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CompanyId" Type="Int32" />
+          <NavigationProperty Name="CompanyDetail" Relationship="PayrollModel.FK_CompanId" FromRole="UserType" ToRole="CompanyDetail" />
+          <NavigationProperty Name="UserTypeDetails" Relationship="PayrollModel.FK_UserTypeDetail_UserType" FromRole="UserType" ToRole="UserTypeDetail" />
+          <NavigationProperty Name="UserAccounts" Relationship="PayrollModel.FK_UserAccount_UserType" FromRole="UserType" ToRole="UserAccount" />
+        </EntityType>
+        <EntityContainer Name="PayrollEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetail" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <EntitySet Name="EntityTypes" EntityType="PayrollModel.EntityType" />
+          <EntitySet Name="ErrorLogs" EntityType="PayrollModel.ErrorLog" />
+          <EntitySet Name="LogDetails" EntityType="PayrollModel.LogDetail" />
+          <EntitySet Name="LogDetailTypes" EntityType="PayrollModel.LogDetailType" />
+          <EntitySet Name="LogMasters" EntityType="PayrollModel.LogMaster" />
+          <EntitySet Name="MasterBanks" EntityType="PayrollModel.MasterBank" />
+          <EntitySet Name="MasterBankBranches" EntityType="PayrollModel.MasterBankBranch" />
+          <EntitySet Name="MasterCities" EntityType="PayrollModel.MasterCity" />
+          <EntitySet Name="MasterCountries" EntityType="PayrollModel.MasterCountry" />
+          <EntitySet Name="MasterEmployees" EntityType="PayrollModel.MasterEmployee" />
+          <EntitySet Name="MasterNubeBranches" EntityType="PayrollModel.MasterNubeBranch" />
+          <EntitySet Name="MasterPositions" EntityType="PayrollModel.MasterPosition" />
+          <EntitySet Name="MasterRaces" EntityType="PayrollModel.MasterRace" />
+          <EntitySet Name="MasterStates" EntityType="PayrollModel.MasterState" />
+          <EntitySet Name="UserTypeDetails" EntityType="PayrollModel.UserTypeDetail" />
+          <EntitySet Name="UserTypeFormDetails" EntityType="PayrollModel.UserTypeFormDetail" />
+          <AssociationSet Name="FK_CompanId" Association="PayrollModel.FK_CompanId">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="UserType" EntitySet="UserTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ErrorLog_CompanyDetails" Association="PayrollModel.FK_ErrorLog_CompanyDetails">
+            <End Role="CompanyDetail" EntitySet="CompanyDetails" />
+            <End Role="ErrorLog" EntitySet="ErrorLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ErrorLog_EntityType" Association="PayrollModel.FK_ErrorLog_EntityType">
+            <End Role="EntityType" EntitySet="EntityTypes" />
+            <End Role="ErrorLog" EntitySet="ErrorLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_EntityType" Association="PayrollModel.FK_LogMaster_EntityType">
+            <End Role="EntityType" EntitySet="EntityTypes" />
+            <End Role="LogMaster" EntitySet="LogMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_LogDetailType" Association="PayrollModel.FK_LogDetail_LogDetailType">
+            <End Role="LogDetailType" EntitySet="LogDetailTypes" />
+            <End Role="LogDetail" EntitySet="LogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogDetail_LogMaster" Association="PayrollModel.FK_LogDetail_LogMaster">
+            <End Role="LogMaster" EntitySet="LogMasters" />
+            <End Role="LogDetail" EntitySet="LogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterBankBranch_MasterBank" Association="PayrollModel.FK_MasterBankBranch_MasterBank">
+            <End Role="MasterBank" EntitySet="MasterBanks" />
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterBank" Association="PayrollModel.FK_MasterEmployee_MasterBank">
+            <End Role="MasterBank" EntitySet="MasterBanks" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterBankBranch_MasterCity" Association="PayrollModel.FK_MasterBankBranch_MasterCity">
+            <End Role="MasterCity" EntitySet="MasterCities" />
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterBankBranch_MasterNubeBranch" Association="PayrollModel.FK_MasterBankBranch_MasterNubeBranch">
+            <End Role="MasterNubeBranch" EntitySet="MasterNubeBranches" />
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterBankBranch" Association="PayrollModel.FK_MasterEmployee_MasterBankBranch">
+            <End Role="MasterBankBranch" EntitySet="MasterBankBranches" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterCity_MasterState" Association="PayrollModel.FK_MasterCity_MasterState">
+            <End Role="MasterState" EntitySet="MasterStates" />
+            <End Role="MasterCity" EntitySet="MasterCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterCity" Association="PayrollModel.FK_MasterEmployee_MasterCity">
+            <End Role="MasterCity" EntitySet="MasterCities" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterState_MasterCountry" Association="PayrollModel.FK_MasterState_MasterCountry">
+            <End Role="MasterCountry" EntitySet="MasterCountries" />
+            <End Role="MasterState" EntitySet="MasterStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterPosition" Association="PayrollModel.FK_MasterEmployee_MasterPosition">
+            <End Role="MasterPosition" EntitySet="MasterPositions" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterRace" Association="PayrollModel.FK_MasterEmployee_MasterRace">
+            <End Role="MasterRace" EntitySet="MasterRaces" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeDetail_UserType" Association="PayrollModel.FK_UserTypeDetail_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeDetail_UserTypeFormDetail" Association="PayrollModel.FK_UserTypeDetail_UserTypeFormDetail">
+            <End Role="UserTypeFormDetail" EntitySet="UserTypeFormDetails" />
+            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
+          </AssociationSet>
+          <EntitySet Name="ViewMasterbankbranches" EntityType="PayrollModel.ViewMasterbankbranch" />
+          <EntitySet Name="ViewMasterCities" EntityType="PayrollModel.ViewMasterCity" />
+          <EntitySet Name="ViewMasterStates" EntityType="PayrollModel.ViewMasterState" />
+          <EntitySet Name="UserAccounts" EntityType="PayrollModel.UserAccount" />
+          <AssociationSet Name="FK_LogDetail_UserAccount" Association="PayrollModel.FK_LogDetail_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="LogDetail" EntitySet="LogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_UserAccount" Association="PayrollModel.FK_LogMaster_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="LogMaster" EntitySet="LogMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_UserAccount1" Association="PayrollModel.FK_LogMaster_UserAccount1">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="LogMaster" EntitySet="LogMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogMaster_UserAccount2" Association="PayrollModel.FK_LogMaster_UserAccount2">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="LogMaster" EntitySet="LogMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserType" Association="PayrollModel.FK_UserAccount_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EntityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ErrorLogs" Relationship="PayrollModel.FK_ErrorLog_EntityType" FromRole="EntityType" ToRole="ErrorLog" />
+          <NavigationProperty Name="LogMasters" Relationship="PayrollModel.FK_LogMaster_EntityType" FromRole="EntityType" ToRole="LogMaster" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntityTypeId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="ErrorBy" Type="Int32" />
+          <Property Name="ErrorAt" Type="DateTime" Precision="3" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyDetail" Relationship="PayrollModel.FK_ErrorLog_CompanyDetails" FromRole="ErrorLog" ToRole="CompanyDetail" />
+          <NavigationProperty Name="EntityType" Relationship="PayrollModel.FK_ErrorLog_EntityType" FromRole="ErrorLog" ToRole="EntityType" />
+        </EntityType>
+        <EntityType Name="LogDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogMasterId" Type="Int64" />
+          <Property Name="RecordDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EntryBy" Type="Int32" />
+          <Property Name="EntryAt" Type="DateTime" Precision="3" />
+          <Property Name="LogDetailTypeId" Type="Int32" />
+          <NavigationProperty Name="LogDetailType" Relationship="PayrollModel.FK_LogDetail_LogDetailType" FromRole="LogDetail" ToRole="LogDetailType" />
+          <NavigationProperty Name="LogMaster" Relationship="PayrollModel.FK_LogDetail_LogMaster" FromRole="LogDetail" ToRole="LogMaster" />
+          <NavigationProperty Name="UserAccount" Relationship="PayrollModel.FK_LogDetail_UserAccount" FromRole="LogDetail" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="LogDetailType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LogDetails" Relationship="PayrollModel.FK_LogDetail_LogDetailType" FromRole="LogDetailType" ToRole="LogDetail" />
+        </EntityType>
+        <EntityType Name="LogMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntityId" Type="Int64" />
+          <Property Name="EntityTypeId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DeletedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EntityType" Relationship="PayrollModel.FK_LogMaster_EntityType" FromRole="LogMaster" ToRole="EntityType" />
+          <NavigationProperty Name="LogDetails" Relationship="PayrollModel.FK_LogDetail_LogMaster" FromRole="LogMaster" ToRole="LogDetail" />
+          <NavigationProperty Name="UserAccount" Relationship="PayrollModel.FK_LogMaster_UserAccount" FromRole="LogMaster" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount1" Relationship="PayrollModel.FK_LogMaster_UserAccount1" FromRole="LogMaster" ToRole="UserAccount" />
+          <NavigationProperty Name="UserAccount2" Relationship="PayrollModel.FK_LogMaster_UserAccount2" FromRole="LogMaster" ToRole="UserAccount" />
+          </EntityType>
+        <EntityType Name="MasterBank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterBankBranches" Relationship="PayrollModel.FK_MasterBankBranch_MasterBank" FromRole="MasterBank" ToRole="MasterBankBranch" />
+          <NavigationProperty Name="MasterEmployees" Relationship="PayrollModel.FK_MasterEmployee_MasterBank" FromRole="MasterBank" ToRole="MasterEmployee" />
+        </EntityType>
+        <EntityType Name="MasterBankBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BankBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NubeBranchId" Type="Int32" />
+          <Property Name="IsHeadQuarters" Type="Boolean" />
+          <NavigationProperty Name="MasterBank" Relationship="PayrollModel.FK_MasterBankBranch_MasterBank" FromRole="MasterBankBranch" ToRole="MasterBank" />
+          <NavigationProperty Name="MasterCity" Relationship="PayrollModel.FK_MasterBankBranch_MasterCity" FromRole="MasterBankBranch" ToRole="MasterCity" />
+          <NavigationProperty Name="MasterNubeBranch" Relationship="PayrollModel.FK_MasterBankBranch_MasterNubeBranch" FromRole="MasterBankBranch" ToRole="MasterNubeBranch" />
+          <NavigationProperty Name="MasterEmployees" Relationship="PayrollModel.FK_MasterEmployee_MasterBankBranch" FromRole="MasterBankBranch" ToRole="MasterEmployee" />
+        </EntityType>
+        <EntityType Name="MasterCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="MasterBankBranches" Relationship="PayrollModel.FK_MasterBankBranch_MasterCity" FromRole="MasterCity" ToRole="MasterBankBranch" />
+          <NavigationProperty Name="MasterState" Relationship="PayrollModel.FK_MasterCity_MasterState" FromRole="MasterCity" ToRole="MasterState" />
+          <NavigationProperty Name="MasterEmployees" Relationship="PayrollModel.FK_MasterEmployee_MasterCity" FromRole="MasterCity" ToRole="MasterEmployee" />
+        </EntityType>
+        <EntityType Name="MasterCountry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterStates" Relationship="PayrollModel.FK_MasterState_MasterCountry" FromRole="MasterCountry" ToRole="MasterState" />
+        </EntityType>
+        <EntityType Name="MasterEmployee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipNo" Type="Int32" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="BankBranchId" Type="Int32" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="RaceId" Type="Int32" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
+          <Property Name="IdentyMark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OpeningBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="MasterBank" Relationship="PayrollModel.FK_MasterEmployee_MasterBank" FromRole="MasterEmployee" ToRole="MasterBank" />
+          <NavigationProperty Name="MasterBankBranch" Relationship="PayrollModel.FK_MasterEmployee_MasterBankBranch" FromRole="MasterEmployee" ToRole="MasterBankBranch" />
+          <NavigationProperty Name="MasterCity" Relationship="PayrollModel.FK_MasterEmployee_MasterCity" FromRole="MasterEmployee" ToRole="MasterCity" />
+          <NavigationProperty Name="MasterPosition" Relationship="PayrollModel.FK_MasterEmployee_MasterPosition" FromRole="MasterEmployee" ToRole="MasterPosition" />
+          <NavigationProperty Name="MasterRace" Relationship="PayrollModel.FK_MasterEmployee_MasterRace" FromRole="MasterEmployee" ToRole="MasterRace" />
+          <Property Name="POB" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NEC" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SECONDMENT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SPECIAL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COLA" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsOverTimeEligible" Type="Boolean" />
+          <Property Name="EPFContributionRate" Type="Boolean" />
+          <Property Name="EPFContribution" Type="Boolean" />
+          <Property Name="SOCSOContribution" Type="Boolean" />
+          <Property Name="KOPERASI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NubeSubscription" Type="Boolean" />
+          <Property Name="GMIS" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BIMBLoan" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GELA" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HomeCarLoans" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PCB" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UnpaidLeave" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsOtherEligible" Type="Boolean" />
+          <Property Name="Others" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RatioOfContribution" Type="Boolean" />
+          <Property Name="EPF" Type="Boolean" />
+          <Property Name="SOCSO" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="MasterNubeBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NubeBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterBankBranches" Relationship="PayrollModel.FK_MasterBankBranch_MasterNubeBranch" FromRole="MasterNubeBranch" ToRole="MasterBankBranch" />
+        </EntityType>
+        <EntityType Name="MasterPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterEmployees" Relationship="PayrollModel.FK_MasterEmployee_MasterPosition" FromRole="MasterPosition" ToRole="MasterEmployee" />
+        </EntityType>
+        <EntityType Name="MasterRace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterEmployees" Relationship="PayrollModel.FK_MasterEmployee_MasterRace" FromRole="MasterRace" ToRole="MasterEmployee" />
+        </EntityType>
+        <EntityType Name="MasterState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="MasterCities" Relationship="PayrollModel.FK_MasterCity_MasterState" FromRole="MasterState" ToRole="MasterCity" />
+          <NavigationProperty Name="MasterCountry" Relationship="PayrollModel.FK_MasterState_MasterCountry" FromRole="MasterState" ToRole="MasterCountry" />
+        </EntityType>
+        <EntityType Name="UserTypeDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="UserTypeFormDetailId" Type="Int32" />
+          <Property Name="IsViewForm" Type="Boolean" />
+          <Property Name="AllowInsert" Type="Boolean" />
+          <Property Name="AllowUpdate" Type="Boolean" />
+          <Property Name="AllowDelete" Type="Boolean" />
+          <NavigationProperty Name="UserType" Relationship="PayrollModel.FK_UserTypeDetail_UserType" FromRole="UserTypeDetail" ToRole="UserType" />
+          <NavigationProperty Name="UserTypeFormDetail" Relationship="PayrollModel.FK_UserTypeDetail_UserTypeFormDetail" FromRole="UserTypeDetail" ToRole="UserTypeFormDetail" />
+        </EntityType>
+        <EntityType Name="UserTypeFormDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FormType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsInsert" Type="Boolean" />
+          <Property Name="IsUpdate" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsMenu" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserTypeDetails" Relationship="PayrollModel.FK_UserTypeDetail_UserTypeFormDetail" FromRole="UserTypeFormDetail" ToRole="UserTypeDetail" />
+        </EntityType>
+        <Association Name="FK_CompanId">
+          <End Type="PayrollModel.CompanyDetail" Role="CompanyDetail" Multiplicity="0..1" />
+          <End Type="PayrollModel.UserType" Role="UserType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserType">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ErrorLog_CompanyDetails">
+          <End Type="PayrollModel.CompanyDetail" Role="CompanyDetail" Multiplicity="0..1" />
+          <End Type="PayrollModel.ErrorLog" Role="ErrorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ErrorLog">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ErrorLog_EntityType">
+          <End Type="PayrollModel.EntityType" Role="EntityType" Multiplicity="0..1" />
+          <End Type="PayrollModel.ErrorLog" Role="ErrorLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ErrorLog">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_EntityType">
+          <End Type="PayrollModel.EntityType" Role="EntityType" Multiplicity="0..1" />
+          <End Type="PayrollModel.LogMaster" Role="LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EntityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="EntityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogDetail_LogDetailType">
+          <End Type="PayrollModel.LogDetailType" Role="LogDetailType" Multiplicity="0..1" />
+          <End Type="PayrollModel.LogDetail" Role="LogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogDetailType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogDetail">
+              <PropertyRef Name="LogDetailTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogDetail_LogMaster">
+          <End Type="PayrollModel.LogMaster" Role="LogMaster" Multiplicity="0..1" />
+          <End Type="PayrollModel.LogDetail" Role="LogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogDetail">
+              <PropertyRef Name="LogMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterBankBranch_MasterBank">
+          <End Type="PayrollModel.MasterBank" Role="MasterBank" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterBankBranch" Role="MasterBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterBankBranch">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterBank">
+          <End Type="PayrollModel.MasterBank" Role="MasterBank" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterBankBranch_MasterCity">
+          <End Type="PayrollModel.MasterCity" Role="MasterCity" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterBankBranch" Role="MasterBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterBankBranch">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterBankBranch_MasterNubeBranch">
+          <End Type="PayrollModel.MasterNubeBranch" Role="MasterNubeBranch" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterBankBranch" Role="MasterBankBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterNubeBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterBankBranch">
+              <PropertyRef Name="NubeBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterBankBranch">
+          <End Type="PayrollModel.MasterBankBranch" Role="MasterBankBranch" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterBankBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="BankBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterCity_MasterState">
+          <End Type="PayrollModel.MasterState" Role="MasterState" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterCity" Role="MasterCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterCity">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterCity">
+          <End Type="PayrollModel.MasterCity" Role="MasterCity" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterState_MasterCountry">
+          <End Type="PayrollModel.MasterCountry" Role="MasterCountry" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterState" Role="MasterState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCountry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterState">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterPosition">
+          <End Type="PayrollModel.MasterPosition" Role="MasterPosition" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterRace">
+          <End Type="PayrollModel.MasterRace" Role="MasterRace" Multiplicity="0..1" />
+          <End Type="PayrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterRace">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypeDetail_UserType">
+          <End Type="PayrollModel.UserType" Role="UserType" Multiplicity="0..1" />
+          <End Type="PayrollModel.UserTypeDetail" Role="UserTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypeDetail">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypeDetail_UserTypeFormDetail">
+          <End Type="PayrollModel.UserTypeFormDetail" Role="UserTypeFormDetail" Multiplicity="0..1" />
+          <End Type="PayrollModel.UserTypeDetail" Role="UserTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTypeFormDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypeDetail">
+              <PropertyRef Name="UserTypeFormDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ViewMasterbankbranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BankBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NubeBranchId" Type="Int32" />
+          <Property Name="IsHeadQuarters" Type="Boolean" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NubeBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CountryId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ViewMasterCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CountryId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ViewMasterState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LogDetails" Relationship="PayrollModel.FK_LogDetail_UserAccount" FromRole="UserAccount" ToRole="LogDetail" />
+          <NavigationProperty Name="LogMasters" Relationship="PayrollModel.FK_LogMaster_UserAccount" FromRole="UserAccount" ToRole="LogMaster" />
+          <NavigationProperty Name="LogMasters1" Relationship="PayrollModel.FK_LogMaster_UserAccount1" FromRole="UserAccount" ToRole="LogMaster" />
+          <NavigationProperty Name="LogMasters2" Relationship="PayrollModel.FK_LogMaster_UserAccount2" FromRole="UserAccount" ToRole="LogMaster" />
+          <NavigationProperty Name="UserType" Relationship="PayrollModel.FK_UserAccount_UserType" FromRole="UserAccount" ToRole="UserType" />
+        </EntityType>
+        <Association Name="FK_LogDetail_UserAccount">
+          <End Type="PayrollModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="PayrollModel.LogDetail" Role="LogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogDetail">
+              <PropertyRef Name="EntryBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_UserAccount">
+          <End Type="PayrollModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="PayrollModel.LogMaster" Role="LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_UserAccount1">
+          <End Type="PayrollModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="PayrollModel.LogMaster" Role="LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="UpdatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogMaster_UserAccount2">
+          <End Type="PayrollModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="PayrollModel.LogMaster" Role="LogMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LogMaster">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserType">
+          <End Type="PayrollModel.UserType" Role="UserType" Multiplicity="0..1" />
+          <End Type="PayrollModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PayrollModelStoreContainer" CdmEntityContainer="PayrollEntities">
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="PayrollModel.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetails">
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="PayrollModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntityTypes">
+            <EntityTypeMapping TypeName="PayrollModel.EntityType">
+              <MappingFragment StoreEntitySet="EntityType">
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="PayrollModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorAt" ColumnName="ErrorAt" />
+                <ScalarProperty Name="ErrorBy" ColumnName="ErrorBy" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogDetails">
+            <EntityTypeMapping TypeName="PayrollModel.LogDetail">
+              <MappingFragment StoreEntitySet="LogDetail">
+                <ScalarProperty Name="LogDetailTypeId" ColumnName="LogDetailTypeId" />
+                <ScalarProperty Name="EntryAt" ColumnName="EntryAt" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="RecordDetail" ColumnName="RecordDetail" />
+                <ScalarProperty Name="LogMasterId" ColumnName="LogMasterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogDetailTypes">
+            <EntityTypeMapping TypeName="PayrollModel.LogDetailType">
+              <MappingFragment StoreEntitySet="LogDetailType">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogMasters">
+            <EntityTypeMapping TypeName="PayrollModel.LogMaster">
+              <MappingFragment StoreEntitySet="LogMaster">
+                <ScalarProperty Name="DeletedAt" ColumnName="DeletedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EntityTypeId" ColumnName="EntityTypeId" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterBanks">
+            <EntityTypeMapping TypeName="PayrollModel.MasterBank">
+              <MappingFragment StoreEntitySet="MasterBank">
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterBankBranches">
+            <EntityTypeMapping TypeName="PayrollModel.MasterBankBranch">
+              <MappingFragment StoreEntitySet="MasterBankBranch">
+                <ScalarProperty Name="IsHeadQuarters" ColumnName="IsHeadQuarters" />
+                <ScalarProperty Name="NubeBranchId" ColumnName="NubeBranchId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="BankBranchName" ColumnName="BankBranchName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterCities">
+            <EntityTypeMapping TypeName="PayrollModel.MasterCity">
+              <MappingFragment StoreEntitySet="MasterCity">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterCountries">
+            <EntityTypeMapping TypeName="PayrollModel.MasterCountry">
+              <MappingFragment StoreEntitySet="MasterCountry">
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterEmployees">
+            <EntityTypeMapping TypeName="PayrollModel.MasterEmployee">
+              <MappingFragment StoreEntitySet="MasterEmployee">
+                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
+                <ScalarProperty Name="EPF" ColumnName="EPF" />
+                <ScalarProperty Name="RatioOfContribution" ColumnName="RatioOfContribution" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="IsOtherEligible" ColumnName="IsOtherEligible" />
+                <ScalarProperty Name="UnpaidLeave" ColumnName="UnpaidLeave" />
+                <ScalarProperty Name="PCB" ColumnName="PCB" />
+                <ScalarProperty Name="HomeCarLoans" ColumnName="HomeCarLoans" />
+                <ScalarProperty Name="GELA" ColumnName="GELA" />
+                <ScalarProperty Name="BIMBLoan" ColumnName="BIMBLoan" />
+                <ScalarProperty Name="GMIS" ColumnName="GMIS" />
+                <ScalarProperty Name="NubeSubscription" ColumnName="NubeSubscription" />
+                <ScalarProperty Name="KOPERASI" ColumnName="KOPERASI" />
+                <ScalarProperty Name="SOCSOContribution" ColumnName="SOCSOContribution" />
+                <ScalarProperty Name="EPFContribution" ColumnName="EPFContribution" />
+                <ScalarProperty Name="EPFContributionRate" ColumnName="EPFContributionRate" />
+                <ScalarProperty Name="IsOverTimeEligible" ColumnName="IsOverTimeEligible" />
+                <ScalarProperty Name="COLA" ColumnName="COLA" />
+                <ScalarProperty Name="SPECIAL" ColumnName="SPECIAL" />
+                <ScalarProperty Name="SECONDMENT" ColumnName="SECONDMENT" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="POB" ColumnName="POB" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="IdentyMark" ColumnName="IdentyMark" />
+                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="BankBranchId" ColumnName="BankBranchId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="MembershipNo" ColumnName="MembershipNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterNubeBranches">
+            <EntityTypeMapping TypeName="PayrollModel.MasterNubeBranch">
+              <MappingFragment StoreEntitySet="MasterNubeBranch">
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="NubeBranchName" ColumnName="NubeBranchName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterPositions">
+            <EntityTypeMapping TypeName="PayrollModel.MasterPosition">
+              <MappingFragment StoreEntitySet="MasterPosition">
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterRaces">
+            <EntityTypeMapping TypeName="PayrollModel.MasterRace">
+              <MappingFragment StoreEntitySet="MasterRace">
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="RaceName" ColumnName="RaceName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterStates">
+            <EntityTypeMapping TypeName="PayrollModel.MasterState">
+              <MappingFragment StoreEntitySet="MasterState">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypeDetails">
+            <EntityTypeMapping TypeName="PayrollModel.UserTypeDetail">
+              <MappingFragment StoreEntitySet="UserTypeDetail">
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowUpdate" ColumnName="AllowUpdate" />
+                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+                <ScalarProperty Name="IsViewForm" ColumnName="IsViewForm" />
+                <ScalarProperty Name="UserTypeFormDetailId" ColumnName="UserTypeFormDetailId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypeFormDetails">
+            <EntityTypeMapping TypeName="PayrollModel.UserTypeFormDetail">
+              <MappingFragment StoreEntitySet="UserTypeFormDetail">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsUpdate" ColumnName="IsUpdate" />
+                <ScalarProperty Name="IsInsert" ColumnName="IsInsert" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="FormType" ColumnName="FormType" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterbankbranches">
+            <EntityTypeMapping TypeName="PayrollModel.ViewMasterbankbranch">
+              <MappingFragment StoreEntitySet="ViewMasterbankbranch">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="NubeBranchName" ColumnName="NubeBranchName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="IsHeadQuarters" ColumnName="IsHeadQuarters" />
+                <ScalarProperty Name="NubeBranchId" ColumnName="NubeBranchId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="BankBranchName" ColumnName="BankBranchName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterCities">
+            <EntityTypeMapping TypeName="PayrollModel.ViewMasterCity">
+              <MappingFragment StoreEntitySet="ViewMasterCity">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterStates">
+            <EntityTypeMapping TypeName="PayrollModel.ViewMasterState">
+              <MappingFragment StoreEntitySet="ViewMasterState">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="PayrollModel.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

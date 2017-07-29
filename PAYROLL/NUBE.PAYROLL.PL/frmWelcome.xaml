@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="NUBE.PAYROLL.PL.frmWelcome"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NUBE.PAYROLL.PL"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1100">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/Custom Size – 2.png"/>
+        </Grid.Background>       
+    </Grid>
+</UserControl>

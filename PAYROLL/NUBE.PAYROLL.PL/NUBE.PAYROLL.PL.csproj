@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{64002891-FFD8-4B36-A267-A2A65A4D2C48}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NUBE.PAYROLL.PL</RootNamespace>
+    <AssemblyName>NUBE.PAYROLL.PL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.MahApps, Version=0.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MaterialDesignThemes.MahApps.0.0.10\lib\net45\MaterialDesignThemes.MahApps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.3.0.823, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MaterialDesignThemes.2.3.0.823\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Client.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Debug\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.ReportViewer.WinForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Reporting.WinForms.v11.1.0.0.0\lib\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CompanyDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DailyAttedanceDet.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeIncrement.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityType.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPFCont.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorLog.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompanyDetails.xaml.cs">
+      <DependentUpon>frmCompanyDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompanySetup.xaml.cs">
+      <DependentUpon>frmCompanySetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HolidayList.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LatePermissionDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeavePermissionDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveType.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogDetailType.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogMaster.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterBank.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterBankBranch.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCity.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCountry.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterEmployee.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterNubeBranch.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPosition.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterRace.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MasterState.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmEmployee.xaml.cs">
+      <DependentUpon>frmEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmEmployeeDetails.xaml.cs">
+      <DependentUpon>frmEmployeeDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmEPFContribution.xaml.cs">
+      <DependentUpon>frmEPFContribution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmHolidayList.xaml.cs">
+      <DependentUpon>frmHolidayList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmMasterBankBranch.xaml.cs">
+      <DependentUpon>frmMasterBankBranch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmMasterLeaveType.xaml.cs">
+      <DependentUpon>frmMasterLeaveType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmSocsoContribution.xaml.cs">
+      <DependentUpon>frmSocsoContribution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MonthlySalary.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OTClaim.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OverTimeDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="payrollDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>payrollDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PCB.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\LeaveReport.xaml.cs">
+      <DependentUpon>LeaveReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SocsoCont.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TempAttendanceTiming.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEST.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TEST.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEST.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEST.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TEST.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TotalWorkingDay.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmDailyAttedance.xaml.cs">
+      <DependentUpon>frmDailyAttedance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmExtraAmount.xaml.cs">
+      <DependentUpon>frmExtraAmount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmImportDaiyAttendance.xaml.cs">
+      <DependentUpon>frmImportDaiyAttendance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmIncrementEntry.xaml.cs">
+      <DependentUpon>frmIncrementEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmManualCorrection.xaml.cs">
+      <DependentUpon>frmManualCorrection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmPayslipGenerate.xaml.cs">
+      <DependentUpon>frmPayslipGenerate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmPCB.xaml.cs">
+      <DependentUpon>frmPCB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmYearAllowance.xaml.cs">
+      <DependentUpon>frmYearAllowance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserType.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypeFormDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDailyAttedance.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWDAILYATTEDANCELATE.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewEmployeeDetail.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewManualPayment.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMasterbankbranch.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMasterCity.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMasterEmployee.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMasterPosition.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMasterState.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewOTCalculation.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWPAYSLIP.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWTOTALOT.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="YearlyAllowance.cs">
+      <DependentUpon>TEST.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmHome.xaml.cs">
+      <DependentUpon>frmHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.xaml.cs">
+      <DependentUpon>frmLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmWelcome.xaml.cs">
+      <DependentUpon>frmWelcome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmBank.xaml.cs">
+      <DependentUpon>frmBank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmMasterCity.xaml.cs">
+      <DependentUpon>frmMasterCity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmMasterCountry.xaml.cs">
+      <DependentUpon>frmMasterCountry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmMasterNubeBranch.xaml.cs">
+      <DependentUpon>frmMasterNubeBranch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmMasterState.xaml.cs">
+      <DependentUpon>frmMasterState.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Master\frmPosition.xaml.cs">
+      <DependentUpon>frmPosition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPaySlip.rdlc" />
+    <None Include="packages.config" />
+    <None Include="payrollDataSet.xsc">
+      <DependentUpon>payrollDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="payrollDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>payrollDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="payrollDataSet.xss">
+      <DependentUpon>payrollDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <EntityDeploy Include="TEST.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TEST.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TEST.edmx.diagram">
+      <DependentUpon>TEST.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="frmCompanyDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmCompanySetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmWelcome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmBank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmEmployeeDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmEPFContribution.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmHolidayList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmMasterCity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmMasterCountry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmMasterLeaveType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmMasterNubeBranch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmMasterState.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmPosition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmMasterBankBranch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmSocsoContribution.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\LeaveReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmDailyAttedance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmExtraAmount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmImportDaiyAttendance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmIncrementEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmManualCorrection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmPayslipGenerate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmPCB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmYearAllowance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ActivityIcon.png" />
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\Background.jpg" />
+    <Resource Include="Images\Background1.jpg" />
+    <Resource Include="Images\Background2.png" />
+    <Resource Include="Images\Backgroundold.jpg" />
+    <Resource Include="Images\BalanceSheet.png" />
+    <Resource Include="Images\blue 2.png" />
+    <Resource Include="Images\DeleteIcon.png" />
+    <Resource Include="Images\edit.png" />
+    <Resource Include="Images\excel.png" />
+    <Resource Include="Images\excelcon.png" />
+    <Resource Include="Images\GeneralLedger.png" />
+    <Resource Include="Images\green 2.png" />
+    <Resource Include="Images\home.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\M1.jpg" />
+    <Resource Include="Images\M2.jpg" />
+    <Resource Include="Images\MAIN_PAGE.jpg" />
+    <Resource Include="Images\page 2.jpg" />
+    <Resource Include="Images\page-2_0000_Insurance.png" />
+    <Resource Include="Images\page-2_0001_Accounts.png" />
+    <Resource Include="Images\page-2_0002_Membership.png" />
+    <Resource Include="Images\page-2_0003_Layer-6.png" />
+    <Resource Include="Images\page-2_0004_Layer-5.png" />
+    <Resource Include="Images\page-2_0005_Layer-2.png" />
+    <Resource Include="Images\page-2_0006_Layer-3-copy-2.png" />
+    <Resource Include="Images\page-2_0007_Layer-4.png" />
+    <Resource Include="Images\page-2_0008_Layer-3-copy.png" />
+    <Resource Include="Images\page-2_0009_Layer-3.png" />
+    <Resource Include="Images\PaymentRep.png" />
+    <Resource Include="Images\PDF.png" />
+    <Resource Include="Images\Print.png" />
+    <Resource Include="Images\red 2.png" />
+    <Resource Include="Images\Remove.png" />
+    <Resource Include="Images\Search.png" />
+    <Resource Include="Images\software page bck 2.png" />
+    <Resource Include="Images\Trial Balance.png" />
+    <Resource Include="Images\Voucher.png" />
+    <Resource Include="Images\Welcome.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Nube Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NUBE.PAYROLL.BLL\NUBE.PAYROLL.BLL.csproj">
+      <Project>{bb8ffd01-6869-41f3-8cd6-876ed2e5aba5}</Project>
+      <Name>NUBE.PAYROLL.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NUBE.PAYROLL.CMN\NUBE.PAYROLL.CMN.csproj">
+      <Project>{abeff615-db30-4ee5-a9a9-af04ca2e8253}</Project>
+      <Name>NUBE.PAYROLL.CMN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NUBE.PAYROLL.MSG\NUBE.PAYROLL.MSG.csproj">
+      <Project>{ddeaee55-62be-4e8a-8eac-43c89219f35a}</Project>
+      <Name>NUBE.PAYROLL.MSG</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HomePage.jpg" />
+    <Resource Include="Images\Custom Size – 1.png" />
+    <Resource Include="Images\Custom Size – 2.png" />
+    <Resource Include="Images\Custom Size – 3.png" />
+    <Resource Include="Images\Custom Size – 4.png" />
+    <Content Include="TEST.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TEST.edmx</DependentUpon>
+      <LastGenOutput>TEST.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TEST.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TEST.edmx</DependentUpon>
+      <LastGenOutput>TEST.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

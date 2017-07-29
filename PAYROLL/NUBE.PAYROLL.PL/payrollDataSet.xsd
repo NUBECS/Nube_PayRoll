@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="payrollDataSet" targetNamespace="http://tempuri.org/payrollDataSet.xsd" xmlns:mstns="http://tempuri.org/payrollDataSet.xsd" xmlns="http://tempuri.org/payrollDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="payrollConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="payrollConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.NUBE.PAYROLL.PL.Properties.Settings.GlobalReference.Default.payrollConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VIEWPAYSLIPTableAdapter" GeneratorDataComponentClassName="VIEWPAYSLIPTableAdapter" Name="VIEWPAYSLIP" UserDataComponentName="VIEWPAYSLIPTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="payrollConnectionString (Settings)" DbObjectName="Payroll.dbo.VIEWPAYSLIP" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT RNO, ID, CODE, EMPLOYEENAME, POSITIONNAME, EPFNUMBER, SOCSONUMBER, NRIC, BANKACCOUNTNO, BASICSALARY, TOTALWORKINGDAYS, DAYSABSENT, OT, OT_AMOUNT, LOP, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, COOPSOCIETY, GMIS, GELA, LOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, BIMBLOAN, HOMECARLOANS, OTHERLOANS, TOTALEARNING, TOTALDEDUCTION, NETSALARY FROM dbo.VIEWPAYSLIP</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RNO" DataSetColumn="RNO" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="CODE" DataSetColumn="CODE" />
+              <Mapping SourceColumn="EMPLOYEENAME" DataSetColumn="EMPLOYEENAME" />
+              <Mapping SourceColumn="POSITIONNAME" DataSetColumn="POSITIONNAME" />
+              <Mapping SourceColumn="EPFNUMBER" DataSetColumn="EPFNUMBER" />
+              <Mapping SourceColumn="SOCSONUMBER" DataSetColumn="SOCSONUMBER" />
+              <Mapping SourceColumn="NRIC" DataSetColumn="NRIC" />
+              <Mapping SourceColumn="BANKACCOUNTNO" DataSetColumn="BANKACCOUNTNO" />
+              <Mapping SourceColumn="BASICSALARY" DataSetColumn="BASICSALARY" />
+              <Mapping SourceColumn="TOTALWORKINGDAYS" DataSetColumn="TOTALWORKINGDAYS" />
+              <Mapping SourceColumn="DAYSABSENT" DataSetColumn="DAYSABSENT" />
+              <Mapping SourceColumn="OT" DataSetColumn="OT" />
+              <Mapping SourceColumn="OT_AMOUNT" DataSetColumn="OT_AMOUNT" />
+              <Mapping SourceColumn="LOP" DataSetColumn="LOP" />
+              <Mapping SourceColumn="ALLOWANCE" DataSetColumn="ALLOWANCE" />
+              <Mapping SourceColumn="BONUS" DataSetColumn="BONUS" />
+              <Mapping SourceColumn="EXGRATIA" DataSetColumn="EXGRATIA" />
+              <Mapping SourceColumn="EPF" DataSetColumn="EPF" />
+              <Mapping SourceColumn="EPFUNION" DataSetColumn="EPFUNION" />
+              <Mapping SourceColumn="SOCSO" DataSetColumn="SOCSO" />
+              <Mapping SourceColumn="SOCSOUNION" DataSetColumn="SOCSOUNION" />
+              <Mapping SourceColumn="INCOMETAX" DataSetColumn="INCOMETAX" />
+              <Mapping SourceColumn="COOPSOCIETY" DataSetColumn="COOPSOCIETY" />
+              <Mapping SourceColumn="GMIS" DataSetColumn="GMIS" />
+              <Mapping SourceColumn="GELA" DataSetColumn="GELA" />
+              <Mapping SourceColumn="LOAN" DataSetColumn="LOAN" />
+              <Mapping SourceColumn="OTHERS" DataSetColumn="OTHERS" />
+              <Mapping SourceColumn="KOPERASI" DataSetColumn="KOPERASI" />
+              <Mapping SourceColumn="NUBESUBSCRIPTION" DataSetColumn="NUBESUBSCRIPTION" />
+              <Mapping SourceColumn="BIMBLOAN" DataSetColumn="BIMBLOAN" />
+              <Mapping SourceColumn="HOMECARLOANS" DataSetColumn="HOMECARLOANS" />
+              <Mapping SourceColumn="OTHERLOANS" DataSetColumn="OTHERLOANS" />
+              <Mapping SourceColumn="TOTALEARNING" DataSetColumn="TOTALEARNING" />
+              <Mapping SourceColumn="TOTALDEDUCTION" DataSetColumn="TOTALDEDUCTION" />
+              <Mapping SourceColumn="NETSALARY" DataSetColumn="NETSALARY" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="payrollDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="payrollDataSet" msprop:Generator_UserDSName="payrollDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VIEWPAYSLIP" msprop:Generator_TableClassName="VIEWPAYSLIPDataTable" msprop:Generator_TableVarName="tableVIEWPAYSLIP" msprop:Generator_TablePropName="VIEWPAYSLIP" msprop:Generator_RowDeletingName="VIEWPAYSLIPRowDeleting" msprop:Generator_RowChangingName="VIEWPAYSLIPRowChanging" msprop:Generator_RowEvHandlerName="VIEWPAYSLIPRowChangeEventHandler" msprop:Generator_RowDeletedName="VIEWPAYSLIPRowDeleted" msprop:Generator_UserTableName="VIEWPAYSLIP" msprop:Generator_RowChangedName="VIEWPAYSLIPRowChanged" msprop:Generator_RowEvArgName="VIEWPAYSLIPRowChangeEvent" msprop:Generator_RowClassName="VIEWPAYSLIPRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RNO" msprop:Generator_ColumnVarNameInTable="columnRNO" msprop:Generator_ColumnPropNameInRow="RNO" msprop:Generator_ColumnPropNameInTable="RNOColumn" msprop:Generator_UserColumnName="RNO" type="xs:long" minOccurs="0" />
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="CODE" msprop:Generator_ColumnVarNameInTable="columnCODE" msprop:Generator_ColumnPropNameInRow="CODE" msprop:Generator_ColumnPropNameInTable="CODEColumn" msprop:Generator_UserColumnName="CODE" type="xs:int" minOccurs="0" />
+              <xs:element name="EMPLOYEENAME" msprop:Generator_ColumnVarNameInTable="columnEMPLOYEENAME" msprop:Generator_ColumnPropNameInRow="EMPLOYEENAME" msprop:Generator_ColumnPropNameInTable="EMPLOYEENAMEColumn" msprop:Generator_UserColumnName="EMPLOYEENAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="POSITIONNAME" msprop:Generator_ColumnVarNameInTable="columnPOSITIONNAME" msprop:Generator_ColumnPropNameInRow="POSITIONNAME" msprop:Generator_ColumnPropNameInTable="POSITIONNAMEColumn" msprop:Generator_UserColumnName="POSITIONNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EPFNUMBER" msprop:Generator_ColumnVarNameInTable="columnEPFNUMBER" msprop:Generator_ColumnPropNameInRow="EPFNUMBER" msprop:Generator_ColumnPropNameInTable="EPFNUMBERColumn" msprop:Generator_UserColumnName="EPFNUMBER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SOCSONUMBER" msprop:Generator_ColumnVarNameInTable="columnSOCSONUMBER" msprop:Generator_ColumnPropNameInRow="SOCSONUMBER" msprop:Generator_ColumnPropNameInTable="SOCSONUMBERColumn" msprop:Generator_UserColumnName="SOCSONUMBER">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NRIC" msprop:Generator_ColumnVarNameInTable="columnNRIC" msprop:Generator_ColumnPropNameInRow="NRIC" msprop:Generator_ColumnPropNameInTable="NRICColumn" msprop:Generator_UserColumnName="NRIC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BANKACCOUNTNO" msprop:Generator_ColumnVarNameInTable="columnBANKACCOUNTNO" msprop:Generator_ColumnPropNameInRow="BANKACCOUNTNO" msprop:Generator_ColumnPropNameInTable="BANKACCOUNTNOColumn" msprop:Generator_UserColumnName="BANKACCOUNTNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BASICSALARY" msprop:Generator_ColumnVarNameInTable="columnBASICSALARY" msprop:Generator_ColumnPropNameInRow="BASICSALARY" msprop:Generator_ColumnPropNameInTable="BASICSALARYColumn" msprop:Generator_UserColumnName="BASICSALARY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTALWORKINGDAYS" msprop:Generator_ColumnVarNameInTable="columnTOTALWORKINGDAYS" msprop:Generator_ColumnPropNameInRow="TOTALWORKINGDAYS" msprop:Generator_ColumnPropNameInTable="TOTALWORKINGDAYSColumn" msprop:Generator_UserColumnName="TOTALWORKINGDAYS" type="xs:int" minOccurs="0" />
+              <xs:element name="DAYSABSENT" msprop:Generator_ColumnVarNameInTable="columnDAYSABSENT" msprop:Generator_ColumnPropNameInRow="DAYSABSENT" msprop:Generator_ColumnPropNameInTable="DAYSABSENTColumn" msprop:Generator_UserColumnName="DAYSABSENT" type="xs:int" minOccurs="0" />
+              <xs:element name="OT" msprop:Generator_ColumnVarNameInTable="columnOT" msprop:Generator_ColumnPropNameInRow="OT" msprop:Generator_ColumnPropNameInTable="OTColumn" msprop:Generator_UserColumnName="OT" type="xs:decimal" />
+              <xs:element name="OT_AMOUNT" msprop:Generator_ColumnVarNameInTable="columnOT_AMOUNT" msprop:Generator_ColumnPropNameInRow="OT_AMOUNT" msprop:Generator_ColumnPropNameInTable="OT_AMOUNTColumn" msprop:Generator_UserColumnName="OT_AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LOP" msprop:Generator_ColumnVarNameInTable="columnLOP" msprop:Generator_ColumnPropNameInRow="LOP" msprop:Generator_ColumnPropNameInTable="LOPColumn" msprop:Generator_UserColumnName="LOP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ALLOWANCE" msprop:Generator_ColumnVarNameInTable="columnALLOWANCE" msprop:Generator_ColumnPropNameInRow="ALLOWANCE" msprop:Generator_ColumnPropNameInTable="ALLOWANCEColumn" msprop:Generator_UserColumnName="ALLOWANCE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BONUS" msprop:Generator_ColumnVarNameInTable="columnBONUS" msprop:Generator_ColumnPropNameInRow="BONUS" msprop:Generator_ColumnPropNameInTable="BONUSColumn" msprop:Generator_UserColumnName="BONUS" type="xs:decimal" />
+              <xs:element name="EXGRATIA" msprop:Generator_ColumnVarNameInTable="columnEXGRATIA" msprop:Generator_ColumnPropNameInRow="EXGRATIA" msprop:Generator_ColumnPropNameInTable="EXGRATIAColumn" msprop:Generator_UserColumnName="EXGRATIA" type="xs:decimal" />
+              <xs:element name="EPF" msprop:Generator_ColumnVarNameInTable="columnEPF" msprop:Generator_ColumnPropNameInRow="EPF" msprop:Generator_ColumnPropNameInTable="EPFColumn" msprop:Generator_UserColumnName="EPF" type="xs:decimal" />
+              <xs:element name="EPFUNION" msprop:Generator_ColumnVarNameInTable="columnEPFUNION" msprop:Generator_ColumnPropNameInRow="EPFUNION" msprop:Generator_ColumnPropNameInTable="EPFUNIONColumn" msprop:Generator_UserColumnName="EPFUNION" type="xs:decimal" />
+              <xs:element name="SOCSO" msprop:Generator_ColumnVarNameInTable="columnSOCSO" msprop:Generator_ColumnPropNameInRow="SOCSO" msprop:Generator_ColumnPropNameInTable="SOCSOColumn" msprop:Generator_UserColumnName="SOCSO" type="xs:decimal" />
+              <xs:element name="SOCSOUNION" msprop:Generator_ColumnVarNameInTable="columnSOCSOUNION" msprop:Generator_ColumnPropNameInRow="SOCSOUNION" msprop:Generator_ColumnPropNameInTable="SOCSOUNIONColumn" msprop:Generator_UserColumnName="SOCSOUNION" type="xs:decimal" />
+              <xs:element name="INCOMETAX" msprop:Generator_ColumnVarNameInTable="columnINCOMETAX" msprop:Generator_ColumnPropNameInRow="INCOMETAX" msprop:Generator_ColumnPropNameInTable="INCOMETAXColumn" msprop:Generator_UserColumnName="INCOMETAX" type="xs:decimal" />
+              <xs:element name="COOPSOCIETY" msprop:Generator_ColumnVarNameInTable="columnCOOPSOCIETY" msprop:Generator_ColumnPropNameInRow="COOPSOCIETY" msprop:Generator_ColumnPropNameInTable="COOPSOCIETYColumn" msprop:Generator_UserColumnName="COOPSOCIETY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GMIS" msprop:Generator_ColumnVarNameInTable="columnGMIS" msprop:Generator_ColumnPropNameInRow="GMIS" msprop:Generator_ColumnPropNameInTable="GMISColumn" msprop:Generator_UserColumnName="GMIS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="GELA" msprop:Generator_ColumnVarNameInTable="columnGELA" msprop:Generator_ColumnPropNameInRow="GELA" msprop:Generator_ColumnPropNameInTable="GELAColumn" msprop:Generator_UserColumnName="GELA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LOAN" msprop:Generator_ColumnVarNameInTable="columnLOAN" msprop:Generator_ColumnPropNameInRow="LOAN" msprop:Generator_ColumnPropNameInTable="LOANColumn" msprop:Generator_UserColumnName="LOAN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OTHERS" msprop:Generator_ColumnVarNameInTable="columnOTHERS" msprop:Generator_ColumnPropNameInRow="OTHERS" msprop:Generator_ColumnPropNameInTable="OTHERSColumn" msprop:Generator_UserColumnName="OTHERS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="KOPERASI" msprop:Generator_ColumnVarNameInTable="columnKOPERASI" msprop:Generator_ColumnPropNameInRow="KOPERASI" msprop:Generator_ColumnPropNameInTable="KOPERASIColumn" msprop:Generator_UserColumnName="KOPERASI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NUBESUBSCRIPTION" msprop:Generator_ColumnVarNameInTable="columnNUBESUBSCRIPTION" msprop:Generator_ColumnPropNameInRow="NUBESUBSCRIPTION" msprop:Generator_ColumnPropNameInTable="NUBESUBSCRIPTIONColumn" msprop:Generator_UserColumnName="NUBESUBSCRIPTION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BIMBLOAN" msprop:Generator_ColumnVarNameInTable="columnBIMBLOAN" msprop:Generator_ColumnPropNameInRow="BIMBLOAN" msprop:Generator_ColumnPropNameInTable="BIMBLOANColumn" msprop:Generator_UserColumnName="BIMBLOAN" type="xs:decimal" minOccurs="0" />
+              <xs:element name="HOMECARLOANS" msprop:Generator_ColumnVarNameInTable="columnHOMECARLOANS" msprop:Generator_ColumnPropNameInRow="HOMECARLOANS" msprop:Generator_ColumnPropNameInTable="HOMECARLOANSColumn" msprop:Generator_UserColumnName="HOMECARLOANS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OTHERLOANS" msprop:Generator_ColumnVarNameInTable="columnOTHERLOANS" msprop:Generator_ColumnPropNameInRow="OTHERLOANS" msprop:Generator_ColumnPropNameInTable="OTHERLOANSColumn" msprop:Generator_UserColumnName="OTHERLOANS" type="xs:decimal" />
+              <xs:element name="TOTALEARNING" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTOTALEARNING" msprop:Generator_ColumnPropNameInRow="TOTALEARNING" msprop:Generator_ColumnPropNameInTable="TOTALEARNINGColumn" msprop:Generator_UserColumnName="TOTALEARNING" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTALDEDUCTION" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTOTALDEDUCTION" msprop:Generator_ColumnPropNameInRow="TOTALDEDUCTION" msprop:Generator_ColumnPropNameInTable="TOTALDEDUCTIONColumn" msprop:Generator_UserColumnName="TOTALDEDUCTION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NETSALARY" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNETSALARY" msprop:Generator_ColumnPropNameInRow="NETSALARY" msprop:Generator_ColumnPropNameInTable="NETSALARYColumn" msprop:Generator_UserColumnName="NETSALARY" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VIEWPAYSLIP" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
