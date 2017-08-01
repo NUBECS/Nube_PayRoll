@@ -36,7 +36,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<MasterCity> MasterCities { get; set; }
         public virtual DbSet<MasterCountry> MasterCountries { get; set; }
         public virtual DbSet<MasterNubeBranch> MasterNubeBranches { get; set; }
-        public virtual DbSet<MasterPosition> MasterPositions { get; set; }
         public virtual DbSet<MasterRace> MasterRaces { get; set; }
         public virtual DbSet<MasterState> MasterStates { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
@@ -71,5 +70,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
         public virtual DbSet<EmployeeIncrement> EmployeeIncrements { get; set; }
         public virtual DbSet<OTClaim> OTClaims { get; set; }
+        public virtual DbSet<MasterPosition> MasterPositions { get; set; }
     }
 }

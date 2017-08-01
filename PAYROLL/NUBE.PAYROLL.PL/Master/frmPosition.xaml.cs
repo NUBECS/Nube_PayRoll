@@ -48,6 +48,10 @@ namespace NUBE.PAYROLL.PL.Master
                         var mb = (from x in db.MasterPositions where x.Id == Id select x).FirstOrDefault();
                         mb.PositionName = txtPositionName.Text;
                         mb.ShortName = txtPositionUserCode.Text;
+                        mb.NoOfLeave1 = Convert.ToDecimal(txtNoOfWorkingDays1.Text);
+                        mb.NoOfLeave2 = Convert.ToDecimal(txtNoOfWorkingDays2.Text);
+                        mb.NoOfLeave3 = Convert.ToDecimal(txtNoOfWorkingDays3.Text);
+                        mb.NoOfLeave4 = Convert.ToDecimal(txtNoOfWorkingDays4.Text);
                         db.SaveChanges();
                         MessageBox.Show("Updated Sucessfully!");
                         LoadWindow();
@@ -57,6 +61,10 @@ namespace NUBE.PAYROLL.PL.Master
                         MasterPosition mb = new MasterPosition();
                         mb.PositionName = txtPositionName.Text;
                         mb.ShortName = txtPositionUserCode.Text;
+                        mb.NoOfLeave1 = Convert.ToDecimal(txtNoOfWorkingDays1.Text);
+                        mb.NoOfLeave2 = Convert.ToDecimal(txtNoOfWorkingDays2.Text);
+                        mb.NoOfLeave3 = Convert.ToDecimal(txtNoOfWorkingDays3.Text);
+                        mb.NoOfLeave4 = Convert.ToDecimal(txtNoOfWorkingDays4.Text);
                         db.MasterPositions.Add(mb);
                         db.SaveChanges();
                         MessageBox.Show("Saved Sucessfully!");
@@ -138,6 +146,10 @@ namespace NUBE.PAYROLL.PL.Master
             Id = 0;
             txtPositionName.Text = "";
             txtPositionUserCode.Text = "";
+            txtNoOfWorkingDays1.Text = "";
+            txtNoOfWorkingDays2.Text = "";
+            txtNoOfWorkingDays3.Text = "";
+            txtNoOfWorkingDays4.Text = "";
         }
 
         private void dgvPosition_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -150,6 +162,10 @@ namespace NUBE.PAYROLL.PL.Master
                     Id = Convert.ToInt32(drv["Id"]);
                     txtPositionName.Text = drv["PositionName"].ToString();
                     txtPositionUserCode.Text = drv["ShortName"].ToString();
+                    txtNoOfWorkingDays1.Text = drv["NoOfLeave1"].ToString();
+                    txtNoOfWorkingDays2.Text = drv["NoOfLeave2"].ToString();
+                    txtNoOfWorkingDays3.Text = drv["NoOfLeave3"].ToString();
+                    txtNoOfWorkingDays4.Text = drv["NoOfLeave4"].ToString();
                 }
             }
             catch (Exception ex)
@@ -167,6 +183,11 @@ namespace NUBE.PAYROLL.PL.Master
             Id = 0;
             txtPositionName.Text = "";
             txtPositionUserCode.Text = "";
+            txtNoOfWorkingDays1.Text = "";
+            txtNoOfWorkingDays2.Text = "";
+            txtNoOfWorkingDays3.Text = "";
+            txtNoOfWorkingDays4.Text = "";
+
             try
             {
                 var pos = (from x in db.MasterPositions select x).ToList();
@@ -238,9 +259,6 @@ namespace NUBE.PAYROLL.PL.Master
                 {
                     dgvPosition.ItemsSource = dtMasterPosition.DefaultView;
                 }
-
-
-
             }
             catch (Exception ex)
             {

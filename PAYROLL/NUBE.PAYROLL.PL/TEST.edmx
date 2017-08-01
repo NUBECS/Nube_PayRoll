@@ -305,6 +305,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PositionName" Type="varchar" MaxLength="50" />
           <Property Name="ShortName" Type="varchar" MaxLength="50" />
+          <Property Name="NoOfLeave1" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NoOfLeave2" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NoOfLeave3" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="NoOfLeave4" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="MasterRace">
           <Key>
@@ -1840,16 +1844,6 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
           <NavigationProperty Name="MasterBankBranches" Relationship="Self.FK_MasterBankBranch_MasterNubeBranch" FromRole="MasterNubeBranch" ToRole="MasterBankBranch" />
           <NavigationProperty Name="MasterEmployees" Relationship="payrollModel.FK_NubeId" FromRole="MasterNubeBranch" ToRole="MasterEmployee" />
         </EntityType>
-        <EntityType Name="MasterPosition">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MasterEmployees" Relationship="payrollModel.FK_MasterEmployee_MasterPosition" FromRole="MasterPosition" ToRole="MasterEmployee" />
-          <NavigationProperty Name="EmployeeIncrements" Relationship="payrollModel.FK_EmployeeIncrement_MasterPosition" FromRole="MasterPosition" ToRole="EmployeeIncrement" />
-        </EntityType>
         <EntityType Name="MasterRace">
           <Key>
             <PropertyRef Name="Id" />
@@ -2156,7 +2150,6 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
           <EntitySet Name="MasterCities" EntityType="Self.MasterCity" />
           <EntitySet Name="MasterCountries" EntityType="Self.MasterCountry" />
           <EntitySet Name="MasterNubeBranches" EntityType="Self.MasterNubeBranch" />
-          <EntitySet Name="MasterPositions" EntityType="Self.MasterPosition" />
           <EntitySet Name="MasterRaces" EntityType="Self.MasterRace" />
           <EntitySet Name="MasterStates" EntityType="Self.MasterState" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
@@ -2280,10 +2273,6 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
             <End Role="MasterCountry" EntitySet="MasterCountries" />
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
           </AssociationSet>
-          <AssociationSet Name="FK_MasterEmployee_MasterPosition" Association="payrollModel.FK_MasterEmployee_MasterPosition">
-            <End Role="MasterPosition" EntitySet="MasterPositions" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
           <AssociationSet Name="FK_MasterEmployee_MasterRace" Association="payrollModel.FK_MasterEmployee_MasterRace">
             <End Role="MasterRace" EntitySet="MasterRaces" />
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
@@ -2343,9 +2332,14 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
             <End Role="EmployeeIncrement" EntitySet="EmployeeIncrements" />
           </AssociationSet>
+          <EntitySet Name="MasterPositions" EntityType="payrollModel.MasterPosition" />
           <AssociationSet Name="FK_EmployeeIncrement_MasterPosition" Association="payrollModel.FK_EmployeeIncrement_MasterPosition">
             <End Role="MasterPosition" EntitySet="MasterPositions" />
             <End Role="EmployeeIncrement" EntitySet="EmployeeIncrements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterPosition" Association="payrollModel.FK_MasterEmployee_MasterPosition">
+            <End Role="MasterPosition" EntitySet="MasterPositions" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="ViewMasterCity">
@@ -2790,7 +2784,6 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
           <NavigationProperty Name="MasterBank" Relationship="payrollModel.FK_MasterEmployee_MasterBank" FromRole="MasterEmployee" ToRole="MasterBank" />
           <NavigationProperty Name="MasterCity" Relationship="payrollModel.FK_MasterEmployee_MasterCity" FromRole="MasterEmployee" ToRole="MasterCity" />
           <NavigationProperty Name="MasterCountry" Relationship="payrollModel.FK_CountryId" FromRole="MasterEmployee" ToRole="MasterCountry" />
-          <NavigationProperty Name="MasterPosition" Relationship="payrollModel.FK_MasterEmployee_MasterPosition" FromRole="MasterEmployee" ToRole="MasterPosition" />
           <NavigationProperty Name="MasterRace" Relationship="payrollModel.FK_MasterEmployee_MasterRace" FromRole="MasterEmployee" ToRole="MasterRace" />
           <NavigationProperty Name="MasterNubeBranch" Relationship="payrollModel.FK_NubeId" FromRole="MasterEmployee" ToRole="MasterNubeBranch" />
           <NavigationProperty Name="OverTimeDetails" Relationship="payrollModel.FK_OverTimeDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="OverTimeDetail" />
@@ -2805,6 +2798,7 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
           <NavigationProperty Name="EmployeeIncrements" Relationship="payrollModel.FK_EmployeeIncrement_MasterEmployee" FromRole="MasterEmployee" ToRole="EmployeeIncrement" />
           <NavigationProperty Name="EmployeeIncrements1" Relationship="payrollModel.FK_EmployeeIncrement_MasterEmployee1" FromRole="MasterEmployee" ToRole="EmployeeIncrement" />
           <NavigationProperty Name="EmployeeIncrements2" Relationship="payrollModel.FK_EmployeeIncrement_MasterEmployee2" FromRole="MasterEmployee" ToRole="EmployeeIncrement" />
+          <NavigationProperty Name="MasterPosition" Relationship="payrollModel.FK_MasterEmployee_MasterPosition" FromRole="MasterEmployee" ToRole="MasterPosition" />
         </EntityType>
         <Association Name="FK_DailyAttedanceDet_MasterEmployee">
           <End Type="payrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
@@ -2875,18 +2869,6 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
             </Principal>
             <Dependent Role="MasterEmployee">
               <PropertyRef Name="CountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MasterEmployee_MasterPosition">
-          <End Type="payrollModel.MasterPosition" Role="MasterPosition" Multiplicity="0..1" />
-          <End Type="payrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterPosition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="PositionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3185,6 +3167,20 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MasterPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoOfLeave1" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NoOfLeave2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NoOfLeave3" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NoOfLeave4" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="EmployeeIncrements" Relationship="payrollModel.FK_EmployeeIncrement_MasterPosition" FromRole="MasterPosition" ToRole="EmployeeIncrement" />
+          <NavigationProperty Name="MasterEmployees" Relationship="payrollModel.FK_MasterEmployee_MasterPosition" FromRole="MasterPosition" ToRole="MasterEmployee" />
+        </EntityType>
         <Association Name="FK_EmployeeIncrement_MasterPosition">
           <End Type="payrollModel.MasterPosition" Role="MasterPosition" Multiplicity="1" />
           <End Type="payrollModel.EmployeeIncrement" Role="EmployeeIncrement" Multiplicity="*" />
@@ -3193,6 +3189,18 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="EmployeeIncrement">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterPosition">
+          <End Type="payrollModel.MasterPosition" Role="MasterPosition" Multiplicity="0..1" />
+          <End Type="payrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
               <PropertyRef Name="PositionId" />
             </Dependent>
           </ReferentialConstraint>
@@ -3337,15 +3345,6 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NubeBranchName" ColumnName="NubeBranchName" />
                 <ScalarProperty Name="UserCode" ColumnName="UserCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MasterPositions">
-            <EntityTypeMapping TypeName="payrollModel.MasterPosition">
-              <MappingFragment StoreEntitySet="MasterPosition">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3977,6 +3976,19 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
                 <ScalarProperty Name="FromTime" ColumnName="FromTime" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterPositions">
+            <EntityTypeMapping TypeName="payrollModel.MasterPosition">
+              <MappingFragment StoreEntitySet="MasterPosition">
+                <ScalarProperty Name="NoOfLeave4" ColumnName="NoOfLeave4" />
+                <ScalarProperty Name="NoOfLeave3" ColumnName="NoOfLeave3" />
+                <ScalarProperty Name="NoOfLeave2" ColumnName="NoOfLeave2" />
+                <ScalarProperty Name="NoOfLeave1" ColumnName="NoOfLeave1" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

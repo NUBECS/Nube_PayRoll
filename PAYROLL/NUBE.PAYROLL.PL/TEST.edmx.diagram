@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="payrollModel.MasterCity" Width="1.5" PointX="12.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="payrollModel.MasterCountry" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="payrollModel.MasterNubeBranch" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="payrollModel.MasterPosition" Width="1.5" PointX="15" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="payrollModel.MasterRace" Width="1.5" PointX="15" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="payrollModel.MasterState" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="payrollModel.UserAccount" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
@@ -68,7 +67,6 @@
         <AssociationConnector Association="payrollModel.FK_MasterEmployee_MasterBank" />
         <AssociationConnector Association="payrollModel.FK_MasterEmployee_MasterCity" />
         <AssociationConnector Association="payrollModel.FK_CountryId" />
-        <AssociationConnector Association="payrollModel.FK_MasterEmployee_MasterPosition" />
         <AssociationConnector Association="payrollModel.FK_MasterEmployee_MasterRace" />
         <AssociationConnector Association="payrollModel.FK_NubeId" />
         <AssociationConnector Association="payrollModel.FK_OverTimeDetails_MasterEmployee" />
@@ -89,7 +87,9 @@
         <AssociationConnector Association="payrollModel.FK_EmployeeIncrement_MasterEmployee" />
         <AssociationConnector Association="payrollModel.FK_EmployeeIncrement_MasterEmployee1" />
         <AssociationConnector Association="payrollModel.FK_EmployeeIncrement_MasterEmployee2" />
+        <EntityTypeShape EntityType="payrollModel.MasterPosition" Width="1.5" PointX="5.375" PointY="23" />
         <AssociationConnector Association="payrollModel.FK_EmployeeIncrement_MasterPosition" />
+        <AssociationConnector Association="payrollModel.FK_MasterEmployee_MasterPosition" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

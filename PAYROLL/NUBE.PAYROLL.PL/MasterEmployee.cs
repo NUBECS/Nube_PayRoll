@@ -106,7 +106,6 @@ namespace NUBE.PAYROLL.PL
         public virtual MasterBank MasterBank { get; set; }
         public virtual MasterCity MasterCity { get; set; }
         public virtual MasterCountry MasterCountry { get; set; }
-        public virtual MasterPosition MasterPosition { get; set; }
         public virtual MasterRace MasterRace { get; set; }
         public virtual MasterNubeBranch MasterNubeBranch { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -128,5 +127,6 @@ namespace NUBE.PAYROLL.PL
         public virtual ICollection<EmployeeIncrement> EmployeeIncrements1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeIncrement> EmployeeIncrements2 { get; set; }
+        public virtual MasterPosition MasterPosition { get; set; }
     }
 }
