@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NUBE.PAYROLL.CMN;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace NUBE.PAYROLL.PL.Master
 {
@@ -51,7 +52,7 @@ namespace NUBE.PAYROLL.PL.Master
             {
                 frmEmployeeDetails frm = new frmEmployeeDetails(Id);
                 frm.ShowDialog();
-            }           
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -68,7 +69,7 @@ namespace NUBE.PAYROLL.PL.Master
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
                     }
-                }                    
+                }
             }
             catch (Exception ex)
             {
@@ -107,6 +108,7 @@ namespace NUBE.PAYROLL.PL.Master
                     Id = Convert.ToInt32(drv["Id"]);
                     frmEmployeeDetails frm = new frmEmployeeDetails(Id);
                     frm.ShowDialog();
+                    LoadWindow();
                 }
             }
             catch (Exception ex)
@@ -154,12 +156,30 @@ namespace NUBE.PAYROLL.PL.Master
             try
             {
                 Id = 0;
-                var st = (from x in db.ViewMasterEmployees select x).ToList();
-                if (st != null)
+                using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
-                    dtEmployee = AppLib.LINQResultToDataTable(st);
-                    dgEmployee.ItemsSource = dtEmployee.DefaultView;
+                    string str = " SELECT ROW_NUMBER() OVER(ORDER BY EM.MEMBERSHIPNO ASC) AS RNO,EM.ID,EM.MEMBERSHIPNO,\r" +
+                                 " EM.EMPLOYEENAME,EM.SHORTNAME,EM.NRIC,MP.POSITIONNAME,EM.GENDER \r" +
+                                 " FROM MASTEREMPLOYEE EM(NOLOCK) \r " +
+                                 " LEFT JOIN MASTERPOSITION MP(NOLOCK)ON MP.ID=EM.POSITIONID \r" +
+                                 " GROUP BY EM.ID,EM.MEMBERSHIPNO,EM.EMPLOYEENAME,EM.SHORTNAME,EM.NRIC,MP.POSITIONNAME,EM.GENDER";
+                    SqlCommand cmd = new SqlCommand(str, con);
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    con.Open();
+                    cmd.CommandTimeout = 0;
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        dgEmployee.ItemsSource = dt.DefaultView;
+                    }
                 }
+                //var st = (from x in db.ViewMasterEmployees select x).ToList();
+                //if (st != null)
+                //{
+                //    dtEmployee = AppLib.LINQResultToDataTable(st);
+                //    dgEmployee.ItemsSource = dtEmployee.DefaultView;
+                //}
             }
             catch (Exception ex)
             {

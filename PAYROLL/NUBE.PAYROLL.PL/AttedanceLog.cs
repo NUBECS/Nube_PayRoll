@@ -12,18 +12,15 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class ViewManualPayment
+    public partial class AttedanceLog
     {
-        public Nullable<long> RNO { get; set; }
-        public int ID { get; set; }
-        public Nullable<int> MEMBERSHIPNO { get; set; }
-        public string EMPLOYEENAME { get; set; }
-        public string GENDER { get; set; }
-        public string NRIC { get; set; }
-        public int ALLOWANCEID { get; set; }
-        public string ENTRYDATE { get; set; }
-        public int BONUS { get; set; }
-        public int EXGRATIA { get; set; }
-        public int PCB { get; set; }
+        public int Id { get; set; }
+        public int EmployeeId { get; set; }
+        public Nullable<System.DateTime> EntryDate { get; set; }
+        public Nullable<System.DateTime> InTime { get; set; }
+        public Nullable<System.DateTime> OutTime { get; set; }
+        public Nullable<decimal> WorkingHours { get; set; }
+    
+        public virtual MasterEmployee MasterEmployee { get; set; }
     }
 }

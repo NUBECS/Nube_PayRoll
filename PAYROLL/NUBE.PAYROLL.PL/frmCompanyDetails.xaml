@@ -143,7 +143,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                        </StackPanel>
+                        </StackPanel>                       
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1">

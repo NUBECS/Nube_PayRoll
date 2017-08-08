@@ -10,7 +10,6 @@
              d:DesignHeight="600" d:DesignWidth="1100" Background="White" Loaded="UserControl_Loaded" Name="PayslipGenerate">
 
     <UserControl.Resources>
-
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- note you only need bring in these extra resource dictionaries when using non-default styles, so only bring them into your controls where the default style is not what you want -->
@@ -46,7 +45,6 @@
                 <Setter Property="TextAlignment" Value="Right"/>
             </Style>
         </ResourceDictionary>
-
     </UserControl.Resources>
 
     <Grid>
@@ -63,26 +61,20 @@
             <Grid Grid.Row="1" >
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="90"/>
                         <RowDefinition Height="100*"/>
                         <RowDefinition Height="20*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"  >
-                            <DatePicker Name="dtpDate" Width="100" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,15,10,10" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <DatePicker Name="dtpDate" Width="120" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Margin="10,0,10,0" >
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Margin="0,10,0,0" Text="Month" FontWeight="Bold"/>
+                                        <TextBlock Margin="0,10,0,0" TextAlignment="Center" Text="Month" FontWeight="Bold" Width="100"/>
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </DatePicker>
-                            <!--<ComboBox x:Name="cmbNUBEBranch" Visibility="Hidden" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="350" Margin="10,20,10,10" Height="40" >
-                                <materialDesign:HintAssist.Hint>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="NUBE Branch"/>
-                                    </StackPanel>
-                                </materialDesign:HintAssist.Hint>
-                            </ComboBox>-->
+                            
                             <TextBox x:Name="txtMembershipNo" Height="44" Width="150" IsReadOnly="{Binding IsReadOnly,Mode=OneWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" FontSize="14">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
@@ -92,6 +84,10 @@
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
                             <Button Width="98" Height="30" x:Name="btnSearch" Content="SEARCH" Click="btnSearch_Click" Margin="20,10,0,5" />
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
+                            <Button Width="100" Height="30" x:Name="btnGenerate" Content="GENERATE" Click="btnGenerate_Click" Margin="10,10,0,5" />
                         </StackPanel>
                     </Grid>
                     <Grid Grid.Row="1">

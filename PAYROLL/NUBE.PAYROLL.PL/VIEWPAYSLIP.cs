@@ -48,8 +48,8 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> HOMECARLOANS { get; set; }
         public decimal OTHERLOANS { get; set; }
         public Nullable<decimal> TOTALEARNING { get; set; }
+        public decimal PCB { get; set; }
         public Nullable<decimal> TOTALDEDUCTION { get; set; }
         public Nullable<decimal> NETSALARY { get; set; }
-        public decimal PCB { get; set; }
     }
 }

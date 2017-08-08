@@ -105,6 +105,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -142,23 +143,42 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CompanyDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+    <Compile Include="AttedanceLog.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompanyDetail.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="DailyAttedanceDet.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DATA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DATA.edmx</DependentUpon>
     </Compile>
     <Compile Include="EmployeeIncrement.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityType.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="EPFCont.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ErrorLog.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="frmCompanyDetails.xaml.cs">
       <DependentUpon>frmCompanyDetails.xaml</DependentUpon>
@@ -167,52 +187,55 @@
       <DependentUpon>frmCompanySetup.xaml</DependentUpon>
     </Compile>
     <Compile Include="HolidayList.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Internal_FK_Definition_Storage.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LatePermissionDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LeavePermissionDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LeaveType.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LogDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LogDetailType.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LogMaster.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterBank.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterBankBranch.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterCity.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterCountry.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterEmployee.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterNubeBranch.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterPosition.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterRace.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterState.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="Master\frmEmployee.xaml.cs">
       <DependentUpon>frmEmployee.xaml</DependentUpon>
@@ -236,48 +259,31 @@
       <DependentUpon>frmSocsoContribution.xaml</DependentUpon>
     </Compile>
     <Compile Include="MonthlySalary.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="OTClaim.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="OverTimeDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
-    </Compile>
-    <Compile Include="payrollDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>payrollDataSet.xsd</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="PCB.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PositionDetail.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="Reports\LeaveReport.xaml.cs">
       <DependentUpon>LeaveReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="SocsoCont.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="TempAttendanceTiming.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TEST.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TEST.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TEST.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TEST.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TEST.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TEST.edmx</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="TotalWorkingDay.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="Transaction\frmDailyAttedance.xaml.cs">
       <DependentUpon>frmDailyAttedance.xaml</DependentUpon>
@@ -300,59 +306,62 @@
     <Compile Include="Transaction\frmPCB.xaml.cs">
       <DependentUpon>frmPCB.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transaction\frmPopupBox.xaml.cs">
+      <DependentUpon>frmPopupBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transaction\frmYearAllowance.xaml.cs">
       <DependentUpon>frmYearAllowance.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserAccount.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="UserType.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="UserTypeDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="UserTypeFormDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewDailyAttedance.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWDAILYATTEDANCELATE.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewEmployeeDetail.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewManualPayment.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewMasterbankbranch.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewMasterCity.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewMasterEmployee.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewMasterPosition.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewMasterState.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewOTCalculation.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWPAYSLIP.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWTOTALOT.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="YearlyAllowance.cs">
-      <DependentUpon>TEST.tt</DependentUpon>
+      <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -401,33 +410,24 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPaySlip.rdlc" />
+    <EntityDeploy Include="DATA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DATA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DATA.edmx.diagram">
+      <DependentUpon>DATA.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
-    <None Include="payrollDataSet.xsc">
-      <DependentUpon>payrollDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="payrollDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>payrollDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="payrollDataSet.xss">
-      <DependentUpon>payrollDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EntityDeploy Include="TEST.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TEST.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="TEST.edmx.diagram">
-      <DependentUpon>TEST.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Page Include="frmCompanyDetails.xaml">
@@ -534,6 +534,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Transaction\frmPopupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Transaction\frmYearAllowance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -604,16 +608,7 @@
     <Resource Include="Images\Custom Size – 2.png" />
     <Resource Include="Images\Custom Size – 3.png" />
     <Resource Include="Images\Custom Size – 4.png" />
-    <Content Include="TEST.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TEST.edmx</DependentUpon>
-      <LastGenOutput>TEST.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="TEST.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TEST.edmx</DependentUpon>
-      <LastGenOutput>TEST.cs</LastGenOutput>
-    </Content>
+    <Resource Include="Images\ProgressImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -629,6 +624,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DATA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DATA.edmx</DependentUpon>
+      <LastGenOutput>DATA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DATA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DATA.edmx</DependentUpon>
+      <LastGenOutput>DATA.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

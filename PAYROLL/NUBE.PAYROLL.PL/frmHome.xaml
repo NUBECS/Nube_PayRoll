@@ -161,8 +161,8 @@
                                         <DataTemplate DataType="BizMenu:BizMenuItem">
                                             <TextBlock Text="{Binding MenuName}" Margin="32 0 32 0" FontSize="16"  />
                                         </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                    <Menu:NavMenuItem MenuName="Daily Punch Time Import" FormName="ImportDailyAttedance">
+                                    </ListBox.ItemTemplate>                                    
+                                    <Menu:NavMenuItem MenuName="Punch Time Import" FormName="ImportDailyAttedance">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmImportDaiyAttendance/>
                                         </Menu:NavMenuItem.Content>

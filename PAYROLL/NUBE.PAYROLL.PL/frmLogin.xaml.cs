@@ -21,6 +21,7 @@ namespace NUBE.PAYROLL.PL
     /// </summary>
     public partial class frmLogin : MetroWindow
     {
+        PayrollEntity db = new PayrollEntity();
         public frmLogin()
         {
             InitializeComponent();
@@ -44,9 +45,18 @@ namespace NUBE.PAYROLL.PL
                 }
                 else
                 {
+                    var cmp = (from x in db.CompanyDetails select x).FirstOrDefault();
+                    if (cmp != null)
+                    {
+                        Config.EsslDatasource = cmp.ServerName;
+                        Config.EsslDB = cmp.DbName;
+                        Config.EsslUserId = cmp.UserId;
+                        Config.EsslPassword = cmp.Password;
+                    }
+
                     frmHome frm = new frmHome();
-                    frm.ShowDialog();                   
-                }              
+                    frm.ShowDialog();
+                }
                 //App.frmHome= new frmHome();
                 //this.Hide();
                 //App.frmHome.ShowDialog();

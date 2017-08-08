@@ -18,17 +18,18 @@ namespace NUBE.PAYROLL.PL
         public MasterEmployee()
         {
             this.DailyAttedanceDets = new HashSet<DailyAttedanceDet>();
-            this.LatePermissionDetails = new HashSet<LatePermissionDetail>();
-            this.LeavePermissionDetails = new HashSet<LeavePermissionDetail>();
-            this.OverTimeDetails = new HashSet<OverTimeDetail>();
-            this.TempAttendanceTimings = new HashSet<TempAttendanceTiming>();
-            this.TotalWorkingDays = new HashSet<TotalWorkingDay>();
-            this.YearlyAllowances = new HashSet<YearlyAllowance>();
-            this.PCBs = new HashSet<PCB>();
-            this.MonthlySalaries = new HashSet<MonthlySalary>();
             this.EmployeeIncrements = new HashSet<EmployeeIncrement>();
             this.EmployeeIncrements1 = new HashSet<EmployeeIncrement>();
             this.EmployeeIncrements2 = new HashSet<EmployeeIncrement>();
+            this.LatePermissionDetails = new HashSet<LatePermissionDetail>();
+            this.LeavePermissionDetails = new HashSet<LeavePermissionDetail>();
+            this.MonthlySalaries = new HashSet<MonthlySalary>();
+            this.OverTimeDetails = new HashSet<OverTimeDetail>();
+            this.PCBs = new HashSet<PCB>();
+            this.TempAttendanceTimings = new HashSet<TempAttendanceTiming>();
+            this.TotalWorkingDays = new HashSet<TotalWorkingDay>();
+            this.YearlyAllowances = new HashSet<YearlyAllowance>();
+            this.AttedanceLogs = new HashSet<AttedanceLog>();
         }
     
         public int Id { get; set; }
@@ -91,14 +92,20 @@ namespace NUBE.PAYROLL.PL
         public Nullable<int> CountryId { get; set; }
         public Nullable<decimal> IncomeTax { get; set; }
         public decimal NoOfCL { get; set; }
+        public decimal NoOfML { get; set; }
         public bool IsUserLogin { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
-        public decimal NoOfML { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DailyAttedanceDet> DailyAttedanceDets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeIncrement> EmployeeIncrements { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeIncrement> EmployeeIncrements1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeIncrement> EmployeeIncrements2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LatePermissionDetail> LatePermissionDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -106,10 +113,15 @@ namespace NUBE.PAYROLL.PL
         public virtual MasterBank MasterBank { get; set; }
         public virtual MasterCity MasterCity { get; set; }
         public virtual MasterCountry MasterCountry { get; set; }
+        public virtual MasterPosition MasterPosition { get; set; }
         public virtual MasterRace MasterRace { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MonthlySalary> MonthlySalaries { get; set; }
         public virtual MasterNubeBranch MasterNubeBranch { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OverTimeDetail> OverTimeDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PCB> PCBs { get; set; }
         public virtual MasterState MasterState { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TempAttendanceTiming> TempAttendanceTimings { get; set; }
@@ -118,15 +130,6 @@ namespace NUBE.PAYROLL.PL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<YearlyAllowance> YearlyAllowances { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PCB> PCBs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MonthlySalary> MonthlySalaries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeIncrement> EmployeeIncrements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeIncrement> EmployeeIncrements1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeIncrement> EmployeeIncrements2 { get; set; }
-        public virtual MasterPosition MasterPosition { get; set; }
+        public virtual ICollection<AttedanceLog> AttedanceLogs { get; set; }
     }
 }

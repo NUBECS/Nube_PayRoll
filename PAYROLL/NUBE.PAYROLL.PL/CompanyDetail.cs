@@ -25,6 +25,7 @@ namespace NUBE.PAYROLL.PL
         public string CompanyName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
+        public string AddressLine3 { get; set; }
         public Nullable<int> CityCode { get; set; }
         public Nullable<int> StateCode { get; set; }
         public Nullable<int> CountryCode { get; set; }
@@ -36,10 +37,13 @@ namespace NUBE.PAYROLL.PL
         public string GSTNo { get; set; }
         public Nullable<System.TimeSpan> InTime { get; set; }
         public Nullable<System.TimeSpan> OutTime { get; set; }
-        public string AddressLine3 { get; set; }
         public bool WeekofTwoDays { get; set; }
         public bool IsGraceTime { get; set; }
         public Nullable<decimal> GraceTime { get; set; }
+        public string ServerName { get; set; }
+        public string DbName { get; set; }
+        public string UserId { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserType> UserTypes { get; set; }

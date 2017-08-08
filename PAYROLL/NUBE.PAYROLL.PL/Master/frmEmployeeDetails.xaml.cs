@@ -503,8 +503,68 @@ namespace NUBE.PAYROLL.PL.Master
             }
             else if (string.IsNullOrEmpty(txtMemberID.Text))
             {
-                MessageBox.Show("Membership No is Empty!");
+                MessageBox.Show("Employee No is Empty!");
                 txtMemberID.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbGender.Text))
+            {
+                MessageBox.Show("Gender is Empty!");
+                cmbGender.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(dtDOB.Text))
+            {
+                MessageBox.Show("DOB is Empty!");
+                dtDOB.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(dtDOJ.Text))
+            {
+                MessageBox.Show("Date Of Joining is Empty!");
+                dtDOJ.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbPosition.Text))
+            {
+                MessageBox.Show("Position is Empty!");
+                cmbPosition.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbBank.Text))
+            {
+                MessageBox.Show("Bank is Empty!");
+                cmbBank.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbRace.Text))
+            {
+                MessageBox.Show("Race is Empty!");
+                cmbRace.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbNubeBranch.Text))
+            {
+                MessageBox.Show("NUBE Branch is Empty!");
+                cmbNubeBranch.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbCity.Text))
+            {
+                MessageBox.Show("City is Empty!");
+                cmbCity.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbState.Text))
+            {
+                MessageBox.Show("State is Empty!");
+                cmbState.Focus();
+                bValidate = false;
+            }
+            else if (string.IsNullOrEmpty(cmbCountry.Text))
+            {
+                MessageBox.Show("Country is Empty!");
+                cmbCountry.Focus();
                 bValidate = false;
             }
         }

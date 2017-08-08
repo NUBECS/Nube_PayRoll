@@ -20,7 +20,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> FromTime { get; set; }
         public Nullable<System.DateTime> ToTime { get; set; }
         public bool IsApproved { get; set; }
-        public int NoOfHours { get; set; }
+        public decimal NoOfHours { get; set; }
         public Nullable<System.DateTime> AprovedFromTime { get; set; }
         public Nullable<System.DateTime> AprovedToTime { get; set; }
         public Nullable<decimal> NoOfHoursApproved { get; set; }

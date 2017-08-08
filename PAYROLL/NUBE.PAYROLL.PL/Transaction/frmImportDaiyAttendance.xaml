@@ -62,16 +62,23 @@
             <Grid Grid.Column="0" >
                 <StackPanel Orientation="Vertical" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="80" >
-                        <DatePicker x:Name="dtpDate" materialDesign:HintAssist.Hint="Entry Date"  SelectedDate="{Binding Date}" Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Margin="0,27,25,24" Width="150" FontWeight="Bold"  />
-                        <StackPanel Orientation="Horizontal" Height="50" Width="135">
+                        <Label FontWeight="Bold" Content="Type" Margin="0,27,5,24"/>
+                        <RadioButton x:Name="rbMonthly" IsChecked="True" FontWeight="Bold" Content="Monthly" Margin="0,31,5,24"/>
+                        <RadioButton x:Name="rbDaily" FontWeight="Bold" Content="Daily" Margin="0,31,15,24"/>
+                        <DatePicker x:Name="dtpDate" materialDesign:HintAssist.Hint="Entry Date" SelectedDate="{Binding Date}" Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Margin="0,27,25,24" Width="120" FontWeight="Bold"  />
+                        <StackPanel Orientation="Horizontal" Height="50" Width="170">
+                            <Button x:Name="btnSync" Content="Sync Tump Machine" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="35" Click="btnSync_Click"></Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="50" Width="100">
                             <Button x:Name="btnImport" Content="Import" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnImport_Click"></Button>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Height="50" Width="135">
+                        <StackPanel Orientation="Horizontal" Height="50" Width="100">
                             <Button x:Name="btnSave" Content="Save" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnSave_Click"></Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="50" Width="135">
                             <Button x:Name="btnClear" Content="Clear" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnClear_Click"></Button>
                         </StackPanel>
+                        
                     </StackPanel>
                     <StackPanel Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <ProgressBar x:Name="progressBar1" Width="800"></ProgressBar>

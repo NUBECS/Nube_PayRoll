@@ -137,7 +137,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                 {
                     DateTime dtDOB = Convert.ToDateTime(dtMonth.SelectedDate);
                     DataTable dt = new DataTable();
-                    using (SqlConnection con = new SqlConnection("Data Source =.\\sqlexpress;Initial Catalog = payroll; Integrated Security = True"))
+                    using (SqlConnection con = new SqlConnection(Config.connStr))
                     {
                         SqlCommand cmd;
                         string str = string.Format("SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO," +

@@ -17,8 +17,8 @@ namespace NUBE.PAYROLL.PL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MasterCountry()
         {
-            this.MasterStates = new HashSet<MasterState>();
             this.MasterEmployees = new HashSet<MasterEmployee>();
+            this.MasterStates = new HashSet<MasterState>();
         }
     
         public int Id { get; set; }
@@ -26,8 +26,8 @@ namespace NUBE.PAYROLL.PL
         public string ShortName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MasterState> MasterStates { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MasterEmployee> MasterEmployees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MasterState> MasterStates { get; set; }
     }
 }

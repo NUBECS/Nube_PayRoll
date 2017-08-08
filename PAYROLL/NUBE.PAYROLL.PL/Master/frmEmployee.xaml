@@ -66,7 +66,7 @@
                         <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Gender" FontWeight="Bold" Width="200" Binding="{Binding GENDER}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="NRIC" FontWeight="Bold" Width="200" Binding="{Binding NRIC}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="Position" FontWeight="Bold" Width="200" Binding="{Binding PositionName}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Position" FontWeight="Bold" Width="200" Binding="{Binding POSITIONNAME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="NUBE.PAYROLL.PL.Transaction.frmPopBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NUBE.PAYROLL.PL.Transaction"
+        mc:Ignorable="d" Height="140" Width="300" Activated="Window_Activated" WindowStartupLocation="CenterScreen" WindowStyle="None" TargetUpdated="Window_TargetUpdated" ContextMenuOpening="Window_ContextMenuOpening" FocusableChanged="Window_FocusableChanged" LayoutUpdated="Window_LayoutUpdated" ContentRendered="Window_ContentRendered">
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/NUBE.PAYROLL.PL;component/Images/ProgressImage.jpg" Stretch="Fill"/>
+        </Grid.Background>
+    </Grid>
+</Window>

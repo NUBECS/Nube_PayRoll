@@ -65,7 +65,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                     db.TempAttendanceTimings.AddRange(lsttemp);
                     db.SaveChanges();
                     DataTable dtDailyAtt = new DataTable();
-                    using (SqlConnection con = new SqlConnection("Data Source =.\\sqlexpress;Initial Catalog = payroll; Integrated Security = True"))
+                    using (SqlConnection con = new SqlConnection(Config.connStr))
                     {
                         SqlCommand cmd;
                         cmd = new SqlCommand("SPINSERTDAILYATTEDANCEDET", con);
@@ -83,6 +83,109 @@ namespace NUBE.PAYROLL.PL.Transaction
             catch (Exception ex)
             {
                 ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        private void btnSync_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(dtpDate.Text))
+                {
+                    MessageBox.Show("Date is Empty!");
+                    dtpDate.Focus();
+
+                }
+                else if (MessageBox.Show("Old Data's will be Deleted, Are you sure to Sync the Tump Machine? ", "Clear Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    Boolean bIsDatewise = false;
+                    if (rbDaily.IsChecked == true)
+                    {
+                        bIsDatewise = true;
+                    }
+
+                    using (SqlConnection con = new SqlConnection(Config.connStr))
+                    {
+                        SqlCommand cmd;
+                        cmd = new SqlCommand("SPTEMPATTENDANCE", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@DATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+                        cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));
+                        SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                        con.Open();
+                        cmd.CommandTimeout = 0;
+                        DataTable dtAttendance = new DataTable();
+                        adp.Fill(dtAttendance);
+
+                        if (dtAttendance.Rows.Count > 0)
+                        {
+                            string sWhere = "";
+                            if (bIsDatewise == true)
+                            {
+                                sWhere = string.Format(" WHERE ENTRYDATE='{0:dd/MMM/yyyy}' \r", dtpDate.SelectedDate.ToString());
+                            }
+                            else
+                            {
+                                sWhere = string.Format(" WHERE MONTH(ENTRYDATE)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(ENTRYDATE)=YEAR('{0:dd/MMM/yyyy}') \r", dtpDate.SelectedDate.ToString());
+                            }
+
+                            String sQuery = " SELECT EMPLOYEEID,ENTRYDATE FROM " +
+                                            con.Database + "..TEMPATTENDANCETIMINGS(NOLOCK) \r" +
+                                            sWhere + " GROUP BY EMPLOYEEID,ENTRYDATE \r" +
+                                            " ORDER BY EMPLOYEEID,ENTRYDATE ";
+
+                            cmd = new SqlCommand(sQuery, con);
+                            cmd.CommandType = CommandType.Text;
+                            adp = new SqlDataAdapter(cmd);
+                            cmd.CommandTimeout = 0;
+                            DataTable dtEmployee = new DataTable();
+                            adp.Fill(dtEmployee);
+
+                            List<AttedanceLog> lstAttLog = new List<AttedanceLog>();
+
+                            foreach (DataRow drRow in dtEmployee.Rows)
+                            {
+                                DataView dv = new DataView(dtEmployee);
+                                dv.RowFilter = " EMPLOYEEID=" + drRow["EMPLOYEEID"];
+
+                                DataTable dtEmp = dv.ToTable();
+                                foreach (DataRow dr in dtEmp.Rows)
+                                {
+                                    DataView drv = new DataView(dtAttendance);
+                                    drv.RowFilter = string.Format(" EMPLOYEEID=" + drRow["EMPLOYEEID"] + " AND ENTRYDATE='{0:dd/MMM/yyyy}'", Convert.ToDateTime(dr["ENTRYDATE"]));
+                                    DataTable dtdate = drv.ToTable();
+
+                                    for (int i = 0; i < dtdate.Rows.Count; i = i + 2)
+                                    {
+                                        AttedanceLog atLog = new AttedanceLog();
+                                        atLog.EmployeeId = int.Parse(drRow["EMPLOYEEID"].ToString());
+                                        atLog.EntryDate = Convert.ToDateTime(dtdate.Rows[i]["ENTRYDATE"]);
+                                        atLog.InTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
+                                        atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
+                                        TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
+                                        atLog.WorkingHours = Convert.ToDecimal(diff.TotalHours);
+                                        lstAttLog.Add(atLog);
+                                    }
+                                }
+                            }
+                            if (lstAttLog != null)
+                            {
+                                db.AttedanceLogs.AddRange(lstAttLog);
+                                db.SaveChanges();
+                            }
+                            MessageBox.Show("Import Sucessfully !", "Sucessfully Completed");
+                            con.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No Record Found !", "Error");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Contact Administrator!", "Error");
             }
         }
 
@@ -201,5 +304,7 @@ namespace NUBE.PAYROLL.PL.Transaction
         }
 
         #endregion
+
+
     }
 }

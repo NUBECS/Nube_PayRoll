@@ -12,18 +12,12 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class ViewManualPayment
+    public partial class Internal_FK_Definition_Storage
     {
-        public Nullable<long> RNO { get; set; }
         public int ID { get; set; }
-        public Nullable<int> MEMBERSHIPNO { get; set; }
-        public string EMPLOYEENAME { get; set; }
-        public string GENDER { get; set; }
-        public string NRIC { get; set; }
-        public int ALLOWANCEID { get; set; }
-        public string ENTRYDATE { get; set; }
-        public int BONUS { get; set; }
-        public int EXGRATIA { get; set; }
-        public int PCB { get; set; }
+        public string FK_Name { get; set; }
+        public string FK_CreationStatement { get; set; }
+        public string FK_DestructionStatement { get; set; }
+        public string Table_TruncationStatement { get; set; }
     }
 }

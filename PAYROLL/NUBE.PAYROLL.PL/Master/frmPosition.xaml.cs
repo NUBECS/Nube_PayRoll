@@ -23,6 +23,7 @@ namespace NUBE.PAYROLL.PL.Master
     public partial class frmPosition : UserControl
     {
         int Id = 0;
+        int iDetailId = 0;
         DataTable dtMasterPosition = new DataTable();
         PayrollEntity db = new PayrollEntity();
         public frmPosition()
@@ -48,10 +49,6 @@ namespace NUBE.PAYROLL.PL.Master
                         var mb = (from x in db.MasterPositions where x.Id == Id select x).FirstOrDefault();
                         mb.PositionName = txtPositionName.Text;
                         mb.ShortName = txtPositionUserCode.Text;
-                        mb.NoOfLeave1 = Convert.ToDecimal(txtNoOfWorkingDays1.Text);
-                        mb.NoOfLeave2 = Convert.ToDecimal(txtNoOfWorkingDays2.Text);
-                        mb.NoOfLeave3 = Convert.ToDecimal(txtNoOfWorkingDays3.Text);
-                        mb.NoOfLeave4 = Convert.ToDecimal(txtNoOfWorkingDays4.Text);
                         db.SaveChanges();
                         MessageBox.Show("Updated Sucessfully!");
                         LoadWindow();
@@ -61,10 +58,6 @@ namespace NUBE.PAYROLL.PL.Master
                         MasterPosition mb = new MasterPosition();
                         mb.PositionName = txtPositionName.Text;
                         mb.ShortName = txtPositionUserCode.Text;
-                        mb.NoOfLeave1 = Convert.ToDecimal(txtNoOfWorkingDays1.Text);
-                        mb.NoOfLeave2 = Convert.ToDecimal(txtNoOfWorkingDays2.Text);
-                        mb.NoOfLeave3 = Convert.ToDecimal(txtNoOfWorkingDays3.Text);
-                        mb.NoOfLeave4 = Convert.ToDecimal(txtNoOfWorkingDays4.Text);
                         db.MasterPositions.Add(mb);
                         db.SaveChanges();
                         MessageBox.Show("Saved Sucessfully!");
@@ -106,6 +99,61 @@ namespace NUBE.PAYROLL.PL.Master
             LoadWindow();
         }
 
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (iDetailId != 0)
+                {
+                    var mb = (from x in db.PositionDetails where x.Id == iDetailId select x).FirstOrDefault();
+                    mb.MinYear = Convert.ToDecimal(txtMinYear.Text);
+                    mb.MaxYear = Convert.ToDecimal(txtMinYear.Text);
+                    mb.NoOfLeave = Convert.ToDecimal(txtNoOfLeave.Text);
+                    db.SaveChanges();
+                    MessageBox.Show("Added Sucessfully!");
+                    LoadPosition();
+                }
+                else
+                {
+                    PositionDetail mb = new PositionDetail();
+                    mb.PositionId = Id;
+                    mb.MinYear = Convert.ToDecimal(txtMinYear.Text);
+                    mb.MaxYear = Convert.ToDecimal(txtMaxYear.Text);
+                    mb.NoOfLeave = Convert.ToDecimal(txtNoOfLeave.Text);
+                    db.PositionDetails.Add(mb);
+                    db.SaveChanges();
+                    MessageBox.Show("Added Sucessfully!");
+                    LoadPosition();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void btnDelet_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Do You want to Delete This Leave Details ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    if (iDetailId != 0)
+                    {
+                        var mb = (from x in db.PositionDetails where x.Id == iDetailId select x).FirstOrDefault();
+                        db.PositionDetails.Remove(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Deleted Sucessfully");
+                        LoadPosition();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
         private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -146,10 +194,11 @@ namespace NUBE.PAYROLL.PL.Master
             Id = 0;
             txtPositionName.Text = "";
             txtPositionUserCode.Text = "";
-            txtNoOfWorkingDays1.Text = "";
-            txtNoOfWorkingDays2.Text = "";
-            txtNoOfWorkingDays3.Text = "";
-            txtNoOfWorkingDays4.Text = "";
+            txtMinYear.Text = "";
+            txtMaxYear.Text = "";
+            txtNoOfLeave.Text = "";
+            dgvAnnualLeave.ItemsSource = null;
+
         }
 
         private void dgvPosition_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -162,11 +211,42 @@ namespace NUBE.PAYROLL.PL.Master
                     Id = Convert.ToInt32(drv["Id"]);
                     txtPositionName.Text = drv["PositionName"].ToString();
                     txtPositionUserCode.Text = drv["ShortName"].ToString();
-                    txtNoOfWorkingDays1.Text = drv["NoOfLeave1"].ToString();
-                    txtNoOfWorkingDays2.Text = drv["NoOfLeave2"].ToString();
-                    txtNoOfWorkingDays3.Text = drv["NoOfLeave3"].ToString();
-                    txtNoOfWorkingDays4.Text = drv["NoOfLeave4"].ToString();
+                    LoadPosition();
                 }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        private void dgvAnnualLeave_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                if ((dgvAnnualLeave.SelectedItem != null))
+                {
+                    DataRowView drv = (DataRowView)dgvAnnualLeave.SelectedItem;
+                    iDetailId = Convert.ToInt32(drv["Id"]);
+                    txtMinYear.Text = drv["MinYear"].ToString();
+                    txtMaxYear.Text = drv["MaxYear"].ToString();
+                    txtNoOfLeave.Text = drv["NoOfLeave"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        private void dgvAnnualLeave_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                iDetailId = 0;
+                txtMinYear.Text = "";
+                txtMaxYear.Text = "";
+                txtNoOfLeave.Text = "";
             }
             catch (Exception ex)
             {
@@ -183,10 +263,10 @@ namespace NUBE.PAYROLL.PL.Master
             Id = 0;
             txtPositionName.Text = "";
             txtPositionUserCode.Text = "";
-            txtNoOfWorkingDays1.Text = "";
-            txtNoOfWorkingDays2.Text = "";
-            txtNoOfWorkingDays3.Text = "";
-            txtNoOfWorkingDays4.Text = "";
+            txtMinYear.Text = "";
+            txtMaxYear.Text = "";
+            txtNoOfLeave.Text = "";
+            dgvAnnualLeave.ItemsSource = null;
 
             try
             {
@@ -200,6 +280,22 @@ namespace NUBE.PAYROLL.PL.Master
             catch (Exception ex)
             {
                 ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        void LoadPosition()
+        {
+            txtMinYear.Text = "";
+            txtMaxYear.Text = "";
+            txtNoOfLeave.Text = "";
+            if (Id != 0)
+            {
+                var pos = (from x in db.PositionDetails where x.PositionId == Id orderby x.MinYear select x).ToList();
+                if (pos.Count > 0)
+                {
+                    DataTable dt = AppLib.LINQResultToDataTable(pos);
+                    dgvAnnualLeave.ItemsSource = dt.DefaultView;
+                }
             }
         }
 
@@ -267,5 +363,6 @@ namespace NUBE.PAYROLL.PL.Master
         }
 
         #endregion
+
     }
 }

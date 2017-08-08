@@ -64,6 +64,18 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
         }
 
+        private void btnGenerate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string st = string.Format("{0:MM_yyyy}", dtpDate.SelectedDate);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
         #endregion
 
         #region Function
@@ -95,5 +107,7 @@ namespace NUBE.PAYROLL.PL.Transaction
         }
 
         #endregion
+
+
     }
 }
