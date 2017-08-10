@@ -177,6 +177,11 @@
                                             <Transaction:frmExtraAmount/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
+                                    <Menu:NavMenuItem MenuName="AttendanceCorrection" FormName="AttendanceCorrection">
+                                        <Menu:NavMenuItem.Content>
+                                            <Transaction:frmAttendanceCorrection/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
                                     <Menu:NavMenuItem MenuName="PaySlip Generate" FormName="PayslipGenerate">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmPayslipGenerate/>

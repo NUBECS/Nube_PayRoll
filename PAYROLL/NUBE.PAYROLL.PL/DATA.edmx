@@ -15,6 +15,7 @@
           <Property Name="InTime" Type="datetime" />
           <Property Name="OutTime" Type="datetime" />
           <Property Name="WorkingHours" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsNotLogOut" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CompanyDetails">
           <Key>
@@ -3328,6 +3329,7 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
           <Property Name="OutTime" Type="DateTime" Precision="3" />
           <Property Name="WorkingHours" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="MasterEmployee" Relationship="PayrollModel.FK_AttedanceLogs_MasterEmployee" FromRole="AttedanceLog" ToRole="MasterEmployee" />
+          <Property Name="IsNotLogOut" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_AttedanceLogs_MasterEmployee">
           <End Type="PayrollModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
@@ -4154,6 +4156,7 @@ warning 6002: The table/view 'Payroll.dbo.VIEWTOTALOT' does not have a primary k
           <EntitySetMapping Name="AttedanceLogs">
             <EntityTypeMapping TypeName="PayrollModel.AttedanceLog">
               <MappingFragment StoreEntitySet="AttedanceLogs">
+                <ScalarProperty Name="IsNotLogOut" ColumnName="IsNotLogOut" />
                 <ScalarProperty Name="WorkingHours" ColumnName="WorkingHours" />
                 <ScalarProperty Name="OutTime" ColumnName="OutTime" />
                 <ScalarProperty Name="InTime" ColumnName="InTime" />

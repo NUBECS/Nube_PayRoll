@@ -285,6 +285,9 @@
     <Compile Include="TotalWorkingDay.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="Transaction\frmAttendanceCorrection.xaml.cs">
+      <DependentUpon>frmAttendanceCorrection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transaction\frmDailyAttedance.xaml.cs">
       <DependentUpon>frmDailyAttedance.xaml</DependentUpon>
     </Compile>
@@ -503,6 +506,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Reports\LeaveReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmAttendanceCorrection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

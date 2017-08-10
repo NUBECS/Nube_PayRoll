@@ -122,17 +122,17 @@ namespace NUBE.PAYROLL.PL.Transaction
                             string sWhere = "";
                             if (bIsDatewise == true)
                             {
-                                sWhere = string.Format(" WHERE ENTRYDATE='{0:dd/MMM/yyyy}' \r", dtpDate.SelectedDate.ToString());
+                                sWhere = string.Format(" WHERE ENTRYDATE='{0:dd/MMM/yyyy}' \r", dtpDate.SelectedDate);
                             }
                             else
                             {
-                                sWhere = string.Format(" WHERE MONTH(ENTRYDATE)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(ENTRYDATE)=YEAR('{0:dd/MMM/yyyy}') \r", dtpDate.SelectedDate.ToString());
+                                sWhere = string.Format(" WHERE MONTH(ENTRYDATE)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(ENTRYDATE)=YEAR('{0:dd/MMM/yyyy}') \r", dtpDate.SelectedDate);
                             }
 
-                            String sQuery = " SELECT EMPLOYEEID,ENTRYDATE FROM " +
+                            String sQuery = " SELECT EMPLOYEEID FROM " +
                                             con.Database + "..TEMPATTENDANCETIMINGS(NOLOCK) \r" +
-                                            sWhere + " GROUP BY EMPLOYEEID,ENTRYDATE \r" +
-                                            " ORDER BY EMPLOYEEID,ENTRYDATE ";
+                                            sWhere + " GROUP BY EMPLOYEEID \r" +
+                                            " ORDER BY EMPLOYEEID ";
 
                             cmd = new SqlCommand(sQuery, con);
                             cmd.CommandType = CommandType.Text;
@@ -140,41 +140,102 @@ namespace NUBE.PAYROLL.PL.Transaction
                             cmd.CommandTimeout = 0;
                             DataTable dtEmployee = new DataTable();
                             adp.Fill(dtEmployee);
-
                             List<AttedanceLog> lstAttLog = new List<AttedanceLog>();
-
-                            foreach (DataRow drRow in dtEmployee.Rows)
+                            if (dtEmployee.Rows.Count > 0)
                             {
-                                DataView dv = new DataView(dtEmployee);
-                                dv.RowFilter = " EMPLOYEEID=" + drRow["EMPLOYEEID"];
-
-                                DataTable dtEmp = dv.ToTable();
-                                foreach (DataRow dr in dtEmp.Rows)
+                                foreach (DataRow drRow in dtEmployee.Rows)
                                 {
-                                    DataView drv = new DataView(dtAttendance);
-                                    drv.RowFilter = string.Format(" EMPLOYEEID=" + drRow["EMPLOYEEID"] + " AND ENTRYDATE='{0:dd/MMM/yyyy}'", Convert.ToDateTime(dr["ENTRYDATE"]));
-                                    DataTable dtdate = drv.ToTable();
-
-                                    for (int i = 0; i < dtdate.Rows.Count; i = i + 2)
+                                    if (bIsDatewise == true)
                                     {
-                                        AttedanceLog atLog = new AttedanceLog();
-                                        atLog.EmployeeId = int.Parse(drRow["EMPLOYEEID"].ToString());
-                                        atLog.EntryDate = Convert.ToDateTime(dtdate.Rows[i]["ENTRYDATE"]);
-                                        atLog.InTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                        atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
-                                        TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                        atLog.WorkingHours = Convert.ToDecimal(diff.TotalHours);
-                                        lstAttLog.Add(atLog);
+                                        sWhere = string.Format(" AND ENTRYDATE='{0:dd/MMM/yyyy}' \r", dtpDate.SelectedDate);
+                                    }
+                                    else
+                                    {
+                                        sWhere = string.Format(" AND MONTH(ENTRYDATE)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(ENTRYDATE)=YEAR('{0:dd/MMM/yyyy}') \r", dtpDate.SelectedDate);
+                                    }
+
+                                    sQuery = " SELECT ENTRYDATE FROM " +
+                                            con.Database + "..TEMPATTENDANCETIMINGS(NOLOCK) \r" +
+                                            " WHERE EMPLOYEEID=" + drRow["EMPLOYEEID"] + sWhere + 
+                                            " GROUP BY ENTRYDATE \r" +
+                                            " ORDER BY ENTRYDATE ";
+
+                                    cmd = new SqlCommand(sQuery, con);
+                                    cmd.CommandType = CommandType.Text;
+                                    adp = new SqlDataAdapter(cmd);
+                                    cmd.CommandTimeout = 0;
+                                    DataTable dtEmp = new DataTable();
+                                    adp.Fill(dtEmp);
+                                    foreach (DataRow dr in dtEmp.Rows)
+                                    {
+                                        DataView drv = new DataView(dtAttendance);
+                                        drv.RowFilter = string.Format(" EMPLOYEEID=" + drRow["EMPLOYEEID"] + " AND ENTRYDATE='{0:dd/MMM/yyyy}'", Convert.ToDateTime(dr["ENTRYDATE"]));
+                                        DataTable dtdate = drv.ToTable();
+
+                                        for (int i = 0; i < dtdate.Rows.Count; i = i + 2)
+                                        {
+                                            DateTime dtEntry = Convert.ToDateTime(string.Format("{0:dd/MMM/yyyy}", dtdate.Rows[i]["ENTRYDATE"]));
+                                            int iEmployeeId = int.Parse(drRow["EMPLOYEEID"].ToString());
+                                            var dLog = (from x in db.AttedanceLogs where x.EntryDate == dtEntry && x.EmployeeId == iEmployeeId select x).ToList();
+                                            if (dLog.Count > 0)
+                                            {
+                                                db.AttedanceLogs.RemoveRange(db.AttedanceLogs.Where(x => x.EntryDate == dtEntry && x.EmployeeId == iEmployeeId));
+                                                db.SaveChanges();
+                                            }
+
+                                            AttedanceLog atLog = new AttedanceLog();
+                                            atLog.EmployeeId = iEmployeeId;
+                                            atLog.EntryDate = dtEntry;
+                                            atLog.InTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
+
+                                            try
+                                            {
+                                                atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
+                                                TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
+                                                atLog.WorkingHours = Convert.ToDecimal(diff.TotalHours);
+                                                atLog.IsNotLogOut = false;
+                                            }
+                                            catch (Exception)
+                                            {
+                                                atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
+                                                TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
+                                                atLog.WorkingHours = Convert.ToDecimal(diff.TotalHours);
+                                                atLog.IsNotLogOut = true;
+                                            }
+                                            lstAttLog.Add(atLog);
+                                        }
                                     }
                                 }
+
+                                if (lstAttLog != null)
+                                {
+                                    db.AttedanceLogs.AddRange(lstAttLog);
+                                    db.SaveChanges();                                                                       
+                                   
+                                    cmd = new SqlCommand("SPDAILYATTEDANCEDET", con);
+                                    cmd.CommandType = CommandType.StoredProcedure;
+                                    cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+                                    cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));                                                                        
+                                    cmd.CommandTimeout = 0;
+                                    int i = cmd.ExecuteNonQuery();
+                                    if (i == 0)
+                                    {
+                                        MessageBox.Show("Imported Not Execute!", "Error");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Contact Administrator", "Insert Error");
+                                }
                             }
-                            if (lstAttLog != null)
+                            else
                             {
-                                db.AttedanceLogs.AddRange(lstAttLog);
-                                db.SaveChanges();
+                                MessageBox.Show("No Record Found !", "Error");
                             }
-                            MessageBox.Show("Import Sucessfully !", "Sucessfully Completed");
-                            con.Close();
                         }
                         else
                         {

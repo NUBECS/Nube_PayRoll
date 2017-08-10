@@ -20,6 +20,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> InTime { get; set; }
         public Nullable<System.DateTime> OutTime { get; set; }
         public Nullable<decimal> WorkingHours { get; set; }
+        public bool IsNotLogOut { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }
     }
