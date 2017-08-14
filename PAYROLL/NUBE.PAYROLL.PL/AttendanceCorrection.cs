@@ -12,19 +12,17 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class OverTimeDetail
+    public partial class AttendanceCorrection
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
-        public Nullable<System.DateTime> AttDate { get; set; }
-        public Nullable<System.DateTime> InTime { get; set; }
-        public Nullable<System.DateTime> OutTime { get; set; }
-        public decimal OtHours { get; set; }
-        public bool IsApproved { get; set; }
-        public Nullable<System.DateTime> ApprovedInTime { get; set; }
-        public Nullable<System.DateTime> ApprovedOutTime { get; set; }
-        public bool IsWeekOff { get; set; }
-        public bool IsPublicHoliday { get; set; }
+        public Nullable<System.DateTime> EntryDate { get; set; }
+        public Nullable<System.DateTime> BeforeInTime { get; set; }
+        public Nullable<System.DateTime> BeforeOutTime { get; set; }
+        public Nullable<System.DateTime> AfterInTime { get; set; }
+        public Nullable<System.DateTime> AfterOutTime { get; set; }
+        public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public Nullable<int> UpdateBy { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }
     }

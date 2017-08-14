@@ -12,12 +12,12 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class Internal_FK_Definition_Storage
+    public partial class VIEWWORKINGDAY
     {
-        public int ID { get; set; }
-        public string FK_Name { get; set; }
-        public string FK_CreationStatement { get; set; }
-        public string FK_DestructionStatement { get; set; }
-        public string Table_TruncationStatement { get; set; }
+        public int EMPLOYEEID { get; set; }
+        public Nullable<int> ATT_MONTH { get; set; }
+        public Nullable<int> ATT_YEAR { get; set; }
+        public Nullable<decimal> WORKINGDAYS { get; set; }
+        public Nullable<decimal> TOTALLEAVE { get; set; }
     }
 }

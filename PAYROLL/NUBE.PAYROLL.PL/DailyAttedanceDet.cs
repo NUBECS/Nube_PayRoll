@@ -19,12 +19,15 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> AttDate { get; set; }
         public Nullable<System.DateTime> InTime { get; set; }
         public Nullable<System.DateTime> OutTime { get; set; }
-        public decimal TotalWorkingHours { get; set; }
+        public Nullable<System.TimeSpan> TotalWorkingHours { get; set; }
         public bool WithPermission { get; set; }
-        public Nullable<decimal> OTHours { get; set; }
+        public Nullable<System.TimeSpan> OTHours { get; set; }
         public string Remarks { get; set; }
         public bool IsFullDayLeave { get; set; }
         public bool IsHalfDayLeave { get; set; }
+        public bool IsWeekOff { get; set; }
+        public bool IsPublicHoliday { get; set; }
+        public bool IsModified { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }
     }

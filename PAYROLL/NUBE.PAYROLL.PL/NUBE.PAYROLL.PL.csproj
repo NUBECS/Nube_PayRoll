@@ -146,6 +146,9 @@
     <Compile Include="AttedanceLog.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="AttendanceCorrection.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="CompanyDetail.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
@@ -187,9 +190,6 @@
       <DependentUpon>frmCompanySetup.xaml</DependentUpon>
     </Compile>
     <Compile Include="HolidayList.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Internal_FK_Definition_Storage.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LatePermissionDetail.cs">
@@ -336,6 +336,12 @@
     <Compile Include="ViewEmployeeDetail.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="VIEWFULLDAYLEAVE.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWHALFDAYLEAVE.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewManualPayment.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
@@ -361,6 +367,9 @@
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWTOTALOT.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWWORKINGDAY.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="YearlyAllowance.cs">

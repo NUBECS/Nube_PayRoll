@@ -27,6 +27,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> NoOfDaysApproved { get; set; }
         public string Reason { get; set; }
         public string Remarks { get; set; }
+        public string Status { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }
         public virtual LeaveType LeaveType { get; set; }

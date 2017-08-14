@@ -105,7 +105,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                                     atLog.InTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
                                     atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
                                     TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                    atLog.WorkingHours = Convert.ToDecimal(diff.TotalHours);
+                                    atLog.WorkingHours = diff;
                                     lstAttLog.Add(atLog);
                                 }
                             }
@@ -201,7 +201,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                                     atLog.InTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
                                     atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
                                     TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                    atLog.WorkingHours = Convert.ToDecimal(diff.TotalHours);
+                                    atLog.WorkingHours =diff;
                                     lstAttLog.Add(atLog);
                                 }
                             }

@@ -4,57 +4,57 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="84fe9d8c656247f68ab8750ee2dd263c" Name="Diagram1">
-        <EntityTypeShape EntityType="PayrollModel.CompanyDetail" Width="1.5" PointX="10.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.DailyAttedanceDet" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.EmployeeIncrement" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+      <Diagram DiagramId="8cce3aae54ef4fb5b8a5ddb092187111" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="PayrollModel.AttendanceCorrection" Width="1.5" PointX="8.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.EmployeeIncrement" Width="1.5" PointX="3" PointY="30.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.EntityType" Width="1.5" PointX="10.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.EPFCont" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.ErrorLog" Width="1.5" PointX="13" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.HolidayList" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.Internal_FK_Definition_Storage" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.LatePermissionDetail" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.LeavePermissionDetail" Width="1.5" PointX="11.25" PointY="22.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.LeaveType" Width="1.5" PointX="9" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LatePermissionDetail" Width="1.5" PointX="8.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LeavePermissionDetail" Width="1.5" PointX="11.25" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.LeaveType" Width="1.5" PointX="9" PointY="28.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.LogDetail" Width="1.5" PointX="17.5" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.LogDetailType" Width="1.5" PointX="15.25" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.LogMaster" Width="1.5" PointX="20.5" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterBank" Width="1.5" PointX="3.75" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterBankBranch" Width="1.5" PointX="12" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterCity" Width="1.5" PointX="3.75" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterCountry" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterEmployee" Width="1.5" PointX="6" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterNubeBranch" Width="1.5" PointX="3.75" PointY="28.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterPosition" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterRace" Width="1.5" PointX="3.75" PointY="31.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MasterState" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.MonthlySalary" Width="1.5" PointX="8.25" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.OTClaim" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.OverTimeDetail" Width="1.5" PointX="8.25" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.PCB" Width="1.5" PointX="8.25" PointY="34.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.PositionDetail" Width="1.5" PointX="3" PointY="60.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.SocsoCont" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.TempAttendanceTiming" Width="1.5" PointX="8.25" PointY="37.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.TotalWorkingDay" Width="1.5" PointX="8.25" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterBank" Width="1.5" PointX="3.75" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterBankBranch" Width="1.5" PointX="12" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterCity" Width="1.5" PointX="3.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterCountry" Width="1.5" PointX="1.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterEmployee" Width="1.5" PointX="6" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterNubeBranch" Width="1.5" PointX="3.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterPosition" Width="1.5" PointX="0.75" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterRace" Width="1.5" PointX="3.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MasterState" Width="1.5" PointX="1.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.MonthlySalary" Width="1.5" PointX="8.25" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.OTClaim" Width="1.5" PointX="8.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.OverTimeDetail" Width="1.5" PointX="8.25" PointY="45.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PCB" Width="1.5" PointX="8.25" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.PositionDetail" Width="1.5" PointX="3" PointY="82.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.SocsoCont" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TempAttendanceTiming" Width="1.5" PointX="8.25" PointY="52.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.TotalWorkingDay" Width="1.5" PointX="8.25" PointY="55.25" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.UserAccount" Width="1.5" PointX="15.25" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.UserType" Width="1.5" PointX="13" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.UserTypeDetail" Width="1.5" PointX="15.25" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.UserTypeFormDetail" Width="1.5" PointX="13" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.YearlyAllowance" Width="1.5" PointX="8.25" PointY="43" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.ViewDailyAttedance" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.VIEWDAILYATTEDANCELATE" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.ViewEmployeeDetail" Width="1.5" PointX="17.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.ViewMasterbankbranch" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.ViewMasterCity" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.ViewMasterEmployee" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.YearlyAllowance" Width="1.5" PointX="8.25" PointY="58.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewDailyAttedance" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VIEWDAILYATTEDANCELATE" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewEmployeeDetail" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VIEWFULLDAYLEAVE" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VIEWHALFDAYLEAVE" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewManualPayment" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewMasterbankbranch" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewMasterCity" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewMasterEmployee" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PayrollModel.ViewMasterPosition" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.ViewMasterState" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.ViewOTCalculation" Width="1.5" PointX="17.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.VIEWPAYSLIP" Width="1.5" PointX="14.75" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PayrollModel.VIEWTOTALOT" Width="1.5" PointX="10.75" PointY="14.75" IsExpanded="true" />
-        <AssociationConnector Association="PayrollModel.FK_CompanId" ManuallyRouted="false" />
-        <AssociationConnector Association="PayrollModel.FK_ErrorLog_CompanyDetails" ManuallyRouted="false" />
-        <AssociationConnector Association="PayrollModel.FK_DailyAttedanceDet_MasterEmployee" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PayrollModel.ViewMasterState" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.ViewOTCalculation" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VIEWPAYSLIP" Width="1.5" PointX="17.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VIEWTOTALOT" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PayrollModel.VIEWWORKINGDAY" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
+        <AssociationConnector Association="PayrollModel.FK_AttendanceCorrection_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_EmployeeIncrement_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_EmployeeIncrement_MasterEmployee1" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_EmployeeIncrement_MasterEmployee2" ManuallyRouted="false" />
@@ -82,6 +82,7 @@
         <AssociationConnector Association="PayrollModel.FK_MasterEmployee_MasterRace" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_MonthlySalary_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_NubeId" ManuallyRouted="false" />
+        <AssociationConnector Association="PayrollModel.FK_OTClaim_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_OverTimeDetails_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_PCB_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_StateId" ManuallyRouted="false" />
@@ -92,9 +93,13 @@
         <AssociationConnector Association="PayrollModel.FK_UserAccount_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_UserTypeDetail_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="PayrollModel.FK_UserTypeDetail_UserTypeFormDetail" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PayrollModel.ViewManualPayment" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="PayrollModel.AttedanceLog" Width="1.5" PointX="8.25" PointY="46.75" />
+        <EntityTypeShape EntityType="PayrollModel.CompanyDetail" Width="1.5" PointX="10.75" PointY="7.125" />
+        <AssociationConnector Association="PayrollModel.FK_CompanId" />
+        <AssociationConnector Association="PayrollModel.FK_ErrorLog_CompanyDetails" />
+        <EntityTypeShape EntityType="PayrollModel.AttedanceLog" Width="1.5" PointX="8.25" PointY="66.5" />
+        <EntityTypeShape EntityType="PayrollModel.DailyAttedanceDet" Width="1.5" PointX="8.25" PointY="61.875" />
         <AssociationConnector Association="PayrollModel.FK_AttedanceLogs_MasterEmployee" />
+        <AssociationConnector Association="PayrollModel.FK_DailyAttedanceDet_MasterEmployee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

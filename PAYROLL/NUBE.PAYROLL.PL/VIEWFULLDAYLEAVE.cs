@@ -12,16 +12,11 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class ErrorLog
+    public partial class VIEWFULLDAYLEAVE
     {
-        public int Id { get; set; }
-        public Nullable<int> EntityTypeId { get; set; }
-        public Nullable<int> CompanyId { get; set; }
-        public Nullable<int> ErrorBy { get; set; }
-        public Nullable<System.DateTime> ErrorAt { get; set; }
-        public string ErrorMessage { get; set; }
-    
-        public virtual EntityType EntityType { get; set; }
-        public virtual CompanyDetail CompanyDetail { get; set; }
+        public int EMPLOYEEID { get; set; }
+        public Nullable<int> ATT_MONTH { get; set; }
+        public Nullable<int> ATT_YEAR { get; set; }
+        public Nullable<int> FULLDAYLEAVE { get; set; }
     }
 }

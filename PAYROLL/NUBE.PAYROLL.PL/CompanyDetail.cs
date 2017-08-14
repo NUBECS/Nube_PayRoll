@@ -35,8 +35,9 @@ namespace NUBE.PAYROLL.PL
         public string EMailId { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string GSTNo { get; set; }
-        public Nullable<System.TimeSpan> InTime { get; set; }
-        public Nullable<System.TimeSpan> OutTime { get; set; }
+        public Nullable<System.DateTime> InTime { get; set; }
+        public Nullable<System.DateTime> OutTime { get; set; }
+        public Nullable<System.DateTime> MinimumOtTime { get; set; }
         public bool WeekofTwoDays { get; set; }
         public bool IsGraceTime { get; set; }
         public Nullable<decimal> GraceTime { get; set; }

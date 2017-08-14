@@ -19,7 +19,7 @@ namespace NUBE.PAYROLL.PL
         public int EmployeeId { get; set; }
         public Nullable<System.DateTime> FromTime { get; set; }
         public Nullable<System.DateTime> ToTime { get; set; }
-        public Nullable<decimal> TotalHours { get; set; }
+        public string TotalHours { get; set; }
         public bool NormalHours { get; set; }
         public bool RestHalfDay { get; set; }
         public bool RestFullDay { get; set; }
@@ -27,5 +27,9 @@ namespace NUBE.PAYROLL.PL
         public bool PHoliday8Hours { get; set; }
         public bool PHolidayAfter8Hours { get; set; }
         public bool Meals { get; set; }
+        public bool IsApproved { get; set; }
+        public string Status { get; set; }
+    
+        public virtual MasterEmployee MasterEmployee { get; set; }
     }
 }

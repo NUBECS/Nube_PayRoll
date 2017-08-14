@@ -190,7 +190,7 @@
                                 </ListBox>
                             </Expander>
 
-                            <Expander Header="Reports" FontWeight="Bold" FontSize="16">
+                            <!--<Expander Header="Reports" FontWeight="Bold" FontSize="16">
                                 <ListBox SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate DataType="BizMenu:BizMenuItem">
@@ -202,7 +202,7 @@
                                             <Transaction:frmDailyAttedance/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
-                                    <!--<Menu:NavMenuItem MenuName="Monthly Attedance" FormName="DailyAttedance">
+                                    --><!--<Menu:NavMenuItem MenuName="Monthly Attedance" FormName="DailyAttedance">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmDailyAttedance/>
                                         </Menu:NavMenuItem.Content>
@@ -211,9 +211,9 @@
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmDailyAttedance/>
                                         </Menu:NavMenuItem.Content>
-                                    </Menu:NavMenuItem>-->
+                                    </Menu:NavMenuItem>--><!--
                                 </ListBox>
-                            </Expander>
+                            </Expander>-->
                         </StackPanel>
                     </DockPanel>
                 </ScrollViewer>

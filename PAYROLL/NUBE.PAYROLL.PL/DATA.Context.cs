@@ -25,14 +25,12 @@ namespace NUBE.PAYROLL.PL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
-        public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
+        public virtual DbSet<AttendanceCorrection> AttendanceCorrections { get; set; }
         public virtual DbSet<EmployeeIncrement> EmployeeIncrements { get; set; }
         public virtual DbSet<EntityType> EntityTypes { get; set; }
         public virtual DbSet<EPFCont> EPFConts { get; set; }
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public virtual DbSet<HolidayList> HolidayLists { get; set; }
-        public virtual DbSet<Internal_FK_Definition_Storage> Internal_FK_Definition_Storage { get; set; }
         public virtual DbSet<LatePermissionDetail> LatePermissionDetails { get; set; }
         public virtual DbSet<LeavePermissionDetail> LeavePermissionDetails { get; set; }
         public virtual DbSet<LeaveType> LeaveTypes { get; set; }
@@ -64,6 +62,9 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<ViewDailyAttedance> ViewDailyAttedances { get; set; }
         public virtual DbSet<VIEWDAILYATTEDANCELATE> VIEWDAILYATTEDANCELATEs { get; set; }
         public virtual DbSet<ViewEmployeeDetail> ViewEmployeeDetails { get; set; }
+        public virtual DbSet<VIEWFULLDAYLEAVE> VIEWFULLDAYLEAVEs { get; set; }
+        public virtual DbSet<VIEWHALFDAYLEAVE> VIEWHALFDAYLEAVEs { get; set; }
+        public virtual DbSet<ViewManualPayment> ViewManualPayments { get; set; }
         public virtual DbSet<ViewMasterbankbranch> ViewMasterbankbranches { get; set; }
         public virtual DbSet<ViewMasterCity> ViewMasterCities { get; set; }
         public virtual DbSet<ViewMasterEmployee> ViewMasterEmployees { get; set; }
@@ -72,7 +73,9 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<ViewOTCalculation> ViewOTCalculations { get; set; }
         public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
         public virtual DbSet<VIEWTOTALOT> VIEWTOTALOTs { get; set; }
-        public virtual DbSet<ViewManualPayment> ViewManualPayments { get; set; }
+        public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
+        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
         public virtual DbSet<AttedanceLog> AttedanceLogs { get; set; }
+        public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
     }
 }
