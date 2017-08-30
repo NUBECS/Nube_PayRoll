@@ -20,13 +20,13 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> FromTime { get; set; }
         public Nullable<System.DateTime> ToTime { get; set; }
         public string TotalHours { get; set; }
-        public bool NormalHours { get; set; }
-        public bool RestHalfDay { get; set; }
-        public bool RestFullDay { get; set; }
-        public bool RestAfter8Hours { get; set; }
-        public bool PHoliday8Hours { get; set; }
-        public bool PHolidayAfter8Hours { get; set; }
-        public bool Meals { get; set; }
+        public string NormalHours { get; set; }
+        public string RestHalfDay { get; set; }
+        public string RestFullDay { get; set; }
+        public string RestAfter8Hours { get; set; }
+        public string PHoliday8Hours { get; set; }
+        public string PHolidayAfter8Hours { get; set; }
+        public string Meals { get; set; }
         public bool IsApproved { get; set; }
         public string Status { get; set; }
     

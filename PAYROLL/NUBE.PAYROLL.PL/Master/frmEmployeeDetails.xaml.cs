@@ -29,6 +29,7 @@ namespace NUBE.PAYROLL.PL.Master
         {
             InitializeComponent();
             Id = id;
+
             WindowsLoaded();
             if (Id != 0)
             {
@@ -68,10 +69,11 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.DateOfBirth = Convert.ToDateTime(dtDOB.SelectedDate);
                         emp.RaceId = string.IsNullOrEmpty(cmbRace.Text) ? 0 : Convert.ToInt32(cmbRace.SelectedValue);
                         emp.DateOfJoining = Convert.ToDateTime(dtDOJ.SelectedDate);
-                        emp.NubeBranchId = string.IsNullOrEmpty(cmbNubeBranch.Text) ? 0 : Convert.ToInt32(cmbNubeBranch.SelectedValue);
                         emp.Email = txtMail.Text;
                         emp.EPFNumber = txtEPFNo.Text;
                         emp.SOCSONumber = txtSOCSONo.Text;
+                        emp.ShiftId = Convert.ToInt32(cmbShift.SelectedValue);
+                        emp.MobileAllowance = string.IsNullOrEmpty(txtMobileAllowance.Text) ? 0 : Convert.ToDecimal(txtMobileAllowance.Text);
 
                         emp.BankAccountNo = txtAccountNo.Text;
                         emp.BasicSalary = string.IsNullOrEmpty(txtBasicSalary.Text) ? 0 : Convert.ToDecimal(txtBasicSalary.Text);
@@ -86,7 +88,6 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.EPFContribution = Convert.ToBoolean(ChkEPFCONTRIBUTION.IsChecked);
                         emp.SOCSOContribution = Convert.ToBoolean(ChkSOCSOCONTRIBUTION.IsChecked);
                         emp.KOPERASI = string.IsNullOrEmpty(txtKOPERASI.Text) ? 0 : Convert.ToDecimal(txtKOPERASI.Text);
-                        emp.NubeSubscription = Convert.ToBoolean(ChkNUBESUBSCRIPTION.IsChecked);
                         emp.GMIS = string.IsNullOrEmpty(txtGMIS.Text) ? 0 : Convert.ToDecimal(txtGMIS.Text);
                         emp.BIMBLoan = string.IsNullOrEmpty(txtBIMBLOAN.Text) ? 0 : Convert.ToDecimal(txtBIMBLOAN.Text);
                         emp.GELA = string.IsNullOrEmpty(txtGELA.Text) ? 0 : Convert.ToDecimal(txtGELA.Text);
@@ -113,6 +114,12 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.IsAdmin = Convert.ToBoolean(ChkIsAdmin.IsChecked);
                         emp.UserName = txtUserName.Text;
                         emp.Password = txtPassword.Password;
+
+                        if (Config.bIsNubeServer == true)
+                        {
+                            emp.NubeSubscription = Convert.ToBoolean(ChkNUBESUBSCRIPTION.IsChecked);
+                            emp.NubeBranchId = string.IsNullOrEmpty(cmbNubeBranch.Text) ? 0 : Convert.ToInt32(cmbNubeBranch.SelectedValue);
+                        }
                         db.SaveChanges();
                         MessageBox.Show("Updated Sucessfully");
                         this.Close();
@@ -139,10 +146,11 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.DateOfBirth = dtDOB.SelectedDate;
                         emp.RaceId = string.IsNullOrEmpty(cmbRace.Text) ? 0 : Convert.ToInt32(cmbRace.SelectedValue);
                         emp.DateOfJoining = dtDOJ.SelectedDate;
-                        emp.NubeBranchId = string.IsNullOrEmpty(cmbNubeBranch.Text) ? 0 : Convert.ToInt32(cmbNubeBranch.SelectedValue);
                         emp.Email = txtMail.Text;
                         emp.EPFNumber = txtEPFNo.Text;
                         emp.SOCSONumber = txtSOCSONo.Text;
+                        emp.ShiftId = Convert.ToInt32(cmbShift.SelectedValue);
+                        emp.MobileAllowance = string.IsNullOrEmpty(txtMobileAllowance.Text) ? 0 : Convert.ToDecimal(txtMobileAllowance.Text);
 
                         emp.BankAccountNo = txtAccountNo.Text;
                         emp.BasicSalary = string.IsNullOrEmpty(txtBasicSalary.Text) ? 0 : Convert.ToDecimal(txtBasicSalary.Text);
@@ -157,7 +165,6 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.EPFContribution = Convert.ToBoolean(ChkEPFCONTRIBUTION.IsChecked);
                         emp.SOCSOContribution = Convert.ToBoolean(ChkSOCSOCONTRIBUTION.IsChecked);
                         emp.KOPERASI = string.IsNullOrEmpty(txtKOPERASI.Text) ? 0 : Convert.ToDecimal(txtKOPERASI.Text);
-                        emp.NubeSubscription = Convert.ToBoolean(ChkNUBESUBSCRIPTION.IsChecked);
                         emp.GMIS = string.IsNullOrEmpty(txtGMIS.Text) ? 0 : Convert.ToDecimal(txtGMIS.Text);
                         emp.BIMBLoan = string.IsNullOrEmpty(txtBIMBLOAN.Text) ? 0 : Convert.ToDecimal(txtBIMBLOAN.Text);
                         emp.GELA = string.IsNullOrEmpty(txtGELA.Text) ? 0 : Convert.ToDecimal(txtGELA.Text);
@@ -184,6 +191,12 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.IsAdmin = Convert.ToBoolean(ChkIsAdmin.IsChecked);
                         emp.UserName = txtUserName.Text;
                         emp.Password = txtPassword.Password;
+
+                        if (Config.bIsNubeServer == true)
+                        {
+                            emp.NubeBranchId = string.IsNullOrEmpty(cmbNubeBranch.Text) ? 0 : Convert.ToInt32(cmbNubeBranch.SelectedValue);
+                            emp.NubeSubscription = Convert.ToBoolean(ChkNUBESUBSCRIPTION.IsChecked);
+                        }
                         db.MasterEmployees.Add(emp);
                         db.SaveChanges();
                         MessageBox.Show("Saved Sucessfully");
@@ -202,20 +215,6 @@ namespace NUBE.PAYROLL.PL.Master
             ClearAll();
         }
 
-        private void ChkUserLogin_Checked(object sender, RoutedEventArgs e)
-        {
-            if (ChkUserLogin.IsChecked == true)
-            {
-                grbUserName.Visibility = Visibility.Visible;
-                ChkIsAdmin.Visibility= Visibility.Visible;
-            }
-            else
-            {
-                grbUserName.Visibility = Visibility.Collapsed;
-                ChkIsAdmin.Visibility = Visibility.Collapsed;
-            }
-        }
-
         private void ChkUserLogin_Click(object sender, RoutedEventArgs e)
         {
             if (ChkUserLogin.IsChecked == true)
@@ -230,9 +229,57 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
+        private void ChkResigned_Click(object sender, RoutedEventArgs e)
+        {
+            if (ChkResigned.IsChecked == true)
+            {
+                txtResignReason.IsEnabled = true;
+                dtResigned.IsEnabled = true;
+            }
+            else
+            {
+                txtResignReason.IsEnabled = false;
+                dtResigned.IsEnabled = false;
+            }
+        }
+
+        private void ChkOTHERS_Click(object sender, RoutedEventArgs e)
+        {
+            if (ChkOTHERS.IsChecked == true)
+            {
+                txtOTHERS.IsEnabled = true;
+            }
+            else
+            {
+                txtOTHERS.IsEnabled = false;
+            }
+        }
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ChkUNPAIDLEAVE_Click(object sender, RoutedEventArgs e)
+        {
+            if (ChkUNPAIDLEAVE.IsChecked == false)
+            {
+                if (MessageBox.Show("Make Sure that,LOP Unchecked  ?", "Confirmation Message", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    ChkUNPAIDLEAVE.IsChecked = true;
+                }
+            }
+        }
+
+        private void ChkOTEligible_Click(object sender, RoutedEventArgs e)
+        {
+            if (ChkOTEligible.IsChecked == false)
+            {
+                if (MessageBox.Show("Make Sure that,LOP Unchecked  ?", "Confirmation Message", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    ChkOTEligible.IsChecked = true;
+                }
+            }
         }
 
         private void txtMail_TextChanged(object sender, TextChangedEventArgs e)
@@ -314,8 +361,10 @@ namespace NUBE.PAYROLL.PL.Master
                     txtMobile.Text = em.MobileNo;
                     txtEmergencyContactNo.Text = em.EmergencyNo;
                     txtMail.Text = em.Email;
+                    txtMobileAllowance.Text = em.MobileAllowance.ToString();
 
                     cmbBank.SelectedValue = em.BankId;
+                    cmbShift.SelectedValue = em.ShiftId;
                     dtDOB.SelectedDate = em.DateOfBirth;
                     cmbRace.SelectedValue = em.RaceId;
                     dtDOJ.SelectedDate = em.DateOfJoining;
@@ -386,6 +435,60 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
+                if (Config.bIsNubeServer == true)
+                {
+                    ChkNUBESUBSCRIPTION.Visibility = Visibility.Visible;
+                    cmbNubeBranch.Visibility = Visibility.Visible;
+
+                    var nb = (from x in db.MasterNubeBranches select x).ToList();
+                    cmbNubeBranch.ItemsSource = nb;
+                    cmbNubeBranch.SelectedValuePath = "Id";
+                    cmbNubeBranch.DisplayMemberPath = "NubeBranchName";
+                }
+                else
+                {
+                    ChkNUBESUBSCRIPTION.Visibility = Visibility.Collapsed;
+                    cmbNubeBranch.Visibility = Visibility.Collapsed;
+                }
+
+                ChkResigned.IsChecked = false;
+                ChkOTHERS.IsChecked = false;
+                ChkUserLogin.IsChecked = false;
+                ChkOTEligible.IsChecked = false;
+                ChkUNPAIDLEAVE.IsChecked = false;
+                ChkUNPAIDLEAVE.IsChecked = false;
+
+                if (ChkUserLogin.IsChecked == true)
+                {
+                    grbUserName.Visibility = Visibility.Visible;
+                    ChkIsAdmin.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    grbUserName.Visibility = Visibility.Collapsed;
+                    ChkIsAdmin.Visibility = Visibility.Collapsed;
+                }
+
+                if (ChkOTHERS.IsChecked == true)
+                {
+                    txtOTHERS.IsEnabled = true;
+                }
+                else
+                {
+                    txtOTHERS.IsEnabled = false;
+                }
+
+                if (ChkResigned.IsChecked == true)
+                {
+                    txtResignReason.IsEnabled = true;
+                    dtResigned.IsEnabled = true;
+                }
+                else
+                {
+                    txtResignReason.IsEnabled = false;
+                    dtResigned.IsEnabled = false;
+                }
+
                 var cy = (from x in db.MasterCountries select x).ToList();
                 cmbCountry.ItemsSource = cy;
                 cmbCountry.SelectedValuePath = "Id";
@@ -406,10 +509,10 @@ namespace NUBE.PAYROLL.PL.Master
                 cmbBank.SelectedValuePath = "Id";
                 cmbBank.DisplayMemberPath = "UserCode";
 
-                var nb = (from x in db.MasterNubeBranches select x).ToList();
-                cmbNubeBranch.ItemsSource = nb;
-                cmbNubeBranch.SelectedValuePath = "Id";
-                cmbNubeBranch.DisplayMemberPath = "NubeBranchName";
+                var sf = (from x in db.EmployeeShifts select x).ToList();
+                cmbShift.ItemsSource = sf;
+                cmbShift.SelectedValuePath = "Id";
+                cmbShift.DisplayMemberPath = "Name";
 
                 var mp = (from x in db.MasterPositions select x).ToList();
                 cmbPosition.ItemsSource = mp;
@@ -444,12 +547,14 @@ namespace NUBE.PAYROLL.PL.Master
             txtTelephone.Text = "";
             txtMobile.Text = "";
             txtEmergencyContactNo.Text = "";
+            txtMobileAllowance.Text = "";
 
             cmbBank.Text = "";
             dtDOB.Text = "";
             txtAge.Text = "";
             cmbRace.Text = "";
             dtDOJ.Text = "";
+            cmbShift.Text = "";
             cmbNubeBranch.Text = "";
             txtAccountNo.Text = "";
             txtBasicSalary.Text = "";
@@ -525,6 +630,12 @@ namespace NUBE.PAYROLL.PL.Master
                 dtDOJ.Focus();
                 bValidate = false;
             }
+            else if (string.IsNullOrEmpty(cmbShift.Text))
+            {
+                MessageBox.Show("Shift is Empty!");
+                cmbShift.Focus();
+                bValidate = false;
+            }
             else if (string.IsNullOrEmpty(cmbPosition.Text))
             {
                 MessageBox.Show("Position is Empty!");
@@ -543,7 +654,7 @@ namespace NUBE.PAYROLL.PL.Master
                 cmbRace.Focus();
                 bValidate = false;
             }
-            else if (string.IsNullOrEmpty(cmbNubeBranch.Text))
+            else if (string.IsNullOrEmpty(cmbNubeBranch.Text) && (Config.bIsNubeServer == true))
             {
                 MessageBox.Show("NUBE Branch is Empty!");
                 cmbNubeBranch.Focus();
@@ -569,9 +680,7 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-
         #endregion
 
-        
     }
 }

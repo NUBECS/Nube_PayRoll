@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NUBE.PAYROLL.CMN;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace NUBE.PAYROLL.PL.Master
 {
@@ -168,11 +169,23 @@ namespace NUBE.PAYROLL.PL.Master
             txtCountryShortName.Text = "";
             try
             {
-                var Country = (from x in db.MasterCountries select x).ToList();
-                if (Country != null)
+                DataTable dt = new DataTable();
+                using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
-                    DataTable dt = AppLib.LINQResultToDataTable(Country);
-                    dgvCountry.ItemsSource = dt.DefaultView;
+                    SqlCommand cmd;
+                    string str = " SELECT id,CountryName,ShortName FROM MASTERCOUNTRY(NOLOCK) \r" +
+                                 " ORDER BY COUNTRYNAME ";
+
+                    cmd = new SqlCommand(str, con);
+                    cmd.CommandType = CommandType.Text;
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    con.Open();
+                    adp.Fill(dt);
+                    con.Close();
+                    if (dt.Rows.Count > 0)
+                    {
+                        dgvCountry.ItemsSource = dt.DefaultView;
+                    }                    
                 }
             }
             catch (Exception ex)

@@ -66,11 +66,8 @@
                         <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="100" Binding="{Binding MEMBERSHIPNO}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Name" FontWeight="Bold" Width="350" Binding="{Binding EMPLOYEENAME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Entry Date" FontWeight="Bold" Width="200" Visibility="Visible" Binding="{Binding ENTRYDATE}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="From Time" FontWeight="Bold" Width="150" Binding="{Binding GENDER}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="To Time" FontWeight="Bold" Width="200" Binding="{Binding NRIC}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="PCBID" FontWeight="Bold" Width="200" Visibility="Hidden" Binding="{Binding PCBID}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        
-                        <DataGridTextColumn Header="PCB" FontWeight="Bold" Width="120" Binding="{Binding PCB}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="150" Binding="{Binding INTIME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="200" Binding="{Binding OUTTIME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />                                                                       
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

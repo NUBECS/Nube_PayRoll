@@ -48,7 +48,7 @@
                                 </TextBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" >
-                                <TextBox  x:Name="txtMajikan" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" >
+                                <TextBox  x:Name="txtMajikan" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" TextChanged="txtMajikan_TextChanged" >
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -56,7 +56,7 @@
                                         </StackPanel>
                                     </materialDesign:HintAssist.Hint>
                                 </TextBox>
-                                <TextBox  x:Name="txtPakerja" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" >
+                                <TextBox  x:Name="txtPakerja" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" TextChanged="txtPakerja_TextChanged" >
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -65,11 +65,11 @@
                                     </materialDesign:HintAssist.Hint>
                                 </TextBox>
                             </StackPanel>
-                            <TextBox  x:Name="txtJumlahCaruman" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
+                            <TextBox  x:Name="txtJumlahCaruman" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
-                                        <TextBlock Text="Jumlah Caruman" FontWeight="Bold"/>
+                                        <TextBlock Text="Jumlah Caruman ( Total )" FontWeight="Bold"/>
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>

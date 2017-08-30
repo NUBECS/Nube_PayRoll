@@ -26,6 +26,7 @@ namespace NUBE.PAYROLL.PL.Master
         int iDetailId = 0;
         DataTable dtMasterPosition = new DataTable();
         PayrollEntity db = new PayrollEntity();
+        List<PositionDetail> lstPosition = new List<PositionDetail>();
         public frmPosition()
         {
             InitializeComponent();
@@ -42,13 +43,52 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (MessageBox.Show("Do You want to Save Position ?", "Save Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (string.IsNullOrEmpty(txtPositionName.Text))
+                {
+                    MessageBox.Show("Position Name is Empty!", "Empty");
+                    txtPositionName.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtPositionUserCode.Text))
+                {
+                    MessageBox.Show("Short Name is Empty!", "Empty");
+                    txtPositionUserCode.Focus();
+                }
+                else if (lstPosition.Count == 0)
+                {
+                    MessageBox.Show("Yearly Leave is Empty!", "Empty");
+                    txtMinYear.Focus();
+                }
+                else if (MessageBox.Show("Do You want to Save Position ?", "Save Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     if (Id != 0)
                     {
                         var mb = (from x in db.MasterPositions where x.Id == Id select x).FirstOrDefault();
                         mb.PositionName = txtPositionName.Text;
                         mb.ShortName = txtPositionUserCode.Text;
+                        db.SaveChanges();
+
+                        var ptd = (from x in db.PositionDetails where x.PositionId == Id select x).FirstOrDefault();
+
+                        if (ptd != null)
+                        {
+                            db.PositionDetails.RemoveRange(db.PositionDetails.Where(x => x.PositionId == Id));
+                            db.SaveChanges();
+                        }
+
+                        DataTable dt = new DataTable();
+                        dt = ((DataView)dgvAnnualLeave.ItemsSource).ToTable();
+                        List<PositionDetail> lstp = new List<PositionDetail>();
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            PositionDetail pd = new PositionDetail();
+                            pd.PositionId = Id;
+                            pd.MinYear = Convert.ToDecimal(dr["MinYear"]);
+                            pd.MaxYear = Convert.ToDecimal(dr["MaxYear"]);
+                            pd.NoOfLeave = Convert.ToDecimal(dr["NoOfLeave"]);
+                            pd.NoOfMedicalLeave= Convert.ToDecimal(dr["NoOfMedicalLeave"]);
+                            lstp.Add(pd);
+                        }
+                        db.PositionDetails.AddRange(lstp);
                         db.SaveChanges();
                         MessageBox.Show("Updated Sucessfully!");
                         LoadWindow();
@@ -60,11 +100,27 @@ namespace NUBE.PAYROLL.PL.Master
                         mb.ShortName = txtPositionUserCode.Text;
                         db.MasterPositions.Add(mb);
                         db.SaveChanges();
+
+                        int sFid = Convert.ToInt32(db.MasterPositions.Max(x => x.Id));
+                        DataTable dt = new DataTable();
+                        dt = ((DataView)dgvAnnualLeave.ItemsSource).ToTable();
+                        List<PositionDetail> lstp = new List<PositionDetail>();
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            PositionDetail pd = new PositionDetail();
+                            pd.PositionId = sFid;
+                            pd.MinYear = Convert.ToDecimal(dr["MinYear"]);
+                            pd.MaxYear = Convert.ToDecimal(dr["MaxYear"]);
+                            pd.NoOfLeave = Convert.ToDecimal(dr["NoOfLeave"]);
+                            pd.NoOfMedicalLeave = Convert.ToDecimal(dr["NoOfMedicalLeave"]);
+                            lstp.Add(pd);
+                        }
+                        db.PositionDetails.AddRange(lstp);
+                        db.SaveChanges();
                         MessageBox.Show("Saved Sucessfully!");
                         LoadWindow();
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -80,9 +136,18 @@ namespace NUBE.PAYROLL.PL.Master
                 {
                     if (Id != 0)
                     {
+                        var ptd = (from x in db.PositionDetails where x.PositionId == Id select x).FirstOrDefault();
+
+                        if (ptd != null)
+                        {
+                            db.PositionDetails.RemoveRange(db.PositionDetails.Where(x => x.PositionId == Id));
+                            db.SaveChanges();
+                        }
+
                         var mb = (from x in db.MasterPositions where x.Id == Id select x).FirstOrDefault();
                         db.MasterPositions.Remove(mb);
-                        db.SaveChanges();
+                        db.SaveChanges();                        
+
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
                     }
@@ -103,33 +168,27 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (iDetailId != 0)
+                PositionDetail mb = new PositionDetail();
+                if (Id != 0)
                 {
-                    var mb = (from x in db.PositionDetails where x.Id == iDetailId select x).FirstOrDefault();
-                    mb.MinYear = Convert.ToDecimal(txtMinYear.Text);
-                    mb.MaxYear = Convert.ToDecimal(txtMinYear.Text);
-                    mb.NoOfLeave = Convert.ToDecimal(txtNoOfLeave.Text);
-                    db.SaveChanges();
-                    MessageBox.Show("Added Sucessfully!");
-                    LoadPosition();
+                    mb.PositionId = Id;
                 }
                 else
                 {
-                    PositionDetail mb = new PositionDetail();
-                    mb.PositionId = Id;
-                    mb.MinYear = Convert.ToDecimal(txtMinYear.Text);
-                    mb.MaxYear = Convert.ToDecimal(txtMaxYear.Text);
-                    mb.NoOfLeave = Convert.ToDecimal(txtNoOfLeave.Text);
-                    db.PositionDetails.Add(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Added Sucessfully!");
-                    LoadPosition();
+                    mb.PositionId = 1;
                 }
+                mb.MinYear = Convert.ToDecimal(txtMinYear.Text);
+                mb.MaxYear = Convert.ToDecimal(txtMaxYear.Text);
+                mb.NoOfLeave = Convert.ToDecimal(txtNoOfLeave.Text);
+                mb.NoOfMedicalLeave = Convert.ToDecimal(txtNoOfMedicalLeave.Text);
+                lstPosition.Add(mb);
+                db.SaveChanges();
+                LstPosition();
+                MessageBox.Show("Added Sucessfully!");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                ExceptionLogging.SendErrorToText(ex);
             }
         }
 
@@ -137,16 +196,18 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (MessageBox.Show("Do You want to Delete This Leave Details ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (lstPosition.Count > 0)
                 {
-                    if (iDetailId != 0)
+                    if (MessageBox.Show("Do You want to Delete This Annual Leave Details ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        var mb = (from x in db.PositionDetails where x.Id == iDetailId select x).FirstOrDefault();
-                        db.PositionDetails.Remove(mb);
-                        db.SaveChanges();
+                        lstPosition.Clear();
+                        dgvAnnualLeave.ItemsSource = null;
                         MessageBox.Show("Deleted Sucessfully");
-                        LoadPosition();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found!", "Empty");
                 }
             }
             catch (Exception ex)
@@ -154,6 +215,7 @@ namespace NUBE.PAYROLL.PL.Master
                 ExceptionLogging.SendErrorToText(ex);
             }
         }
+
         private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -192,13 +254,15 @@ namespace NUBE.PAYROLL.PL.Master
         private void dgvPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Id = 0;
+            iDetailId = 0;
             txtPositionName.Text = "";
             txtPositionUserCode.Text = "";
             txtMinYear.Text = "";
             txtMaxYear.Text = "";
             txtNoOfLeave.Text = "";
+            txtNoOfMedicalLeave.Text = "";
             dgvAnnualLeave.ItemsSource = null;
-
+            lstPosition.Clear();
         }
 
         private void dgvPosition_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -222,21 +286,21 @@ namespace NUBE.PAYROLL.PL.Master
 
         private void dgvAnnualLeave_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            try
-            {
-                if ((dgvAnnualLeave.SelectedItem != null))
-                {
-                    DataRowView drv = (DataRowView)dgvAnnualLeave.SelectedItem;
-                    iDetailId = Convert.ToInt32(drv["Id"]);
-                    txtMinYear.Text = drv["MinYear"].ToString();
-                    txtMaxYear.Text = drv["MaxYear"].ToString();
-                    txtNoOfLeave.Text = drv["NoOfLeave"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogging.SendErrorToText(ex);
-            }
+            //try
+            //{
+            //    if ((dgvAnnualLeave.SelectedItem != null))
+            //    {
+            //        DataRowView drv = (DataRowView)dgvAnnualLeave.SelectedItem;
+            //        iDetailId = Convert.ToInt32(drv["Id"]);
+            //        txtMinYear.Text = drv["MinYear"].ToString();
+            //        txtMaxYear.Text = drv["MaxYear"].ToString();
+            //        txtNoOfLeave.Text = drv["NoOfLeave"].ToString();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ExceptionLogging.SendErrorToText(ex);
+            //}
         }
 
         private void dgvAnnualLeave_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -247,6 +311,7 @@ namespace NUBE.PAYROLL.PL.Master
                 txtMinYear.Text = "";
                 txtMaxYear.Text = "";
                 txtNoOfLeave.Text = "";
+                txtNoOfMedicalLeave.Text = "";
             }
             catch (Exception ex)
             {
@@ -266,6 +331,8 @@ namespace NUBE.PAYROLL.PL.Master
             txtMinYear.Text = "";
             txtMaxYear.Text = "";
             txtNoOfLeave.Text = "";
+            txtNoOfMedicalLeave.Text = "";
+            lstPosition.Clear();
             dgvAnnualLeave.ItemsSource = null;
 
             try
@@ -283,17 +350,32 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
+        void LstPosition()
+        {
+            txtMinYear.Text = "";
+            txtMaxYear.Text = "";
+            txtNoOfLeave.Text = "";
+            txtNoOfMedicalLeave.Text = "";
+            if (lstPosition.Count > 0)
+            {
+                DataTable dt = AppLib.LINQResultToDataTable(lstPosition);
+                dgvAnnualLeave.ItemsSource = dt.DefaultView;
+            }
+        }
+
         void LoadPosition()
         {
             txtMinYear.Text = "";
             txtMaxYear.Text = "";
             txtNoOfLeave.Text = "";
+            txtNoOfMedicalLeave.Text = "";
             if (Id != 0)
             {
                 var pos = (from x in db.PositionDetails where x.PositionId == Id orderby x.MinYear select x).ToList();
                 if (pos.Count > 0)
                 {
-                    DataTable dt = AppLib.LINQResultToDataTable(pos);
+                    lstPosition = pos.ToList();
+                    DataTable dt = AppLib.LINQResultToDataTable(lstPosition);
                     dgvAnnualLeave.ItemsSource = dt.DefaultView;
                 }
             }

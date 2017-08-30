@@ -156,6 +156,22 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
+        private void txtMajikan_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMajikan.Text) && !string.IsNullOrEmpty(txtPakerja.Text))
+            {
+                txtJumlahCaruman.Text = (Convert.ToDecimal(txtMajikan.Text) + Convert.ToDecimal(txtPakerja.Text)).ToString();
+            }
+        }
+
+        private void txtPakerja_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMajikan.Text) && !string.IsNullOrEmpty(txtPakerja.Text))
+            {
+                txtJumlahCaruman.Text = (Convert.ToDecimal(txtMajikan.Text) + Convert.ToDecimal(txtPakerja.Text)).ToString();
+            }
+        }
+
         #endregion
 
         #region FUNCITONS
@@ -218,8 +234,9 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
+
         #endregion
 
-
+      
     }
 }

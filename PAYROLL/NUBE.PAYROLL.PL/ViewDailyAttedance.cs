@@ -22,9 +22,11 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> ATTDATE { get; set; }
         public Nullable<System.TimeSpan> INTIME { get; set; }
         public Nullable<System.TimeSpan> OUTTIME { get; set; }
-        public decimal TOTALWORKINGHOURS { get; set; }
+        public Nullable<int> WORKING_HOURS { get; set; }
+        public Nullable<decimal> WORKING_MINUTES { get; set; }
         public bool WITHPERMISSION { get; set; }
-        public Nullable<decimal> OTHOURS { get; set; }
+        public Nullable<int> OT_HOURS { get; set; }
+        public string OT_MINUTES { get; set; }
         public string REMARKS { get; set; }
         public bool ISFULLDAYLEAVE { get; set; }
         public bool ISHALFDAYLEAVE { get; set; }

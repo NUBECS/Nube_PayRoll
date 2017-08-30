@@ -137,6 +137,22 @@ namespace NUBE.PAYROLL.PL.Master
         //    Filteration();
         //}
 
+        private void txtMajikan_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMajikan.Text) && !string.IsNullOrEmpty(txtPakerja.Text))
+            {
+                txtJumlahCaruman.Text = (Convert.ToDecimal(txtMajikan.Text) + Convert.ToDecimal(txtPakerja.Text)).ToString();
+            }
+        }
+
+        private void txtPakerja_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMajikan.Text) && !string.IsNullOrEmpty(txtPakerja.Text))
+            {
+                txtJumlahCaruman.Text = (Convert.ToDecimal(txtMajikan.Text) + Convert.ToDecimal(txtPakerja.Text)).ToString();
+            }
+        }
+
         private void dgEPF_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -236,8 +252,9 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
+
         #endregion
 
-
+       
     }
 }

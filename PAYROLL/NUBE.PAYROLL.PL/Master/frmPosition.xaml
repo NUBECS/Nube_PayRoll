@@ -46,32 +46,45 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBox  x:Name="txtMinYear" Text="" Width="120"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
-                                    <materialDesign:HintAssist.Hint>
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="Battery10" Height="25" Width="25" />
-                                            <TextBlock Text="Min Year" FontWeight="Bold"/>
-                                        </StackPanel>
-                                    </materialDesign:HintAssist.Hint>
-                                </TextBox>
-                                <TextBox  x:Name="txtMaxYear" Margin="10,0,0,0" Text="{Binding GroupName, Mode=TwoWay}" Width="120" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
-                                    <materialDesign:HintAssist.Hint>
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="Battery80" Height="25" Width="25" />
-                                            <TextBlock Text="Max Year" FontWeight="Bold"/>
-                                        </StackPanel>
-                                    </materialDesign:HintAssist.Hint>
-                                </TextBox>
-                                <TextBox  x:Name="txtNoOfLeave" Margin="10,0,0,0" Text="{Binding GroupName, Mode=TwoWay}" Width="120"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
-                                    <materialDesign:HintAssist.Hint>
-                                        <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="Account" Height="25" Width="25" />
-                                            <TextBlock Text="No Of Leave " FontWeight="Bold"/>
-                                        </StackPanel>
-                                    </materialDesign:HintAssist.Hint>
-                                </TextBox>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBox  x:Name="txtMinYear" Text="" Width="175" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
+                                        <materialDesign:HintAssist.Hint>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="Battery10" Height="25" Width="25" />
+                                                <TextBlock Text="Min Year" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
+                                    <TextBox  x:Name="txtMaxYear" Width="175" Margin="10,0,0,0" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
+                                        <materialDesign:HintAssist.Hint>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="Battery80" Height="25" Width="25" />
+                                                <TextBlock Text="Max Year" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBox  x:Name="txtNoOfLeave" Width="175" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
+                                        <materialDesign:HintAssist.Hint>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="Account" Height="25" Width="25" />
+                                                <TextBlock Text="No Of Leave (CL/Year)" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
+                                    <TextBox  x:Name="txtNoOfMedicalLeave" Width="175" Margin="10,0,0,0" Text="{Binding GroupName, Mode=TwoWay}"   Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" >
+                                        <materialDesign:HintAssist.Hint>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="Account" Height="25" Width="25" />
+                                                <TextBlock Text="No Of Leave (ML/Year)" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
+                                </StackPanel>
                             </StackPanel>
+                            
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Center">
                                 <Button Width="80" Height="30" x:Name="btnAdd" Content="Add" Click="btnAdd_Click" Margin="5,5,120,5" />
                                 <Button Width="80" Height="30" x:Name="btnDelet" Content="Delete" Click="btnDelet_Click" Margin="5,5,10,5" />
@@ -90,13 +103,13 @@
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Id" FontWeight="Bold" Width="300" Visibility="Hidden" Binding="{Binding Id}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                         <DataGridTextColumn Header="PositionId" FontWeight="Bold" Width="300" Visibility="Hidden" Binding="{Binding PositionId}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                        <DataGridTextColumn Header="Min Year" FontWeight="Bold" Width="120" Binding="{Binding MinYear}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                        <DataGridTextColumn Header="Max Year" FontWeight="Bold" Width="120" Binding="{Binding MaxYear}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                        <DataGridTextColumn Header="No Of Leave" FontWeight="Bold" Width="130" Binding="{Binding NoOfLeave}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                        <DataGridTextColumn Header="Min Year" FontWeight="Bold" Width="90" Binding="{Binding MinYear}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                        <DataGridTextColumn Header="Max Year" FontWeight="Bold" Width="90" Binding="{Binding MaxYear}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                        <DataGridTextColumn Header="No Of CL" FontWeight="Bold" Width="90" Binding="{Binding NoOfLeave}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                        <DataGridTextColumn Header="No Of ML" FontWeight="Bold" Width="90" Binding="{Binding NoOfMedicalLeave}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </StackPanel>
-                          
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -179,7 +192,7 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Id" FontWeight="Bold" Width="300" Visibility="Hidden" Binding="{Binding Id}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                     <DataGridTextColumn Header="Position Name" FontWeight="Bold" Width="300" Binding="{Binding PositionName}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                    <DataGridTextColumn Header="User Code" FontWeight="Bold" Width="250" Binding="{Binding ShortName}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />                                    
+                                    <DataGridTextColumn Header="User Code" FontWeight="Bold" Width="250" Binding="{Binding ShortName}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>

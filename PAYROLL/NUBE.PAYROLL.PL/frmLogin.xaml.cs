@@ -52,6 +52,11 @@ namespace NUBE.PAYROLL.PL
                         Config.EsslDB = cmp.DbName;
                         Config.EsslUserId = cmp.UserId;
                         Config.EsslPassword = cmp.Password;
+                        Config.bIsNubeServer = cmp.IsNUBE;
+                    }
+                    else
+                    {
+                        Config.bIsNubeServer = false;
                     }
 
                     frmHome frm = new frmHome();

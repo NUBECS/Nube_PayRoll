@@ -45,6 +45,7 @@ namespace NUBE.PAYROLL.PL
         public string DbName { get; set; }
         public string UserId { get; set; }
         public string Password { get; set; }
+        public bool IsNUBE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserType> UserTypes { get; set; }

@@ -15,8 +15,8 @@ namespace NUBE.PAYROLL.PL
     public partial class VIEWPAYSLIP
     {
         public Nullable<long> RNO { get; set; }
-        public int ID { get; set; }
-        public Nullable<int> CODE { get; set; }
+        public int EmployeeId { get; set; }
+        public int CODE { get; set; }
         public string EMPLOYEENAME { get; set; }
         public string POSITIONNAME { get; set; }
         public string EPFNUMBER { get; set; }
@@ -24,19 +24,19 @@ namespace NUBE.PAYROLL.PL
         public string NRIC { get; set; }
         public string BANKACCOUNTNO { get; set; }
         public Nullable<decimal> BASICSALARY { get; set; }
-        public Nullable<int> TOTALWORKINGDAYS { get; set; }
-        public Nullable<int> DAYSABSENT { get; set; }
-        public decimal OT { get; set; }
+        public Nullable<decimal> TOTALWORKINGDAYS { get; set; }
+        public Nullable<decimal> DAYSABSENT { get; set; }
+        public Nullable<decimal> OT { get; set; }
         public Nullable<decimal> OT_AMOUNT { get; set; }
         public Nullable<decimal> LOP { get; set; }
         public Nullable<decimal> ALLOWANCE { get; set; }
-        public decimal BONUS { get; set; }
-        public decimal EXGRATIA { get; set; }
-        public decimal EPF { get; set; }
-        public decimal EPFUNION { get; set; }
-        public decimal SOCSO { get; set; }
-        public decimal SOCSOUNION { get; set; }
-        public decimal INCOMETAX { get; set; }
+        public Nullable<decimal> BONUS { get; set; }
+        public Nullable<decimal> EXGRATIA { get; set; }
+        public Nullable<decimal> EPF { get; set; }
+        public Nullable<decimal> EPFUNION { get; set; }
+        public Nullable<decimal> SOCSO { get; set; }
+        public Nullable<decimal> SOCSOUNION { get; set; }
+        public Nullable<decimal> INCOMETAX { get; set; }
         public Nullable<decimal> COOPSOCIETY { get; set; }
         public Nullable<decimal> GMIS { get; set; }
         public Nullable<decimal> GELA { get; set; }
@@ -46,9 +46,9 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> NUBESUBSCRIPTION { get; set; }
         public Nullable<decimal> BIMBLOAN { get; set; }
         public Nullable<decimal> HOMECARLOANS { get; set; }
-        public decimal OTHERLOANS { get; set; }
+        public Nullable<decimal> OTHERLOANS { get; set; }
         public Nullable<decimal> TOTALEARNING { get; set; }
-        public decimal PCB { get; set; }
+        public Nullable<decimal> PCB { get; set; }
         public Nullable<decimal> TOTALDEDUCTION { get; set; }
         public Nullable<decimal> NETSALARY { get; set; }
     }

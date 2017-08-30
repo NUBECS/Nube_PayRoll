@@ -114,7 +114,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                 dtHalf = dv.ToTable();              
 
                 dv = new DataView(dt);
-                dv.RowFilter = " OTHOURS>0";
+                dv.RowFilter = " OT_HOURS>0 OR OT_MINUTES>0";
                 dtOT = dv.ToTable();                
 
                 int i = 0;

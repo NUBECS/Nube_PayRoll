@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LOGO.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -174,6 +177,9 @@
     <Compile Include="EmployeeIncrement.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeShift.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityType.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
@@ -182,9 +188,6 @@
     </Compile>
     <Compile Include="ErrorLog.cs">
       <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="frmCompanyDetails.xaml.cs">
-      <DependentUpon>frmCompanyDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmCompanySetup.xaml.cs">
       <DependentUpon>frmCompanySetup.xaml</DependentUpon>
@@ -243,6 +246,9 @@
     <Compile Include="Master\frmEmployeeDetails.xaml.cs">
       <DependentUpon>frmEmployeeDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Master\frmEmployeeShift.xaml.cs">
+      <DependentUpon>frmEmployeeShift.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Master\frmEPFContribution.xaml.cs">
       <DependentUpon>frmEPFContribution.xaml</DependentUpon>
     </Compile>
@@ -284,6 +290,9 @@
     </Compile>
     <Compile Include="TotalWorkingDay.cs">
       <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmAttedanceCorrectionDetails.xaml.cs">
+      <DependentUpon>frmAttedanceCorrectionDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transaction\frmAttendanceCorrection.xaml.cs">
       <DependentUpon>frmAttendanceCorrection.xaml</DependentUpon>
@@ -442,10 +451,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="frmCompanyDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="frmCompanySetup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -471,6 +476,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Master\frmEmployeeDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Master\frmEmployeeShift.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -518,6 +527,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Transaction\frmAttedanceCorrectionDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Transaction\frmAttendanceCorrection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -539,8 +552,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transaction\frmManualCorrection.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Transaction\frmPayslipGenerate.xaml">
       <SubType>Designer</SubType>
@@ -602,7 +615,7 @@
     <Resource Include="Images\Welcome.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Nube Icon.ico" />
+    <Resource Include="Images\Payroll\LOGO.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NUBE.PAYROLL.BLL\NUBE.PAYROLL.BLL.csproj">
@@ -622,7 +635,6 @@
     <Resource Include="Images\HomePage.jpg" />
     <Resource Include="Images\Custom Size – 1.png" />
     <Resource Include="Images\Custom Size – 2.png" />
-    <Resource Include="Images\Custom Size – 3.png" />
     <Resource Include="Images\Custom Size – 4.png" />
     <Resource Include="Images\ProgressImage.jpg" />
   </ItemGroup>
@@ -642,6 +654,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Denario Custom Size – 1.png" />
+    <Resource Include="Images\Denario Custom Size – 2.png" />
+    <Resource Include="Images\Denario Custom Size – 3.png" />
+    <Resource Include="Images\Denario Custom Size – 4.png" />
+    <Resource Include="Images\Custom Size – 1 rev 3.png" />
+    <Resource Include="Images\Custom Size – 2 rev 3.png" />
+    <Resource Include="Images\LoginBG.png" />
+    <Resource Include="Images\Custom Size – 4 rev 3.png" />
+    <Resource Include="Images\Denariu Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DATA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DATA.edmx</DependentUpon>
@@ -652,7 +675,11 @@
       <DependentUpon>DATA.edmx</DependentUpon>
       <LastGenOutput>DATA.cs</LastGenOutput>
     </Content>
+    <Resource Include="LOGO.ico" />
+    <Resource Include="Images\Payroll\LOGIN.png" />
+    <Resource Include="Images\Payroll\BG.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

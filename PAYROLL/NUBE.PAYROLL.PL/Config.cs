@@ -14,5 +14,6 @@ namespace NUBE.PAYROLL.PL
         public static string EsslUserId = "";
         public static string EsslPassword = "";
         public static string EsslServer = @"Data Source=" + EsslDatasource + ";Initial Catalog=" + EsslDB + ";user id=" + EsslUserId + ";password=" + EsslPassword + ";";
+        public static Boolean bIsNubeServer = false;
     }
 }

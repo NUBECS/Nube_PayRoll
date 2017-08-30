@@ -120,19 +120,10 @@ namespace NUBE.PAYROLL.PL.Transaction
                         if (dtAttendance.Rows.Count > 0)
                         {
                             string sWhere = "";
-                            if (bIsDatewise == true)
-                            {
-                                sWhere = string.Format(" WHERE ENTRYDATE='{0:dd/MMM/yyyy}' \r", dtpDate.SelectedDate);
-                            }
-                            else
-                            {
-                                sWhere = string.Format(" WHERE MONTH(ENTRYDATE)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(ENTRYDATE)=YEAR('{0:dd/MMM/yyyy}') \r", dtpDate.SelectedDate);
-                            }
-
-                            String sQuery = " SELECT EMPLOYEEID FROM " +
-                                            con.Database + "..TEMPATTENDANCETIMINGS(NOLOCK) \r" +
-                                            sWhere + " GROUP BY EMPLOYEEID \r" +
-                                            " ORDER BY EMPLOYEEID ";
+                            Boolean bIsError = false;
+                            String sQuery = " SELECT ID EMPLOYEEID,SHIFTID FROM MASTEREMPLOYEE(NOLOCK) \r" +
+                                            " WHERE ISRESIGNED=0 \r GROUP BY ID,SHIFTID \r" +
+                                            " ORDER BY ID ";
 
                             cmd = new SqlCommand(sQuery, con);
                             cmd.CommandType = CommandType.Text;
@@ -140,12 +131,13 @@ namespace NUBE.PAYROLL.PL.Transaction
                             cmd.CommandTimeout = 0;
                             DataTable dtEmployee = new DataTable();
                             adp.Fill(dtEmployee);
-                            List<AttedanceLog> lstAttLog = new List<AttedanceLog>();
-                            var cmp = (from x in db.CompanyDetails select x).FirstOrDefault();
+                            List<AttedanceLog> lstAttLog = new List<AttedanceLog>();                            
                             if (dtEmployee.Rows.Count > 0)
                             {
                                 foreach (DataRow drRow in dtEmployee.Rows)
                                 {
+                                    int iShiftId = Convert.ToInt32(drRow["SHIFTID"]);
+                                    var sft = (from x in db.EmployeeShifts where x.Id == iShiftId select x).FirstOrDefault();
                                     if (bIsDatewise == true)
                                     {
                                         sWhere = string.Format(" AND ENTRYDATE='{0:dd/MMM/yyyy}' \r", dtpDate.SelectedDate);
@@ -155,8 +147,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                                         sWhere = string.Format(" AND MONTH(ENTRYDATE)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(ENTRYDATE)=YEAR('{0:dd/MMM/yyyy}') \r", dtpDate.SelectedDate);
                                     }
 
-                                    sQuery = " SELECT ENTRYDATE FROM " +
-                                            con.Database + "..TEMPATTENDANCETIMINGS(NOLOCK) \r" +
+                                    sQuery = " SELECT ENTRYDATE FROM TEMPATTENDANCETIMINGS(NOLOCK) \r" +
                                             " WHERE EMPLOYEEID=" + drRow["EMPLOYEEID"] + sWhere +
                                             " GROUP BY ENTRYDATE \r" +
                                             " ORDER BY ENTRYDATE ";
@@ -187,7 +178,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                                             AttedanceLog atLog = new AttedanceLog();
                                             atLog.EmployeeId = iEmployeeId;
                                             atLog.EntryDate = dtEntry;
-                                            if (Convert.ToDateTime(cmp.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
+                                            if (Convert.ToDateTime(sft.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
                                             {
                                                 atLog.InTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
                                             }
@@ -197,51 +188,63 @@ namespace NUBE.PAYROLL.PL.Transaction
                                             }
                                             try
                                             {
-                                                if (Convert.ToDateTime(cmp.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]).TimeOfDay)
+                                                if (Convert.ToDateTime(sft.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]).TimeOfDay)
                                                 {
                                                     atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
-                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                                    atLog.WorkingHours = diff;
+                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]).TimeOfDay - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay;
+                                                    atLog.WorkingHours = Convert.ToDateTime(diff.Hours + ":" + diff.Minutes).TimeOfDay;
                                                 }
-                                                else if (Convert.ToDateTime(cmp.MinimumOtTime).TimeOfDay <= Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]).TimeOfDay)
+                                                else if (Convert.ToDateTime(sft.MinimumOtTime).TimeOfDay <= Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]).TimeOfDay)
                                                 {
-                                                    atLog.OutTime = Convert.ToDateTime(cmp.OutTime);
-                                                    atLog.OTInTime = Convert.ToDateTime(cmp.OutTime);
+                                                    if (Convert.ToDateTime(sft.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
+                                                    {
+                                                        atLog.OutTime = Convert.ToDateTime(sft.OutTime);
+                                                        TimeSpan diff = Convert.ToDateTime(sft.OutTime).TimeOfDay - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay;
+                                                        atLog.WorkingHours = Convert.ToDateTime(diff.Hours + ":" + diff.Minutes).TimeOfDay;
+
+                                                        atLog.OTInTime = Convert.ToDateTime(sft.OutTime);
+                                                    }
                                                     atLog.OTOutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
-                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(cmp.OutTime);
-                                                    atLog.TotalOtHours = diff;
+                                                    TimeSpan diffOt = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]).TimeOfDay - Convert.ToDateTime(sft.OutTime).TimeOfDay;
+                                                    atLog.TotalOtHours = Convert.ToDateTime(diffOt.Hours + ":" + diffOt.Minutes).TimeOfDay;
                                                 }
                                                 else
                                                 {
                                                     atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
-                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                                    atLog.WorkingHours = diff;
+                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]).TimeOfDay - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay;
+                                                    atLog.WorkingHours = Convert.ToDateTime(diff.Hours + ":" + diff.Minutes).TimeOfDay;
                                                 }
                                                 atLog.IsNotLogOut = false;
                                             }
                                             catch (Exception)
                                             {
-                                                if (Convert.ToDateTime(cmp.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
+                                                if (Convert.ToDateTime(sft.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
                                                 {
                                                     atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                                    atLog.WorkingHours = diff;
+                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay;
+                                                    atLog.WorkingHours = Convert.ToDateTime(diff.Hours + ":" + diff.Minutes).TimeOfDay;
                                                     atLog.IsNotLogOut = true;
                                                 }
-                                                else if (Convert.ToDateTime(cmp.MinimumOtTime).TimeOfDay >= Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
+                                                else if (Convert.ToDateTime(sft.MinimumOtTime).TimeOfDay >= Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
                                                 {
-                                                    atLog.OutTime = Convert.ToDateTime(cmp.OutTime);
-                                                    atLog.OTInTime = Convert.ToDateTime(cmp.OutTime);
+                                                    if (Convert.ToDateTime(sft.OutTime).TimeOfDay > Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay)
+                                                    {
+                                                        atLog.OutTime = Convert.ToDateTime(sft.OutTime);
+                                                        TimeSpan diff = Convert.ToDateTime(sft.OutTime).TimeOfDay - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay;
+                                                        atLog.WorkingHours = Convert.ToDateTime(diff.Hours + ":" + diff.Minutes).TimeOfDay;
+
+                                                        atLog.OTInTime = Convert.ToDateTime(sft.OutTime);
+                                                    }
                                                     atLog.OTOutTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]) - Convert.ToDateTime(cmp.OutTime);
-                                                    atLog.TotalOtHours = diff;
+                                                    TimeSpan diffOT = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay - Convert.ToDateTime(sft.OutTime).TimeOfDay;
+                                                    atLog.TotalOtHours = Convert.ToDateTime(diffOT.Hours + ":" + diffOT.Minutes).TimeOfDay;
                                                     atLog.IsNotLogOut = true;
                                                 }
                                                 else
                                                 {
                                                     atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                                    atLog.WorkingHours = diff;
+                                                    TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]).TimeOfDay;
+                                                    atLog.WorkingHours = Convert.ToDateTime(diff.Hours + ":" + diff.Minutes).TimeOfDay;
                                                     atLog.IsNotLogOut = true;
                                                 }
                                             }
@@ -255,24 +258,38 @@ namespace NUBE.PAYROLL.PL.Transaction
                                     db.AttedanceLogs.AddRange(lstAttLog);
                                     db.SaveChanges();
 
-                                    cmd = new SqlCommand("SPDAILYATTEDANCEDET", con);
-                                    cmd.CommandType = CommandType.StoredProcedure;
-                                    cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
-                                    cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));
-                                    cmd.CommandTimeout = 0;
-                                    int i = cmd.ExecuteNonQuery();
-                                    if (i == 0)
+                                    foreach (DataRow drRow in dtEmployee.Rows)
                                     {
-                                        MessageBox.Show("Imported Not Execute!", "Error");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                                        cmd = new SqlCommand("SPDAILYATTEDANCEDET", con);
+                                        cmd.CommandType = CommandType.StoredProcedure;
+                                        cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+                                        cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));
+                                        cmd.Parameters.Add(new SqlParameter("@EMPLOYEEID", drRow["EMPLOYEEID"]));
+                                        cmd.Parameters.Add(new SqlParameter("@SHIFTID", drRow["SHIFTID"]));
+                                        cmd.CommandTimeout = 0;
+                                        int i = cmd.ExecuteNonQuery();
+
+                                        if (i == 0)
+                                        {
+                                            bIsError = true;
+                                            MessageBox.Show("Imported Not Execute!", "Error,SPDAILYATTEDANCEDET");
+                                            //MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                                        }
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Contact Administrator", "Insert Error");
+                                    bIsError = true;
+                                }
+
+                                if (bIsError == true)
+                                {
+                                    MessageBox.Show("Imported Not Execute!,AttedanceLogs Error", "Error,Contact Administrator");
+                                    // MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
                                 }
                             }
                             else
@@ -289,8 +306,9 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Contact Administrator!", "Error");
-                MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show("Contact Administrator!", "Error");
+                //MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
             }
         }
 

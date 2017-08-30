@@ -42,7 +42,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                 if (!string.IsNullOrEmpty(dtpDate.Text))
                 {
                     DateTime dt = Convert.ToDateTime(dtpDate.SelectedDate);
-                    if (dt.Month == 5)
+                    if (dt.Month == 7)
                     {
                         ReportSummary();
                     }

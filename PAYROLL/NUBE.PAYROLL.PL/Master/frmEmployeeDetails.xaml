@@ -8,9 +8,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NUBE.PAYROLL.PL.Master"
         mc:Ignorable="d"
-        Title="" Height="700" Width="1200"
+        Title="" Height="720" Width="1200"
         BorderThickness="0" GlowBrush="Black" ResizeMode="NoResize" WindowTransitionsEnabled="False" WindowStartupLocation="CenterScreen"             
-     Icon="../Images/Logo.png">
+     Icon="../Images/Payroll/LOGO.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{DynamicResource FormHeadHeight}"/>
@@ -185,12 +185,23 @@
                             </TextBox>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" Height="40">
-                            <CheckBox Margin="0,10,0,0" x:Name="ChkUserLogin"  FontWeight="Bold" FontSize="14" Content="Is User Login" Width="185" Checked="ChkUserLogin_Checked" Click="ChkUserLogin_Click"/>
-                            <CheckBox Margin="10,10,0,0" x:Name="ChkIsAdmin"  FontWeight="Bold" FontSize="14" Content="Is Admin" Width="185" Checked="ChkUserLogin_Checked" Click="ChkUserLogin_Click"/>                            
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox x:Name="cmbShift" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                                <materialDesign:HintAssist.Hint>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Timelapse" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                        <TextBlock Text="Shift"/>
+                                    </StackPanel>
+                                </materialDesign:HintAssist.Hint>
+                            </ComboBox>
                         </StackPanel>
 
-                        <GroupBox x:Name="grbUserName" Margin="0,5,0,0" Header="LOGIN DETAILS" Height="100" Width="380" >
+                        <StackPanel Orientation="Horizontal" Height="40">
+                            <CheckBox Margin="0,10,0,0" x:Name="ChkUserLogin"  FontWeight="Bold" FontSize="14" Content="Is User Login" Width="185" Click="ChkUserLogin_Click"/>
+                            <CheckBox Margin="10,10,0,0" x:Name="ChkIsAdmin"  FontWeight="Bold" FontSize="14" Content="Is Admin" Width="185" Click="ChkUserLogin_Click"/>                            
+                        </StackPanel>
+
+                        <GroupBox x:Name="grbUserName" Margin="0,5,0,0" Header="MOBILE LOGIN DETAILS" Height="100" Width="380" >
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Width="180" x:Name="txtUserName" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" >
                                     <materialDesign:HintAssist.Hint>
@@ -296,7 +307,7 @@
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="151">
                                         <materialDesign:PackIcon  Kind="Beach" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
-                                        <TextBlock Text="No Of CL" />
+                                        <TextBlock Text="CL /Month" />
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
@@ -304,7 +315,7 @@
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="180">
                                         <materialDesign:PackIcon  Kind="Hospital" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
-                                        <TextBlock Text="No Of Medical Leave" />
+                                        <TextBlock Text="Medical Leave /Month" />
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
@@ -378,7 +389,7 @@
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox Margin="0,0,0,0" x:Name="ChkResigned"  FontWeight="Bold" FontSize="14" Content="Is Resigned" Width="185"/>
+                                        <CheckBox Margin="0,0,0,0" x:Name="ChkResigned"  FontWeight="Bold" FontSize="14" Content="Is Resigned" Width="185" Click="ChkResigned_Click"/>
                                         <DatePicker  Margin="10,0,0,0"  x:Name="dtResigned" FontWeight="Bold" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Date of Resign" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  VerticalAlignment="Top" Width="150" FontSize="14" Height="30"/>
                                     </StackPanel>
                                 </Grid>
@@ -411,9 +422,10 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Grid.Column="1"  >
                     <StackPanel Orientation="Vertical" x:Name = "pnlForm3" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                        <GroupBox x:Name="grbAllowances" Margin="0,5,0,0" Header="ALLOWANCES" Height="180" Width="380" >
+                        <GroupBox x:Name="grbAllowances" Margin="0,5,0,0" Header="ALLOWANCES" Height="220" Width="380" >
                             <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
@@ -470,19 +482,33 @@
                                                 </StackPanel>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>
-                                        <CheckBox x:Name="ChkOTEligible" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Content="OVER TIME Eligible" Width="180"/>
+                                        <CheckBox x:Name="ChkOTEligible" IsChecked="True" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Content="OVER TIME Eligible" Width="180" Click="ChkOTEligible_Click"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Grid.Row="3">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox x:Name="txtMobileAllowance" Margin="0,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180">
+                                            <materialDesign:HintAssist.Hint>
+                                                <StackPanel Orientation="Horizontal" Width="151">
+                                                    <materialDesign:PackIcon  Kind="Phone" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                    <TextBlock Text="Mobile Allowance" />
+                                                </StackPanel>
+                                            </materialDesign:HintAssist.Hint>
+                                        </TextBox>
+
                                     </StackPanel>
                                 </Grid>
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox x:Name="grbDeduction1" Margin="0,5,0,0" Header="STANDING INSTRUCTION DEDUCTIONS" Height="220" Width="380" >
+                        <GroupBox x:Name="grbDeduction1" Margin="0,5,0,0" Header="STANDING INSTRUCTION DEDUCTIONS" Height="185" Width="380" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
                                     <StackPanel Orientation="Horizontal">
@@ -494,7 +520,15 @@
                                                 </StackPanel>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>
-                                        <CheckBox x:Name="ChkNUBESUBSCRIPTION" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Content="NUBE SUBSCRIPTION" Width="180"/>
+                                        <TextBox x:Name="txtBIMBLOAN" Margin="10,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180">
+                                            <materialDesign:HintAssist.Hint>
+                                                <StackPanel Orientation="Horizontal" Width="151">
+                                                    <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                    <TextBlock Text="BIMB LOAN" />
+                                                </StackPanel>
+                                            </materialDesign:HintAssist.Hint>
+                                        </TextBox>
+                                        
                                     </StackPanel>
                                 </Grid>
 
@@ -508,27 +542,6 @@
                                                 </StackPanel>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>
-                                        <TextBox x:Name="txtBIMBLOAN" Margin="10,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180">
-                                            <materialDesign:HintAssist.Hint>
-                                                <StackPanel Orientation="Horizontal" Width="151">
-                                                    <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
-                                                    <TextBlock Text="BIMB LOAN" />
-                                                </StackPanel>
-                                            </materialDesign:HintAssist.Hint>
-                                        </TextBox>
-                                    </StackPanel>
-                                </Grid>
-
-                                <Grid Grid.Row="2">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox x:Name="txtGELA" ToolTip="GREAT EASTERN LIFE ASSURANCE (GELA)" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180">
-                                            <materialDesign:HintAssist.Hint>
-                                                <StackPanel Orientation="Horizontal" Width="151">
-                                                    <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
-                                                    <TextBlock Text="GELA" />
-                                                </StackPanel>
-                                            </materialDesign:HintAssist.Hint>
-                                        </TextBox>
                                         <TextBox x:Name="txtHOMECARLOANS" Margin="10,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180">
                                             <materialDesign:HintAssist.Hint>
                                                 <StackPanel Orientation="Horizontal" Width="151">
@@ -537,18 +550,33 @@
                                                 </StackPanel>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>
-                                    </StackPanel>
 
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Grid.Row="2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox x:Name="txtGELA" ToolTip="GREAT EASTERN LIFE ASSURANCE (GELA)" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="60">
+                                            <materialDesign:HintAssist.Hint>
+                                                <StackPanel Orientation="Horizontal" Width="151">
+                                                    <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                    <TextBlock Text="GELA" />
+                                                </StackPanel>
+                                            </materialDesign:HintAssist.Hint>
+                                        </TextBox>
+                                        <TextBox x:Name="txtOtherLoans" Margin="10,0,0,0" HorizontalAlignment="Left" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="120">
+                                            <materialDesign:HintAssist.Hint>
+                                                <StackPanel Orientation="Horizontal" Width="151">
+                                                    <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                    <TextBlock Text="OTHER LOANS" />
+                                                </StackPanel>
+                                            </materialDesign:HintAssist.Hint>
+                                        </TextBox>
+                                        <CheckBox x:Name="ChkNUBESUBSCRIPTION" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Content="NUBE SUBSCRIPTION" Width="180"/>
+                                    </StackPanel>
                                 </Grid>
                                 <Grid Grid.Row="3">
-                                    <TextBox x:Name="txtOtherLoans" Margin="0,0,0,0" HorizontalAlignment="Left" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185">
-                                        <materialDesign:HintAssist.Hint>
-                                            <StackPanel Orientation="Horizontal" Width="151">
-                                                <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
-                                                <TextBlock Text="OTHER LOANS" />
-                                            </StackPanel>
-                                        </materialDesign:HintAssist.Hint>
-                                    </TextBox>
+                                    
                                 </Grid>
                             </Grid>
                         </GroupBox>
@@ -556,18 +584,17 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-
+                                    <RowDefinition Height="*"/>                                    
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox x:Name="ChkPCB" FontWeight="Bold" FontSize="14" Content="PCB" Width="180"/>
-                                        <CheckBox x:Name="ChkUNPAIDLEAVE" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Content="UNPAID LEAVE (UPL)" Width="180"/>
+                                        <CheckBox x:Name="ChkPCB"  FontWeight="Bold" FontSize="14" Content="PCB" Width="180"/>
+                                        <CheckBox x:Name="ChkUNPAIDLEAVE" Margin="10,0,0,0" IsChecked="True" FontWeight="Bold" FontSize="14" Content="UNPAID LEAVE (UPL)" Width="180" Click="ChkUNPAIDLEAVE_Click"/>
                                     </StackPanel>
                                 </Grid>
                                 <Grid Grid.Row="1">
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox x:Name="ChkOTHERS"  FontWeight="Bold" FontSize="14" Content="OTHERS" Width="180"/>
+                                        <CheckBox x:Name="ChkOTHERS"  FontWeight="Bold" FontSize="14" Content="OTHERS" Width="180" Click="ChkOTHERS_Click"/>
                                         <TextBox x:Name="txtOTHERS" Margin="10,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180">
                                             <materialDesign:HintAssist.Hint>
                                                 <StackPanel Orientation="Horizontal" Width="151">
@@ -578,7 +605,7 @@
                                         </TextBox>
 
                                     </StackPanel>
-                                </Grid>
+                                </Grid>                                
                             </Grid>
                         </GroupBox>
 

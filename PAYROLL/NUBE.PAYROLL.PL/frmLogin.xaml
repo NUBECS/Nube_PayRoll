@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Title="Login" Height="600" Width="800"
         BorderThickness="0" GlowBrush="Black" ResizeMode="NoResize" WindowTransitionsEnabled="False" WindowStartupLocation="CenterScreen"             
-                                              Closing="MetroWindow_Closing" Icon="Images/Logo.png" >
+                                              Closing="MetroWindow_Closing" Icon="Images/Payroll/LOGO.ico" >
 
     <Window.CommandBindings>
         <CommandBinding Command="Close" Executed="CommandBinding_Executed" />
@@ -136,7 +136,7 @@
         <!-- End of Flat ComboBox -->
     </Window.Resources>
     <Controls:MetroWindow.Background>
-        <ImageBrush ImageSource="Images/Custom Size – 3.png"/>
+        <ImageBrush ImageSource="Images/Payroll/LOGIN.png"/>
     </Controls:MetroWindow.Background>
     <Grid>
         <Grid.ColumnDefinitions>

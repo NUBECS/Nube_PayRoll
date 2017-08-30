@@ -19,6 +19,8 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> EntryDate { get; set; }
         public Nullable<System.DateTime> BeforeInTime { get; set; }
         public Nullable<System.DateTime> BeforeOutTime { get; set; }
+        public Nullable<System.DateTime> BeforeOtInTime { get; set; }
+        public Nullable<System.DateTime> BeforeOtOutTime { get; set; }
         public Nullable<System.DateTime> AfterInTime { get; set; }
         public Nullable<System.DateTime> AfterOutTime { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }

@@ -17,7 +17,7 @@
         mc:Ignorable="d"
         Title="HOME" Height="600" Width="1100"
      ShowMaxRestoreButton="False"
-        BorderThickness="0" GlowBrush="Black" ResizeMode="NoResize" WindowTransitionsEnabled="False" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="Images/Nube Icon.ico" Loaded="MetroWindow_Loaded" >
+        BorderThickness="0" GlowBrush="Black" ResizeMode="NoResize" WindowTransitionsEnabled="False" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="Images/Payroll/LOGO.ico" Loaded="MetroWindow_Loaded" >
    
     <Controls:MetroWindow.LeftWindowCommands>
         <Controls:WindowCommands>
@@ -26,7 +26,7 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.LeftWindowCommands>
     <Controls:MetroWindow.Background>
-        <ImageBrush ImageSource="Images/Custom Size – 2.png" />
+        <ImageBrush ImageSource="Images/Payroll/BG.png" />
     </Controls:MetroWindow.Background>
     <Window.CommandBindings>
         <CommandBinding Command="Close" Executed="CommandBinding_Executed" />
@@ -74,7 +74,7 @@
                             </ListBox>
 
                             <Expander Header="Master" FontWeight="Bold" FontSize="16">
-                                <ListBox SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
+                                <ListBox x:Name="lstMaster" SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate DataType="Menu:NavMenuItem">
                                             <TextBlock Text="{Binding MenuName}" Margin="32 0 32 0" FontSize="16"  />
@@ -90,6 +90,12 @@
                                     <Menu:NavMenuItem MenuName="Position" FormName ="Position">
                                         <Menu:NavMenuItem.Content>
                                             <Master:frmPosition/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
+
+                                    <Menu:NavMenuItem MenuName="Employee Shift" FormName ="EmployeeShift">
+                                        <Menu:NavMenuItem.Content>
+                                            <Master:frmEmployeeShift/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
 
@@ -134,6 +140,7 @@
                                             <Master:frmMasterNubeBranch/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
+                                    
                                     <Menu:NavMenuItem MenuName="Country" FormName ="Master Country">
                                         <Menu:NavMenuItem.Content>
                                             <Master:frmMasterCountry/>
@@ -190,7 +197,7 @@
                                 </ListBox>
                             </Expander>
 
-                            <!--<Expander Header="Reports" FontWeight="Bold" FontSize="16">
+                            <Expander Header="Reports" FontWeight="Bold" FontSize="16">
                                 <ListBox SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate DataType="BizMenu:BizMenuItem">
@@ -202,18 +209,18 @@
                                             <Transaction:frmDailyAttedance/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
-                                    --><!--<Menu:NavMenuItem MenuName="Monthly Attedance" FormName="DailyAttedance">
+                                    <!--<Menu:NavMenuItem MenuName="Monthly Attedance" FormName="DailyAttedance">
+                                        <Menu:NavMenuItem.Content>
+                                            <Transaction:frmDailyAttedance/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
+                                    <Menu:NavMenuItem MenuName="Leave Report" FormName="DailyAttedance">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmDailyAttedance/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>-->
-                                    <!--<Menu:NavMenuItem MenuName="Leave Report" FormName="DailyAttedance">
-                                        <Menu:NavMenuItem.Content>
-                                            <Transaction:frmDailyAttedance/>
-                                        </Menu:NavMenuItem.Content>
-                                    </Menu:NavMenuItem>--><!--
                                 </ListBox>
-                            </Expander>-->
+                            </Expander>
                         </StackPanel>
                     </DockPanel>
                 </ScrollViewer>

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NUBE.PAYROLL.CMN;
 using System.Data;
-
+using System.Data.SqlClient;
 
 namespace NUBE.PAYROLL.PL.Master
 {
@@ -28,13 +28,25 @@ namespace NUBE.PAYROLL.PL.Master
         public frmMasterState()
         {
             InitializeComponent();
+
         }
 
         #region EVENTS
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadWindow();
+            try
+            {
+                var cu = (from x in db.MasterCountries select x).ToList();
+                cmbCountry.ItemsSource = cu;
+                cmbCountry.SelectedValuePath = "Id";
+                cmbCountry.DisplayMemberPath = "CountryName";
+                LoadWindow();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -46,7 +58,7 @@ namespace NUBE.PAYROLL.PL.Master
                     var mb = (from x in db.MasterStates where x.Id == Id select x).FirstOrDefault();
                     mb.StateName = txtStateName.Text;
                     mb.ShortName = txtStateShortName.Text;
-                    mb.CountryId = Convert.ToInt32(cmbCountry.SelectedItem);
+                    mb.CountryId = Convert.ToInt32(cmbCountry.SelectedValue);
                     db.SaveChanges();
                     MessageBox.Show("Updated Sucessfully!");
                     LoadWindow();
@@ -174,17 +186,25 @@ namespace NUBE.PAYROLL.PL.Master
             cmbCountry.Text = "";
             try
             {
-                var cu = (from x in db.MasterCountries select x).ToList();
-                cmbCountry.ItemsSource = cu;
-                cmbCountry.SelectedValuePath = "Id";
-                cmbCountry.DisplayMemberPath = "CountryName";
-
-                
-                var st = (from x in db.ViewMasterStates select x).ToList();
-                if (st != null)
+                DataTable dt = new DataTable();
+                using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
-                    DataTable dt = AppLib.LINQResultToDataTable(st);
-                    dgvState.ItemsSource = dt.DefaultView;
+                    SqlCommand cmd;
+                    string str = " SELECT ST.Id,ST.StateName,ST.ShortName,ST.CountryId,CY.CountryName \r" +
+                                 " FROM MASTERSTATE ST(NOLOCK) \r" +
+                                 " LEFT JOIN MASTERCOUNTRY CY(NOLOCK)ON CY.ID = ST.COUNTRYID \r" +
+                                 " ORDER BY ST.StateName";
+
+                    cmd = new SqlCommand(str, con);
+                    cmd.CommandType = CommandType.Text;
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    con.Open();
+                    adp.Fill(dt);
+                    con.Close();
+                    if (dt.Rows.Count > 0)
+                    {
+                        dgvState.ItemsSource = dt.DefaultView;
+                    }
                 }
             }
             catch (Exception ex)

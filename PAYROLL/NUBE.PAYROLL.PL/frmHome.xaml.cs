@@ -24,6 +24,17 @@ namespace NUBE.PAYROLL.PL
         public frmHome()
         {
             InitializeComponent();
+            foreach (CMN.NavMenuItem m in lstMaster.Items)
+            {
+                if (m.MenuName == "NUBE Branch")
+                {
+                    if (Config.bIsNubeServer == false)
+                    {
+                        lstMaster.Items.Remove(m);
+                        break;
+                    }
+                }
+            }
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -55,7 +66,7 @@ namespace NUBE.PAYROLL.PL
                 //}
                 //else
                 //{
-                    ccContent.Content = mi.Content;
+                ccContent.Content = mi.Content;
                 //}
             }
             catch (Exception ex) { }
@@ -64,7 +75,7 @@ namespace NUBE.PAYROLL.PL
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-                        
+
         }
     }
 }

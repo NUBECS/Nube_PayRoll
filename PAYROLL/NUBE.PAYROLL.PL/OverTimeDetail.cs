@@ -19,10 +19,13 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> AttDate { get; set; }
         public Nullable<System.DateTime> InTime { get; set; }
         public Nullable<System.DateTime> OutTime { get; set; }
-        public decimal OtHours { get; set; }
+        public int Total_OT_Hours { get; set; }
+        public int Total_OT_Minutes { get; set; }
         public bool IsApproved { get; set; }
         public Nullable<System.DateTime> ApprovedInTime { get; set; }
         public Nullable<System.DateTime> ApprovedOutTime { get; set; }
+        public int Approved_OT_Hours { get; set; }
+        public int Approved_OT_Minutes { get; set; }
         public bool IsWeekOff { get; set; }
         public bool IsPublicHoliday { get; set; }
     

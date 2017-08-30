@@ -25,8 +25,10 @@ namespace NUBE.PAYROLL.PL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AttendanceCorrection> AttendanceCorrections { get; set; }
+        public virtual DbSet<AttedanceLog> AttedanceLogs { get; set; }
+        public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
         public virtual DbSet<EmployeeIncrement> EmployeeIncrements { get; set; }
+        public virtual DbSet<EmployeeShift> EmployeeShifts { get; set; }
         public virtual DbSet<EntityType> EntityTypes { get; set; }
         public virtual DbSet<EPFCont> EPFConts { get; set; }
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
@@ -71,11 +73,10 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<ViewMasterPosition> ViewMasterPositions { get; set; }
         public virtual DbSet<ViewMasterState> ViewMasterStates { get; set; }
         public virtual DbSet<ViewOTCalculation> ViewOTCalculations { get; set; }
-        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
         public virtual DbSet<VIEWTOTALOT> VIEWTOTALOTs { get; set; }
         public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
+        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
         public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
-        public virtual DbSet<AttedanceLog> AttedanceLogs { get; set; }
-        public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
+        public virtual DbSet<AttendanceCorrection> AttendanceCorrections { get; set; }
     }
 }
