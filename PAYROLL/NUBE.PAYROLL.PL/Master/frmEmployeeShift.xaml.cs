@@ -89,9 +89,9 @@ namespace NUBE.PAYROLL.PL.Master
                             mb.WeekofTwoDays = false;
                         }
                         mb.IsGraceTime = Convert.ToBoolean(ChkGraceTime.IsChecked);
-                        if (!string.IsNullOrEmpty(txtGracePeriod.Text))
+                        if (!string.IsNullOrEmpty(cmbGracePeriod.Text))
                         {
-                            mb.GraceTime = Convert.ToDecimal(txtGracePeriod.Text);
+                            mb.GraceTime = Convert.ToDecimal(cmbGracePeriod.Text);
                         }
                         db.SaveChanges();
                         MessageBox.Show("Updated Sucessfully!");
@@ -115,9 +115,9 @@ namespace NUBE.PAYROLL.PL.Master
                             mb.WeekofTwoDays = false;
                         }
                         mb.IsGraceTime = Convert.ToBoolean(ChkGraceTime.IsChecked);
-                        if (!string.IsNullOrEmpty(txtGracePeriod.Text))
+                        if (!string.IsNullOrEmpty(cmbGracePeriod.Text))
                         {
-                            mb.GraceTime = Convert.ToDecimal(txtGracePeriod.Text);
+                            mb.GraceTime = Convert.ToDecimal(cmbGracePeriod.Text);
                         }
                         db.EmployeeShifts.Add(mb);
                         db.SaveChanges();
@@ -185,7 +185,7 @@ namespace NUBE.PAYROLL.PL.Master
                     {
                         rpt6Days.IsChecked = true;
                     }
-                    txtGracePeriod.Text = drv["GRACETIME"].ToString();
+                    cmbGracePeriod.Text = drv["GRACETIME"].ToString();
                     cmbInTimeHour.Text = Convert.ToDateTime(drv["INTIME"]).Hour.ToString();
                     cmbInTimeMinutes.Text = Convert.ToDateTime(drv["INTIME"]).Minute.ToString();
                     cmbOutTimeHour.Text = Convert.ToDateTime(drv["OUTTIME"]).Hour.ToString();
@@ -195,15 +195,7 @@ namespace NUBE.PAYROLL.PL.Master
                     cmbLunchEndHour.Text = Convert.ToDateTime(drv["LUNCHTIMEIN"]).Hour.ToString();
                     cmbLunchEndMinutes.Text = Convert.ToDateTime(drv["LUNCHTIMEIN"]).Minute.ToString();
                     cmbOTTimeHour.Text = Convert.ToDateTime(drv["MINIMUMOTTIME"]).Hour.ToString();
-                    cmbOTTimeMinutes.Text = Convert.ToDateTime(drv["MINIMUMOTTIME"]).Minute.ToString();
-                    if (Convert.ToBoolean(drv["ISGRACETIME"]) == true)
-                    {
-                        txtGracePeriod.Visibility = Visibility.Visible;
-                    }
-                    else
-                    {
-                        txtGracePeriod.Visibility = Visibility.Hidden;
-                    }
+                    cmbOTTimeMinutes.Text = Convert.ToDateTime(drv["MINIMUMOTTIME"]).Minute.ToString();                   
                 }
             }
             catch (Exception ex)
@@ -228,14 +220,14 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (ChkGraceTime.IsChecked == true)
-                {
-                    txtGracePeriod.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    txtGracePeriod.Visibility = Visibility.Hidden;
-                }
+                //if (ChkGraceTime.IsChecked == true)
+                //{
+                //    cmbGracePeriod.Visibility = Visibility.Visible;
+                //}
+                //else
+                //{
+                //    cmbGracePeriod.Visibility = Visibility.Hidden;
+                //}
             }
             catch (Exception ex)
             {
@@ -245,30 +237,35 @@ namespace NUBE.PAYROLL.PL.Master
 
         private void cbxCase_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptContain_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptEndWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filteration();
+        }
+
+        private void NumericOnly(object sender, TextCompositionEventArgs e)
         {
 
         }
@@ -283,7 +280,7 @@ namespace NUBE.PAYROLL.PL.Master
             txtShiftName.Text = "";
             ChkGraceTime.IsChecked = false;
             rpt5Days.IsChecked = true;
-            txtGracePeriod.Text = "";
+            cmbGracePeriod.Text = "";
             cmbInTimeHour.Text = "00";
             cmbInTimeMinutes.Text = "00";
             cmbOutTimeHour.Text = "00";
@@ -293,16 +290,14 @@ namespace NUBE.PAYROLL.PL.Master
             cmbLunchEndHour.Text = "00";
             cmbLunchEndMinutes.Text = "00";
             cmbOTTimeHour.Text = "00";
-            cmbOTTimeMinutes.Text = "00";
-            txtGracePeriod.Visibility = Visibility.Visible;
+            cmbOTTimeMinutes.Text = "00";           
         }
 
         void LoadWindow()
         {
             FormClear();
             try
-            {
-                DataTable dt = new DataTable();
+            {                
                 using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
                     SqlCommand cmd;
@@ -317,11 +312,12 @@ namespace NUBE.PAYROLL.PL.Master
                     cmd.CommandType = CommandType.Text;
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     con.Open();
-                    adp.Fill(dt);
+                    dtEmployeeShift.Rows.Clear();
+                    adp.Fill(dtEmployeeShift);
                     con.Close();
-                    if (dt.Rows.Count > 0)
+                    if (dtEmployeeShift.Rows.Count > 0)
                     {
-                        dgvEmployeeShift.ItemsSource = dt.DefaultView;
+                        dgvEmployeeShift.ItemsSource = dtEmployeeShift.DefaultView;
                     }
                 }
             }
@@ -433,13 +429,74 @@ namespace NUBE.PAYROLL.PL.Master
             cmbLunchStartMinutes.ItemsSource = lstMinutes;
             cmbLunchEndMinutes.ItemsSource = lstMinutes;
             cmbOTTimeMinutes.ItemsSource = lstMinutes;
+            cmbGracePeriod.ItemsSource = lstMinutes;
+        }
+
+        void Filteration()
+        {
+            try
+            {
+                string sWhere = "";
+
+                if (cbxCase.IsChecked == true)
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                }
+                else
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '" + txtSearch.Text + "%'";
+                    }
+                    else
+                    {
+                        sWhere = "NAME LIKE '%" + txtSearch.Text + "%'";
+                    }
+                }
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    DataView dv = new DataView(dtEmployeeShift);
+                    dv.RowFilter = sWhere;
+                    DataTable dtTemp = new DataTable();
+                    dtTemp = dv.ToTable();
+                    dgvEmployeeShift.ItemsSource = dtTemp.DefaultView;
+                }
+                else
+                {
+                    dgvEmployeeShift.ItemsSource = dtEmployeeShift.DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
         }
 
         #endregion
 
-        private void NumericOnly(object sender, TextCompositionEventArgs e)
-        {
-
-        }
+        
     }
 }

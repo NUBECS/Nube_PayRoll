@@ -19,6 +19,8 @@
           <Property Name="OTOutTime" Type="datetime" />
           <Property Name="TotalOtHours" Type="time" Precision="7" />
           <Property Name="IsNotLogOut" Type="bit" Nullable="false" />
+          <Property Name="IsModified" Type="bit" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="AttendanceCorrection">
           <Key>
@@ -1924,6 +1926,8 @@ warning 6002: The table/view 'RIPU.dbo.VIEWWORKINGDAYS' does not have a primary 
           <Property Name="TotalOtHours" Type="Time" Precision="7" />
           <Property Name="IsNotLogOut" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_AttedanceLogs_MasterEmployee" FromRole="AttedanceLogs" ToRole="MasterEmployee" />
+          <Property Name="IsModified" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="DailyAttedanceDet">
           <Key>
@@ -3628,6 +3632,8 @@ warning 6002: The table/view 'RIPU.dbo.VIEWWORKINGDAYS' does not have a primary 
           <EntitySetMapping Name="AttedanceLogs">
             <EntityTypeMapping TypeName="PayrollDBModel.AttedanceLog">
               <MappingFragment StoreEntitySet="AttedanceLogs">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="IsModified" ColumnName="IsModified" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />

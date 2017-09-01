@@ -24,6 +24,8 @@ namespace NUBE.PAYROLL.PL
         public Nullable<System.DateTime> OTOutTime { get; set; }
         public Nullable<System.TimeSpan> TotalOtHours { get; set; }
         public bool IsNotLogOut { get; set; }
+        public bool IsModified { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }
     }

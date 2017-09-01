@@ -223,7 +223,7 @@
                     
                     <StackPanel Orientation="Horizontal" Height="45" VerticalAlignment="Center">
                         <Label Content="Out Time"  Margin="10,15,20,0" FontWeight="Bold" />
-                        <ComboBox x:Name="cmbOutTimeHour" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="85" IsReadOnly="True">
+                        <ComboBox x:Name="cmbOutTimeHour" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="85" IsReadOnly="True" SelectionChanged="cmbOutTimeHour_SelectionChanged">
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Clock" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -231,7 +231,7 @@
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
                         </ComboBox>
-                        <ComboBox x:Name="cmbOutTimeMinutes" Margin="10,0,0,0" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="90" IsReadOnly="True">
+                        <ComboBox x:Name="cmbOutTimeMinutes" Margin="10,0,0,0" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="90" IsReadOnly="True" SelectionChanged="cmbOutTimeMinutes_SelectionChanged">
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Clock" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -242,11 +242,23 @@
                     </StackPanel>
                     
                 </StackPanel>
-                
-                <StackPanel Margin="0,20,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Button Width="80" Height="30" x:Name="btnSave" Content="SAVE" Click="btnSave_Click" Margin="5 5" />                    
-                    <Button Width="80" Height="30" x:Name="btnClear" Content="CLEAR" Click="btnClear_Click" Margin="5 5" />
-                    <Button Width="80" Height="30" x:Name="btnBack" Content="Back" Click="btnBack_Click" Margin="5 5" />
+                <StackPanel Margin="10,0,0,0" Orientation="Horizontal" >
+                    <StackPanel Orientation="Horizontal" Height="45" HorizontalAlignment="Left" VerticalAlignment="Center">                        
+                        <TextBox  x:Name="txtTotalWorkingHours" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="180" >
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Timer" Height="25" Width="25" />
+                                    <TextBlock Text="Total Working Hours" FontWeight="Bold"/>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+
+                    </StackPanel>
+                    <StackPanel Margin="80,20,0,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Width="80" Height="30" x:Name="btnSave" Content="SAVE" Click="btnSave_Click" Margin="5 5" />
+                        <Button Width="80" Height="30" x:Name="btnClear" Content="CLEAR" Click="btnClear_Click" Margin="5 5" />
+                        <Button Width="80" Height="30" x:Name="btnBack" Content="Back" Click="btnBack_Click" Margin="5 5" />
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>           
         </Grid>

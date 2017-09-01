@@ -22,51 +22,62 @@ namespace NUBE.PAYROLL.PL
     public partial class frmLogin : MetroWindow
     {
         PayrollEntity db = new PayrollEntity();
+
         public frmLogin()
         {
             InitializeComponent();
         }
 
+        #region EVENTS
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            //string RValue = BLL.UserAccount.Login(txtUserId.Text, txtPassword.Password);
-            string RValue = "";
-            if (RValue == "")
+            try
             {
-                if (txtUserId.Text != "Admin")
+                //string RValue = BLL.UserAccount.Login(txtUserId.Text, txtPassword.Password);
+                string RValue = "";
+                if (RValue == "")
                 {
-                    MessageBox.Show("Invalid User");
-                    txtUserId.Focus();
-                }
-                else if (txtPassword.Password != "Admin")
-                {
-                    MessageBox.Show("Invalid Password");
-                    txtPassword.Focus();
-                }
-                else
-                {
-                    var cmp = (from x in db.CompanyDetails select x).FirstOrDefault();
-                    if (cmp != null)
+                    if (txtUserId.Text != "Admin")
                     {
-                        Config.EsslDatasource = cmp.ServerName;
-                        Config.EsslDB = cmp.DbName;
-                        Config.EsslUserId = cmp.UserId;
-                        Config.EsslPassword = cmp.Password;
-                        Config.bIsNubeServer = cmp.IsNUBE;
+                        MessageBox.Show("Invalid User");
+                        txtUserId.Focus();
+                    }
+                    else if (txtPassword.Password != "Admin")
+                    {
+                        MessageBox.Show("Invalid Password");
+                        txtPassword.Focus();
                     }
                     else
                     {
-                        Config.bIsNubeServer = false;
-                    }
+                        var cmp = (from x in db.CompanyDetails select x).FirstOrDefault();
+                        if (cmp != null)
+                        {
+                            Config.EsslDatasource = cmp.ServerName;
+                            Config.EsslDB = cmp.DbName;
+                            Config.EsslUserId = cmp.UserId;
+                            Config.EsslPassword = cmp.Password;
+                            Config.bIsNubeServer = cmp.IsNUBE;
+                        }
+                        else
+                        {
+                            Config.bIsNubeServer = false;
+                        }
 
-                    frmHome frm = new frmHome();
-                    frm.ShowDialog();
+                        frmHome frm = new frmHome();
+                        frm.ShowDialog();
+                    }
+                    //App.frmHome= new frmHome();
+                    //this.Hide();
+                    //App.frmHome.ShowDialog();
+                    //this.Show();
                 }
-                //App.frmHome= new frmHome();
-                //this.Hide();
-                //App.frmHome.ShowDialog();
-                //this.Show();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -93,7 +104,9 @@ namespace NUBE.PAYROLL.PL
             Close();
         }
 
-        #region PreviewExecuted
+        #endregion
+
+        #region PREVIEWEXECUTED
 
         private void txtPassword_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -121,5 +134,6 @@ namespace NUBE.PAYROLL.PL
         }
 
         #endregion
+
     }
 }

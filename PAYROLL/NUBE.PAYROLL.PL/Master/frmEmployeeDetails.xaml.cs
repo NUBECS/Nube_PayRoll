@@ -454,9 +454,8 @@ namespace NUBE.PAYROLL.PL.Master
                 ChkResigned.IsChecked = false;
                 ChkOTHERS.IsChecked = false;
                 ChkUserLogin.IsChecked = false;
-                ChkOTEligible.IsChecked = false;
-                ChkUNPAIDLEAVE.IsChecked = false;
-                ChkUNPAIDLEAVE.IsChecked = false;
+                ChkOTEligible.IsChecked = true;
+                ChkUNPAIDLEAVE.IsChecked = true;                
 
                 if (ChkUserLogin.IsChecked == true)
                 {
@@ -563,7 +562,7 @@ namespace NUBE.PAYROLL.PL.Master
             txtSECONDMENT.Text = "";
             txtSPECIAL.Text = "";
             txtCOLA.Text = "";
-            ChkOTEligible.IsChecked = false;
+            ChkOTEligible.IsChecked = true;
             ChkEPFCONTRIBUTIONRATE.IsChecked = false;
             ChkEPFCONTRIBUTION.IsChecked = false;
             ChkSOCSOCONTRIBUTION.IsChecked = false;
@@ -575,7 +574,7 @@ namespace NUBE.PAYROLL.PL.Master
             txtHOMECARLOANS.Text = "";
             txtOtherLoans.Text = "";
             ChkPCB.IsChecked = false;
-            ChkUNPAIDLEAVE.IsChecked = false;
+            ChkUNPAIDLEAVE.IsChecked = true;
             ChkOTHERS.IsChecked = false;
             txtOTHERS.Text = "";
             ChkRATIOOFCONTRIBUTION.IsChecked = false;

@@ -38,9 +38,10 @@
                 <Label FontWeight="Bold" Content="Type" Margin="0,27,5,24"/>
                 <RadioButton x:Name="rbMonthly" IsChecked="True" FontWeight="Bold" Content="Monthwise" Margin="0,31,5,24"/>
                 <RadioButton x:Name="rbDaily" FontWeight="Bold" Content="Datewise" Margin="0,31,15,24"/>
-                <DatePicker  Margin="20,20,0,0"  x:Name="dtMonth" FontWeight="Bold" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Select Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  VerticalAlignment="Top" Width="110" FontSize="14" Height="30" />
+                <DatePicker  Margin="20,20,0,0"  x:Name="dtMonth" FontWeight="Bold" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Select Date" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  VerticalAlignment="Top" Width="110" FontSize="14" Height="30" />                
                 <Button Width="80" Height="30" x:Name="btnSearch" Content="Search" Click="btnSearch_Click" Margin="30,0,5,5" />
                 <Button Width="80" Height="30" x:Name="btnClear" Content="CLEAR" Click="btnClear_Click" Margin="30,0,5,5" />
+                <CheckBox x:Name="chkIsModified" Margin="10,-10,0,0" FontWeight="Bold" Content="Modified Data" Click="chkIsModified_Click"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
@@ -67,7 +68,7 @@
                         <DataGridTextColumn Header="Name" FontWeight="Bold" Width="350" Binding="{Binding EMPLOYEENAME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Entry Date" FontWeight="Bold" Width="200" Visibility="Visible" Binding="{Binding ENTRYDATE}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="150" Binding="{Binding INTIME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="200" Binding="{Binding OUTTIME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />                                                                       
+                        <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="200" Binding="{Binding OUTTIME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />                        
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

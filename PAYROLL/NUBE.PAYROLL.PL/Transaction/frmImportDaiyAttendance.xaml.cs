@@ -121,8 +121,8 @@ namespace NUBE.PAYROLL.PL.Transaction
                         {
                             string sWhere = "";
                             Boolean bIsError = false;
-                            String sQuery = " SELECT ID EMPLOYEEID,SHIFTID FROM MASTEREMPLOYEE(NOLOCK) \r" +
-                                            " WHERE ISRESIGNED=0 \r GROUP BY ID,SHIFTID \r" +
+                            String sQuery = " SELECT ID EMPLOYEEID,SHIFTID,ISNULL(UNPAIDLEAVE,0)UNPAIDLEAVE FROM MASTEREMPLOYEE(NOLOCK) \r" +
+                                            " WHERE ISRESIGNED=0 \r GROUP BY ID,SHIFTID,UNPAIDLEAVE \r" +
                                             " ORDER BY ID ";
 
                             cmd = new SqlCommand(sQuery, con);
@@ -131,7 +131,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                             cmd.CommandTimeout = 0;
                             DataTable dtEmployee = new DataTable();
                             adp.Fill(dtEmployee);
-                            List<AttedanceLog> lstAttLog = new List<AttedanceLog>();                            
+                            List<AttedanceLog> lstAttLog = new List<AttedanceLog>();
                             if (dtEmployee.Rows.Count > 0)
                             {
                                 foreach (DataRow drRow in dtEmployee.Rows)
@@ -258,24 +258,34 @@ namespace NUBE.PAYROLL.PL.Transaction
                                     db.AttedanceLogs.AddRange(lstAttLog);
                                     db.SaveChanges();
 
-                                    foreach (DataRow drRow in dtEmployee.Rows)
+                                    try
                                     {
-                                        cmd = new SqlCommand("SPDAILYATTEDANCEDET", con);
-                                        cmd.CommandType = CommandType.StoredProcedure;
-                                        cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
-                                        cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));
-                                        cmd.Parameters.Add(new SqlParameter("@EMPLOYEEID", drRow["EMPLOYEEID"]));
-                                        cmd.Parameters.Add(new SqlParameter("@SHIFTID", drRow["SHIFTID"]));
-                                        cmd.CommandTimeout = 0;
-                                        int i = cmd.ExecuteNonQuery();
-
-                                        if (i == 0)
+                                        foreach (DataRow drRow in dtEmployee.Rows)
                                         {
-                                            bIsError = true;
-                                            MessageBox.Show("Imported Not Execute!", "Error,SPDAILYATTEDANCEDET");
-                                            //MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                                            cmd = new SqlCommand("SPDAILYATTEDANCEDET", con);
+                                            cmd.CommandType = CommandType.StoredProcedure;
+                                            cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+                                            cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));
+                                            cmd.Parameters.Add(new SqlParameter("@EMPLOYEEID", drRow["EMPLOYEEID"]));
+                                            cmd.Parameters.Add(new SqlParameter("@SHIFTID", drRow["SHIFTID"]));
+                                            cmd.Parameters.Add(new SqlParameter("@ISLOP", drRow["UNPAIDLEAVE"]));
+                                            cmd.CommandTimeout = 0;
+                                            /*int i =*/
+                                            cmd.ExecuteNonQuery();
+
+                                            //if (i == 0)
+                                            //{
+                                            //    bIsError = true;
+                                            //    MessageBox.Show("Imported Not Execute!", "Error,SPDAILYATTEDANCEDET");
+                                            //    //MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                                            //}
                                         }
                                     }
+                                    catch (Exception ex)
+                                    {
+                                        ExceptionLogging.SendErrorToText(ex);
+                                    }
+
                                 }
                                 else
                                 {

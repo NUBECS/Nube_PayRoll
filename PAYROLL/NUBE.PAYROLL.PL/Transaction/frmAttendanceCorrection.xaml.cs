@@ -32,7 +32,8 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
+            //dgAttedanceCorrection.Columns[7].Visibility = Visibility.Collapsed;
+            FormLoading();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -59,7 +60,14 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                FormLoading();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
         }
 
         private void dgAttedanceCorrection_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -73,7 +81,8 @@ namespace NUBE.PAYROLL.PL.Transaction
                     DateTime dt;
                     dt = string.IsNullOrEmpty(drv["ENTRYDATE"].ToString()) ? Convert.ToDateTime(dtMonth.SelectedDate) : Convert.ToDateTime(drv["ENTRYDATE"]);
 
-                    frmAttedanceCorrectionDetails frm = new frmAttedanceCorrectionDetails((drv["ENTRYDATE"]).ToString(), Convert.ToInt32(drv["EMPLOYEEID"]),Convert.ToInt32(drv["MEMBERSHIPNO"]), drv["EMPLOYEENAME"].ToString(), drv["GENDER"].ToString());                    
+                    frmAttedanceCorrectionDetails frm = new frmAttedanceCorrectionDetails((drv["ENTRYDATE"]).ToString(), Convert.ToInt32(drv["EMPLOYEEID"]), +
+                                                        Convert.ToInt32(drv["MEMBERSHIPNO"]), drv["EMPLOYEENAME"].ToString(), drv["GENDER"].ToString(), Convert.ToBoolean(drv["ISMODIFIED"]), Convert.ToInt32(drv["ID"]));
                     frm.ShowDialog();
                     FormFill();
                 }
@@ -85,6 +94,11 @@ namespace NUBE.PAYROLL.PL.Transaction
         }
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void chkIsModified_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -119,6 +133,15 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         #region Functions
 
+        void FormLoading()
+        {
+            dgAttedanceCorrection.ItemsSource = null;
+            chkIsModified.IsChecked = false;
+            dtMonth.Text = "";
+            rbDaily.IsChecked = false;
+            rbMonthly.IsChecked = true;
+        }
+
         void FormFill()
         {
             try
@@ -134,31 +157,46 @@ namespace NUBE.PAYROLL.PL.Transaction
                     {
                         sWhere = string.Format(" AND AL.ENTRYDATE='{0:dd/MMM/yyyy}' ", dtMonth.SelectedDate);
                     }
-                    DataTable dt = new DataTable();
                     using (SqlConnection con = new SqlConnection(Config.connStr))
                     {
                         SqlCommand cmd;
-                        string str = " SELECT ROW_NUMBER() OVER(ORDER BY ENTRYDATE,ISNULL(AL.INTIME,ISNULL(AL.OUTTIME,ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')))) ASC) AS RNO, \r" +
-                            " AL.ID,AL.EMPLOYEEID,EM.MEMBERSHIPNO,EM.EMPLOYEENAME,EM.GENDER,CONVERT(VARCHAR(10),AL.ENTRYDATE,103)ENTRYDATE,RIGHT(CONVERT(VARCHAR(32),ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')),100),8)OUTTIME, \r" +
-                            " RIGHT(CONVERT(VARCHAR(32),ISNULL(AL.INTIME,ISNULL(AL.OUTTIME,ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')))),100),8)INTIME \r" +
-                            " FROM ATTEDANCELOGS AL(NOLOCK) \r" +
-                            " LEFT JOIN MASTEREMPLOYEE EM(NOLOCK) ON EM.ID=AL.EMPLOYEEID \r" +
-                            " WHERE ISNOTLOGOUT=1 " + sWhere;
+                        string str = "";
+                        DataTable dtAttedanceCorrection = new DataTable();
+                        if (chkIsModified.IsChecked == true)
+                        {
+                            str = " SELECT ROW_NUMBER() OVER(ORDER BY ENTRYDATE,ISNULL(AL.INTIME,ISNULL(AL.OUTTIME,ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')))) ASC) AS RNO, \r" +
+                           " AL.ID,AL.EMPLOYEEID,EM.MEMBERSHIPNO,EM.EMPLOYEENAME,EM.GENDER,CONVERT(VARCHAR(10),AL.ENTRYDATE,103)ENTRYDATE, \r" +
+                           " RIGHT(CONVERT(VARCHAR(32),DA.INTIME ,100),8)INTIME,AL.ISMODIFIED, \r" +
+                           " RIGHT(CONVERT(VARCHAR(32),DA.OUTTIME ,100),8)OUTTIME \r" +
+                           " FROM ATTEDANCELOGS AL(NOLOCK) \r" +
+                           " LEFT JOIN MASTEREMPLOYEE EM(NOLOCK) ON EM.ID=AL.EMPLOYEEID \r" +
+                           " LEFT JOIN DAILYATTEDANCEDET DA(NOLOCK) ON DA.EMPLOYEEID=EM.ID AND DA.ATTDATE=AL.ENTRYDATE \r" +
+                           " WHERE AL.ISNOTLOGOUT=1 AND AL.ISMODIFIED=1 " + sWhere;
+                        }
+                        else
+                        {
+                            str = " SELECT ROW_NUMBER() OVER(ORDER BY ENTRYDATE,ISNULL(AL.INTIME,ISNULL(AL.OUTTIME,ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')))) ASC) AS RNO, \r" +
+                           " AL.ID,AL.EMPLOYEEID,EM.MEMBERSHIPNO,EM.EMPLOYEENAME,EM.GENDER,CONVERT(VARCHAR(10),AL.ENTRYDATE,103)ENTRYDATE,RIGHT(CONVERT(VARCHAR(32),ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')),100),8)OUTTIME, \r" +
+                           " RIGHT(CONVERT(VARCHAR(32),ISNULL(AL.INTIME,ISNULL(AL.OUTTIME,ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')))),100),8)INTIME,AL.ISMODIFIED \r" +
+                           " FROM ATTEDANCELOGS AL(NOLOCK) \r" +
+                           " LEFT JOIN MASTEREMPLOYEE EM(NOLOCK) ON EM.ID=AL.EMPLOYEEID \r" +
+                           " WHERE ISNOTLOGOUT=1 AND AL.ISMODIFIED=0 " + sWhere;
+                        }
+
                         cmd = new SqlCommand(str, con);
                         cmd.CommandType = CommandType.Text;
                         SqlDataAdapter adp = new SqlDataAdapter(cmd);
                         con.Open();
-                        adp.Fill(dt);
+                        adp.Fill(dtAttedanceCorrection);
                         con.Close();
-                    }
-
-                    if (dt.Rows.Count > 0)
-                    {
-                        dgAttedanceCorrection.ItemsSource = dt.DefaultView;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No Records Found");
+                        if (dtAttedanceCorrection.Rows.Count > 0)
+                        {
+                            dgAttedanceCorrection.ItemsSource = dtAttedanceCorrection.DefaultView;                           
+                        }
+                        else
+                        {
+                            MessageBox.Show("No Records Found", "Empty");
+                        }
                     }
                 }
             }
@@ -169,7 +207,5 @@ namespace NUBE.PAYROLL.PL.Transaction
         }
 
         #endregion
-
-
     }
 }
