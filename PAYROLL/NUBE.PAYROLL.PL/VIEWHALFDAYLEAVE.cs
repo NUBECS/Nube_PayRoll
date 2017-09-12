@@ -17,6 +17,6 @@ namespace NUBE.PAYROLL.PL
         public int EMPLOYEEID { get; set; }
         public Nullable<int> ATT_MONTH { get; set; }
         public Nullable<int> ATT_YEAR { get; set; }
-        public Nullable<int> TOTALHALFDAYS { get; set; }
+        public Nullable<int> HALFDAYLEAVE { get; set; }
     }
 }

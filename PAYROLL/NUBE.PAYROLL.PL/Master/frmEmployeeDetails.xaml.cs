@@ -275,7 +275,7 @@ namespace NUBE.PAYROLL.PL.Master
         {
             if (ChkOTEligible.IsChecked == false)
             {
-                if (MessageBox.Show("Make Sure that,LOP Unchecked  ?", "Confirmation Message", MessageBoxButton.YesNo) == MessageBoxResult.No)
+                if (MessageBox.Show("Make Sure that,OT Unchecked  ?", "Confirmation Message", MessageBoxButton.YesNo) == MessageBoxResult.No)
                 {
                     ChkOTEligible.IsChecked = true;
                 }
@@ -294,7 +294,7 @@ namespace NUBE.PAYROLL.PL.Master
 
         private void NumericOnly(object sender, TextCompositionEventArgs e)
         {
-
+            Config.CheckIsNumeric(e);
         }
 
         private void cmbCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -440,7 +440,7 @@ namespace NUBE.PAYROLL.PL.Master
                     ChkNUBESUBSCRIPTION.Visibility = Visibility.Visible;
                     cmbNubeBranch.Visibility = Visibility.Visible;
 
-                    var nb = (from x in db.MasterNubeBranches select x).ToList();
+                    var nb = (from x in db.MasterNubeBranches where x.IsCancel == false select x).ToList();
                     cmbNubeBranch.ItemsSource = nb;
                     cmbNubeBranch.SelectedValuePath = "Id";
                     cmbNubeBranch.DisplayMemberPath = "NubeBranchName";
@@ -455,7 +455,7 @@ namespace NUBE.PAYROLL.PL.Master
                 ChkOTHERS.IsChecked = false;
                 ChkUserLogin.IsChecked = false;
                 ChkOTEligible.IsChecked = true;
-                ChkUNPAIDLEAVE.IsChecked = true;                
+                ChkUNPAIDLEAVE.IsChecked = true;
 
                 if (ChkUserLogin.IsChecked == true)
                 {
@@ -488,37 +488,37 @@ namespace NUBE.PAYROLL.PL.Master
                     dtResigned.IsEnabled = false;
                 }
 
-                var cy = (from x in db.MasterCountries select x).ToList();
+                var cy = (from x in db.MasterCountries where x.IsCancel == false select x).ToList();
                 cmbCountry.ItemsSource = cy;
                 cmbCountry.SelectedValuePath = "Id";
                 cmbCountry.DisplayMemberPath = "CountryName";
 
-                var cu = (from x in db.MasterStates select x).ToList();
+                var cu = (from x in db.MasterStates where x.IsCancel == false select x).ToList();
                 cmbState.ItemsSource = cu;
                 cmbState.SelectedValuePath = "Id";
                 cmbState.DisplayMemberPath = "StateName";
 
-                var st = (from x in db.MasterCities select x).ToList();
+                var st = (from x in db.MasterCities where x.IsCancel == false select x).ToList();
                 cmbCity.ItemsSource = st;
                 cmbCity.SelectedValuePath = "Id";
                 cmbCity.DisplayMemberPath = "CityName";
 
-                var mb = (from x in db.MasterBanks select x).ToList();
+                var mb = (from x in db.MasterBanks where x.IsCancel == false select x).ToList();
                 cmbBank.ItemsSource = mb;
                 cmbBank.SelectedValuePath = "Id";
                 cmbBank.DisplayMemberPath = "UserCode";
 
-                var sf = (from x in db.EmployeeShifts select x).ToList();
+                var sf = (from x in db.EmployeeShifts where x.IsCancel == false select x).ToList();
                 cmbShift.ItemsSource = sf;
                 cmbShift.SelectedValuePath = "Id";
                 cmbShift.DisplayMemberPath = "Name";
 
-                var mp = (from x in db.MasterPositions select x).ToList();
+                var mp = (from x in db.MasterPositions where x.IsCancel == false select x).ToList();
                 cmbPosition.ItemsSource = mp;
                 cmbPosition.SelectedValuePath = "Id";
                 cmbPosition.DisplayMemberPath = "PositionName";
 
-                var mr = (from x in db.MasterRaces select x).ToList();
+                var mr = (from x in db.MasterRaces where x.IsCancel == false select x).ToList();
                 cmbRace.ItemsSource = mr;
                 cmbRace.SelectedValuePath = "Id";
                 cmbRace.DisplayMemberPath = "RaceName";

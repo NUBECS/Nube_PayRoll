@@ -39,44 +39,57 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (Id != 0)
+                if (string.IsNullOrEmpty(txtBankBranchName.Text))
                 {
-                    var mb = (from x in db.MasterBankBranches where x.Id == Id select x).FirstOrDefault();
-                    mb.BankBranchName = txtBankBranchName.Text;
-                    mb.UserCode = txtUserCode.Text;
-                    mb.BankId = Convert.ToInt32(cmbBank.SelectedValue);
-                    mb.NubeBranchId = Convert.ToInt32(cmbNubeBranch.SelectedValue);
-                    mb.Address1 = txtAddress1.Text;
-                    mb.Address2 = txtAddress2.Text;
-                    mb.CityId = Convert.ToInt32(cmbState.SelectedValue);                   
-                    mb.ZipCode = txtPostalCode.Text;
-                    mb.Phone1 = txtTelephone.Text;
-                    mb.Phone2 = txtMobile.Text;
-                    mb.IsHeadQuarters = Convert.ToBoolean(ChkHeadOffice.IsChecked);                  
-                    db.SaveChanges();
-                    MessageBox.Show("Updated Sucessfully!");
-                    LoadWindow();                                                        
+                    MessageBox.Show("Bank BranchName is Empty!", "Empty");
+                    txtBankBranchName.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtUserCode.Text))
+                {
+                    MessageBox.Show("UserCode is Empty!", "Empty");
+                    txtUserCode.Focus();
                 }
                 else
                 {
-                    MasterBankBranch bb = new MasterBankBranch();                    
-                                                                           
-                    //MasterBankBranch mb = new MasterBankBranch();                                                            
-                    //mb.BankBranchName = txtBankBranchName.Text;
-                    //mb.UserCode = txtUserCode.Text;
-                    //mb.BankId = Convert.ToInt32(cmbBank.SelectedValue);
-                    //mb.NubeBranchId = Convert.ToInt32(cmbNubeBranch.SelectedValue);
-                    //mb.Address1 = txtAddress1.Text;
-                    //mb.Address2 = txtAddress2.Text;
-                    //mb.CityId = Convert.ToInt32(cmbState.SelectedValue);
-                    //mb.ZipCode = txtPostalCode.Text;
-                    //mb.Phone1 = txtTelephone.Text;
-                    //mb.Phone2 = txtMobile.Text;
-                    //mb.IsHeadQuarters = Convert.ToBoolean(ChkHeadOffice.IsChecked);
-                    //db.MasterBankBranches.Add(mb);
-                    //db.SaveChanges();
-                    //MessageBox.Show("Saved Sucessfully!");
-                    //LoadWindow();
+                    if (Id != 0)
+                    {
+                        var mb = (from x in db.MasterBankBranches where x.Id == Id select x).FirstOrDefault();
+                        mb.BankBranchName = txtBankBranchName.Text;
+                        mb.UserCode = txtUserCode.Text;
+                        mb.BankId = Convert.ToInt32(cmbBank.SelectedValue);
+                        mb.NubeBranchId = Convert.ToInt32(cmbNubeBranch.SelectedValue);
+                        mb.Address1 = txtAddress1.Text;
+                        mb.Address2 = txtAddress2.Text;
+                        mb.CityId = Convert.ToInt32(cmbState.SelectedValue);
+                        mb.ZipCode = txtPostalCode.Text;
+                        mb.Phone1 = txtTelephone.Text;
+                        mb.Phone2 = txtMobile.Text;
+                        mb.IsHeadQuarters = Convert.ToBoolean(ChkHeadOffice.IsChecked);
+                        db.SaveChanges();
+                        MessageBox.Show("Updated Sucessfully!");
+                        LoadWindow();
+                    }
+                    else
+                    {
+                        MasterBankBranch bb = new MasterBankBranch();
+
+                        //MasterBankBranch mb = new MasterBankBranch();                                                            
+                        //mb.BankBranchName = txtBankBranchName.Text;
+                        //mb.UserCode = txtUserCode.Text;
+                        //mb.BankId = Convert.ToInt32(cmbBank.SelectedValue);
+                        //mb.NubeBranchId = Convert.ToInt32(cmbNubeBranch.SelectedValue);
+                        //mb.Address1 = txtAddress1.Text;
+                        //mb.Address2 = txtAddress2.Text;
+                        //mb.CityId = Convert.ToInt32(cmbState.SelectedValue);
+                        //mb.ZipCode = txtPostalCode.Text;
+                        //mb.Phone1 = txtTelephone.Text;
+                        //mb.Phone2 = txtMobile.Text;
+                        //mb.IsHeadQuarters = Convert.ToBoolean(ChkHeadOffice.IsChecked);
+                        //db.MasterBankBranches.Add(mb);
+                        //db.SaveChanges();
+                        //MessageBox.Show("Saved Sucessfully!");
+                        //LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
@@ -87,11 +100,15 @@ namespace NUBE.PAYROLL.PL.Master
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
 
+            }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -137,7 +154,7 @@ namespace NUBE.PAYROLL.PL.Master
                 if ((dgvBankBranch.SelectedItem != null))
                 {
                     DataRowView drv = (DataRowView)dgvBankBranch.SelectedItem;
-                    Id = Convert.ToInt32(drv["Id"]);                   
+                    Id = Convert.ToInt32(drv["Id"]);
                     txtBankBranchName.Text = drv["BankBranchName"].ToString();
                     txtUserCode.Text = drv["UserCode"].ToString();
                     cmbBank.SelectedValue = Convert.ToInt32(drv["BankId"]);
@@ -189,30 +206,30 @@ namespace NUBE.PAYROLL.PL.Master
             txtMobile.Text = "";
             ChkHeadOffice.IsChecked = false;
 
-            
+
             try
             {
-                var cy = (from x in db.MasterCountries select x).ToList();
+                var cy = (from x in db.MasterCountries where x.IsCancel == false select x).ToList();
                 cmbCountry.ItemsSource = cy;
                 cmbCountry.SelectedValuePath = "Id";
                 cmbCountry.DisplayMemberPath = "CountryName";
 
-                var cu = (from x in db.MasterStates select x).ToList();
+                var cu = (from x in db.MasterStates where x.IsCancel == false select x).ToList();
                 cmbState.ItemsSource = cu;
                 cmbState.SelectedValuePath = "Id";
                 cmbState.DisplayMemberPath = "StateName";
 
-                var st = (from x in db.MasterCities select x).ToList();
+                var st = (from x in db.MasterCities where x.IsCancel == false select x).ToList();
                 cmbCity.ItemsSource = st;
                 cmbCity.SelectedValuePath = "Id";
                 cmbCity.DisplayMemberPath = "CityName";
 
-                var mb = (from x in db.MasterBanks select x).ToList();
+                var mb = (from x in db.MasterBanks where x.IsCancel == false select x).ToList();
                 cmbBank.ItemsSource = mb;
                 cmbBank.SelectedValuePath = "Id";
                 cmbBank.DisplayMemberPath = "BankName";
 
-                var nb = (from x in db.MasterNubeBranches select x).ToList();
+                var nb = (from x in db.MasterNubeBranches where x.IsCancel == false select x).ToList();
                 cmbNubeBranch.ItemsSource = nb;
                 cmbNubeBranch.SelectedValuePath = "Id";
                 cmbNubeBranch.DisplayMemberPath = "NubeBranchName";

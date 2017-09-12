@@ -2308,7 +2308,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!CompanyName.Value</Value>
+                                  <Value>NATIONAL UNION OF BANK EMPLOYEES</Value>
                                   <Style>
                                     <FontSize>13pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -2322,9 +2322,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Top>0.3175cm</Top>
-                          <Left>0.07282cm</Left>
+                          <Left>3.80344cm</Left>
                           <Height>0.75875cm</Height>
-                          <Width>16.57886cm</Width>
+                          <Width>9.60727cm</Width>
                           <ZIndex>73</ZIndex>
                           <Style>
                             <Border>
@@ -2426,9 +2426,9 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox2</rd:DefaultName>
                           <Top>1.11153cm</Top>
-                          <Left>0.21393cm</Left>
+                          <Left>4.34904cm</Left>
                           <Height>0.6cm</Height>
-                          <Width>16.43775cm</Width>
+                          <Width>8.51903cm</Width>
                           <ZIndex>76</ZIndex>
                           <Style>
                             <Border>
@@ -2440,6 +2440,21 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <Image Name="Image1">
+                          <Source>Embedded</Source>
+                          <Value>Logo1</Value>
+                          <Sizing>Fit</Sizing>
+                          <Top>0.1905cm</Top>
+                          <Left>2.12301cm</Left>
+                          <Height>1.20896cm</Height>
+                          <Width>1.40581cm</Width>
+                          <ZIndex>77</ZIndex>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Image>
                       </ReportItems>
                       <KeepTogether>true</KeepTogether>
                       <Style>
@@ -2449,6 +2464,7 @@
                       </Style>
                     </Rectangle>
                     <ColSpan>3</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -2500,19 +2516,12 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="payrollDataSet">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>f91fd16d-15e9-443a-b2ee-d02fa0011036</rd:DataSourceID>
-    </DataSource>
     <DataSource Name="BizSoftDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>c5c9a0fa-eeff-4dd3-8fd4-feba057562c1</rd:DataSourceID>
+      <rd:DataSourceID>30a37f00-dd40-42d5-98d6-df2a5d56c4ed</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -2782,5 +2791,5 @@ wwXr0tGkaQQjYfI93ks+UtcwDKqrq6mtraWurq58/fr1c+fPn//OJd7mK+NbEeEsZD/33POT+/Tpc19W
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>9bf049c2-1a77-4971-8ee8-2e6f736dfa92</rd:ReportID>
+  <rd:ReportID>a80e859d-b231-4ff1-91e9-e8d1d6cd6ef4</rd:ReportID>
 </Report>

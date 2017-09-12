@@ -23,34 +23,39 @@ namespace NUBE.PAYROLL.PL
         public string SOCSONumber { get; set; }
         public string NRIC { get; set; }
         public string BankAccountNo { get; set; }
-        public Nullable<decimal> BasicSalary { get; set; }
-        public Nullable<decimal> TotalWorkingDays { get; set; }
-        public Nullable<decimal> DaysAbsent { get; set; }
-        public Nullable<decimal> OTHours { get; set; }
-        public Nullable<decimal> OT_Amount { get; set; }
-        public Nullable<decimal> LOP { get; set; }
-        public Nullable<decimal> ALLOWANCE { get; set; }
-        public Nullable<decimal> BONUS { get; set; }
-        public Nullable<decimal> EXGRATIA { get; set; }
-        public Nullable<decimal> EPF { get; set; }
-        public Nullable<decimal> EPFUNION { get; set; }
-        public Nullable<decimal> SOCSO { get; set; }
-        public Nullable<decimal> SOCSOUNION { get; set; }
-        public Nullable<decimal> INCOMETAX { get; set; }
-        public Nullable<decimal> COOPSOCIETY { get; set; }
-        public Nullable<decimal> GMIS { get; set; }
-        public Nullable<decimal> GELA { get; set; }
-        public Nullable<decimal> LOAN { get; set; }
-        public Nullable<decimal> OTHERS { get; set; }
-        public Nullable<decimal> KOPERASI { get; set; }
-        public Nullable<decimal> NUBESUBSCRIPTION { get; set; }
-        public Nullable<decimal> PCB { get; set; }
-        public Nullable<decimal> BIMBLOAN { get; set; }
-        public Nullable<decimal> HOMECARLOANS { get; set; }
-        public Nullable<decimal> OTHERLOANS { get; set; }
-        public Nullable<decimal> TOTALEARNING { get; set; }
-        public Nullable<decimal> TOTALDEDUCTION { get; set; }
-        public Nullable<decimal> NETSALARY { get; set; }
+        public decimal BasicSalary { get; set; }
+        public decimal TotalWorkingDays { get; set; }
+        public decimal DaysAbsent { get; set; }
+        public decimal OTHours { get; set; }
+        public decimal OT_Amount { get; set; }
+        public decimal LOP { get; set; }
+        public decimal POB { get; set; }
+        public decimal NEC { get; set; }
+        public decimal SECONDMENT { get; set; }
+        public decimal SPECIAL { get; set; }
+        public decimal COLA { get; set; }
+        public decimal MOBILEALLOWANCE { get; set; }
+        public decimal ALLOWANCE { get; set; }
+        public decimal BONUS { get; set; }
+        public decimal EXGRATIA { get; set; }
+        public decimal EPF { get; set; }
+        public decimal EPFUNION { get; set; }
+        public decimal SOCSO { get; set; }
+        public decimal SOCSOUNION { get; set; }
+        public decimal INCOMETAX { get; set; }
+        public decimal GMIS { get; set; }
+        public decimal GELA { get; set; }
+        public decimal BIMBLOAN { get; set; }
+        public decimal HOMECARLOANS { get; set; }
+        public decimal OTHERLOAN { get; set; }
+        public decimal TOTALLOAN { get; set; }
+        public decimal OTHERS { get; set; }
+        public decimal KOPERASI { get; set; }
+        public decimal NUBESUBSCRIPTION { get; set; }
+        public decimal PCB { get; set; }
+        public decimal TOTALEARNING { get; set; }
+        public decimal TOTALDEDUCTION { get; set; }
+        public decimal NETSALARY { get; set; }
         public string PositionName { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }

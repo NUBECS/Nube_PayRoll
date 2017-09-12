@@ -31,6 +31,7 @@ namespace NUBE.PAYROLL.PL.Master
         }
 
         #region EVENTS
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             LoadWindow();
@@ -40,33 +41,61 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (Id != 0)
+                if (string.IsNullOrEmpty(txtMinRM.Text))
                 {
-                    var mb = (from x in db.EPFConts where x.Id == Id select x).FirstOrDefault();
-                    if (mb != null)
+                    MessageBox.Show("Min RM is Empty!", "Empty");
+                    txtMinRM.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtSalryUpto.Text))
+                {
+                    MessageBox.Show("SalryUpto is Empty!", "Empty");
+                    txtSalryUpto.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtMajikan.Text))
+                {
+                    MessageBox.Show("Majikan is Empty!", "Empty");
+                    txtMajikan.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtPakerja.Text))
+                {
+                    MessageBox.Show("Pakerja is Empty!", "Empty");
+                    txtPakerja.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtJumlahCaruman.Text))
+                {
+                    MessageBox.Show("Jumlah Caruman is Empty!", "Empty");
+                    txtJumlahCaruman.Focus();
+                }
+                else
+                {
+                    if (Id != 0)
                     {
+                        var mb = (from x in db.EPFConts where x.Id == Id select x).FirstOrDefault();
+                        if (mb != null)
+                        {
+                            mb.MinRM = Convert.ToDecimal(txtMinRM.Text);
+                            mb.MaxRM = Convert.ToDecimal(txtSalryUpto.Text);
+                            mb.Majikan = Convert.ToDecimal(txtMajikan.Text);
+                            mb.Pakerja = Convert.ToDecimal(txtPakerja.Text);
+                            mb.JumlahCaruman = Convert.ToDecimal(txtJumlahCaruman.Text);
+                            db.SaveChanges();
+                            MessageBox.Show("Updated Sucessfully!");
+                            LoadWindow();
+                        }
+                    }
+                    else
+                    {
+                        EPFCont mb = new EPFCont();
                         mb.MinRM = Convert.ToDecimal(txtMinRM.Text);
                         mb.MaxRM = Convert.ToDecimal(txtSalryUpto.Text);
                         mb.Majikan = Convert.ToDecimal(txtMajikan.Text);
                         mb.Pakerja = Convert.ToDecimal(txtPakerja.Text);
                         mb.JumlahCaruman = Convert.ToDecimal(txtJumlahCaruman.Text);
+                        db.EPFConts.Add(mb);
                         db.SaveChanges();
-                        MessageBox.Show("Updated Sucessfully!");
+                        MessageBox.Show("Saved Sucessfully!");
                         LoadWindow();
                     }
-                }
-                else
-                {
-                    EPFCont mb = new EPFCont();
-                    mb.MinRM = Convert.ToDecimal(txtMinRM.Text);
-                    mb.MaxRM = Convert.ToDecimal(txtSalryUpto.Text);
-                    mb.Majikan = Convert.ToDecimal(txtMajikan.Text);
-                    mb.Pakerja = Convert.ToDecimal(txtPakerja.Text);
-                    mb.JumlahCaruman = Convert.ToDecimal(txtJumlahCaruman.Text);
-                    db.EPFConts.Add(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Saved Sucessfully!");
-                    LoadWindow();
                 }
             }
             catch (Exception ex)
@@ -79,12 +108,14 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (MessageBox.Show("Do You Want to Delete EPF ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (Id != 0)
                 {
-                    if (Id != 0)
+                    if (MessageBox.Show("Do you want to Delete Shift ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         var mb = (from x in db.EPFConts where x.Id == Id select x).FirstOrDefault();
-                        db.EPFConts.Remove(mb);
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.EPFConts.Remove(mb);
                         db.SaveChanges();
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
@@ -93,12 +124,14 @@ namespace NUBE.PAYROLL.PL.Master
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                // ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -107,35 +140,10 @@ namespace NUBE.PAYROLL.PL.Master
 
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
         }
-
-        //private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    Filteration();
-        //}
-
-        //private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
-        //{
-        //    Filteration();
-        //}
-
-        //private void rptStartWith_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    Filteration();
-        //}
-
-        //private void rptContain_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    Filteration();
-        //}
-
-        //private void rptEndWith_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    Filteration();
-        //}
 
         private void txtMajikan_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -191,6 +199,11 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
+        private void NumericOnly(object sender, TextCompositionEventArgs e)
+        {
+            Config.CheckIsNumeric(e);
+        }
+
         #endregion
 
         #region FUNCITONS
@@ -206,11 +219,12 @@ namespace NUBE.PAYROLL.PL.Master
 
             try
             {
-                var EPF = (from x in db.EPFConts orderby x.MinRM ascending select x).ToList();
+                var EPF = (from x in db.EPFConts where x.IsCancel == false orderby x.MinRM ascending select x).ToList();
                 if (EPF != null)
                 {
                     dtEPF = AppLib.LINQResultToDataTable(EPF);
                     dgEPF.ItemsSource = dtEPF.DefaultView;
+                    Filteration();
                 }
             }
             catch (Exception ex)
@@ -252,9 +266,6 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-
-        #endregion
-
-       
+        #endregion       
     }
 }

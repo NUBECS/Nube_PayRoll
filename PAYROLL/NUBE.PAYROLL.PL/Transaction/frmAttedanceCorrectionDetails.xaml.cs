@@ -62,6 +62,11 @@ namespace NUBE.PAYROLL.PL.Transaction
             WindowLoad();
         }
 
+        private void NumericOnly(object sender, TextCompositionEventArgs e)
+        {
+            Config.CheckIsNumeric(e);
+        }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -379,6 +384,6 @@ namespace NUBE.PAYROLL.PL.Transaction
         }
 
         #endregion
-
+       
     }
 }

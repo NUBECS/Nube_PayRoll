@@ -12,18 +12,15 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class LogDetailType
+    public partial class DailyLateLog
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LogDetailType()
-        {
-            this.LogDetails = new HashSet<LogDetail>();
-        }
-    
         public int Id { get; set; }
-        public string Type { get; set; }
+        public int EmployeeId { get; set; }
+        public Nullable<System.DateTime> EntryDate { get; set; }
+        public Nullable<System.DateTime> InTime { get; set; }
+        public Nullable<System.DateTime> OutTime { get; set; }
+        public Nullable<decimal> LateMinutes { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LogDetail> LogDetails { get; set; }
+        public virtual MasterEmployee MasterEmployee { get; set; }
     }
 }

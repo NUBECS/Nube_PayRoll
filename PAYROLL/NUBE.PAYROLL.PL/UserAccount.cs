@@ -14,29 +14,14 @@ namespace NUBE.PAYROLL.PL
     
     public partial class UserAccount
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserAccount()
-        {
-            this.LogDetails = new HashSet<LogDetail>();
-            this.LogMasters = new HashSet<LogMaster>();
-            this.LogMasters1 = new HashSet<LogMaster>();
-            this.LogMasters2 = new HashSet<LogMaster>();
-        }
-    
         public int Id { get; set; }
         public string LoginId { get; set; }
         public string Password { get; set; }
         public Nullable<int> UserTypeId { get; set; }
         public string UserName { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LogDetail> LogDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LogMaster> LogMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LogMaster> LogMasters1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LogMaster> LogMasters2 { get; set; }
         public virtual UserType UserType { get; set; }
     }
 }

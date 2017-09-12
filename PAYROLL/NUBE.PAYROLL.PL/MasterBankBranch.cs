@@ -28,6 +28,8 @@ namespace NUBE.PAYROLL.PL
         public string Email { get; set; }
         public Nullable<int> NubeBranchId { get; set; }
         public Nullable<bool> IsHeadQuarters { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
         public virtual MasterBank MasterBank { get; set; }
         public virtual MasterCity MasterCity { get; set; }

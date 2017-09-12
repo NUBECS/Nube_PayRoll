@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NUBE.PAYROLL.CMN;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace NUBE.PAYROLL.PL.Master
 {
@@ -24,6 +25,7 @@ namespace NUBE.PAYROLL.PL.Master
     {
         int Id = 0;
         PayrollEntity db = new PayrollEntity();
+        DataTable dtCity = new DataTable();
         public frmMasterCity()
         {
             InitializeComponent();
@@ -40,26 +42,44 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (Id != 0)
+                if (string.IsNullOrEmpty(txtCityName.Text))
                 {
-                    var mb = (from x in db.MasterCities where x.Id == Id select x).FirstOrDefault();
-                    mb.CityName = txtCityName.Text;
-                    mb.ShortName = txtCityShortName.Text;
-                    mb.StateId = Convert.ToInt32(cmbState.SelectedValue);
-                    db.SaveChanges();
-                    MessageBox.Show("Updated Sucessfully!");
-                    LoadWindow();
+                    MessageBox.Show("City Name is Empty!", "Empty");
+                    txtCityName.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtCityShortName.Text))
+                {
+                    MessageBox.Show("Short Name is Empty!", "Empty");
+                    txtCityShortName.Focus();
+                }
+                else if (string.IsNullOrEmpty(cmbState.Text))
+                {
+                    MessageBox.Show("State is Empty!", "Empty");
+                    cmbState.Focus();
                 }
                 else
                 {
-                    MasterCity mb = new MasterCity();
-                    mb.CityName = txtCityName.Text;
-                    mb.ShortName = txtCityShortName.Text;
-                    mb.StateId = Convert.ToInt32(cmbState.SelectedValue);
-                    db.MasterCities.Add(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Saved Sucessfully!");
-                    LoadWindow();
+                    if (Id != 0)
+                    {
+                        var mb = (from x in db.MasterCities where x.Id == Id select x).FirstOrDefault();
+                        mb.CityName = txtCityName.Text;
+                        mb.ShortName = txtCityShortName.Text;
+                        mb.StateId = Convert.ToInt32(cmbState.SelectedValue);
+                        db.SaveChanges();
+                        MessageBox.Show("Updated Sucessfully!");
+                        LoadWindow();
+                    }
+                    else
+                    {
+                        MasterCity mb = new MasterCity();
+                        mb.CityName = txtCityName.Text;
+                        mb.ShortName = txtCityShortName.Text;
+                        mb.StateId = Convert.ToInt32(cmbState.SelectedValue);
+                        db.MasterCities.Add(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Saved Sucessfully!");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
@@ -74,21 +94,28 @@ namespace NUBE.PAYROLL.PL.Master
             {
                 if (Id != 0)
                 {
-                    var mb = (from x in db.MasterCities where x.Id == Id select x).FirstOrDefault();
-                    db.MasterCities.Remove(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Deleted Sucessfully");
-                    LoadWindow();
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        var mb = (from x in db.MasterCities where x.Id == Id select x).FirstOrDefault();
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.MasterCities.Remove(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Deleted Sucessfully");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                // ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -97,29 +124,19 @@ namespace NUBE.PAYROLL.PL.Master
 
         }
 
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptContain_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptEndWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void dgvCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -149,9 +166,9 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-
+            Filteration();
         }
         #endregion
 
@@ -163,18 +180,84 @@ namespace NUBE.PAYROLL.PL.Master
             txtCityName.Text = "";
             txtCityShortName.Text = "";
             cmbState.Text = "";
+            dtCity.Rows.Clear();
             try
             {
-                var cu = (from x in db.MasterStates select x).ToList();
-                cmbState.ItemsSource = cu;
-                cmbState.SelectedValuePath = "Id";
-                cmbState.DisplayMemberPath = "StateName";
+                DataTable dt = new DataTable();
+                using (SqlConnection con = new SqlConnection(Config.connStr))
+                {
+                    SqlCommand cmd;
+                    string str = " SELECT ST.Id,ST.StateName,ST.ShortName,ST.CountryId,CY.CountryName \r" +
+                                 " FROM MASTERSTATE ST(NOLOCK) \r" +
+                                 " LEFT JOIN MASTERCOUNTRY CY(NOLOCK)ON CY.ID = ST.COUNTRYID \r" +
+                                 " WHERE ST.ISCANCEL=0 \r " +
+                                 " ORDER BY ST.StateName";
+
+                    cmd = new SqlCommand(str, con);
+                    cmd.CommandType = CommandType.Text;
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    con.Open();
+                    adp.Fill(dt);
+                    con.Close();
+                    if (dt.Rows.Count > 0)
+                    {
+                        cmbState.ItemsSource = null;
+                        cmbState.ItemsSource = dt.DefaultView;
+                        cmbState.SelectedValuePath = "Id";
+                        cmbState.DisplayMemberPath = "StateName";
+                    }
+                }
 
                 var st = (from x in db.ViewMasterCities select x).ToList();
                 if (st != null)
                 {
-                    DataTable dt = AppLib.LINQResultToDataTable(st);
-                    dgvCity.ItemsSource = dt.DefaultView;
+                    dtCity = AppLib.LINQResultToDataTable(st);
+                    dgvCity.ItemsSource = dtCity.DefaultView;
+                }
+                Filteration();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        void Filteration()
+        {
+            try
+            {
+                string sWhere = "";
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = "CityName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = "CityName LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = "CityName LIKE '" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else
+                    {
+                        sWhere = "CityName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(sWhere))
+                {
+                    DataView dv = new DataView(dtCity);
+                    dv.RowFilter = sWhere;
+                    DataTable dtTemp = new DataTable();
+                    dtTemp = dv.ToTable();
+                    dgvCity.ItemsSource = dtTemp.DefaultView;
+                }
+                else
+                {
+                    dgvCity.ItemsSource = dtCity.DefaultView;
                 }
             }
             catch (Exception ex)
@@ -184,5 +267,7 @@ namespace NUBE.PAYROLL.PL.Master
         }
 
         #endregion
+
+
     }
 }

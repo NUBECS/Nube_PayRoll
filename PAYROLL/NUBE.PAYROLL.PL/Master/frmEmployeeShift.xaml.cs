@@ -136,12 +136,14 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (MessageBox.Show("Do You want to Delete Shift ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (Id != 0)
                 {
-                    if (Id != 0)
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         var mb = (from x in db.EmployeeShifts where x.Id == Id select x).FirstOrDefault();
-                        db.EmployeeShifts.Remove(mb);
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.EmployeeShifts.Remove(mb);
                         db.SaveChanges();
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
@@ -150,8 +152,8 @@ namespace NUBE.PAYROLL.PL.Master
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can't Delete This!", "Reference Shift Can't Delete");
-                //ExceptionLogging.SendErrorToText(ex);
+                // ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
@@ -159,6 +161,7 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
+                txtSearch.Text = "";
                 LoadWindow();
             }
             catch (Exception ex)
@@ -195,7 +198,7 @@ namespace NUBE.PAYROLL.PL.Master
                     cmbLunchEndHour.Text = Convert.ToDateTime(drv["LUNCHTIMEIN"]).Hour.ToString();
                     cmbLunchEndMinutes.Text = Convert.ToDateTime(drv["LUNCHTIMEIN"]).Minute.ToString();
                     cmbOTTimeHour.Text = Convert.ToDateTime(drv["MINIMUMOTTIME"]).Hour.ToString();
-                    cmbOTTimeMinutes.Text = Convert.ToDateTime(drv["MINIMUMOTTIME"]).Minute.ToString();                   
+                    cmbOTTimeMinutes.Text = Convert.ToDateTime(drv["MINIMUMOTTIME"]).Minute.ToString();
                 }
             }
             catch (Exception ex)
@@ -235,16 +238,6 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
             Filteration();
@@ -260,14 +253,14 @@ namespace NUBE.PAYROLL.PL.Master
             Filteration();
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
         }
 
         private void NumericOnly(object sender, TextCompositionEventArgs e)
         {
-
+            Config.CheckIsNumeric(e);
         }
 
         #endregion
@@ -290,14 +283,14 @@ namespace NUBE.PAYROLL.PL.Master
             cmbLunchEndHour.Text = "00";
             cmbLunchEndMinutes.Text = "00";
             cmbOTTimeHour.Text = "00";
-            cmbOTTimeMinutes.Text = "00";           
+            cmbOTTimeMinutes.Text = "00";
         }
 
         void LoadWindow()
         {
             FormClear();
             try
-            {                
+            {
                 using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
                     SqlCommand cmd;
@@ -306,7 +299,7 @@ namespace NUBE.PAYROLL.PL.Master
                                  " RIGHT(CONVERT(VARCHAR(32), OUTTIME, 100), 8)OUTTIME,\r" +
                                  " RIGHT(CONVERT(VARCHAR(32), MINIMUMOTTIME, 100), 8)MINIMUMOTTIME,\r" +
                                  " WEEKOFTWODAYS, ISGRACETIME, GRACETIME\r" +
-                                 " FROM EMPLOYEESHIFT(NOLOCK)";
+                                 " FROM EMPLOYEESHIFT(NOLOCK) \r  WHERE ISCANCEL=0 ";
 
                     cmd = new SqlCommand(str, con);
                     cmd.CommandType = CommandType.Text;
@@ -318,7 +311,55 @@ namespace NUBE.PAYROLL.PL.Master
                     if (dtEmployeeShift.Rows.Count > 0)
                     {
                         dgvEmployeeShift.ItemsSource = dtEmployeeShift.DefaultView;
+                        Filteration();
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        void Filteration()
+        {
+            try
+            {
+                string sWhere = "";
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = " NAME LIKE '" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else
+                    {
+                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+
+                    if (!string.IsNullOrEmpty(txtSearch.Text))
+                    {
+                        DataView dv = new DataView(dtEmployeeShift);
+                        dv.RowFilter = sWhere;
+                        DataTable dtTemp = dv.ToTable();
+                        dgvEmployeeShift.ItemsSource = dtTemp.DefaultView;
+                    }
+                    else
+                    {
+                        dgvEmployeeShift.ItemsSource = dtEmployeeShift.DefaultView;
+                    }
+                }
+                else
+                {
+                    dgvEmployeeShift.ItemsSource = dtEmployeeShift.DefaultView;
                 }
             }
             catch (Exception ex)
@@ -432,71 +473,7 @@ namespace NUBE.PAYROLL.PL.Master
             cmbGracePeriod.ItemsSource = lstMinutes;
         }
 
-        void Filteration()
-        {
-            try
-            {
-                string sWhere = "";
-
-                if (cbxCase.IsChecked == true)
-                {
-                    if (rptContain.IsChecked == true)
-                    {
-                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
-                    }
-                    else if (rptEndWith.IsChecked == true)
-                    {
-                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "'";
-                    }
-                    else if (rptStartWith.IsChecked == true)
-                    {
-                        sWhere = " NAME LIKE '" + txtSearch.Text.ToUpper() + "%'";
-                    }
-                    else
-                    {
-                        sWhere = " NAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
-                    }
-                }
-                else
-                {
-                    if (rptContain.IsChecked == true)
-                    {
-                        sWhere = " NAME LIKE '%" + txtSearch.Text + "%'";
-                    }
-                    else if (rptEndWith.IsChecked == true)
-                    {
-                        sWhere = " NAME LIKE '%" + txtSearch.Text + "'";
-                    }
-                    else if (rptStartWith.IsChecked == true)
-                    {
-                        sWhere = " NAME LIKE '" + txtSearch.Text + "%'";
-                    }
-                    else
-                    {
-                        sWhere = "NAME LIKE '%" + txtSearch.Text + "%'";
-                    }
-                }
-                if (!string.IsNullOrEmpty(txtSearch.Text))
-                {
-                    DataView dv = new DataView(dtEmployeeShift);
-                    dv.RowFilter = sWhere;
-                    DataTable dtTemp = new DataTable();
-                    dtTemp = dv.ToTable();
-                    dgvEmployeeShift.ItemsSource = dtTemp.DefaultView;
-                }
-                else
-                {
-                    dgvEmployeeShift.ItemsSource = dtEmployeeShift.DefaultView;
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogging.SendErrorToText(ex);
-            }
-        }
-
         #endregion
 
-        
     }
 }

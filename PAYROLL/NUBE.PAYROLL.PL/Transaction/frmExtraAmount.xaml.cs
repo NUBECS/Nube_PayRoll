@@ -24,6 +24,7 @@ namespace NUBE.PAYROLL.PL.Transaction
     public partial class frmExtraAmount : UserControl
     {
         PayrollEntity db = new PayrollEntity();
+        DataTable dtBonus = new DataTable();
         public frmExtraAmount()
         {
             InitializeComponent();
@@ -40,39 +41,32 @@ namespace NUBE.PAYROLL.PL.Transaction
             FormFill();
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-
-        }
-
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
-        {
-
+            Filteration();
         }
 
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
+            Filteration();
 
         }
 
         private void rptContain_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptEndWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-
+            txtSearch.Text = "";
+            dtMonth.Text = "";
+            LoadWindow();
         }
 
         private void dgExtraAmount_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -117,10 +111,12 @@ namespace NUBE.PAYROLL.PL.Transaction
             try
             {
                 var emp = (from x in db.ViewManualPayments select x).ToList();
-                DataTable dt = AppLib.LINQResultToDataTable(emp);
-                if (dt.Rows.Count > 0)
+                dtBonus.Rows.Clear();
+                dtBonus = AppLib.LINQResultToDataTable(emp);
+                if (dtBonus.Rows.Count > 0)
                 {
-                    dgExtraAmount.ItemsSource = dt.DefaultView;
+                    dgExtraAmount.ItemsSource = dtBonus.DefaultView;
+                    Filteration();
                 }
             }
             catch (Exception e)
@@ -136,27 +132,26 @@ namespace NUBE.PAYROLL.PL.Transaction
                 if (!string.IsNullOrEmpty(dtMonth.Text))
                 {
                     DateTime dtDOB = Convert.ToDateTime(dtMonth.SelectedDate);
-                    DataTable dt = new DataTable();
                     using (SqlConnection con = new SqlConnection(Config.connStr))
                     {
                         SqlCommand cmd;
-                        string str = string.Format("SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO," +
-                            "ME.ID,ME.MEMBERSHIPNO,ME.EMPLOYEENAME,ME.SHORTNAME,ME.GENDER, ME.NRIC," +
-                            "ISNULL(YA.ID, 0)ALLOWANCEID,YA.ENTRYDATE,ISNULL(YA.BONUS, 0)BONUS," +
-                            "ISNULL(YA.EXGRATIA, 0)EXGRATIA FROM MASTEREMPLOYEE ME(NOLOCK)" +
-                            "LEFT JOIN YEARLYALLOWANCE YA(NOLOCK) ON YA.EMPLOYEEID = ME.ID AND MONTH(YA.ENTRYDATE) = MONTH('{0:dd/MMM/yyyy}')", dtDOB);
+                        string str = string.Format(" SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO,\r" +
+                            " ME.ID,ME.MEMBERSHIPNO,ME.EMPLOYEENAME,ME.SHORTNAME,ME.GENDER, ME.NRIC,\r" +
+                            " ISNULL(YA.ID, 0)ALLOWANCEID,YA.ENTRYDATE,ISNULL(YA.BONUS, 0)BONUS,\r" +
+                            " ISNULL(YA.EXGRATIA, 0)EXGRATIA FROM MASTEREMPLOYEE ME(NOLOCK)\r" +
+                            " LEFT JOIN YEARLYALLOWANCE YA(NOLOCK) ON YA.EMPLOYEEID = ME.ID AND MONTH(YA.ENTRYDATE) = MONTH('{0:dd/MMM/yyyy}')", dtDOB);
                         cmd = new SqlCommand(str, con);
                         cmd.CommandType = CommandType.Text;
                         SqlDataAdapter adp = new SqlDataAdapter(cmd);
                         con.Open();
-                        adp.Fill(dt);
+                        adp.Fill(dtBonus);
+                        Filteration();
                         con.Close();
                     }
 
-                    //var bns = (from x in db.VIEWYEARLYALLOWANCEs where x.ENTRYDATE == dtDOB select x).ToList();
-                    if (dt.Rows.Count > 0)
+                    if (dtBonus.Rows.Count > 0)
                     {
-                        dgExtraAmount.ItemsSource = dt.DefaultView;
+                        // dgExtraAmount.ItemsSource = dt.DefaultView;
                     }
                     else
                     {
@@ -171,8 +166,55 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
         }
 
-        #endregion
+        void Filteration()
+        {
+            try
+            {
+                string sWhere = "";
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
 
+                    if (!string.IsNullOrEmpty(txtSearch.Text))
+                    {
+                        DataView dv = new DataView(dtBonus);
+                        dv.RowFilter = sWhere;
+                        DataTable dtTemp = dv.ToTable();
+                        dgExtraAmount.ItemsSource = dtTemp.DefaultView;
+                    }
+                    else
+                    {
+                        dgExtraAmount.ItemsSource = dtBonus.DefaultView;
+                    }
+                }
+                else
+                {
+                    dgExtraAmount.ItemsSource = dtBonus.DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+
+        #endregion
 
     }
 }

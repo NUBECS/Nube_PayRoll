@@ -25,11 +25,13 @@ namespace NUBE.PAYROLL.PL
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<int> CompanyId { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
+        public virtual CompanyDetail CompanyDetail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAccount> UserAccounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTypeDetail> UserTypeDetails { get; set; }
-        public virtual CompanyDetail CompanyDetail { get; set; }
     }
 }

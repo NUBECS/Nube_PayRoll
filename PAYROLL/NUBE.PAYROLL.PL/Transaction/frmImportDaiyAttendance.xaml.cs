@@ -258,34 +258,24 @@ namespace NUBE.PAYROLL.PL.Transaction
                                     db.AttedanceLogs.AddRange(lstAttLog);
                                     db.SaveChanges();
 
-                                    try
+                                    foreach (DataRow drRow in dtEmployee.Rows)
                                     {
-                                        foreach (DataRow drRow in dtEmployee.Rows)
-                                        {
-                                            cmd = new SqlCommand("SPDAILYATTEDANCEDET", con);
-                                            cmd.CommandType = CommandType.StoredProcedure;
-                                            cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
-                                            cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));
-                                            cmd.Parameters.Add(new SqlParameter("@EMPLOYEEID", drRow["EMPLOYEEID"]));
-                                            cmd.Parameters.Add(new SqlParameter("@SHIFTID", drRow["SHIFTID"]));
-                                            cmd.Parameters.Add(new SqlParameter("@ISLOP", drRow["UNPAIDLEAVE"]));
-                                            cmd.CommandTimeout = 0;
-                                            /*int i =*/
-                                            cmd.ExecuteNonQuery();
+                                        cmd = new SqlCommand("SPDAILYATTEDANCEDET", con);
+                                        cmd.CommandType = CommandType.StoredProcedure;
+                                        cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+                                        cmd.Parameters.Add(new SqlParameter("@DAILY", bIsDatewise));
+                                        cmd.Parameters.Add(new SqlParameter("@EMPLOYEEID", drRow["EMPLOYEEID"]));
+                                        cmd.Parameters.Add(new SqlParameter("@SHIFTID", drRow["SHIFTID"]));
+                                        cmd.Parameters.Add(new SqlParameter("@ISLOP", drRow["UNPAIDLEAVE"]));
+                                        cmd.CommandTimeout = 0;
+                                        int i = cmd.ExecuteNonQuery();
 
-                                            //if (i == 0)
-                                            //{
-                                            //    bIsError = true;
-                                            //    MessageBox.Show("Imported Not Execute!", "Error,SPDAILYATTEDANCEDET");
-                                            //    //MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
-                                            //}
+                                        if (i == 0)
+                                        {
+                                            bIsError = true;
+                                            MessageBox.Show("Imported Not Execute!", "Error,SPDAILYATTEDANCEDET");
                                         }
                                     }
-                                    catch (Exception ex)
-                                    {
-                                        ExceptionLogging.SendErrorToText(ex);
-                                    }
-
                                 }
                                 else
                                 {
@@ -295,11 +285,10 @@ namespace NUBE.PAYROLL.PL.Transaction
                                 if (bIsError == true)
                                 {
                                     MessageBox.Show("Imported Not Execute!,AttedanceLogs Error", "Error,Contact Administrator");
-                                    // MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
+                                    MessageBox.Show("Imported Sucessfully !");
                                 }
                             }
                             else

@@ -21,25 +21,25 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="77">
-                    <TextBox Name="txtSearch" Width="350"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  TextChanged="txtSearch_TextChanged">
+                    <TextBox Name="txtSearch" Width="350"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyUp="txtSearch_PreviewKeyUp">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon  Kind="FileFind" Foreground="{Binding BorderBrush}" Height="25" Width="25" />
-                                <TextBlock Text="Search Text" FontWeight="Bold"/>
+                                <TextBlock Text="Search Employee Name" FontWeight="Bold"/>
                             </StackPanel>
                         </materialDesign:HintAssist.Hint>
                     </TextBox>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <CheckBox Name="cbxCase" Content="Case sensitive" Checked="cbxCase_Checked" Unchecked="cbxCase_Unchecked"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">                        
                         <RadioButton x:Name="rptStartWith" GroupName="SearchType" Content="Start With" Checked="rptStartWith_Checked"  />
                         <RadioButton x:Name="rptContain" GroupName="SearchType" Content="Contain"  IsChecked="True" Checked="rptContain_Checked"/>
                         <RadioButton x:Name="rptEndWith" GroupName="SearchType" Content="End With" Checked="rptEndWith_Checked" />
                     </StackPanel>
-                </StackPanel>
-                <Button Width="80" Height="30" x:Name="btnAdd" Content="ADD" Click="btnAdd_Click" Margin="100,5,5,5" />
+                </StackPanel>                
+                <Button Width="80" Height="30" x:Name="btnAdd" Content="ADD" Click="btnAdd_Click" Margin="30,5,5,5" />
                 <Button Width="80" Height="30" x:Name="btnEdit" Content="EDIT" Click="btnEdit_Click" Margin="5 5" />
                 <Button Width="80" Height="30" x:Name="btnDelete" Content="DELETE" Click="btnDelete_Click" Margin="5 5"  />
                 <Button Width="80" Height="30" x:Name="btnClear" Content="CLEAR" Click="btnClear_Click" Margin="5 5" />
+                <CheckBox x:Name="chkIsResigned" Margin="10,-10,0,0" FontWeight="Bold" Content="Only Resigned Member's" Click="chkIsResigned_Click"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
@@ -67,6 +67,7 @@
                         <DataGridTextColumn Header="Gender" FontWeight="Bold" Width="200" Binding="{Binding GENDER}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="NRIC" FontWeight="Bold" Width="200" Binding="{Binding NRIC}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Position" FontWeight="Bold" Width="200" Binding="{Binding POSITIONNAME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Resigned" FontWeight="Bold" Width="200" Visibility="Collapsed" Binding="{Binding RESIGNED}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

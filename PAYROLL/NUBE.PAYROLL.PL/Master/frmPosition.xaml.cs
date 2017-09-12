@@ -39,6 +39,11 @@ namespace NUBE.PAYROLL.PL.Master
             LoadWindow();
         }
 
+        private void NumericOnly(object sender, TextCompositionEventArgs e)
+        {
+            Config.CheckIsNumeric(e);
+        }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -85,7 +90,7 @@ namespace NUBE.PAYROLL.PL.Master
                             pd.MinYear = Convert.ToDecimal(dr["MinYear"]);
                             pd.MaxYear = Convert.ToDecimal(dr["MaxYear"]);
                             pd.NoOfLeave = Convert.ToDecimal(dr["NoOfLeave"]);
-                            pd.NoOfMedicalLeave= Convert.ToDecimal(dr["NoOfMedicalLeave"]);
+                            pd.NoOfMedicalLeave = Convert.ToDecimal(dr["NoOfMedicalLeave"]);
                             lstp.Add(pd);
                         }
                         db.PositionDetails.AddRange(lstp);
@@ -132,21 +137,24 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (MessageBox.Show("Do You want to Delete Position ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (Id != 0)
                 {
-                    if (Id != 0)
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         var ptd = (from x in db.PositionDetails where x.PositionId == Id select x).FirstOrDefault();
-
                         if (ptd != null)
                         {
-                            db.PositionDetails.RemoveRange(db.PositionDetails.Where(x => x.PositionId == Id));
+                            //db.PositionDetails.RemoveRange(db.PositionDetails.Where(x => x.PositionId == Id));
+                            ptd.IsCancel = true;
+                            ptd.CancelOn = DateTime.Now;
                             db.SaveChanges();
                         }
 
                         var mb = (from x in db.MasterPositions where x.Id == Id select x).FirstOrDefault();
-                        db.MasterPositions.Remove(mb);
-                        db.SaveChanges();                        
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.MasterPositions.Remove(mb);
+                        db.SaveChanges();
 
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
@@ -154,13 +162,14 @@ namespace NUBE.PAYROLL.PL.Master
                 }
             }
             catch (Exception ex)
-            {
-                ExceptionLogging.SendErrorToText(ex);
+            {                
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -221,17 +230,7 @@ namespace NUBE.PAYROLL.PL.Master
 
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
         }
@@ -334,14 +333,16 @@ namespace NUBE.PAYROLL.PL.Master
             txtNoOfMedicalLeave.Text = "";
             lstPosition.Clear();
             dgvAnnualLeave.ItemsSource = null;
+            dtMasterPosition.Rows.Clear();
 
             try
             {
-                var pos = (from x in db.MasterPositions select x).ToList();
+                var pos = (from x in db.MasterPositions where x.IsCancel == false select x).ToList();
                 if (pos != null)
                 {
                     dtMasterPosition = AppLib.LINQResultToDataTable(pos);
                     dgvPosition.ItemsSource = dtMasterPosition.DefaultView;
+                    Filteration();
                 }
             }
             catch (Exception ex)
@@ -371,7 +372,7 @@ namespace NUBE.PAYROLL.PL.Master
             txtNoOfMedicalLeave.Text = "";
             if (Id != 0)
             {
-                var pos = (from x in db.PositionDetails where x.PositionId == Id orderby x.MinYear select x).ToList();
+                var pos = (from x in db.PositionDetails where x.PositionId == Id && x.IsCancel == false orderby x.MinYear select x).ToList();
                 if (pos.Count > 0)
                 {
                     lstPosition = pos.ToList();
@@ -386,8 +387,7 @@ namespace NUBE.PAYROLL.PL.Master
             try
             {
                 string sWhere = "";
-
-                if (cbxCase.IsChecked == true)
+                if (!string.IsNullOrEmpty(txtSearch.Text))
                 {
                     if (rptContain.IsChecked == true)
                     {
@@ -405,28 +405,7 @@ namespace NUBE.PAYROLL.PL.Master
                     {
                         sWhere = "PositionName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
                     }
-                }
-                else
-                {
-                    if (rptContain.IsChecked == true)
-                    {
-                        sWhere = "PositionName LIKE '%" + txtSearch.Text + "%'";
-                    }
-                    else if (rptEndWith.IsChecked == true)
-                    {
-                        sWhere = "PositionName LIKE '%" + txtSearch.Text + "'";
-                    }
-                    else if (rptStartWith.IsChecked == true)
-                    {
-                        sWhere = "PositionName LIKE '" + txtSearch.Text + "%'";
-                    }
-                    else
-                    {
-                        sWhere = "PositionName LIKE '%" + txtSearch.Text + "%'";
-                    }
-                }
-                if (!string.IsNullOrEmpty(txtSearch.Text))
-                {
+
                     DataView dv = new DataView(dtMasterPosition);
                     dv.RowFilter = sWhere;
                     DataTable dtTemp = new DataTable();

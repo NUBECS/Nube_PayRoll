@@ -18,10 +18,9 @@ namespace NUBE.PAYROLL.PL
         public MasterEmployee()
         {
             this.AttedanceLogs = new HashSet<AttedanceLog>();
+            this.AttendanceCorrections = new HashSet<AttendanceCorrection>();
             this.DailyAttedanceDets = new HashSet<DailyAttedanceDet>();
-            this.EmployeeIncrements = new HashSet<EmployeeIncrement>();
-            this.EmployeeIncrements1 = new HashSet<EmployeeIncrement>();
-            this.EmployeeIncrements2 = new HashSet<EmployeeIncrement>();
+            this.DailyLateLogs = new HashSet<DailyLateLog>();
             this.LatePermissionDetails = new HashSet<LatePermissionDetail>();
             this.LeavePermissionDetails = new HashSet<LeavePermissionDetail>();
             this.MonthlySalaries = new HashSet<MonthlySalary>();
@@ -29,9 +28,7 @@ namespace NUBE.PAYROLL.PL
             this.OverTimeDetails = new HashSet<OverTimeDetail>();
             this.PCBs = new HashSet<PCB>();
             this.TempAttendanceTimings = new HashSet<TempAttendanceTiming>();
-            this.TotalWorkingDays = new HashSet<TotalWorkingDay>();
             this.YearlyAllowances = new HashSet<YearlyAllowance>();
-            this.AttendanceCorrections = new HashSet<AttendanceCorrection>();
         }
     
         public int Id { get; set; }
@@ -101,17 +98,17 @@ namespace NUBE.PAYROLL.PL
         public bool IsAdmin { get; set; }
         public int ShiftId { get; set; }
         public Nullable<decimal> MobileAllowance { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttedanceLog> AttedanceLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AttendanceCorrection> AttendanceCorrections { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DailyAttedanceDet> DailyAttedanceDets { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeIncrement> EmployeeIncrements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeIncrement> EmployeeIncrements1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeIncrement> EmployeeIncrements2 { get; set; }
+        public virtual ICollection<DailyLateLog> DailyLateLogs { get; set; }
         public virtual EmployeeShift EmployeeShift { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LatePermissionDetail> LatePermissionDetails { get; set; }
@@ -135,10 +132,6 @@ namespace NUBE.PAYROLL.PL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TempAttendanceTiming> TempAttendanceTimings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TotalWorkingDay> TotalWorkingDays { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<YearlyAllowance> YearlyAllowances { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AttendanceCorrection> AttendanceCorrections { get; set; }
     }
 }

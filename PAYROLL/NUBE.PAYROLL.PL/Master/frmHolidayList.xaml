@@ -100,7 +100,7 @@
                     <TabItem Header="Details" FontSize="16">
                         <Grid Grid.Row="0" Margin="0,0,10,-20" >
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,8,0,517" Height="77">
-                                <TextBox Name="txtSearch" Width="350"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  TextChanged="txtSearch_TextChanged">
+                                <TextBox Name="txtSearch" Width="350"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyUp="txtSearch_PreviewKeyUp">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon  Kind="FileFind" Foreground="{Binding BorderBrush}" Height="25" Width="25" />
@@ -108,8 +108,7 @@
                                         </StackPanel>
                                     </materialDesign:HintAssist.Hint>
                                 </TextBox>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                                    <CheckBox Name="cbxCase" Content="Case sensitive" Checked="cbxCase_Checked" Unchecked="cbxCase_Unchecked"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">                                    
                                     <RadioButton x:Name="rptStartWith" GroupName="SearchType" Content="Start With" Checked="rptStartWith_Checked"  />
                                     <RadioButton x:Name="rptContain" GroupName="SearchType" Content="Contain"  IsChecked="True" Checked="rptContain_Checked"/>
                                     <RadioButton x:Name="rptEndWith" GroupName="SearchType" Content="End With" Checked="rptEndWith_Checked" />

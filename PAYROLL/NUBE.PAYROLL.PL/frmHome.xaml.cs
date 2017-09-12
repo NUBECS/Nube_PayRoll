@@ -44,7 +44,14 @@ namespace NUBE.PAYROLL.PL
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            if (MessageBox.Show(this, "Are you sure you want to exit?", "Exit Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void ListBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)

@@ -24,6 +24,8 @@ namespace NUBE.PAYROLL.PL
         public int Id { get; set; }
         public string CountryName { get; set; }
         public string ShortName { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MasterEmployee> MasterEmployees { get; set; }

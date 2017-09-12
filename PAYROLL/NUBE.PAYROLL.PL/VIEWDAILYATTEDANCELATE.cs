@@ -30,6 +30,6 @@ namespace NUBE.PAYROLL.PL
         public string REMARKS { get; set; }
         public bool ISFULLDAYLEAVE { get; set; }
         public bool ISHALFDAYLEAVE { get; set; }
-        public Nullable<decimal> LATEHOURS { get; set; }
+        public string LATEHOURS { get; set; }
     }
 }

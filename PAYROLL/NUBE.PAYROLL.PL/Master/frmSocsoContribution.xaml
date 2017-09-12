@@ -30,7 +30,7 @@
                     <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical" x:Name = "pnlForm" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
                             <StackPanel Orientation="Horizontal" >
-                                <TextBox  x:Name="txtMinRM" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" >
+                                <TextBox  x:Name="txtMinRM" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" PreviewTextInput="NumericOnly" >
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -38,7 +38,7 @@
                                         </StackPanel>
                                     </materialDesign:HintAssist.Hint>
                                 </TextBox>
-                                <TextBox  x:Name="txtSalryUpto" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" >
+                                <TextBox  x:Name="txtSalryUpto" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" PreviewTextInput="NumericOnly" >
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -48,7 +48,7 @@
                                 </TextBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" >
-                                <TextBox  x:Name="txtMajikan" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" TextChanged="txtMajikan_TextChanged" >
+                                <TextBox  x:Name="txtMajikan" Text="{Binding GroupName, Mode=TwoWay}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" TextChanged="txtMajikan_TextChanged" PreviewTextInput="NumericOnly" >
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -56,7 +56,7 @@
                                         </StackPanel>
                                     </materialDesign:HintAssist.Hint>
                                 </TextBox>
-                                <TextBox  x:Name="txtPakerja" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" TextChanged="txtPakerja_TextChanged" >
+                                <TextBox  x:Name="txtPakerja" Margin="10,0,0,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" Width="185" FontSize="14" TextChanged="txtPakerja_TextChanged" PreviewTextInput="NumericOnly" >
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -66,7 +66,7 @@
                                 </TextBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" >
-                            <TextBox  x:Name="txtJumlahCaruman" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" >
+                            <TextBox  x:Name="txtJumlahCaruman" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" PreviewTextInput="NumericOnly" >
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -74,7 +74,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                                <TextBox Margin="10,0,0,0"  x:Name="txtJenisSahaja" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" >
+                                <TextBox Margin="10,0,0,0"  x:Name="txtJenisSahaja" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" PreviewTextInput="NumericOnly" >
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="AccessPoint" Height="25" Width="25" />
@@ -137,7 +137,7 @@
                     <TabItem Header="Details" FontSize="16">
                         <Grid Grid.Row="0" Margin="0,0,10,-20" >
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,8,0,517" Height="77">
-                                <TextBox Name="txtSearch" Width="350"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  TextChanged="txtSearch_TextChanged">
+                                <TextBox Name="txtSearch" Width="350"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewKeyUp="txtSearch_PreviewKeyUp">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon  Kind="FileFind" Foreground="{Binding BorderBrush}" Height="25" Width="25" />

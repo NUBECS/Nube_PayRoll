@@ -49,7 +49,7 @@
                             </TextBox>
 
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox x:Name="cmbBank" IsEditable="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                                <ComboBox x:Name="cmbBank"  IsReadOnly="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="Bank" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -57,7 +57,7 @@
                                         </StackPanel>
                                     </materialDesign:HintAssist.Hint>
                                 </ComboBox>
-                                <ComboBox x:Name="cmbNubeBranch" Margin="10,0,0,0" IsEditable="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                                <ComboBox x:Name="cmbNubeBranch" IsReadOnly="True" Margin="10,0,0,0" IsEditable="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="RssBox" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -83,7 +83,7 @@
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox x:Name="cmbCity" IsEditable="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                                <ComboBox x:Name="cmbCity"  IsReadOnly="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="MapMarker" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -101,7 +101,7 @@
                                 </TextBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <ComboBox x:Name="cmbState" IsEditable="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                                <ComboBox x:Name="cmbState"  IsReadOnly="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="MapMarkerMultiple" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -109,7 +109,7 @@
                                         </StackPanel>
                                     </materialDesign:HintAssist.Hint>
                                 </ComboBox>
-                                <ComboBox x:Name="cmbCountry" Margin="10,0,0,0" IsEditable="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                                <ComboBox x:Name="cmbCountry" IsReadOnly="True" Margin="10,0,0,0" IsEditable="True" SelectedValue="{Binding UnderGroupId,Mode=TwoWay}" Text="{Binding underGroupName,Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                     <materialDesign:HintAssist.Hint>
                                         <StackPanel Orientation="Horizontal">
                                             <materialDesign:PackIcon Kind="MapMarkerRadius" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />

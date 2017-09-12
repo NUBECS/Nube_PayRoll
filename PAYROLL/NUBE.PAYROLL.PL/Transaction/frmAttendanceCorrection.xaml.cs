@@ -23,6 +23,7 @@ namespace NUBE.PAYROLL.PL.Transaction
     /// </summary>
     public partial class frmAttendanceCorrection : UserControl
     {
+        DataTable dtAttedanceCorrection = new DataTable();
         public frmAttendanceCorrection()
         {
             InitializeComponent();
@@ -93,9 +94,9 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-
+            Filteration();
         }
 
         private void chkIsModified_Click(object sender, RoutedEventArgs e)
@@ -105,27 +106,28 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         private void cbxCase_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
+            Filteration();
 
         }
 
         private void rptContain_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptEndWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
 
@@ -161,7 +163,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                     {
                         SqlCommand cmd;
                         string str = "";
-                        DataTable dtAttedanceCorrection = new DataTable();
+                        dtAttedanceCorrection.Rows.Clear();
                         if (chkIsModified.IsChecked == true)
                         {
                             str = " SELECT ROW_NUMBER() OVER(ORDER BY ENTRYDATE,ISNULL(AL.INTIME,ISNULL(AL.OUTTIME,ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')))) ASC) AS RNO, \r" +
@@ -191,7 +193,8 @@ namespace NUBE.PAYROLL.PL.Transaction
                         con.Close();
                         if (dtAttedanceCorrection.Rows.Count > 0)
                         {
-                            dgAttedanceCorrection.ItemsSource = dtAttedanceCorrection.DefaultView;                           
+                            dgAttedanceCorrection.ItemsSource = dtAttedanceCorrection.DefaultView;
+                            Filteration();
                         }
                         else
                         {
@@ -206,6 +209,55 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
         }
 
+        void Filteration()
+        {
+            try
+            {
+                string sWhere = "";
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+
+                    if (!string.IsNullOrEmpty(txtSearch.Text))
+                    {
+                        DataView dv = new DataView(dtAttedanceCorrection);
+                        dv.RowFilter = sWhere;
+                        DataTable dtTemp = new DataTable();
+                        dtTemp = dv.ToTable();
+                        dgAttedanceCorrection.ItemsSource = dtTemp.DefaultView;
+                    }
+                    else
+                    {
+                        dgAttedanceCorrection.ItemsSource = dtAttedanceCorrection.DefaultView;
+                    }
+                }
+                else
+                {
+                    dgAttedanceCorrection.ItemsSource = dtAttedanceCorrection.DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
         #endregion
+
     }
 }

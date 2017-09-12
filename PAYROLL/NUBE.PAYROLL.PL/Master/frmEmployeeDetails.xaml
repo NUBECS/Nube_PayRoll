@@ -44,7 +44,7 @@
                         </TextBox>
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBox Margin="0,0,0,0" x:Name="txtMemberID" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185">
+                            <TextBox Margin="0,0,0,0" x:Name="txtMemberID" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" PreviewTextInput="NumericOnly">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Account" Height="25" Width="25" />
@@ -52,7 +52,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                            <ComboBox x:Name="cmbGender" Margin="10,0,0,0" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                            <ComboBox x:Name="cmbGender" IsReadOnly="True" Margin="10,0,0,0" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="30" />
@@ -61,6 +61,7 @@
                                 </materialDesign:HintAssist.Hint>
                                 <ComboBoxItem>Male</ComboBoxItem>
                                 <ComboBoxItem>Female</ComboBoxItem>
+                                <ComboBoxItem>Others</ComboBoxItem>
                             </ComboBox>
                         </StackPanel>
 
@@ -73,7 +74,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                            <ComboBox Margin="10,0,0,0" x:Name="cmbPosition" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                            <ComboBox Margin="10,0,0,0" IsReadOnly="True" x:Name="cmbPosition" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Eraser" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -110,7 +111,7 @@
                             </materialDesign:HintAssist.Hint>
                         </TextBox>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox   x:Name="txtPostalCode" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto" Width="185">
+                            <TextBox   x:Name="txtPostalCode" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto" Width="185" PreviewTextInput="NumericOnly">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="331">
                                         <materialDesign:PackIcon  Kind="CodeArray" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -118,7 +119,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                            <ComboBox Margin="10,0,0,0" x:Name="cmbCity" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185" SelectionChanged="cmbCity_SelectionChanged">
+                            <ComboBox Margin="10,0,0,0" x:Name="cmbCity" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185" SelectionChanged="cmbCity_SelectionChanged">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="MapMarker" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -129,7 +130,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox x:Name="cmbState" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185" IsReadOnly="True">
+                            <ComboBox x:Name="cmbState"  Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185" IsReadOnly="True">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="MapMarkerMultiple" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -148,7 +149,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBox   x:Name="txtTelephone" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TransitionAssist.DisableTransitions="True"  Width="185">
+                            <TextBox   x:Name="txtTelephone" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TransitionAssist.DisableTransitions="True"  Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="331">
                                         <materialDesign:PackIcon  Kind="PhoneClassic" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -156,7 +157,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                            <TextBox Margin="10,0,0,0" x:Name="txtMobile" PreviewTextInput="NumericOnly" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" FontSize="14" materialDesign:TransitionAssist.DisableTransitions="True" Width="185">
+                            <TextBox Margin="10,0,0,0" x:Name="txtMobile" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" FontSize="14" materialDesign:TransitionAssist.DisableTransitions="True" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="331">
                                         <materialDesign:PackIcon Kind="Phone" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -166,7 +167,7 @@
                             </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox Margin="0,0,0,0"  x:Name="txtEmergencyContactNo" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185">
+                            <TextBox Margin="0,0,0,0"  x:Name="txtEmergencyContactNo" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="151">
                                         <materialDesign:PackIcon  Kind="Phone" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -174,7 +175,6 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-
                             <TextBox Margin="10,0,0,0"  x:Name="txtMail" FontWeight="Bold" TextChanged="txtMail_TextChanged" LostFocus="txtMail_LostFocus" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="329">
@@ -186,7 +186,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox x:Name="cmbShift" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                            <ComboBox x:Name="cmbShift" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Timelapse" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -234,7 +234,7 @@
                     <StackPanel Orientation="Vertical" x:Name = "pnlForm2" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
 
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox x:Name="cmbBank" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                            <ComboBox x:Name="cmbBank" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Bank" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -243,7 +243,7 @@
                                 </materialDesign:HintAssist.Hint>
                             </ComboBox>
                             <DatePicker  Margin="10,20,0,0"  x:Name="dtDOB" FontWeight="Bold" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Date Of Birth" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  VerticalAlignment="Top" Width="110" FontSize="14" Height="30" SelectedDateChanged="dtDOB_SelectedDateChanged"/>
-                            <TextBox x:Name="txtAge" Margin="10,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="60">
+                            <TextBox x:Name="txtAge" Margin="10,0,0,0" IsReadOnly="True" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="60">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="151">
                                         <materialDesign:PackIcon  Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -254,7 +254,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox x:Name="cmbRace" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                            <ComboBox x:Name="cmbRace" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -266,7 +266,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <ComboBox x:Name="cmbNubeBranch" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                            <ComboBox x:Name="cmbNubeBranch" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="RssBox" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -293,7 +293,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                            <TextBox Margin="10,0,0,0" x:Name="txtBasicSalary" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" >
+                            <TextBox Margin="10,0,0,0" x:Name="txtBasicSalary" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="185" PreviewTextInput="NumericOnly" >
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Coin" Height="25" Width="25" />
@@ -556,7 +556,7 @@
 
                                 <Grid Grid.Row="2">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBox x:Name="txtGELA" ToolTip="GREAT EASTERN LIFE ASSURANCE (GELA)" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="60">
+                                        <TextBox x:Name="txtGELA" ToolTip="GREAT EASTERN LIFE ASSURANCE (GELA)" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="60" PreviewTextInput="NumericOnly">
                                             <materialDesign:HintAssist.Hint>
                                                 <StackPanel Orientation="Horizontal" Width="151">
                                                     <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -595,7 +595,7 @@
                                 <Grid Grid.Row="1">
                                     <StackPanel Orientation="Horizontal">
                                         <CheckBox x:Name="ChkOTHERS"  FontWeight="Bold" FontSize="14" Content="OTHERS" Width="180" Click="ChkOTHERS_Click"/>
-                                        <TextBox x:Name="txtOTHERS" Margin="10,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180">
+                                        <TextBox x:Name="txtOTHERS" Margin="10,0,0,0" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="180" PreviewTextInput="NumericOnly">
                                             <materialDesign:HintAssist.Hint>
                                                 <StackPanel Orientation="Horizontal" Width="151">
                                                     <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />

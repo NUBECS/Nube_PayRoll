@@ -25,6 +25,7 @@ namespace NUBE.PAYROLL.PL.Master
     {
         int Id = 0;
         PayrollEntity db = new PayrollEntity();
+        DataTable dtCountry = new DataTable();
         public frmMasterCountry()
         {
             InitializeComponent();
@@ -41,24 +42,37 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (Id != 0)
+                if (string.IsNullOrEmpty(txtCountryName.Text))
                 {
-                    var mb = (from x in db.MasterCountries where x.Id == Id select x).FirstOrDefault();
-                    mb.CountryName = txtCountryName.Text;
-                    mb.ShortName = txtCountryShortName.Text;
-                    db.SaveChanges();
-                    MessageBox.Show("Updated Sucessfully!");
-                    LoadWindow();
+                    MessageBox.Show("Country Name is Empty!", "Empty");
+                    txtCountryName.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtCountryShortName.Text))
+                {
+                    MessageBox.Show("Short Name is Empty!", "Empty");
+                    txtCountryShortName.Focus();
                 }
                 else
                 {
-                    MasterCountry mb = new MasterCountry();
-                    mb.CountryName = txtCountryName.Text;
-                    mb.ShortName = txtCountryShortName.Text;
-                    db.MasterCountries.Add(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Saved Sucessfully!");
-                    LoadWindow();
+                    if (Id != 0)
+                    {
+                        var mb = (from x in db.MasterCountries where x.Id == Id select x).FirstOrDefault();
+                        mb.CountryName = txtCountryName.Text;
+                        mb.ShortName = txtCountryShortName.Text;
+                        db.SaveChanges();
+                        MessageBox.Show("Updated Sucessfully!");
+                        LoadWindow();
+                    }
+                    else
+                    {
+                        MasterCountry mb = new MasterCountry();
+                        mb.CountryName = txtCountryName.Text;
+                        mb.ShortName = txtCountryShortName.Text;
+                        db.MasterCountries.Add(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Saved Sucessfully!");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
@@ -73,21 +87,28 @@ namespace NUBE.PAYROLL.PL.Master
             {
                 if (Id != 0)
                 {
-                    var mb = (from x in db.MasterCountries where x.Id == Id select x).FirstOrDefault();
-                    db.MasterCountries.Remove(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Deleted Sucessfully");
-                    LoadWindow();
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        var mb = (from x in db.MasterCountries where x.Id == Id select x).FirstOrDefault();
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.MasterCountries.Remove(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Deleted Sucessfully");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                // ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -96,29 +117,24 @@ namespace NUBE.PAYROLL.PL.Master
 
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
-        {
-
+            Filteration();
         }
 
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptContain_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptEndWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void dgvCountry_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -153,11 +169,6 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         #endregion
 
         #region FUNCITONS
@@ -167,25 +178,70 @@ namespace NUBE.PAYROLL.PL.Master
             Id = 0;
             txtCountryName.Text = "";
             txtCountryShortName.Text = "";
+            dtCountry.Rows.Clear();
             try
             {
-                DataTable dt = new DataTable();
                 using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
                     SqlCommand cmd;
-                    string str = " SELECT id,CountryName,ShortName FROM MASTERCOUNTRY(NOLOCK) \r" +
+                    string str = " SELECT id,CountryName,ShortName FROM MASTERCOUNTRY(NOLOCK) WHERE ISCANCEL=0 \r" +
                                  " ORDER BY COUNTRYNAME ";
 
                     cmd = new SqlCommand(str, con);
                     cmd.CommandType = CommandType.Text;
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     con.Open();
-                    adp.Fill(dt);
+                    adp.Fill(dtCountry);
                     con.Close();
-                    if (dt.Rows.Count > 0)
+                    if (dtCountry.Rows.Count > 0)
                     {
-                        dgvCountry.ItemsSource = dt.DefaultView;
-                    }                    
+                        dgvCountry.ItemsSource = dtCountry.DefaultView;
+                        Filteration();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        void Filteration()
+        {
+            try
+            {
+                string sWhere = "";
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = "CountryName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = "CountryName LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = "CountryName LIKE '" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else
+                    {
+                        sWhere = "CountryName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(sWhere))
+                {
+                    DataView dv = new DataView(dtCountry);
+                    dv.RowFilter = sWhere;
+                    DataTable dtTemp = new DataTable();
+                    dtTemp = dv.ToTable();
+                    dgvCountry.ItemsSource = dtTemp.DefaultView;
+                }
+                else
+                {
+                    dgvCountry.ItemsSource = dtCountry.DefaultView;
                 }
             }
             catch (Exception ex)
@@ -195,5 +251,6 @@ namespace NUBE.PAYROLL.PL.Master
         }
 
         #endregion
+
     }
 }

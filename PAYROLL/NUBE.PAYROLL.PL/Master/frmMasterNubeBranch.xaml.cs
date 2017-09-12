@@ -41,24 +41,37 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (Id != 0)
+                if (string.IsNullOrEmpty(txtNubeBranchName.Text))
                 {
-                    var mb = (from x in db.MasterNubeBranches where x.Id == Id select x).FirstOrDefault();
-                    mb.NubeBranchName = txtNubeBranchName.Text;
-                    mb.UserCode = txtNubeUserCode.Text;
-                    db.SaveChanges();
-                    MessageBox.Show("Updated Sucessfully!");
-                    LoadWindow();
+                    MessageBox.Show("Nube BranchName is Empty!", "Empty");
+                    txtNubeBranchName.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtNubeUserCode.Text))
+                {
+                    MessageBox.Show("UserCode is Empty!", "Empty");
+                    txtNubeUserCode.Focus();
                 }
                 else
                 {
-                    MasterNubeBranch mb = new MasterNubeBranch();
-                    mb.NubeBranchName = txtNubeBranchName.Text;
-                    mb.UserCode = txtNubeUserCode.Text;
-                    db.MasterNubeBranches.Add(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Saved Sucessfully!");
-                    LoadWindow();
+                    if (Id != 0)
+                    {
+                        var mb = (from x in db.MasterNubeBranches where x.Id == Id select x).FirstOrDefault();
+                        mb.NubeBranchName = txtNubeBranchName.Text;
+                        mb.UserCode = txtNubeUserCode.Text;
+                        db.SaveChanges();
+                        MessageBox.Show("Updated Sucessfully!");
+                        LoadWindow();
+                    }
+                    else
+                    {
+                        MasterNubeBranch mb = new MasterNubeBranch();
+                        mb.NubeBranchName = txtNubeBranchName.Text;
+                        mb.UserCode = txtNubeUserCode.Text;
+                        db.MasterNubeBranches.Add(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Saved Sucessfully!");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
@@ -73,21 +86,28 @@ namespace NUBE.PAYROLL.PL.Master
             {
                 if (Id != 0)
                 {
-                    var mb = (from x in db.MasterNubeBranches where x.Id == Id select x).FirstOrDefault();
-                    db.MasterNubeBranches.Remove(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Deleted Sucessfully");
-                    LoadWindow();
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        var mb = (from x in db.MasterNubeBranches where x.Id == Id select x).FirstOrDefault();
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.MasterNubeBranches.Remove(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Deleted Sucessfully");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                // ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -96,17 +116,7 @@ namespace NUBE.PAYROLL.PL.Master
 
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
         }
@@ -167,13 +177,15 @@ namespace NUBE.PAYROLL.PL.Master
             Id = 0;
             txtNubeBranchName.Text = "";
             txtNubeUserCode.Text = "";
+            dtNUBE.Rows.Clear();
             try
             {
-                var nube = (from x in db.MasterNubeBranches select x).ToList();
+                var nube = (from x in db.MasterNubeBranches where x.IsCancel == false select x).ToList();
                 if (nube != null)
                 {
                     dtNUBE = AppLib.LINQResultToDataTable(nube);
                     dgvNubeBranch.ItemsSource = dtNUBE.DefaultView;
+                    Filteration();
                 }
             }
             catch (Exception ex)
@@ -190,44 +202,23 @@ namespace NUBE.PAYROLL.PL.Master
                 {
                     string sWhere = "";
 
-                    if (cbxCase.IsChecked == true)
+                    if (rptContain.IsChecked == true)
                     {
-                        if (rptContain.IsChecked == true)
-                        {
-                            sWhere = "NubeBranchName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
-                        }
-                        else if (rptEndWith.IsChecked == true)
-                        {
-                            sWhere = "NubeBranchName LIKE '%" + txtSearch.Text.ToUpper() + "'";
-                        }
-                        else if (rptStartWith.IsChecked == true)
-                        {
-                            sWhere = "NubeBranchName LIKE '" + txtSearch.Text.ToUpper() + "%'";
-                        }
-                        else
-                        {
-                            sWhere = "NubeBranchName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
-                        }
+                        sWhere = "NubeBranchName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = "NubeBranchName LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = "NubeBranchName LIKE '" + txtSearch.Text.ToUpper() + "%'";
                     }
                     else
                     {
-                        if (rptContain.IsChecked == true)
-                        {
-                            sWhere = "NubeBranchName LIKE '%" + txtSearch.Text + "%'";
-                        }
-                        else if (rptEndWith.IsChecked == true)
-                        {
-                            sWhere = "NubeBranchName LIKE '%" + txtSearch.Text + "'";
-                        }
-                        else if (rptStartWith.IsChecked == true)
-                        {
-                            sWhere = "NubeBranchName LIKE '" + txtSearch.Text + "%'";
-                        }
-                        else
-                        {
-                            sWhere = "NubeBranchName LIKE '%" + txtSearch.Text + "%'";
-                        }
+                        sWhere = "NubeBranchName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
                     }
+
                     if (!string.IsNullOrEmpty(txtSearch.Text))
                     {
                         DataView dv = new DataView(dtNUBE);
@@ -253,5 +244,7 @@ namespace NUBE.PAYROLL.PL.Master
         }
 
         #endregion
+
+
     }
 }

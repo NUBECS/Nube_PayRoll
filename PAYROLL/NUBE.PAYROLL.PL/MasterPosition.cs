@@ -17,7 +17,6 @@ namespace NUBE.PAYROLL.PL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MasterPosition()
         {
-            this.EmployeeIncrements = new HashSet<EmployeeIncrement>();
             this.MasterEmployees = new HashSet<MasterEmployee>();
             this.PositionDetails = new HashSet<PositionDetail>();
         }
@@ -25,9 +24,9 @@ namespace NUBE.PAYROLL.PL
         public int Id { get; set; }
         public string PositionName { get; set; }
         public string ShortName { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeIncrement> EmployeeIncrements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MasterEmployee> MasterEmployees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

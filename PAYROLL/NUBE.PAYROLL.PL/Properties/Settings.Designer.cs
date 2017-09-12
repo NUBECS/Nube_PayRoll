@@ -32,5 +32,16 @@ namespace NUBE.PAYROLL.PL.Properties {
                 return ((string)(this["payrollConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SADAMHUSSAIN\\DENARIUSOFT;Initial Catalog=BizSoft;Persist Security Inf" +
+            "o=True;User ID=essl;Password=essl@123")]
+        public string BizSoftConnectionString {
+            get {
+                return ((string)(this["BizSoftConnectionString"]));
+            }
+        }
     }
 }

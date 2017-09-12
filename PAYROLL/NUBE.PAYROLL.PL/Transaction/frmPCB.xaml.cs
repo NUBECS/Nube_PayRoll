@@ -24,6 +24,7 @@ namespace NUBE.PAYROLL.PL.Transaction
     public partial class frmPCB : UserControl
     {
         PayrollEntity db = new PayrollEntity();
+        DataTable dtPCB = new DataTable();
         public frmPCB()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace NUBE.PAYROLL.PL.Transaction
 
                         frmYearAllowance frm = new frmYearAllowance(dt, Convert.ToInt32(drv["ID"]), 0, Convert.ToInt32(drv["PCBID"]), 2);
                         frm.Title = "PCB";
-                        frm.txtPCBorBonus.Text = "PCB";                        
+                        frm.txtPCBorBonus.Text = "PCB";
                         frm.txtExgratia.Visibility = Visibility.Hidden;
                         frm.ShowDialog();
                         FormFill();
@@ -75,41 +76,39 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                txtSearch.Text = "";
+                dtMonth.Text = "";
+                LoadWindow();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-
-        }
-
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
-        {
-
+            Filteration();
         }
 
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptContain_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         private void rptEndWith_Checked(object sender, RoutedEventArgs e)
         {
-
+            Filteration();
         }
 
         #endregion
-
 
         #region FUNCTION
 
@@ -118,10 +117,12 @@ namespace NUBE.PAYROLL.PL.Transaction
             try
             {
                 var emp = (from x in db.ViewManualPayments select x).ToList();
-                DataTable dt = AppLib.LINQResultToDataTable(emp);
-                if (dt.Rows.Count > 0)
+                dtPCB.Rows.Clear();
+                dtPCB = AppLib.LINQResultToDataTable(emp);
+                if (dtPCB.Rows.Count > 0)
                 {
-                    dgPCB.ItemsSource = dt.DefaultView;
+                    dgPCB.ItemsSource = dtPCB.DefaultView;
+                    Filteration();
                 }
             }
             catch (Exception e)
@@ -137,7 +138,6 @@ namespace NUBE.PAYROLL.PL.Transaction
                 if (!string.IsNullOrEmpty(dtMonth.Text))
                 {
                     DateTime dtDOB = Convert.ToDateTime(dtMonth.SelectedDate);
-                    DataTable dt = new DataTable();
                     using (SqlConnection con = new SqlConnection(Config.connStr))
                     {
                         SqlCommand cmd;
@@ -150,13 +150,15 @@ namespace NUBE.PAYROLL.PL.Transaction
                         cmd.CommandType = CommandType.Text;
                         SqlDataAdapter adp = new SqlDataAdapter(cmd);
                         con.Open();
-                        adp.Fill(dt);
+                        dtPCB.Rows.Clear();
+                        adp.Fill(dtPCB);
+                        Filteration();
                         con.Close();
                     }
 
-                    if (dt.Rows.Count > 0)
+                    if (dtPCB.Rows.Count > 0)
                     {
-                        dgPCB.ItemsSource = dt.DefaultView;
+                        //dgPCB.ItemsSource = dtPCB.DefaultView;
                     }
                     else
                     {
@@ -171,7 +173,53 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
         }
 
+        void Filteration()
+        {
+            try
+            {
+                string sWhere = "";
+                if (!string.IsNullOrEmpty(txtSearch.Text))
+                {
+                    if (rptContain.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else
+                    {
+                        sWhere = " EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
 
+                    if (!string.IsNullOrEmpty(txtSearch.Text))
+                    {
+                        DataView dv = new DataView(dtPCB);
+                        dv.RowFilter = sWhere;
+                        DataTable dtTemp = new DataTable();
+                        dtTemp = dv.ToTable();
+                        dgPCB.ItemsSource = dtTemp.DefaultView;
+                    }
+                    else
+                    {
+                        dgPCB.ItemsSource = dtPCB.DefaultView;
+                    }
+                }
+                else
+                {
+                    dgPCB.ItemsSource = dtPCB.DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
 
         #endregion
 

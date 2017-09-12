@@ -21,5 +21,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> Pekerja { get; set; }
         public Nullable<decimal> Caruman { get; set; }
         public Nullable<decimal> JenisSahaja { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     }
 }

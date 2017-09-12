@@ -99,7 +99,7 @@
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
 
-                                    <Menu:NavMenuItem MenuName="Employee Master" FormName ="MasterEmployee">
+                                    <Menu:NavMenuItem MenuName="Employees Details" FormName ="MasterEmployee">
                                         <Menu:NavMenuItem.Content>
                                             <Master:frmEmployee/>
                                         </Menu:NavMenuItem.Content>
@@ -179,12 +179,12 @@
                                             <Transaction:frmPCB/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
-                                    <Menu:NavMenuItem MenuName="Bonus And Ex-gratia" FormName="ManualAmount">
+                                    <Menu:NavMenuItem MenuName="Bonus and Ex-gratia" FormName="ManualAmount">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmExtraAmount/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
-                                    <Menu:NavMenuItem MenuName="AttendanceCorrection" FormName="AttendanceCorrection">
+                                    <Menu:NavMenuItem MenuName="Attendance Correction" FormName="AttendanceCorrection">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmAttendanceCorrection/>
                                         </Menu:NavMenuItem.Content>

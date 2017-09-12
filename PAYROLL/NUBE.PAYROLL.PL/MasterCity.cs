@@ -25,6 +25,8 @@ namespace NUBE.PAYROLL.PL
         public string CityName { get; set; }
         public string ShortName { get; set; }
         public Nullable<int> StateId { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MasterBankBranch> MasterBankBranches { get; set; }

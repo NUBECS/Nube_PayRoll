@@ -30,6 +30,8 @@ namespace NUBE.PAYROLL.PL
         public bool WeekofTwoDays { get; set; }
         public bool IsGraceTime { get; set; }
         public Nullable<decimal> GraceTime { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MasterEmployee> MasterEmployees { get; set; }

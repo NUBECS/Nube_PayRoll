@@ -50,9 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Images\Denariu Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -153,11 +153,19 @@
     <Compile Include="AttendanceCorrection.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="BizSoftDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BizSoftDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CompanyDetail.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="Config.cs" />
     <Compile Include="DailyAttedanceDet.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DailyLateLog.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="DATA.Context.cs">
@@ -175,19 +183,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DATA.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeIncrement.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
     <Compile Include="EmployeeShift.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityType.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
     <Compile Include="EPFCont.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ErrorLog.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="frmCompanySetup.xaml.cs">
@@ -203,15 +202,6 @@
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="LeaveType.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LogDetail.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LogDetailType.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LogMaster.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterBank.cs">
@@ -289,9 +279,6 @@
     <Compile Include="TempAttendanceTiming.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
-    <Compile Include="TotalWorkingDay.cs">
-      <DependentUpon>DATA.tt</DependentUpon>
-    </Compile>
     <Compile Include="Transaction\frmAttedanceCorrectionDetails.xaml.cs">
       <DependentUpon>frmAttedanceCorrectionDetails.xaml</DependentUpon>
     </Compile>
@@ -343,7 +330,7 @@
     <Compile Include="VIEWDAILYATTEDANCELATE.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewEmployeeDetail.cs">
+    <Compile Include="VIEWEPF_SOCSO.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWFULLDAYLEAVE.cs">
@@ -377,6 +364,9 @@
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWTOTALOT.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWWEEKOFF.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWWORKINGDAY.cs">
@@ -431,7 +421,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptNubePayslip.rdlc" />
     <EmbeddedResource Include="Reports\rptPaySlip.rdlc" />
+    <None Include="BizSoftDataSet.xsc">
+      <DependentUpon>BizSoftDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BizSoftDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BizSoftDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BizSoftDataSet.xss">
+      <DependentUpon>BizSoftDataSet.xsd</DependentUpon>
+    </None>
     <EntityDeploy Include="DATA.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DATA.Designer.cs</LastGenOutput>
@@ -666,6 +668,14 @@
     <Resource Include="Images\Denariu Icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Payroll\LOGIN.png" />
+    <Resource Include="Images\Payroll\BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Payroll\PROJECT ICON\DNR LOGO.ico" />
+    <Resource Include="Images\Payroll\PROJECT ICON\NBU LOGO.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DATA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DATA.edmx</DependentUpon>
@@ -676,10 +686,7 @@
       <DependentUpon>DATA.edmx</DependentUpon>
       <LastGenOutput>DATA.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\Payroll\LOGIN.png" />
-    <Resource Include="Images\Payroll\BG.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

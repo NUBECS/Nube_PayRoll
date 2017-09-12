@@ -20,6 +20,8 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> MaxYear { get; set; }
         public Nullable<decimal> NoOfLeave { get; set; }
         public Nullable<decimal> NoOfMedicalLeave { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
         public virtual MasterPosition MasterPosition { get; set; }
     }

@@ -70,7 +70,7 @@
 
         <Grid Grid.Row="2">
             <GroupBox  Margin="10">
-                <TabControl x:Name="tabControl" Height="500" SelectionChanged="tabControl_SelectionChanged" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"  RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" >
+                <TabControl x:Name="tabControl" Height="415" SelectionChanged="tabControl_SelectionChanged" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"  RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-1" >
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
                             <Setter Property="Template">
@@ -106,7 +106,7 @@
                     </TabControl.RenderTransform>
 
                     <TabItem Header="Present" FontSize="16">
-                        <DataGrid x:Name="dgPresent" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5" Height="450" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgPresent" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5" Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -135,7 +135,7 @@
                     </TabItem>
 
                     <TabItem Header="Leave" FontSize="16">
-                        <DataGrid x:Name="dgLeave" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="400" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgLeave" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -162,7 +162,7 @@
                     </TabItem>
 
                     <TabItem Header="Half Day Leave" FontSize="16">
-                        <DataGrid x:Name="dgHalf" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="400" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgHalf" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5"  Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -191,7 +191,7 @@
                     </TabItem>
 
                     <TabItem Header="Latecommer's" FontSize="16">
-                        <DataGrid x:Name="dgLatecommer" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="400" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgLatecommer" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5"  Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -221,7 +221,7 @@
                     </TabItem>
 
                     <TabItem Header="OT" FontSize="16">
-                        <DataGrid x:Name="dgOT" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="400" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgOT" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -244,7 +244,7 @@
                                 <DataGridTextColumn Header="Position" FontWeight="Bold" Width="100" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="100" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="100" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="OT Hours" FontWeight="Bold" Width="80" Binding="{Binding OTHOURS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="OT Hours" FontWeight="Bold" Width="80" Visibility="Collapsed" Binding="{Binding OTHOURS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="150" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                             </DataGrid.Columns>
                         </DataGrid>

@@ -29,7 +29,6 @@ namespace NUBE.PAYROLL.PL.Master
         public frmEmployee()
         {
             InitializeComponent();
-            LoadWindow();
         }
 
         #region EVENTS
@@ -59,12 +58,15 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (MessageBox.Show("Do You want to Delete Employee ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (Id != 0)
                 {
-                    if (Id != 0)
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
+
                         var mb = (from x in db.MasterEmployees where x.Id == Id select x).FirstOrDefault();
-                        db.MasterEmployees.Remove(mb);
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.MasterEmployees.Remove(mb);
                         db.SaveChanges();
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
@@ -73,12 +75,14 @@ namespace NUBE.PAYROLL.PL.Master
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                // ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -117,21 +121,15 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void chkIsResigned_Click(object sender, RoutedEventArgs e)
         {
             Filteration();
         }
 
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
         }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
             Filteration();
@@ -159,22 +157,26 @@ namespace NUBE.PAYROLL.PL.Master
                 using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
                     string str = " SELECT ROW_NUMBER() OVER(ORDER BY EM.MEMBERSHIPNO ASC) AS RNO,EM.ID,EM.MEMBERSHIPNO,\r" +
-                                 " EM.EMPLOYEENAME,EM.SHORTNAME,EM.NRIC,MP.POSITIONNAME,EM.GENDER \r" +
+                                 " EM.EMPLOYEENAME,EM.ISRESIGNED RESIGNED,EM.NRIC,MP.POSITIONNAME,EM.GENDER \r" +
                                  " FROM MASTEREMPLOYEE EM(NOLOCK) \r " +
                                  " LEFT JOIN MASTERPOSITION MP(NOLOCK)ON MP.ID=EM.POSITIONID \r" +
-                                 " GROUP BY EM.ID,EM.MEMBERSHIPNO,EM.EMPLOYEENAME,EM.SHORTNAME,EM.NRIC,MP.POSITIONNAME,EM.GENDER";
+                                 " WHERE EM.ISCANCEL=0 \r" +
+                                 " GROUP BY EM.ID,EM.MEMBERSHIPNO,EM.EMPLOYEENAME,EM.ISRESIGNED,EM.NRIC,MP.POSITIONNAME,EM.GENDER";
                     SqlCommand cmd = new SqlCommand(str, con);
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     con.Open();
                     cmd.CommandTimeout = 0;
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-                    if (dt.Rows.Count > 0)
+                    dtEmployee.Rows.Clear();
+                    adp.Fill(dtEmployee);
+                    if (dtEmployee.Rows.Count > 0)
                     {
-                        dgEmployee.ItemsSource = dt.DefaultView;
+                        dgEmployee.ItemsSource = dtEmployee.DefaultView;
+                        Filteration();
                     }
                 }
-                //var st = (from x in db.ViewMasterEmployees select x).ToList();
+                //var st = (from x in db.MasterEmployees select x).ToList();
+
+                ////st.Select(x => x.MasterPosition.PositionName)
                 //if (st != null)
                 //{
                 //    dtEmployee = AppLib.LINQResultToDataTable(st);
@@ -192,8 +194,7 @@ namespace NUBE.PAYROLL.PL.Master
             try
             {
                 string sWhere = "";
-
-                if (cbxCase.IsChecked == true)
+                if (!string.IsNullOrEmpty(txtSearch.Text))
                 {
                     if (rptContain.IsChecked == true)
                     {
@@ -212,26 +213,20 @@ namespace NUBE.PAYROLL.PL.Master
                         sWhere = "EMPLOYEENAME LIKE '%" + txtSearch.Text.ToUpper() + "%'";
                     }
                 }
-                else
+
+                if (chkIsResigned.IsChecked == true)
                 {
-                    if (rptContain.IsChecked == true)
+                    if (!string.IsNullOrEmpty(sWhere))
                     {
-                        sWhere = "EMPLOYEENAME LIKE '%" + txtSearch.Text + "%'";
-                    }
-                    else if (rptEndWith.IsChecked == true)
-                    {
-                        sWhere = "EMPLOYEENAME LIKE '%" + txtSearch.Text + "'";
-                    }
-                    else if (rptStartWith.IsChecked == true)
-                    {
-                        sWhere = "EMPLOYEENAME LIKE '" + txtSearch.Text + "%'";
+                        sWhere = sWhere + "RESIGNED=TRUE";
                     }
                     else
                     {
-                        sWhere = "EMPLOYEENAME LIKE '%" + txtSearch.Text + "%'";
+                        sWhere = "RESIGNED=TRUE";
                     }
                 }
-                if (!string.IsNullOrEmpty(txtSearch.Text))
+
+                if (!string.IsNullOrEmpty(sWhere))
                 {
                     DataView dv = new DataView(dtEmployee);
                     dv.RowFilter = sWhere;
@@ -243,7 +238,6 @@ namespace NUBE.PAYROLL.PL.Master
                 {
                     dgEmployee.ItemsSource = dtEmployee.DefaultView;
                 }
-
             }
             catch (Exception ex)
             {
@@ -251,9 +245,7 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-        #endregion
-
-
+        #endregion       
     }
 }
 

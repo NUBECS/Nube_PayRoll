@@ -15,7 +15,9 @@ namespace NUBE.PAYROLL.PL
     public partial class VIEWTOTALOT
     {
         public int EMPLOYEEID { get; set; }
-        public Nullable<decimal> TOTAL_OT { get; set; }
+        public Nullable<int> ATT_MONTH { get; set; }
+        public Nullable<int> ATT_YEAR { get; set; }
+        public string TOTAL_OT { get; set; }
         public Nullable<decimal> OT_AMOUNT { get; set; }
     }
 }

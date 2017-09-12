@@ -31,6 +31,7 @@ namespace NUBE.PAYROLL.PL.Master
         }
 
         #region EVENTS
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             LoadWindow();
@@ -40,24 +41,37 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (Id != 0)
+                if (string.IsNullOrEmpty(txtBankName.Text))
                 {
-                    var mb = (from x in db.MasterBanks where x.Id == Id select x).FirstOrDefault();
-                    mb.BankName = txtBankName.Text;
-                    mb.UserCode = txtBankUserCode.Text;
-                    db.SaveChanges();
-                    MessageBox.Show("Updated Sucessfully!");
-                    LoadWindow();
+                    MessageBox.Show("City Name is Empty!", "Empty");
+                    txtBankName.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtBankUserCode.Text))
+                {
+                    MessageBox.Show("UserCode is Empty!", "Empty");
+                    txtBankUserCode.Focus();
                 }
                 else
                 {
-                    MasterBank mb = new MasterBank();
-                    mb.BankName = txtBankName.Text;
-                    mb.UserCode = txtBankUserCode.Text;
-                    db.MasterBanks.Add(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Saved Sucessfully!");
-                    LoadWindow();
+                    if (Id != 0)
+                    {
+                        var mb = (from x in db.MasterBanks where x.Id == Id select x).FirstOrDefault();
+                        mb.BankName = txtBankName.Text;
+                        mb.UserCode = txtBankUserCode.Text;
+                        db.SaveChanges();
+                        MessageBox.Show("Updated Sucessfully!");
+                        LoadWindow();
+                    }
+                    else
+                    {
+                        MasterBank mb = new MasterBank();
+                        mb.BankName = txtBankName.Text;
+                        mb.UserCode = txtBankUserCode.Text;
+                        db.MasterBanks.Add(mb);
+                        db.SaveChanges();
+                        MessageBox.Show("Saved Sucessfully!");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
@@ -72,21 +86,27 @@ namespace NUBE.PAYROLL.PL.Master
             {
                 if (Id != 0)
                 {
-                    var mb = (from x in db.MasterBanks where x.Id == Id select x).FirstOrDefault();
-                    db.MasterBanks.Remove(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Deleted Sucessfully");
-                    LoadWindow();
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        var mb = (from x in db.MasterBanks where x.Id == Id select x).FirstOrDefault();
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        db.SaveChanges();
+                        //db.MasterBanks.Remove(mb);                        
+                        MessageBox.Show("Deleted Sucessfully");
+                        LoadWindow();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -95,17 +115,7 @@ namespace NUBE.PAYROLL.PL.Master
 
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void cbxCase_Checked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void cbxCase_Unchecked(object sender, RoutedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
         }
@@ -166,13 +176,15 @@ namespace NUBE.PAYROLL.PL.Master
             Id = 0;
             txtBankName.Text = "";
             txtBankUserCode.Text = "";
+            dtBank.Rows.Clear();
             try
             {
-                var Bank = (from x in db.MasterBanks select x).ToList();
+                var Bank = (from x in db.MasterBanks where x.IsCancel == false select x).ToList();
                 if (Bank != null)
                 {
                     dtBank = AppLib.LINQResultToDataTable(Bank);
                     dgvBank.ItemsSource = dtBank.DefaultView;
+                    Filteration();
                 }
             }
             catch (Exception ex)
@@ -189,50 +201,28 @@ namespace NUBE.PAYROLL.PL.Master
                 {
                     string sWhere = "";
 
-                    if (cbxCase.IsChecked == true)
+                    if (rptContain.IsChecked == true)
                     {
-                        if (rptContain.IsChecked == true)
-                        {
-                            sWhere = "BankName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
-                        }
-                        else if (rptEndWith.IsChecked == true)
-                        {
-                            sWhere = "BankName LIKE '%" + txtSearch.Text.ToUpper() + "'";
-                        }
-                        else if (rptStartWith.IsChecked == true)
-                        {
-                            sWhere = "BankName LIKE '" + txtSearch.Text.ToUpper() + "%'";
-                        }
-                        else
-                        {
-                            sWhere = "BankName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
-                        }
+                        sWhere = "BankName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
+                    }
+                    else if (rptEndWith.IsChecked == true)
+                    {
+                        sWhere = "BankName LIKE '%" + txtSearch.Text.ToUpper() + "'";
+                    }
+                    else if (rptStartWith.IsChecked == true)
+                    {
+                        sWhere = "BankName LIKE '" + txtSearch.Text.ToUpper() + "%'";
                     }
                     else
                     {
-                        if (rptContain.IsChecked == true)
-                        {
-                            sWhere = "BankName LIKE '%" + txtSearch.Text + "%'";
-                        }
-                        else if (rptEndWith.IsChecked == true)
-                        {
-                            sWhere = "BankName LIKE '%" + txtSearch.Text + "'";
-                        }
-                        else if (rptStartWith .IsChecked == true)
-                        {
-                            sWhere = "BankName LIKE '" + txtSearch.Text + "%'";
-                        }
-                        else
-                        {
-                            sWhere = "BankName LIKE '%" + txtSearch.Text + "%'";
-                        }
+                        sWhere = "BankName LIKE '%" + txtSearch.Text.ToUpper() + "%'";
                     }
-                    if (!string.IsNullOrEmpty(txtSearch.Text))
+
+                    if (!string.IsNullOrEmpty(sWhere))
                     {
                         DataView dv = new DataView(dtBank);
                         dv.RowFilter = sWhere;
-                        DataTable dtTemp = new DataTable();
-                        dtTemp = dv.ToTable();
+                        DataTable dtTemp = dv.ToTable();
                         dgvBank.ItemsSource = dtTemp.DefaultView;
                     }
                     else

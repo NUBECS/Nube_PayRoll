@@ -24,6 +24,8 @@ namespace NUBE.PAYROLL.PL
         public int Id { get; set; }
         public string BankName { get; set; }
         public string UserCode { get; set; }
+        public bool IsCancel { get; set; }
+        public Nullable<System.DateTime> CancelOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MasterBankBranch> MasterBankBranches { get; set; }

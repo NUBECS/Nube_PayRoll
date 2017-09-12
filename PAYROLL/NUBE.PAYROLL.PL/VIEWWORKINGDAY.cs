@@ -18,6 +18,13 @@ namespace NUBE.PAYROLL.PL
         public Nullable<int> ATT_MONTH { get; set; }
         public Nullable<int> ATT_YEAR { get; set; }
         public Nullable<decimal> WORKINGDAYS { get; set; }
-        public Nullable<decimal> TOTALLEAVE { get; set; }
+        public int HALFDAYLEAVE { get; set; }
+        public int FULLDAYLEAVE { get; set; }
+        public Nullable<int> TOTALLEAVE { get; set; }
+        public Nullable<int> PUBLICHOLIDAY { get; set; }
+        public Nullable<int> WEEKOFF { get; set; }
+        public Nullable<decimal> BASICSALARY { get; set; }
+        public Nullable<decimal> ONE_DAY_SALARY { get; set; }
+        public Nullable<decimal> LOP { get; set; }
     }
 }

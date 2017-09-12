@@ -123,7 +123,7 @@ namespace NUBE.PAYROLL.PL
         {
             if (MessageBox.Show("Are you Sure Clear This Data !?", "Clear Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                LoadWindow();
+                FormClear();
             }
         }
 

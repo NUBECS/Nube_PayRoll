@@ -37,7 +37,7 @@ namespace NUBE.PAYROLL.PL.Master
             LoadWindow();
         }
 
-        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
         }
@@ -51,35 +51,68 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (Id != 0)
+                if (string.IsNullOrEmpty(txtMinRM.Text))
                 {
-                    var mb = (from x in db.SocsoConts where x.Id == Id select x).FirstOrDefault();
-                    if (mb != null)
+                    MessageBox.Show("Min RM is Empty!", "Empty");
+                    txtMinRM.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtSalryUpto.Text))
+                {
+                    MessageBox.Show("SalryUpto is Empty!", "Empty");
+                    txtSalryUpto.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtMajikan.Text))
+                {
+                    MessageBox.Show("Majikan is Empty!", "Empty");
+                    txtMajikan.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtPakerja.Text))
+                {
+                    MessageBox.Show("Pakerja is Empty!", "Empty");
+                    txtPakerja.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtJumlahCaruman.Text))
+                {
+                    MessageBox.Show("Jumlah Caruman is Empty!", "Empty");
+                    txtJumlahCaruman.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtJenisSahaja.Text))
+                {
+                    MessageBox.Show("Jenis Sahaja is Empty!", "Empty");
+                    txtJenisSahaja.Focus();
+                }
+                else
+                {
+                    if (Id != 0)
                     {
+                        var mb = (from x in db.SocsoConts where x.Id == Id select x).FirstOrDefault();
+                        if (mb != null)
+                        {
+                            mb.MinRM = Convert.ToDecimal(txtMinRM.Text);
+                            mb.MaxRM = Convert.ToDecimal(txtSalryUpto.Text);
+                            mb.Majikan = Convert.ToDecimal(txtMajikan.Text);
+                            mb.Pekerja = Convert.ToDecimal(txtPakerja.Text);
+                            mb.Caruman = Convert.ToDecimal(txtJumlahCaruman.Text);
+                            mb.JenisSahaja = Convert.ToDecimal(txtJenisSahaja.Text);
+                            db.SaveChanges();
+                            MessageBox.Show("Updated Sucessfully!");
+                            LoadWindow();
+                        }
+                    }
+                    else
+                    {
+                        SocsoCont mb = new SocsoCont();
                         mb.MinRM = Convert.ToDecimal(txtMinRM.Text);
                         mb.MaxRM = Convert.ToDecimal(txtSalryUpto.Text);
                         mb.Majikan = Convert.ToDecimal(txtMajikan.Text);
                         mb.Pekerja = Convert.ToDecimal(txtPakerja.Text);
                         mb.Caruman = Convert.ToDecimal(txtJumlahCaruman.Text);
                         mb.JenisSahaja = Convert.ToDecimal(txtJenisSahaja.Text);
+                        db.SocsoConts.Add(mb);
                         db.SaveChanges();
-                        MessageBox.Show("Updated Sucessfully!");
+                        MessageBox.Show("Saved Sucessfully!");
                         LoadWindow();
                     }
-                }
-                else
-                {
-                    SocsoCont mb = new SocsoCont();
-                    mb.MinRM = Convert.ToDecimal(txtMinRM.Text);
-                    mb.MaxRM = Convert.ToDecimal(txtSalryUpto.Text);
-                    mb.Majikan = Convert.ToDecimal(txtMajikan.Text);
-                    mb.Pekerja = Convert.ToDecimal(txtPakerja.Text);
-                    mb.Caruman = Convert.ToDecimal(txtJumlahCaruman.Text);
-                    mb.JenisSahaja = Convert.ToDecimal(txtJenisSahaja.Text);
-                    db.SocsoConts.Add(mb);
-                    db.SaveChanges();
-                    MessageBox.Show("Saved Sucessfully!");
-                    LoadWindow();
                 }
             }
             catch (Exception ex)
@@ -92,12 +125,14 @@ namespace NUBE.PAYROLL.PL.Master
         {
             try
             {
-                if (MessageBox.Show("Do You Want to Delete Socso ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (Id != 0)
                 {
-                    if (Id != 0)
+                    if (MessageBox.Show("Do you want to Delete ?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         var mb = (from x in db.SocsoConts where x.Id == Id select x).FirstOrDefault();
-                        db.SocsoConts.Remove(mb);
+                        mb.IsCancel = true;
+                        mb.CancelOn = DateTime.Now;
+                        //db.SocsoConts.Remove(mb);
                         db.SaveChanges();
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
@@ -106,12 +141,13 @@ namespace NUBE.PAYROLL.PL.Master
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
+            txtSearch.Text = "";
             LoadWindow();
         }
 
@@ -156,6 +192,11 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
+        private void NumericOnly(object sender, TextCompositionEventArgs e)
+        {
+            Config.CheckIsNumeric(e);
+        }
+
         private void txtMajikan_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtMajikan.Text) && !string.IsNullOrEmpty(txtPakerja.Text))
@@ -185,14 +226,16 @@ namespace NUBE.PAYROLL.PL.Master
             txtPakerja.Text = "";
             txtJumlahCaruman.Text = "";
             txtJenisSahaja.Text = "";
+            dtSOCSO.Rows.Clear();
 
             try
             {
-                var SOCSO = (from x in db.SocsoConts orderby x.MinRM ascending select x).ToList();
+                var SOCSO = (from x in db.SocsoConts where x.IsCancel == false orderby x.MinRM ascending select x).ToList();
                 if (SOCSO != null)
                 {
                     dtSOCSO = AppLib.LINQResultToDataTable(SOCSO);
                     dgSOCSO.ItemsSource = dtSOCSO.DefaultView;
+                    Filteration();
                 }
             }
             catch (Exception ex)
@@ -210,18 +253,11 @@ namespace NUBE.PAYROLL.PL.Master
                     string sWhere = "";
                     sWhere = "(MinRM=" + Convert.ToDecimal(txtSearch.Text) + ") OR (MaxRM=" + Convert.ToDecimal(txtSearch.Text) + ")";
 
-                    if (!string.IsNullOrEmpty(txtSearch.Text))
-                    {
-                        DataView dv = new DataView(dtSOCSO);
-                        dv.RowFilter = sWhere;
-                        DataTable dtTemp = new DataTable();
-                        dtTemp = dv.ToTable();
-                        dgSOCSO.ItemsSource = dtTemp.DefaultView;
-                    }
-                    else
-                    {
-                        dgSOCSO.ItemsSource = dtSOCSO.DefaultView;
-                    }
+                    DataView dv = new DataView(dtSOCSO);
+                    dv.RowFilter = sWhere;
+                    DataTable dtTemp = new DataTable();
+                    dtTemp = dv.ToTable();
+                    dgSOCSO.ItemsSource = dtTemp.DefaultView;
                 }
                 else
                 {
@@ -234,9 +270,7 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-
-        #endregion
-
-      
+        #endregion        
+       
     }
 }

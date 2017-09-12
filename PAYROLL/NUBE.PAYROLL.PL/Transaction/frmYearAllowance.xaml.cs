@@ -118,6 +118,11 @@ namespace NUBE.PAYROLL.PL.Transaction
             this.Close();
         }
 
+        private void NumericOnly(object sender, TextCompositionEventArgs e)
+        {
+            Config.CheckIsNumeric(e);
+        }
+
         #endregion
 
         #region FUNCTIONS
