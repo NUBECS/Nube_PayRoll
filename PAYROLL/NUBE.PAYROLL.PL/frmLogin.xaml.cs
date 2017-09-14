@@ -75,45 +75,7 @@ namespace NUBE.PAYROLL.PL
                         MessageBox.Show("Invalid User Name or Password ", "Error");
                     }
                 }
-            }
-            ////string RValue = BLL.UserAccount.Login(txtUserId.Text, txtPassword.Password);
-            //string RValue = "";
-            //if (RValue == "")
-            //{
-            //    if (txtUserId.Text != "Admin")
-            //    {
-            //        MessageBox.Show("Invalid User");
-            //        txtUserId.Focus();
-            //    }
-            //    else if (txtPassword.Password != "Admin")
-            //    {
-            //        MessageBox.Show("Invalid Password");
-            //        txtPassword.Focus();
-            //    }
-            //    else
-            //    {
-            //        var cmp = (from x in db.CompanyDetails select x).FirstOrDefault();
-            //        if (cmp != null)
-            //        {
-            //            Config.EsslDatasource = cmp.ServerName;
-            //            Config.EsslDB = cmp.DbName;
-            //            Config.EsslUserId = cmp.UserId;
-            //            Config.EsslPassword = cmp.Password;
-            //            Config.bIsNubeServer = cmp.IsNUBE;
-            //        }
-            //        else
-            //        {
-            //            Config.bIsNubeServer = false;
-            //        }
-
-            //        frmHome frm = new frmHome();
-            //        frm.ShowDialog();
-            //    }
-            //    //App.frmHome= new frmHome();
-            //    //this.Hide();
-            //    //App.frmHome.ShowDialog();
-            //    //this.Show();
-            //}
+            }            
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

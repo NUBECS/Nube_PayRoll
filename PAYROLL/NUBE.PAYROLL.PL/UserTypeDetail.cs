@@ -22,7 +22,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<bool> AllowUpdate { get; set; }
         public Nullable<bool> AllowDelete { get; set; }
     
-        public virtual UserType UserType { get; set; }
         public virtual UserTypeFormDetail UserTypeFormDetail { get; set; }
+        public virtual UserType UserType { get; set; }
     }
 }

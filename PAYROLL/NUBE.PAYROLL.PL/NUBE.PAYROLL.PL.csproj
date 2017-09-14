@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\Denariu Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Images\Payroll\PROJECT ICON\NBU LOGO.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -686,6 +686,7 @@
       <DependentUpon>DATA.edmx</DependentUpon>
       <LastGenOutput>DATA.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\Test.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

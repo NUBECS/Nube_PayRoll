@@ -110,31 +110,6 @@ namespace NUBE.PAYROLL.PL.Master
             LoadWindow();
         }
 
-        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void rptStartWith_Checked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void rptContain_Checked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
-        private void rptEndWith_Checked(object sender, RoutedEventArgs e)
-        {
-            Filteration();
-        }
-
         private void dgvBank_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -166,6 +141,33 @@ namespace NUBE.PAYROLL.PL.Master
                 ExceptionLogging.SendErrorToText(ex);
             }
         }
+
+        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            Filteration();
+        }
+
+        private void rptStartWith_Checked(object sender, RoutedEventArgs e)
+        {
+            Filteration();
+        }
+
+        private void rptContain_Checked(object sender, RoutedEventArgs e)
+        {
+            Filteration();
+        }
+
+        private void rptEndWith_Checked(object sender, RoutedEventArgs e)
+        {
+            Filteration();
+        }
+
+       
 
         #endregion
 

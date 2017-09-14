@@ -30,7 +30,6 @@ namespace NUBE.PAYROLL.CMN
         {
             try
             {
-
                 var l1 = objSource.GetType().GetProperties().Where(x => x.PropertyType.Namespace != "System.Collections.Generic").ToList();
 
                 foreach (var pFrom in l1)

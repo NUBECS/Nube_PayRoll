@@ -90,7 +90,7 @@ namespace NUBE.PAYROLL.PL
                         cmp.MobileNo = txtMobile.Text;
                         cmp.DbName = txtTUMPDB.Text;
                         db.SaveChanges();
-                        MessageBox.Show("Updated Sucessfully!", "PAYROLL");
+                        MessageBox.Show("Updated Sucessfully!", "PAYROLL");                        
                     }
                     else
                     {

@@ -33,7 +33,6 @@
         <EntityTypeShape EntityType="BizSoftModel.SocsoCont" Width="1.5" PointX="6.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.TempAttendanceTiming" Width="1.5" PointX="12.75" PointY="59.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.UserAccount" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.UserType" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.UserTypeDetail" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.UserTypeFormDetail" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.YearlyAllowance" Width="1.5" PointX="12.75" PointY="62.375" IsExpanded="true" />
@@ -55,7 +54,6 @@
         <EntityTypeShape EntityType="BizSoftModel.VIEWWORKINGDAY" Width="1.5" PointX="16.75" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="BizSoftModel.FK_AttedanceLogs_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_AttendanceCorrection_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_CompanId" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_DailyLateLogs_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_ShiftId" ManuallyRouted="false" />
@@ -81,9 +79,10 @@
         <AssociationConnector Association="BizSoftModel.FK_TempAttendanceTimings_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_YearlyAllowance_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_PositionDetails_MasterPosition" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_UserAccount_UserType" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_UserTypeDetail_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_UserTypeDetail_UserTypeFormDetail" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BizSoftModel.UserType" Width="1.5" PointX="3" PointY="5.25" />
+        <AssociationConnector Association="BizSoftModel.FK_UserAccount_UserType" />
+        <AssociationConnector Association="BizSoftModel.FK_UserTypeDetail_UserType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

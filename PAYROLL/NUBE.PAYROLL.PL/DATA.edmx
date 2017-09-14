@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BizSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BizSoftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AttedanceLogs">
           <Key>
             <PropertyRef Name="Id" />
@@ -506,7 +506,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nchar" MaxLength="100" />
-          <Property Name="CompanyId" Type="int" />
           <Property Name="IsCancel" Type="bit" Nullable="false" />
           <Property Name="CancelOn" Type="datetime" />
         </EntityType>
@@ -742,13 +741,6 @@ warning 6002: The table/view 'BizSoft.dbo.ViewMasterState' does not have a prima
           <Property Name="CountryName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'BizSoft.dbo.VIEWMONTHLY_WORKINGDAYS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="VIEWMONTHLY_WORKINGDAYS">
-          <Property Name="ATT_MONTH" Type="int" />
-          <Property Name="ATT_YEAR" Type="int" />
-          <Property Name="WORKINGDAYS" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'BizSoft.dbo.ViewOTCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewOTCalculation">
           <Key>
@@ -810,13 +802,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWPAYSLIP' does not have a primary k
           <Property Name="TOTALDEDUCTION" Type="numeric" Precision="29" Scale="2" />
           <Property Name="NETSALARY" Type="numeric" Precision="30" Scale="2" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'BizSoft.dbo.VIEWPUBLICHOLIDAY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="VIEWPUBLICHOLIDAY">
-          <Property Name="ATT_MONTH" Type="int" />
-          <Property Name="ATT_YEAR" Type="int" />
-          <Property Name="PUBLICHOLIDAY" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'BizSoft.dbo.VIEWTOTALOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWTOTALOT">
@@ -882,18 +867,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             </Principal>
             <Dependent Role="AttendanceCorrection">
               <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CompanId">
-          <End Role="CompanyDetails" Type="Self.CompanyDetails" Multiplicity="0..1" />
-          <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CompanyDetails">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserType">
-              <PropertyRef Name="CompanyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1504,10 +1477,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             <End Role="MasterEmployee" EntitySet="MasterEmployee" />
             <End Role="AttendanceCorrection" EntitySet="AttendanceCorrection" />
           </AssociationSet>
-          <AssociationSet Name="FK_CompanId" Association="Self.FK_CompanId">
-            <End Role="CompanyDetails" EntitySet="CompanyDetails" />
-            <End Role="UserType" EntitySet="UserType" />
-          </AssociationSet>
           <AssociationSet Name="FK_CountryId" Association="Self.FK_CountryId">
             <End Role="MasterCountry" EntitySet="MasterCountry" />
             <End Role="MasterEmployee" EntitySet="MasterEmployee" />
@@ -1621,8 +1590,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             <End Role="YearlyAllowance" EntitySet="YearlyAllowance" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BizSoftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1690,7 +1658,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsNUBE" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UserTypes" Relationship="Self.FK_CompanId" FromRole="CompanyDetails" ToRole="UserType" />
         </EntityType>
         <EntityType Name="DailyAttedanceDet">
           <Key>
@@ -2173,21 +2140,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UserType" Relationship="Self.FK_UserAccount_UserType" FromRole="UserAccount" ToRole="UserType" />
-        </EntityType>
-        <EntityType Name="UserType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="CompanyId" Type="Int32" />
-          <Property Name="IsCancel" Type="Boolean" Nullable="false" />
-          <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CompanyDetail" Relationship="Self.FK_CompanId" FromRole="UserType" ToRole="CompanyDetails" />
-          <NavigationProperty Name="UserAccounts" Relationship="Self.FK_UserAccount_UserType" FromRole="UserType" ToRole="UserAccount" />
-          <NavigationProperty Name="UserTypeDetails" Relationship="Self.FK_UserTypeDetail_UserType" FromRole="UserType" ToRole="UserTypeDetail" />
+          <NavigationProperty Name="UserType" Relationship="BizSoftModel.FK_UserAccount_UserType" FromRole="UserAccount" ToRole="UserType" />
         </EntityType>
         <EntityType Name="UserTypeDetail">
           <Key>
@@ -2200,8 +2153,8 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="AllowInsert" Type="Boolean" />
           <Property Name="AllowUpdate" Type="Boolean" />
           <Property Name="AllowDelete" Type="Boolean" />
-          <NavigationProperty Name="UserType" Relationship="Self.FK_UserTypeDetail_UserType" FromRole="UserTypeDetail" ToRole="UserType" />
           <NavigationProperty Name="UserTypeFormDetail" Relationship="Self.FK_UserTypeDetail_UserTypeFormDetail" FromRole="UserTypeDetail" ToRole="UserTypeFormDetail" />
+          <NavigationProperty Name="UserType" Relationship="BizSoftModel.FK_UserTypeDetail_UserType" FromRole="UserTypeDetail" ToRole="UserType" />
         </EntityType>
         <EntityType Name="UserTypeFormDetail">
           <Key>
@@ -2522,18 +2475,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CompanId">
-          <End Role="CompanyDetails" Type="Self.CompanyDetail" Multiplicity="0..1" />
-          <End Role="UserType" Type="Self.UserType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CompanyDetails">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserType">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DailyAttedanceDet_MasterEmployee">
           <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
           <End Role="DailyAttedanceDet" Type="Self.DailyAttedanceDet" Multiplicity="*" />
@@ -2834,30 +2775,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserAccount_UserType">
-          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
-          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserAccount">
-              <PropertyRef Name="UserTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserTypeDetail_UserType">
-          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
-          <End Role="UserTypeDetail" Type="Self.UserTypeDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserTypeDetail">
-              <PropertyRef Name="UserTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserTypeDetail_UserTypeFormDetail">
           <End Role="UserTypeFormDetail" Type="Self.UserTypeFormDetail" Multiplicity="0..1" />
           <End Role="UserTypeDetail" Type="Self.UserTypeDetail" Multiplicity="*" />
@@ -2899,7 +2816,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <EntitySet Name="SocsoConts" EntityType="Self.SocsoCont" />
           <EntitySet Name="TempAttendanceTimings" EntityType="Self.TempAttendanceTiming" />
           <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
-          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
           <EntitySet Name="UserTypeDetails" EntityType="Self.UserTypeDetail" />
           <EntitySet Name="UserTypeFormDetails" EntityType="Self.UserTypeFormDetail" />
           <EntitySet Name="YearlyAllowances" EntityType="Self.YearlyAllowance" />
@@ -2926,10 +2842,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <AssociationSet Name="FK_AttendanceCorrection_MasterEmployee" Association="Self.FK_AttendanceCorrection_MasterEmployee">
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
             <End Role="AttendanceCorrection" EntitySet="AttendanceCorrections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanId" Association="Self.FK_CompanId">
-            <End Role="CompanyDetails" EntitySet="CompanyDetails" />
-            <End Role="UserType" EntitySet="UserTypes" />
           </AssociationSet>
           <AssociationSet Name="FK_DailyAttedanceDet_MasterEmployee" Association="Self.FK_DailyAttedanceDet_MasterEmployee">
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
@@ -3031,19 +2943,56 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             <End Role="MasterPosition" EntitySet="MasterPositions" />
             <End Role="PositionDetails" EntitySet="PositionDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserAccount_UserType" Association="Self.FK_UserAccount_UserType">
-            <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="UserAccount" EntitySet="UserAccounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserTypeDetail_UserType" Association="Self.FK_UserTypeDetail_UserType">
-            <End Role="UserType" EntitySet="UserTypes" />
-            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserTypeDetail_UserTypeFormDetail" Association="Self.FK_UserTypeDetail_UserTypeFormDetail">
             <End Role="UserTypeFormDetail" EntitySet="UserTypeFormDetails" />
             <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
           </AssociationSet>
+          <EntitySet Name="UserTypes" EntityType="BizSoftModel.UserType" />
+          <AssociationSet Name="FK_UserAccount_UserType" Association="BizSoftModel.FK_UserAccount_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTypeDetail_UserType" Association="BizSoftModel.FK_UserTypeDetail_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="IsCancel" Type="Boolean" Nullable="false" />
+          <Property Name="CancelOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserAccounts" Relationship="BizSoftModel.FK_UserAccount_UserType" FromRole="UserType" ToRole="UserAccount" />
+          <NavigationProperty Name="UserTypeDetails" Relationship="BizSoftModel.FK_UserTypeDetail_UserType" FromRole="UserType" ToRole="UserTypeDetail" />
+        </EntityType>
+        <Association Name="FK_UserAccount_UserType">
+          <End Type="BizSoftModel.UserType" Role="UserType" Multiplicity="0..1" />
+          <End Type="BizSoftModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTypeDetail_UserType">
+          <End Type="BizSoftModel.UserType" Role="UserType" Multiplicity="0..1" />
+          <End Type="BizSoftModel.UserTypeDetail" Role="UserTypeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserTypeDetail">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3572,18 +3521,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserTypes">
-            <EntityTypeMapping TypeName="BizSoftModel.UserType">
-              <MappingFragment StoreEntitySet="UserType">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
-                <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
-                <ScalarProperty Name="CancelOn" ColumnName="CancelOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserTypeDetails">
             <EntityTypeMapping TypeName="BizSoftModel.UserTypeDetail">
               <MappingFragment StoreEntitySet="UserTypeDetail">
@@ -3883,6 +3820,17 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
                 <ScalarProperty Name="BASICSALARY" ColumnName="BASICSALARY" />
                 <ScalarProperty Name="ONE_DAY_SALARY" ColumnName="ONE_DAY_SALARY" />
                 <ScalarProperty Name="LOP" ColumnName="LOP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="BizSoftModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="CancelOn" ColumnName="CancelOn" />
+                <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

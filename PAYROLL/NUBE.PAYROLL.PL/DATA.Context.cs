@@ -53,7 +53,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<SocsoCont> SocsoConts { get; set; }
         public virtual DbSet<TempAttendanceTiming> TempAttendanceTimings { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
-        public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<UserTypeDetail> UserTypeDetails { get; set; }
         public virtual DbSet<UserTypeFormDetail> UserTypeFormDetails { get; set; }
         public virtual DbSet<YearlyAllowance> YearlyAllowances { get; set; }
@@ -73,5 +72,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<VIEWTOTALOT> VIEWTOTALOTs { get; set; }
         public virtual DbSet<VIEWWEEKOFF> VIEWWEEKOFFs { get; set; }
         public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }

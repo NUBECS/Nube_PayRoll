@@ -66,11 +66,11 @@
                                         <TextBlock Text="{Binding MenuName}" Margin="32 0 32 0" FontSize="16"  />
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
-                                <!--<Menu:NavMenuItem MenuName="CompanyDetails" FormName="COMPANY">
+                                <Menu:NavMenuItem MenuName="Home">
                                     <Menu:NavMenuItem.Content>
-                                        <local:frmCompanySetup/>
+                                        <local:frmWelcome/>
                                     </Menu:NavMenuItem.Content>
-                                </Menu:NavMenuItem>-->
+                                </Menu:NavMenuItem>
                             </ListBox>
 
                             <Expander Header="Master" FontWeight="Bold" FontSize="16">

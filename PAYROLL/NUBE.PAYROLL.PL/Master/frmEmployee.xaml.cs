@@ -65,8 +65,7 @@ namespace NUBE.PAYROLL.PL.Master
 
                         var mb = (from x in db.MasterEmployees where x.Id == Id select x).FirstOrDefault();
                         mb.IsCancel = true;
-                        mb.CancelOn = DateTime.Now;
-                        //db.MasterEmployees.Remove(mb);
+                        mb.CancelOn = DateTime.Now;                      
                         db.SaveChanges();
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
@@ -75,7 +74,7 @@ namespace NUBE.PAYROLL.PL.Master
             }
             catch (Exception ex)
             {
-                // ExceptionLogging.SendErrorToText(ex);
+                //ExceptionLogging.SendErrorToText(ex);
                 MessageBox.Show(ex.Message, "You Can't Delete");
             }
         }
@@ -130,6 +129,7 @@ namespace NUBE.PAYROLL.PL.Master
         {
             Filteration();
         }
+
         private void rptStartWith_Checked(object sender, RoutedEventArgs e)
         {
             Filteration();
@@ -175,13 +175,7 @@ namespace NUBE.PAYROLL.PL.Master
                     }
                 }
                 //var st = (from x in db.MasterEmployees select x).ToList();
-
-                ////st.Select(x => x.MasterPosition.PositionName)
-                //if (st != null)
-                //{
-                //    dtEmployee = AppLib.LINQResultToDataTable(st);
-                //    dgEmployee.ItemsSource = dtEmployee.DefaultView;
-                //}
+                ////st.Select(x => x.MasterPosition.PositionName)               
             }
             catch (Exception ex)
             {
