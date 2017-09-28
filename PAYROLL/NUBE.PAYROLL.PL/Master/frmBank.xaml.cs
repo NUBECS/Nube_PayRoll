@@ -165,9 +165,7 @@ namespace NUBE.PAYROLL.PL.Master
         private void rptEndWith_Checked(object sender, RoutedEventArgs e)
         {
             Filteration();
-        }
-
-       
+        }       
 
         #endregion
 

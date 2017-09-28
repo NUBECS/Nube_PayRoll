@@ -22,8 +22,7 @@ namespace NUBE.PAYROLL.PL.Master
     /// </summary>
     public partial class frmPosition : UserControl
     {
-        int Id = 0;
-        int iDetailId = 0;
+        int Id = 0;        
         DataTable dtMasterPosition = new DataTable();
         PayrollEntity db = new PayrollEntity();
         List<PositionDetail> lstPosition = new List<PositionDetail>();
@@ -252,8 +251,7 @@ namespace NUBE.PAYROLL.PL.Master
 
         private void dgvPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Id = 0;
-            iDetailId = 0;
+            Id = 0;            
             txtPositionName.Text = "";
             txtPositionUserCode.Text = "";
             txtMinYear.Text = "";
@@ -305,8 +303,7 @@ namespace NUBE.PAYROLL.PL.Master
         private void dgvAnnualLeave_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
-            {
-                iDetailId = 0;
+            {                
                 txtMinYear.Text = "";
                 txtMaxYear.Text = "";
                 txtNoOfLeave.Text = "";

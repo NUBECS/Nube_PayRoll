@@ -34,12 +34,12 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         private void Window_Activated(object sender, EventArgs e)
         {
-           
+
         }
 
         private void Window_TargetUpdated(object sender, DataTransferEventArgs e)
         {
-           
+
         }
 
         private void Window_ContextMenuOpening(object sender, ContextMenuEventArgs e)
@@ -126,7 +126,7 @@ namespace NUBE.PAYROLL.PL.Transaction
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Contact Administrator!", "Error");
                 this.Close();
@@ -135,7 +135,7 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         private void Window_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-           
+
         }
 
         private void Window_LayoutUpdated(object sender, EventArgs e)
@@ -201,7 +201,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                                     atLog.InTime = Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
                                     atLog.OutTime = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]);
                                     TimeSpan diff = Convert.ToDateTime(dtdate.Rows[i + 1]["PUNCHTIME"]) - Convert.ToDateTime(dtdate.Rows[i]["PUNCHTIME"]);
-                                    atLog.WorkingHours =diff;
+                                    atLog.WorkingHours = diff;
                                     lstAttLog.Add(atLog);
                                 }
                             }
@@ -222,7 +222,7 @@ namespace NUBE.PAYROLL.PL.Transaction
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Contact Administrator!", "Error");
                 this.Close();

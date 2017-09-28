@@ -76,7 +76,10 @@ namespace NUBE.PAYROLL.PL
                 ccContent.Content = mi.Content;
                 //}
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                NUBE.PAYROLL.CMN.ExceptionLogging.SendErrorToText(ex);
+            }
             MenuToggleButton.IsChecked = false;
         }
 

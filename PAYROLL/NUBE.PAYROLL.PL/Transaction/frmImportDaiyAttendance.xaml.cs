@@ -356,7 +356,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                 {
                     dtpDate.Text = (string)(excelRange.Cells[2, 4] as Excel.Range).Value2;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     douCellData = (excelRange.Cells[2, 4] as Excel.Range).Value2;
                     dtpDate.SelectedDate = DateTime.FromOADate(douCellData);
@@ -384,7 +384,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                             strCellData = (string)(excelRange.Cells[rowCnt, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
                             strData += strCellData + "|";
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             if (colCnt == 3 || colCnt == 4)
                             {

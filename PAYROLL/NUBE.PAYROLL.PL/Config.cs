@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 
@@ -16,7 +13,7 @@ namespace NUBE.PAYROLL.PL
         public static string EsslUserId = "";
         public static string EsslPassword = "";
         public static string EsslServer = @"Data Source=" + EsslDatasource + ";Initial Catalog=" + EsslDB + ";user id=" + EsslUserId + ";password=" + EsslPassword + ";";
-        public static Boolean bIsNubeServer = false;
+        public static bool bIsNubeServer = false;
 
         public static void CheckIsNumeric(TextCompositionEventArgs e)
         {

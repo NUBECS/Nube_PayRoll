@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\Payroll\PROJECT ICON\NBU LOGO.ico</ApplicationIcon>
+    <ApplicationIcon>Images\Payroll\PROJECT ICON\DNR LOGO.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>

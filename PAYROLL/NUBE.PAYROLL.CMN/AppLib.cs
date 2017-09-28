@@ -39,13 +39,16 @@ namespace NUBE.PAYROLL.CMN
                         var pTo = objDestination.GetType().GetProperties().Where(x => x.Name == pFrom.Name).FirstOrDefault();
                         pTo.SetValue(objDestination, pFrom.GetValue(objSource));
                     }
-                    catch (Exception ex) { }
+                    catch (Exception ex)
+                    {
+                        ExceptionLogging.SendErrorToText(ex);
+                    }
 
                 }
             }
             catch (Exception ex)
             {
-
+                ExceptionLogging.SendErrorToText(ex);
             }
             return objDestination;
         }
