@@ -7,7 +7,6 @@
       <Diagram DiagramId="dc5b98d5ebf44c25b844661b8e6f300f" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="BizSoftModel.AttedanceLog" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.AttendanceCorrection" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.CompanyDetail" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.DailyAttedanceDet" Width="1.5" PointX="12.75" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.DailyLateLog" Width="1.5" PointX="12.75" PointY="24.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.EmployeeShift" Width="1.5" PointX="8.25" PointY="27.375" IsExpanded="true" />
@@ -83,6 +82,7 @@
         <EntityTypeShape EntityType="BizSoftModel.UserType" Width="1.5" PointX="3" PointY="5.25" />
         <AssociationConnector Association="BizSoftModel.FK_UserAccount_UserType" />
         <AssociationConnector Association="BizSoftModel.FK_UserTypeDetail_UserType" />
+        <EntityTypeShape EntityType="BizSoftModel.CompanyDetail" Width="1.5" PointX="17.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

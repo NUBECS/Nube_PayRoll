@@ -26,7 +26,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="600"/>
                 <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>            
+            </Grid.RowDefinitions>
             <Grid Grid.Column="1"  Grid.Row="1">
                 <GroupBox x:Name="grbCompany" Header="Company Details" Height="500" Width="400" >
                     <StackPanel Orientation="Vertical">
@@ -37,6 +37,14 @@
                                         <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
 
                                         <TextBlock Text="Company Name"/>
+                                    </StackPanel>
+                                </materialDesign:HintAssist.Hint>
+                            </TextBox>
+                            <TextBox x:Name="txtPrintName" TabIndex="1" Text="{Binding CompanyName, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" FontSize="14">
+                                <materialDesign:HintAssist.Hint>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                        <TextBlock Text="Print Name"/>
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>

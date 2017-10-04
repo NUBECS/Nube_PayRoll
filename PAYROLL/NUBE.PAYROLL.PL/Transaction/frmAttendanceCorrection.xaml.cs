@@ -50,6 +50,10 @@ namespace NUBE.PAYROLL.PL.Transaction
                     MessageBox.Show("Date is Empty!");
                     dtMonth.Focus();
                     return;
+
+                    //ListBox lb = sender as ListBox;
+                    //CMN.NavMenuItem mi = lb.SelectedItem as CMN.NavMenuItem;
+
                 }
             }
             catch (Exception)
@@ -182,7 +186,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                            " RIGHT(CONVERT(VARCHAR(32),ISNULL(AL.INTIME,ISNULL(AL.OUTTIME,ISNULL(AL.OTOUTTIME,ISNULL(AL.OUTTIME,'')))),100),8)INTIME,AL.ISMODIFIED \r" +
                            " FROM ATTEDANCELOGS AL(NOLOCK) \r" +
                            " LEFT JOIN MASTEREMPLOYEE EM(NOLOCK) ON EM.ID=AL.EMPLOYEEID \r" +
-                           " WHERE ISNOTLOGOUT=1 AND AL.ISMODIFIED=0 " + sWhere;
+                           " WHERE ISNOTLOGOUT=1 AND EM.UNPAIDLEAVE=1 AND AL.ISMODIFIED=0 " + sWhere;
                         }
 
                         cmd = new SqlCommand(str, con);

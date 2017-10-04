@@ -44,6 +44,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrintName" Type="nvarchar" MaxLength="50" />
           <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" />
           <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
           <Property Name="AddressLine3" Type="nvarchar" MaxLength="100" />
@@ -844,7 +845,15 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="WEEKOFF" Type="int" />
           <Property Name="BASICSALARY" Type="numeric" Precision="18" Scale="2" />
           <Property Name="ONE_DAY_SALARY" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TOTAL_LOP_MINUTES" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TOTAL_LATE" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="TOTAL_HOURS_APPROVED" Type="int" />
+          <Property Name="TOTAL_LOP" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="ONEHOUR" Type="numeric" Precision="31" Scale="15" />
+          <Property Name="LOP_LEAVE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="LOP_HOUR" Type="numeric" Precision="18" Scale="2" />
           <Property Name="LOP" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="LOP_M" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_AttedanceLogs_MasterEmployee">
           <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
@@ -1466,7 +1475,15 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
     [VIEWWORKINGDAYS].[WEEKOFF] AS [WEEKOFF], 
     [VIEWWORKINGDAYS].[BASICSALARY] AS [BASICSALARY], 
     [VIEWWORKINGDAYS].[ONE_DAY_SALARY] AS [ONE_DAY_SALARY], 
-    [VIEWWORKINGDAYS].[LOP] AS [LOP]
+    [VIEWWORKINGDAYS].[TOTAL_LOP_MINUTES] AS [TOTAL_LOP_MINUTES], 
+    [VIEWWORKINGDAYS].[TOTAL_LATE] AS [TOTAL_LATE], 
+    [VIEWWORKINGDAYS].[TOTAL_HOURS_APPROVED] AS [TOTAL_HOURS_APPROVED], 
+    [VIEWWORKINGDAYS].[TOTAL_LOP] AS [TOTAL_LOP], 
+    [VIEWWORKINGDAYS].[ONEHOUR] AS [ONEHOUR], 
+    [VIEWWORKINGDAYS].[LOP_LEAVE] AS [LOP_LEAVE], 
+    [VIEWWORKINGDAYS].[LOP_HOUR] AS [LOP_HOUR], 
+    [VIEWWORKINGDAYS].[LOP] AS [LOP], 
+    [VIEWWORKINGDAYS].[LOP_M] AS [LOP_M]
     FROM [dbo].[VIEWWORKINGDAYS] AS [VIEWWORKINGDAYS]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_AttedanceLogs_MasterEmployee" Association="Self.FK_AttedanceLogs_MasterEmployee">
@@ -1628,36 +1645,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="Int32" />
           <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_AttendanceCorrection_MasterEmployee" FromRole="AttendanceCorrection" ToRole="MasterEmployee" />
-        </EntityType>
-        <EntityType Name="CompanyDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CityCode" Type="Int32" />
-          <Property Name="StateCode" Type="Int32" />
-          <Property Name="CountryCode" Type="Int32" />
-          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InTime" Type="DateTime" Precision="3" />
-          <Property Name="OutTime" Type="DateTime" Precision="3" />
-          <Property Name="MinimumOtTime" Type="DateTime" Precision="3" />
-          <Property Name="WeekofTwoDays" Type="Boolean" Nullable="false" />
-          <Property Name="IsGraceTime" Type="Boolean" Nullable="false" />
-          <Property Name="GraceTime" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="ServerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DbName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsNUBE" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="DailyAttedanceDet">
           <Key>
@@ -2450,6 +2437,14 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="BASICSALARY" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ONE_DAY_SALARY" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="LOP" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_LOP_MINUTES" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_LATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TOTAL_HOURS_APPROVED" Type="Int32" />
+          <Property Name="TOTAL_LOP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ONEHOUR" Type="Decimal" Precision="31" Scale="15" />
+          <Property Name="LOP_LEAVE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOP_HOUR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOP_M" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_AttedanceLogs_MasterEmployee">
           <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
@@ -2790,7 +2785,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
         <EntityContainer Name="PayrollEntity" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AttedanceLogs" EntityType="Self.AttedanceLog" />
           <EntitySet Name="AttendanceCorrections" EntityType="Self.AttendanceCorrection" />
-          <EntitySet Name="CompanyDetails" EntityType="Self.CompanyDetail" />
           <EntitySet Name="DailyAttedanceDets" EntityType="Self.DailyAttedanceDet" />
           <EntitySet Name="DailyLateLogs" EntityType="Self.DailyLateLog" />
           <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShift" />
@@ -2956,6 +2950,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             <End Role="UserType" EntitySet="UserTypes" />
             <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
           </AssociationSet>
+          <EntitySet Name="CompanyDetails" EntityType="BizSoftModel.CompanyDetail" />
         </EntityContainer>
         <EntityType Name="UserType">
           <Key>
@@ -2993,6 +2988,37 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CompanyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PrintName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityCode" Type="Int32" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="CountryCode" Type="Int32" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InTime" Type="DateTime" Precision="3" />
+          <Property Name="OutTime" Type="DateTime" Precision="3" />
+          <Property Name="MinimumOtTime" Type="DateTime" Precision="3" />
+          <Property Name="WeekofTwoDays" Type="Boolean" Nullable="false" />
+          <Property Name="IsGraceTime" Type="Boolean" Nullable="false" />
+          <Property Name="GraceTime" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ServerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DbName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsNUBE" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3031,37 +3057,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
                 <ScalarProperty Name="AfterOutTime" ColumnName="AfterOutTime" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CompanyDetails">
-            <EntityTypeMapping TypeName="BizSoftModel.CompanyDetail">
-              <MappingFragment StoreEntitySet="CompanyDetails">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
-                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
-                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
-                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
-                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
-                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
-                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
-                <ScalarProperty Name="InTime" ColumnName="InTime" />
-                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
-                <ScalarProperty Name="MinimumOtTime" ColumnName="MinimumOtTime" />
-                <ScalarProperty Name="WeekofTwoDays" ColumnName="WeekofTwoDays" />
-                <ScalarProperty Name="IsGraceTime" ColumnName="IsGraceTime" />
-                <ScalarProperty Name="GraceTime" ColumnName="GraceTime" />
-                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
-                <ScalarProperty Name="DbName" ColumnName="DbName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IsNUBE" ColumnName="IsNUBE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3808,6 +3803,14 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <EntitySetMapping Name="VIEWWORKINGDAYS">
             <EntityTypeMapping TypeName="BizSoftModel.VIEWWORKINGDAY">
               <MappingFragment StoreEntitySet="VIEWWORKINGDAYS">
+                <ScalarProperty Name="LOP_M" ColumnName="LOP_M" />
+                <ScalarProperty Name="LOP_HOUR" ColumnName="LOP_HOUR" />
+                <ScalarProperty Name="LOP_LEAVE" ColumnName="LOP_LEAVE" />
+                <ScalarProperty Name="ONEHOUR" ColumnName="ONEHOUR" />
+                <ScalarProperty Name="TOTAL_LOP" ColumnName="TOTAL_LOP" />
+                <ScalarProperty Name="TOTAL_HOURS_APPROVED" ColumnName="TOTAL_HOURS_APPROVED" />
+                <ScalarProperty Name="TOTAL_LATE" ColumnName="TOTAL_LATE" />
+                <ScalarProperty Name="TOTAL_LOP_MINUTES" ColumnName="TOTAL_LOP_MINUTES" />
                 <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
                 <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
                 <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
@@ -3830,6 +3833,38 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
                 <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyDetails">
+            <EntityTypeMapping TypeName="BizSoftModel.CompanyDetail">
+              <MappingFragment StoreEntitySet="CompanyDetails">
+                <ScalarProperty Name="IsNUBE" ColumnName="IsNUBE" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DbName" ColumnName="DbName" />
+                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="GraceTime" ColumnName="GraceTime" />
+                <ScalarProperty Name="IsGraceTime" ColumnName="IsGraceTime" />
+                <ScalarProperty Name="WeekofTwoDays" ColumnName="WeekofTwoDays" />
+                <ScalarProperty Name="MinimumOtTime" ColumnName="MinimumOtTime" />
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="InTime" ColumnName="InTime" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="PrintName" ColumnName="PrintName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

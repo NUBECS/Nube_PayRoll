@@ -12,8 +12,8 @@ namespace NUBE.PAYROLL.PL
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {
-        public static frmLogin frmHome;
+    {        
+        public static frmHome frmHome;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             Window frm = new frmLogin();

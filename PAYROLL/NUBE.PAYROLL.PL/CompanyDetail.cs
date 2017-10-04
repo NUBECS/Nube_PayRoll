@@ -16,6 +16,7 @@ namespace NUBE.PAYROLL.PL
     {
         public int Id { get; set; }
         public string CompanyName { get; set; }
+        public string PrintName { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string AddressLine3 { get; set; }

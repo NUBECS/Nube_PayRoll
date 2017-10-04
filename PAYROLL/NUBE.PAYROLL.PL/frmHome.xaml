@@ -26,6 +26,7 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.LeftWindowCommands>
     <Controls:MetroWindow.Background>
+        <!--<SolidColorBrush Color="Black"/>-->
         <ImageBrush ImageSource="Images/Payroll/BG.png" />
     </Controls:MetroWindow.Background>
     <Window.CommandBindings>
@@ -66,7 +67,7 @@
                                         <TextBlock Text="{Binding MenuName}" Margin="32 0 32 0" FontSize="16"  />
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
-                                <Menu:NavMenuItem MenuName="Home">
+                                <Menu:NavMenuItem MenuName="Home" FormName="Home">
                                     <Menu:NavMenuItem.Content>
                                         <local:frmWelcome/>
                                     </Menu:NavMenuItem.Content>
@@ -226,7 +227,8 @@
                 </ScrollViewer>
             </materialDesign:DrawerHost.LeftDrawerContent>
             <DockPanel>
-                <Grid>
+                <Grid>                   
+                    <ContentControl Margin="0" Name="ccHomeContent"/>
                     <ContentControl Margin="16" Name="ccContent"/>
                 </Grid>
             </DockPanel>

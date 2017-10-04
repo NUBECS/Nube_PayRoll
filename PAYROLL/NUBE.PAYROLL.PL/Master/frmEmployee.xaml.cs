@@ -65,7 +65,7 @@ namespace NUBE.PAYROLL.PL.Master
 
                         var mb = (from x in db.MasterEmployees where x.Id == Id select x).FirstOrDefault();
                         mb.IsCancel = true;
-                        mb.CancelOn = DateTime.Now;                      
+                        mb.CancelOn = DateTime.Now;
                         db.SaveChanges();
                         MessageBox.Show("Deleted Sucessfully");
                         LoadWindow();
@@ -239,7 +239,8 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-        #endregion       
+        #endregion
+
     }
 }
 

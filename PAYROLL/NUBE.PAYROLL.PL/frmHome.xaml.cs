@@ -36,6 +36,15 @@ namespace NUBE.PAYROLL.PL
                 }
             }
         }
+        public void ShowWelcome()
+        {
+            ccHomeContent.Content = new frmWelcome();
+        }
+
+        public void ShowForm(object o)
+        {
+            ccHomeContent.Content = o;
+        }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -66,6 +75,7 @@ namespace NUBE.PAYROLL.PL
                 }
                 ListBox lb = sender as ListBox;
                 CMN.NavMenuItem mi = lb.SelectedItem as CMN.NavMenuItem;
+
                 //if (!BLL.UserAccount.AllowFormShow(mi.FormName))
                 //{
 
@@ -73,7 +83,17 @@ namespace NUBE.PAYROLL.PL
                 //}
                 //else
                 //{
-                ccContent.Content = mi.Content;
+                if (mi.FormName == "Home")
+                {
+                    ccHomeContent.Content = mi.Content;
+                }
+                else
+                {
+                    ccHomeContent.Content = null;
+                    ccContent.Content = mi.Content;
+                }
+
+
                 //}
             }
             catch (Exception ex)

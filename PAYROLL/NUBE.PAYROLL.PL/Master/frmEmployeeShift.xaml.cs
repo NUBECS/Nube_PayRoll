@@ -473,6 +473,6 @@ namespace NUBE.PAYROLL.PL.Master
         }
 
         #endregion
-
+        
     }
 }

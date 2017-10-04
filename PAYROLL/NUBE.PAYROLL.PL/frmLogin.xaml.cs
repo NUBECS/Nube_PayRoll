@@ -64,8 +64,8 @@ namespace NUBE.PAYROLL.PL
                         }
                         txtUserId.Text = "";
                         txtPassword.Password = "";
-                        frmHome frm = new frmHome();
-                        frm.ShowDialog();
+                        App.frmHome = new frmHome();                        
+                        App.frmHome.ShowDialog();
                     }
                     else
                     {

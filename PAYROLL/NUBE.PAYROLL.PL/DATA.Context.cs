@@ -27,7 +27,6 @@ namespace NUBE.PAYROLL.PL
     
         public virtual DbSet<AttedanceLog> AttedanceLogs { get; set; }
         public virtual DbSet<AttendanceCorrection> AttendanceCorrections { get; set; }
-        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
         public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
         public virtual DbSet<DailyLateLog> DailyLateLogs { get; set; }
         public virtual DbSet<EmployeeShift> EmployeeShifts { get; set; }
@@ -73,5 +72,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<VIEWWEEKOFF> VIEWWEEKOFFs { get; set; }
         public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
     }
 }

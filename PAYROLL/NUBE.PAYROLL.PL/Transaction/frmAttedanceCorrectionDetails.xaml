@@ -203,7 +203,7 @@
                     
                     <StackPanel Orientation="Horizontal" Height="45" VerticalAlignment="Center">
                         <Label Content="In Time"  Margin="0,15,20,0" FontWeight="Bold" />
-                        <ComboBox x:Name="cmbInTimeHour" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="85" IsReadOnly="True">
+                        <ComboBox x:Name="cmbInTimeHour" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="85" IsReadOnly="False"  SelectionChanged="cmbInTimeHour_SelectionChanged" PreviewTextInput="NumericOnly">
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Clock" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -211,7 +211,7 @@
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
                         </ComboBox>
-                        <ComboBox x:Name="cmbInTimeMinutes" Margin="10,0,0,0" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="90" IsReadOnly="True">
+                        <ComboBox x:Name="cmbInTimeMinutes" Margin="10,0,0,0" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="90" IsReadOnly="False"  SelectionChanged="cmbInTimeMinutes_SelectionChanged" PreviewTextInput="NumericOnly">
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Clock" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />

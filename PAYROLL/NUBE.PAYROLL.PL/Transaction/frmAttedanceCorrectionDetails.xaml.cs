@@ -45,14 +45,13 @@ namespace NUBE.PAYROLL.PL.Transaction
             iAL_Id = ALID;
             bIsAlreadyModified = IsModified;
 
-
             txtMemberID.Text = iMembershipNo.ToString();
             txtEmployeeName.Text = EmployeeName.ToString();
             txtSex.Text = sGender.ToString();
             ComboBoxHours();
             ComboBoxMinutes();
-            cmbInTimeHour.IsEnabled = false;
-            cmbInTimeMinutes.IsEnabled = false;
+            cmbInTimeHour.IsEnabled = true;
+            cmbInTimeMinutes.IsEnabled = true;
         }
 
         #region EVENTS
@@ -117,13 +116,13 @@ namespace NUBE.PAYROLL.PL.Transaction
                                 dly.OutTime = Convert.ToDateTime(string.Format("{0:dd/MMM/yyyy} {1}:{2}:00.000", dtEntryDate, cmbOutTimeHour.Text, cmbOutTimeMinutes.Text));
                                 if (Convert.ToDateTime(shf.MinimumOtTime).TimeOfDay < Convert.ToDateTime(string.Format("{0:dd/MMM/yyyy} {1}:{2}:00.000", dtEntryDate, cmbOutTimeHour.Text, cmbOutTimeMinutes.Text)).TimeOfDay)
                                 {
-                                    TimeSpan diff =  Convert.ToDateTime(shf.OutTime).TimeOfDay - Convert.ToDateTime(string.Format("{0:dd/MMM/yyyy} {1}:{2}:00.000", dtEntryDate, cmbInTimeHour.Text, cmbInTimeMinutes.Text)).TimeOfDay;
+                                    TimeSpan diff = Convert.ToDateTime(shf.OutTime).TimeOfDay - Convert.ToDateTime(string.Format("{0:dd/MMM/yyyy} {1}:{2}:00.000", dtEntryDate, cmbInTimeHour.Text, cmbInTimeMinutes.Text)).TimeOfDay;
                                     dly.TotalWorking_Hours = Convert.ToInt32(diff.Hours - 1);
                                     dly.TotalWorking_Minutes = Convert.ToInt32((diff.Minutes));
 
                                     TimeSpan diffOT = Convert.ToDateTime(string.Format("{0:dd/MMM/yyyy} {1}:{2}:00.000", dtEntryDate, cmbOutTimeHour.Text, cmbOutTimeMinutes.Text)).TimeOfDay - Convert.ToDateTime(shf.OutTime).TimeOfDay;
                                     dly.OT_Hours = Convert.ToInt32(diffOT.Hours);
-                                    dly.OT_Minutes = Convert.ToInt32((diffOT.Minutes));                                    
+                                    dly.OT_Minutes = Convert.ToInt32((diffOT.Minutes));
                                 }
                                 else
                                 {
@@ -132,7 +131,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                                     dly.TotalWorking_Minutes = Convert.ToInt32((diff.Minutes));
                                     dly.OT_Hours = 0;
                                     dly.OT_Minutes = 0;
-                                }                                
+                                }
                                 db.SaveChanges();
 
                                 var al = (from x in db.AttedanceLogs where x.Id == iAL_Id select x).FirstOrDefault();
@@ -215,6 +214,42 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
         }
 
+        private void cmbInTimeHour_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(cmbInTimeHour.Text) && !string.IsNullOrEmpty(cmbInTimeMinutes.Text) && Convert.ToInt32(cmbOutTimeHour.SelectedValue) > 0 && Convert.ToInt32(cmbOutTimeMinutes.SelectedValue) > 0)
+                {
+                    if (Convert.ToInt32(cmbInTimeHour.Text) > 0 && Convert.ToInt32(cmbOutTimeHour.Text) > 0)
+                    {
+                        CalculateTime();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
+        private void cmbInTimeMinutes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(cmbInTimeHour.Text) && !string.IsNullOrEmpty(cmbInTimeMinutes.Text) && Convert.ToInt32(cmbOutTimeHour.SelectedValue) > 0 && Convert.ToInt32(cmbOutTimeMinutes.SelectedValue) > 0)
+                {
+                    if (Convert.ToInt32(cmbInTimeHour.Text) > 0 && Convert.ToInt32(cmbOutTimeHour.Text) > 0)
+                    {
+                        CalculateTime();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
+
         #endregion
 
         #region FUNCTIONS
@@ -249,15 +284,15 @@ namespace NUBE.PAYROLL.PL.Transaction
                 {
                     InHour = Convert.ToInt32(dt.Rows[0]["INHOUR"]);
                     InMinutes = Convert.ToInt32(dt.Rows[0]["INMINUTES"]);
-                    dtInTime = Convert.ToDateTime(dt.Rows[0]["OINTIME"]);
-                    cmbInTimeHour.Text = InHour.ToString();
-                    cmbInTimeMinutes.Text = InMinutes.ToString();
+                    dtInTime = Convert.ToDateTime(dt.Rows[0]["OINTIME"]);                    
                     txtTotalWorkingHours.Text = "0";
                     if (bIsAlreadyModified == true)
                     {
                         var dly = (from x in db.DailyAttedanceDets where x.EmployeeId == iEmployeeId && x.AttDate == dtEntryDate select x).FirstOrDefault();
                         if (dly != null)
                         {
+                            cmbInTimeHour.Text = Convert.ToDateTime(dly.InTime).TimeOfDay.Hours.ToString();
+                            cmbInTimeMinutes.Text = Convert.ToDateTime(dly.InTime).TimeOfDay.Minutes.ToString();
                             cmbOutTimeHour.Text = Convert.ToDateTime(dly.OutTime).TimeOfDay.Hours.ToString();
                             cmbOutTimeMinutes.Text = Convert.ToDateTime(dly.OutTime).TimeOfDay.Minutes.ToString();
                         }
@@ -384,6 +419,6 @@ namespace NUBE.PAYROLL.PL.Transaction
         }
 
         #endregion
-       
+        
     }
 }

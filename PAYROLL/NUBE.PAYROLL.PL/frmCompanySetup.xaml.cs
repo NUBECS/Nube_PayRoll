@@ -78,6 +78,7 @@ namespace NUBE.PAYROLL.PL
                     if (cmp != null)
                     {
                         cmp.CompanyName = txtCompanyName.Text;
+                        cmp.PrintName = txtPrintName.Text;
                         cmp.AddressLine1 = txtAddress1.Text;
                         cmp.AddressLine2 = txtAddress2.Text;
                         cmp.AddressLine3 = txtAddress3.Text;
@@ -90,12 +91,14 @@ namespace NUBE.PAYROLL.PL
                         cmp.MobileNo = txtMobile.Text;
                         cmp.DbName = txtTUMPDB.Text;
                         db.SaveChanges();
-                        MessageBox.Show("Updated Sucessfully!", "PAYROLL");                        
+                        MessageBox.Show("Updated Sucessfully!", "PAYROLL");
+                        App.frmHome.ShowWelcome();
                     }
                     else
                     {
                         CompanyDetail cd = new CompanyDetail();
                         cd.CompanyName = txtCompanyName.Text;
+                        cd.PrintName = txtPrintName.Text;
                         cd.AddressLine1 = txtAddress1.Text;
                         cd.AddressLine2 = txtAddress2.Text;
                         cd.AddressLine3 = txtAddress3.Text;
@@ -110,6 +113,7 @@ namespace NUBE.PAYROLL.PL
                         db.CompanyDetails.Add(cd);
                         db.SaveChanges();
                         MessageBox.Show("Saved Sucessfully!", "PAYROLL");
+                        App.frmHome.ShowWelcome();
                     }
                 }
             }
@@ -144,7 +148,7 @@ namespace NUBE.PAYROLL.PL
             txtTelephone.Text = "";
             txtMobile.Text = "";
             txtTUMPDB.Text = "";
-
+            txtPrintName.Text = "";
         }
 
         void LoadWindow()
@@ -182,6 +186,7 @@ namespace NUBE.PAYROLL.PL
                     txtTelephone.Text = cmp.TelephoneNo;
                     txtMobile.Text = cmp.MobileNo;
                     txtTUMPDB.Text = cmp.DbName;
+                    txtPrintName.Text = cmp.PrintName;
                 }
             }
             catch (Exception ex)
