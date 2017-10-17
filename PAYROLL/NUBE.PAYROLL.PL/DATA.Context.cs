@@ -44,7 +44,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<MasterPosition> MasterPositions { get; set; }
         public virtual DbSet<MasterRace> MasterRaces { get; set; }
         public virtual DbSet<MasterState> MasterStates { get; set; }
-        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
         public virtual DbSet<OTClaim> OTClaims { get; set; }
         public virtual DbSet<OverTimeDetail> OverTimeDetails { get; set; }
         public virtual DbSet<PCB> PCBs { get; set; }
@@ -67,11 +66,14 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<ViewMasterPosition> ViewMasterPositions { get; set; }
         public virtual DbSet<ViewMasterState> ViewMasterStates { get; set; }
         public virtual DbSet<ViewOTCalculation> ViewOTCalculations { get; set; }
-        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
         public virtual DbSet<VIEWTOTALOT> VIEWTOTALOTs { get; set; }
         public virtual DbSet<VIEWWEEKOFF> VIEWWEEKOFFs { get; set; }
         public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<MonthlyDeduction> MonthlyDeductions { get; set; }
         public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
+        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
+        public virtual DbSet<VIEWLOPHOUR> VIEWLOPHOURS { get; set; }
+        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
     }
 }

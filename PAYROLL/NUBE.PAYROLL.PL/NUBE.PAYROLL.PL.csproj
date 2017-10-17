@@ -153,6 +153,9 @@
     <Compile Include="AttendanceCorrection.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="BizSoftDataSet.cs">
+      <DependentUpon>BizSoftDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BizSoftDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -255,6 +258,9 @@
     <Compile Include="Master\frmSocsoContribution.xaml.cs">
       <DependentUpon>frmSocsoContribution.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MonthlyDeduction.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="MonthlySalary.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
@@ -300,6 +306,9 @@
     <Compile Include="Transaction\frmManualCorrection.xaml.cs">
       <DependentUpon>frmManualCorrection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transaction\frmMonthlyDeductions.xaml.cs">
+      <DependentUpon>frmMonthlyDeductions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transaction\frmPayslipGenerate.xaml.cs">
       <DependentUpon>frmPayslipGenerate.xaml</DependentUpon>
     </Compile>
@@ -337,6 +346,9 @@
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="VIEWHALFDAYLEAVE.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWLOPHOUR.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewManualPayment.cs">
@@ -557,6 +569,10 @@
     <Page Include="Transaction\frmManualCorrection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Transaction\frmMonthlyDeductions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transaction\frmPayslipGenerate.xaml">
       <SubType>Designer</SubType>

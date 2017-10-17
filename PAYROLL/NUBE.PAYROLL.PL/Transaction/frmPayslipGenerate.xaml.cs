@@ -16,6 +16,7 @@ using NUBE.PAYROLL.CMN;
 using System.Data;
 using Microsoft.Reporting.WinForms;
 using System.Data.SqlClient;
+using System.Data.Entity.Infrastructure;
 
 namespace NUBE.PAYROLL.PL.Transaction
 {
@@ -52,7 +53,7 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -76,50 +77,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                         }
                         else
                         {
-                            var PY = (from x in db.MonthlySalaries orderby x.EmployeeNo select x).ToList();
-                            if (PY.Count > 0)
-                            {
-                                DataTable dtPayslip = AppLib.LINQResultToDataTable(PY);
-                                if (!string.IsNullOrEmpty(txtMembershipNo.Text))
-                                {
-                                    dtPayslip.Rows.Clear();
-                                    DataView dv = new DataView(dtPayslip);
-                                    dv.RowFilter = "EMPLOYEENO=" + txtMembershipNo.Text;
-                                    dtPayslip = dv.ToTable();
-                                }
-                                if (dtPayslip.Rows.Count > 0)
-                                {
-                                    RptPaySlip.Reset();
-                                    ReportDataSource masterData = new ReportDataSource("payroll", dtPayslip);
-                                    RptPaySlip.LocalReport.DataSources.Add(masterData);
-                                    if (Config.bIsNubeServer == true)
-                                    {
-                                        RptPaySlip.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.rptNubePayslip.rdlc";
-                                    }
-                                    else
-                                    {
-                                        RptPaySlip.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.rptPaySlip.rdlc";
-                                    }
-
-                                    ReportParameter[] NB = new ReportParameter[2];
-                                    NB[0] = new ReportParameter("Month", string.Format("{0:MMM yyyy}", dtpDate.SelectedDate));
-                                    var mas = (from x in db.CompanyDetails select x).FirstOrDefault();
-                                    if (mas != null)
-                                    {
-                                        NB[1] = new ReportParameter("CompanyName", mas.CompanyName.ToString());
-                                    }
-                                    RptPaySlip.LocalReport.SetParameters(NB);
-                                    RptPaySlip.RefreshReport();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No Record Found!");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("No Record Found!");
-                            }
+                            ReportSummary();
                         }
                     }
                 }
@@ -131,7 +89,7 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -141,51 +99,72 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         void ReportSummary()
         {
-            var PY = (from x in db.MonthlySalaries orderby x.EmployeeNo select x).ToList();
-            if (PY.Count > 0)
-            {
-                DataTable dtPayslip = AppLib.LINQResultToDataTable(PY);
-                if (!string.IsNullOrEmpty(txtMembershipNo.Text))
+            try
+            {                
+                var PY = (from x in db.MonthlySalaries orderby x.EmployeeNo select x).ToList();
+                if (PY.Count > 0)
                 {
-                    dtPayslip.Rows.Clear();
-                    DataView dv = new DataView(dtPayslip);
-                    dv.RowFilter = "EMPLOYEENO=" + txtMembershipNo.Text;
-                    dtPayslip = dv.ToTable();
-                }
+                    DataTable dtPayslip = AppLib.LINQResultToDataTable(PY);
+                    if (!string.IsNullOrEmpty(txtMembershipNo.Text))
+                    {                        
+                        DataView dv = new DataView(dtPayslip);
+                        dv.RowFilter = "EMPLOYEENO=" + txtMembershipNo.Text;
+                        dtPayslip = dv.ToTable();
+                    }
 
-                if (dtPayslip.Rows.Count > 0)
-                {
-                    RptPaySlip.Reset();
-                    ReportDataSource masterData = new ReportDataSource("payroll", dtPayslip);
-                    RptPaySlip.LocalReport.DataSources.Add(masterData);
-                    if (Config.bIsNubeServer == true)
+                    if (dtPayslip.Rows.Count > 0)
                     {
-                        RptPaySlip.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.rptNubePayslip.rdlc";
+                        RptPaySlip.Reset();
+                        ReportDataSource masterData = new ReportDataSource("payroll", dtPayslip);
+                        RptPaySlip.LocalReport.DataSources.Add(masterData);
+                        if (Config.bIsNubeServer == true)
+                        {
+                            RptPaySlip.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.rptNubePayslip.rdlc";
+                            ReportParameter[] NB = new ReportParameter[2];
+                            NB[0] = new ReportParameter("Month", string.Format("{0:MMM yyyy}", dtpDate.SelectedDate));
+                            var mas = (from x in db.CompanyDetails select x).FirstOrDefault();
+                            if (mas != null)
+                            {
+                                NB[1] = new ReportParameter("CompanyName", mas.CompanyName.ToString());
+                            }
+                            RptPaySlip.LocalReport.SetParameters(NB);
+                        }
+                        else
+                        {
+                            RptPaySlip.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.rptPaySlip.rdlc";
+                            ReportParameter[] NB = new ReportParameter[7];
+                            NB[0] = new ReportParameter("Month", string.Format("{0:MMM yyyy}", dtpDate.SelectedDate));
+                            PayrollEntity db = new PayrollEntity();
+                            var mas = (from x in db.CompanyDetails where x.Id == 1 select x).FirstOrDefault();
+
+                            if (mas != null)
+                            {
+                                NB[1] = new ReportParameter("CompanyPrintName", mas.PrintName.ToString());
+                                NB[2] = new ReportParameter("RobNo", mas.RobNo == "NULL" ? "" : mas.RobNo.ToString());
+                                NB[3] = new ReportParameter("Address1", mas.AddressLine1 == "NULL" ? "" : mas.AddressLine1.ToString());
+                                NB[4] = new ReportParameter("Address2", mas.AddressLine2 == "NULL" ? "" : mas.AddressLine2.ToString());
+                                NB[5] = new ReportParameter("Address3", mas.AddressLine3 == "NULL" ? "" : mas.AddressLine3.ToString());
+                                NB[6] = new ReportParameter("TelNo", mas.TelephoneNo == "NULL" ? "" : mas.TelephoneNo.ToString());
+                            }
+                            RptPaySlip.LocalReport.SetParameters(NB);
+                        }
+
+                        RptPaySlip.RefreshReport();
                     }
                     else
                     {
-                        RptPaySlip.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.rptPaySlip.rdlc";
+                        MessageBox.Show("No Record Found!");
                     }
-                    ReportParameter[] NB = new ReportParameter[2];
-                    NB[0] = new ReportParameter("Month", string.Format("{0:MMM yyyy}", dtpDate.SelectedDate));
-                    var mas = (from x in db.CompanyDetails select x).FirstOrDefault();
-                    if (mas != null)
-                    {
-                        NB[1] = new ReportParameter("CompanyName", mas.CompanyName.ToString());
-                    }
-                    RptPaySlip.LocalReport.SetParameters(NB);
-                    RptPaySlip.RefreshReport();
                 }
                 else
                 {
                     MessageBox.Show("No Record Found!");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No Record Found!");
+                MessageBox.Show(ex.Message);
             }
-
         }
 
         #endregion

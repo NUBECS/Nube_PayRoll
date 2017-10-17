@@ -23,12 +23,13 @@ namespace NUBE.PAYROLL.PL
             this.DailyLateLogs = new HashSet<DailyLateLog>();
             this.LatePermissionDetails = new HashSet<LatePermissionDetail>();
             this.LeavePermissionDetails = new HashSet<LeavePermissionDetail>();
-            this.MonthlySalaries = new HashSet<MonthlySalary>();
             this.OTClaims = new HashSet<OTClaim>();
             this.OverTimeDetails = new HashSet<OverTimeDetail>();
             this.PCBs = new HashSet<PCB>();
             this.TempAttendanceTimings = new HashSet<TempAttendanceTiming>();
             this.YearlyAllowances = new HashSet<YearlyAllowance>();
+            this.MonthlyDeductions = new HashSet<MonthlyDeduction>();
+            this.MonthlySalaries = new HashSet<MonthlySalary>();
         }
     
         public int Id { get; set; }
@@ -119,8 +120,6 @@ namespace NUBE.PAYROLL.PL
         public virtual MasterCountry MasterCountry { get; set; }
         public virtual MasterPosition MasterPosition { get; set; }
         public virtual MasterRace MasterRace { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MonthlySalary> MonthlySalaries { get; set; }
         public virtual MasterNubeBranch MasterNubeBranch { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OTClaim> OTClaims { get; set; }
@@ -133,5 +132,9 @@ namespace NUBE.PAYROLL.PL
         public virtual ICollection<TempAttendanceTiming> TempAttendanceTimings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<YearlyAllowance> YearlyAllowances { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MonthlyDeduction> MonthlyDeductions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MonthlySalary> MonthlySalaries { get; set; }
     }
 }

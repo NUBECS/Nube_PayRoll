@@ -164,7 +164,7 @@
                             </Expander>
 
                             <Expander Header="Transaction" FontWeight="Bold" FontSize="16">
-                                <ListBox SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
+                                <ListBox x:Name="lstTransaction" SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate DataType="BizMenu:BizMenuItem">
                                             <TextBlock Text="{Binding MenuName}" Margin="32 0 32 0" FontSize="16"  />
@@ -178,6 +178,11 @@
                                     <Menu:NavMenuItem MenuName="PCB" FormName="PCB">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmPCB/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
+                                    <Menu:NavMenuItem MenuName="Monthly Deductions" FormName="MonthlyDeductions">
+                                        <Menu:NavMenuItem.Content>
+                                            <Transaction:frmMonthlyDeductions/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
                                     <Menu:NavMenuItem MenuName="Bonus and Ex-gratia" FormName="ManualAmount">

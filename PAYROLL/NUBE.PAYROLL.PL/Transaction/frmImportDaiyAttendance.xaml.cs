@@ -305,8 +305,8 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
-                MessageBox.Show("Contact Administrator!", "Error");
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Contact Administrator!", "Error");
                 //MessageBox.Show("Imported Sucessfully !", "Sucessfully Completed");
             }
         }

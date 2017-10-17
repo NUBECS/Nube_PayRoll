@@ -363,6 +363,10 @@ SELECT Id, EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, EPFNumber, SOCSONu
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="DateOfJoining" msprop:Generator_ColumnVarNameInTable="columnDateOfJoining" msprop:Generator_ColumnPropNameInRow="DateOfJoining" msprop:Generator_ColumnPropNameInTable="DateOfJoiningColumn" msprop:Generator_UserColumnName="DateOfJoining" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BankName" msprop:Generator_ColumnVarNameInTable="columnBankName" msprop:Generator_ColumnPropNameInRow="BankName" msprop:Generator_ColumnPropNameInTable="BankNameColumn" msprop:Generator_UserColumnName="BankName" type="xs:string" minOccurs="0" />
+              <xs:element name="AllowanceInAdvanced" msprop:Generator_ColumnVarNameInTable="columnAllowanceInAdvanced" msprop:Generator_ColumnPropNameInRow="AllowanceInAdvanced" msprop:Generator_ColumnPropNameInTable="AllowanceInAdvancedColumn" msprop:Generator_UserColumnName="AllowanceInAdvanced" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OtherDeductions" msprop:Generator_ColumnVarNameInTable="columnOtherDeductions" msprop:Generator_ColumnPropNameInRow="OtherDeductions" msprop:Generator_ColumnPropNameInTable="OtherDeductionsColumn" msprop:Generator_UserColumnName="OtherDeductions" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

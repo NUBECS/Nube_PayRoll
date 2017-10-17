@@ -22,16 +22,17 @@ namespace NUBE.PAYROLL.PL.Transaction
     /// </summary>
     public partial class frmYearAllowance : MetroWindow
     {
-        int iEmployeeId = 0, iAllowanceId = 0, iPCBid = 0, iFormId = 0;
+        int iEmployeeId = 0, iAllowanceId = 0, iPCBid = 0, iMonthlyDeductionId = 0, iFormId = 0;
         DateTime dtEntrydate;
         PayrollEntity db = new PayrollEntity();
-        public frmYearAllowance(DateTime Entrydate, int EmployeeId = 0, int AllowanceId = 0, int PCBid = 0, int FormId = 0)
+        public frmYearAllowance(DateTime Entrydate, int EmployeeId = 0, int AllowanceId = 0, int PCBid = 0, int MlyDeductId = 0, int FormId = 0)
         {
             InitializeComponent();
             dtEntrydate = Entrydate;
             iEmployeeId = EmployeeId;
             iAllowanceId = AllowanceId;
             iPCBid = PCBid;
+            iMonthlyDeductionId = MlyDeductId;
             iFormId = FormId;
             FormLoad();
         }
@@ -55,7 +56,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                 {
                     if (string.IsNullOrEmpty(txtBonus.Text))
                     {
-                        MessageBox.Show("Bonus is Empty!","Empty");
+                        MessageBox.Show("Bonus is Empty!", "Empty");
                         txtBonus.Focus();
                     }
                     else if (string.IsNullOrEmpty(txtExgratia.Text))
@@ -106,6 +107,36 @@ namespace NUBE.PAYROLL.PL.Transaction
                         }
                     }
                 }
+                else if (iFormId == 3)
+                {
+                    if (string.IsNullOrEmpty(txtBonus.Text))
+                    {
+                        MessageBox.Show("Allowance Advance Amount is Empty!", "Empty");
+                        txtBonus.Focus();
+                    }
+                    else if (string.IsNullOrEmpty(txtExgratia.Text))
+                    {
+                        MessageBox.Show("Other Deduction Amount is Empty!", "Empty");
+                        txtExgratia.Focus();
+                    }
+                    else
+                    {
+                        if (Convert.ToDecimal(txtBonus.Text) == 0 || Convert.ToDecimal(txtExgratia.Text) == 0)
+                        {
+                            if (MessageBox.Show("Allowance Advance or Deduction Amount is Zero!, Are you Want Save ?", "Save Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                SaveMonthlyDeduciton();
+                            }
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("Do you Want to Save ?", "Save Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                SaveMonthlyDeduciton();
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -137,7 +168,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                     ya.Bonus = Convert.ToDecimal(txtBonus.Text);
                     ya.Exgratia = Convert.ToDecimal(txtExgratia.Text);
                     db.SaveChanges();
-                    MessageBox.Show("Updated Successfully!","PAYROLL");
+                    MessageBox.Show("Updated Successfully!", "PAYROLL");
                     this.Close();
                 }
             }
@@ -175,6 +206,36 @@ namespace NUBE.PAYROLL.PL.Transaction
                 pc.EmployeeId = iEmployeeId;
                 pc.PCB1 = Convert.ToDecimal(txtBonus.Text);
                 db.PCBs.Add(pc);
+                db.SaveChanges();
+                MessageBox.Show("Saved Successfully!", "PAYROLL");
+                this.Close();
+            }
+        }
+
+        void SaveMonthlyDeduciton()
+        {
+            if (iMonthlyDeductionId != 0)
+            {
+                var ya = (from x in db.MonthlyDeductions where x.Id == iMonthlyDeductionId && x.EntryDate == dtEntrydate select x).FirstOrDefault();
+                if (ya != null)
+                {
+                    ya.AllowanceInAdvanced = Convert.ToDecimal(txtBonus.Text);
+                    ya.OtherDeductions = Convert.ToDecimal(txtExgratia.Text);
+                    db.SaveChanges();
+                    MessageBox.Show("Updated Successfully!", "PAYROLL");
+                    this.Close();
+                }
+            }
+            else
+            {
+                MonthlyDeduction ya = new MonthlyDeduction();
+                ya.EntryDate = dtEntrydate;
+                ya.EmployeeId = iEmployeeId;
+                ya.AllowanceInAdvanced = Convert.ToDecimal(txtBonus.Text);
+                ya.OtherDeductions = Convert.ToDecimal(txtExgratia.Text);
+                ya.CreateBy = 1;
+                ya.CreatedOn = DateTime.Now;
+                db.MonthlyDeductions.Add(ya);
                 db.SaveChanges();
                 MessageBox.Show("Saved Successfully!", "PAYROLL");
                 this.Close();
@@ -223,6 +284,15 @@ namespace NUBE.PAYROLL.PL.Transaction
                     if (pcb != null)
                     {
                         txtBonus.Text = pcb.PCB1.ToString();
+                    }
+                }
+                else if (iFormId == 3 && iMonthlyDeductionId != 0)
+                {
+                    var pcb = (from x in db.MonthlyDeductions where x.EmployeeId == iEmployeeId && x.EntryDate == dtEntrydate select x).FirstOrDefault();
+                    if (pcb != null)
+                    {
+                        txtBonus.Text = pcb.AllowanceInAdvanced.ToString();
+                        txtExgratia.Text = pcb.OtherDeductions.ToString();
                     }
                 }
             }

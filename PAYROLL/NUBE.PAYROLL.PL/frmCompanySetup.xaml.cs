@@ -25,8 +25,6 @@ namespace NUBE.PAYROLL.PL
         public frmCompanySetup()
         {
             InitializeComponent();
-            //ComboBoxHours();
-            //ComboBoxMinutes();
         }
 
         #region EVENTS
@@ -90,6 +88,7 @@ namespace NUBE.PAYROLL.PL
                         cmp.TelephoneNo = txtTelephone.Text;
                         cmp.MobileNo = txtMobile.Text;
                         cmp.DbName = txtTUMPDB.Text;
+                        cmp.RobNo = txtRobNo.Text;
                         db.SaveChanges();
                         MessageBox.Show("Updated Sucessfully!", "PAYROLL");
                         App.frmHome.ShowWelcome();
@@ -110,6 +109,7 @@ namespace NUBE.PAYROLL.PL
                         cd.TelephoneNo = txtTelephone.Text;
                         cd.MobileNo = txtMobile.Text;
                         cd.DbName = txtTUMPDB.Text;
+                        cd.RobNo = txtRobNo.Text;
                         db.CompanyDetails.Add(cd);
                         db.SaveChanges();
                         MessageBox.Show("Saved Sucessfully!", "PAYROLL");
@@ -149,6 +149,7 @@ namespace NUBE.PAYROLL.PL
             txtMobile.Text = "";
             txtTUMPDB.Text = "";
             txtPrintName.Text = "";
+            txtRobNo.Text = "";
         }
 
         void LoadWindow()
@@ -187,6 +188,7 @@ namespace NUBE.PAYROLL.PL
                     txtMobile.Text = cmp.MobileNo;
                     txtTUMPDB.Text = cmp.DbName;
                     txtPrintName.Text = cmp.PrintName;
+                    txtRobNo.Text = cmp.RobNo;
                 }
             }
             catch (Exception ex)

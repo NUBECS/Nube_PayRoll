@@ -15,41 +15,51 @@ namespace NUBE.PAYROLL.PL
     public partial class VIEWPAYSLIP
     {
         public Nullable<long> RNO { get; set; }
-        public int EmployeeId { get; set; }
-        public int CODE { get; set; }
+        public int EMPLOYEEID { get; set; }
+        public int EMPLOYEENO { get; set; }
+        public Nullable<System.DateTime> SALARYMONTH { get; set; }
         public string EMPLOYEENAME { get; set; }
-        public string POSITIONNAME { get; set; }
         public string EPFNUMBER { get; set; }
         public string SOCSONUMBER { get; set; }
         public string NRIC { get; set; }
         public string BANKACCOUNTNO { get; set; }
-        public Nullable<decimal> BASICSALARY { get; set; }
-        public Nullable<decimal> TOTALWORKINGDAYS { get; set; }
-        public Nullable<decimal> DAYSABSENT { get; set; }
-        public Nullable<decimal> OT { get; set; }
-        public Nullable<decimal> OT_AMOUNT { get; set; }
-        public Nullable<decimal> LOP { get; set; }
-        public Nullable<decimal> ALLOWANCE { get; set; }
-        public Nullable<decimal> BONUS { get; set; }
-        public Nullable<decimal> EXGRATIA { get; set; }
-        public Nullable<decimal> EPF { get; set; }
-        public Nullable<decimal> EPFUNION { get; set; }
-        public Nullable<decimal> SOCSO { get; set; }
-        public Nullable<decimal> SOCSOUNION { get; set; }
-        public Nullable<decimal> INCOMETAX { get; set; }
-        public Nullable<decimal> COOPSOCIETY { get; set; }
-        public Nullable<decimal> GMIS { get; set; }
-        public Nullable<decimal> GELA { get; set; }
-        public Nullable<decimal> LOAN { get; set; }
-        public Nullable<decimal> OTHERS { get; set; }
-        public Nullable<decimal> KOPERASI { get; set; }
-        public Nullable<decimal> NUBESUBSCRIPTION { get; set; }
-        public Nullable<decimal> BIMBLOAN { get; set; }
-        public Nullable<decimal> HOMECARLOANS { get; set; }
-        public Nullable<decimal> OTHERLOANS { get; set; }
-        public Nullable<decimal> TOTALEARNING { get; set; }
-        public Nullable<decimal> PCB { get; set; }
-        public Nullable<decimal> TOTALDEDUCTION { get; set; }
-        public Nullable<decimal> NETSALARY { get; set; }
+        public decimal BASICSALARY { get; set; }
+        public decimal TOTALWORKINGDAYS { get; set; }
+        public decimal DAYSABSENT { get; set; }
+        public decimal OTHOURS { get; set; }
+        public decimal OT_AMOUNT { get; set; }
+        public decimal LOP { get; set; }
+        public decimal POB { get; set; }
+        public decimal NEC { get; set; }
+        public decimal SECONDMENT { get; set; }
+        public decimal SPECIAL { get; set; }
+        public decimal COLA { get; set; }
+        public decimal MOBILEALLOWANCE { get; set; }
+        public decimal ALLOWANCE { get; set; }
+        public decimal BONUS { get; set; }
+        public decimal EXGRATIA { get; set; }
+        public decimal EPF { get; set; }
+        public decimal EPFUNION { get; set; }
+        public decimal SOCSO { get; set; }
+        public decimal SOCSOUNION { get; set; }
+        public decimal INCOMETAX { get; set; }
+        public decimal GMIS { get; set; }
+        public decimal GELA { get; set; }
+        public decimal BIMBLOAN { get; set; }
+        public decimal HOMECARLOANS { get; set; }
+        public decimal OTHERLOAN { get; set; }
+        public decimal TOTALLOAN { get; set; }
+        public decimal OTHERS { get; set; }
+        public decimal KOPERASI { get; set; }
+        public decimal NUBESUBSCRIPTION { get; set; }
+        public decimal PCB { get; set; }
+        public decimal TOTALEARNING { get; set; }
+        public decimal TOTALDEDUCTION { get; set; }
+        public decimal NETSALARY { get; set; }
+        public string POSITIONNAME { get; set; }
+        public Nullable<System.DateTime> DATEOFJOINING { get; set; }
+        public string BANKNAME { get; set; }
+        public decimal ALLOWANCEINADVANCED { get; set; }
+        public decimal OTHERDEDUCTIONS { get; set; }
     }
 }

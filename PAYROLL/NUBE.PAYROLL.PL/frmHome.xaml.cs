@@ -35,7 +35,32 @@ namespace NUBE.PAYROLL.PL
                     }
                 }
             }
+
+            foreach (CMN.NavMenuItem m in lstTransaction.Items)
+            {
+                if (m.MenuName == "PCB")
+                {
+                    if (Config.bIsNubeServer == false)
+                    {
+                        lstTransaction.Items.Remove(m);
+                        break;
+                    }
+                }
+            }
+
+            foreach (CMN.NavMenuItem m in lstTransaction.Items)
+            {
+                if (m.MenuName == "Monthly Deductions")
+                {
+                    if (Config.bIsNubeServer == true)
+                    {
+                        lstTransaction.Items.Remove(m);
+                        break;
+                    }
+                }
+            }
         }
+
         public void ShowWelcome()
         {
             ccHomeContent.Content = new frmWelcome();
@@ -85,6 +110,7 @@ namespace NUBE.PAYROLL.PL
                 //{
                 if (mi.FormName == "Home")
                 {
+                    ccContent.Content = null;
                     ccHomeContent.Content = mi.Content;
                 }
                 else

@@ -365,6 +365,14 @@ namespace NUBE.PAYROLL.PL {
             
             private global::System.Data.DataColumn columnPositionName;
             
+            private global::System.Data.DataColumn columnDateOfJoining;
+            
+            private global::System.Data.DataColumn columnBankName;
+            
+            private global::System.Data.DataColumn columnAllowanceInAdvanced;
+            
+            private global::System.Data.DataColumn columnOtherDeductions;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public MonthlySalaryDataTable() {
@@ -744,6 +752,38 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateOfJoiningColumn {
+                get {
+                    return this.columnDateOfJoining;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BankNameColumn {
+                get {
+                    return this.columnBankName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AllowanceInAdvancedColumn {
+                get {
+                    return this.columnAllowanceInAdvanced;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OtherDeductionsColumn {
+                get {
+                    return this.columnOtherDeductions;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -821,7 +861,11 @@ namespace NUBE.PAYROLL.PL {
                         decimal TOTALEARNING, 
                         decimal TOTALDEDUCTION, 
                         decimal NETSALARY, 
-                        string PositionName) {
+                        string PositionName, 
+                        System.DateTime DateOfJoining, 
+                        string BankName, 
+                        decimal AllowanceInAdvanced, 
+                        decimal OtherDeductions) {
                 MonthlySalaryRow rowMonthlySalaryRow = ((MonthlySalaryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -866,7 +910,11 @@ namespace NUBE.PAYROLL.PL {
                         TOTALEARNING,
                         TOTALDEDUCTION,
                         NETSALARY,
-                        PositionName};
+                        PositionName,
+                        DateOfJoining,
+                        BankName,
+                        AllowanceInAdvanced,
+                        OtherDeductions};
                 rowMonthlySalaryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMonthlySalaryRow);
                 return rowMonthlySalaryRow;
@@ -939,6 +987,10 @@ namespace NUBE.PAYROLL.PL {
                 this.columnTOTALDEDUCTION = base.Columns["TOTALDEDUCTION"];
                 this.columnNETSALARY = base.Columns["NETSALARY"];
                 this.columnPositionName = base.Columns["PositionName"];
+                this.columnDateOfJoining = base.Columns["DateOfJoining"];
+                this.columnBankName = base.Columns["BankName"];
+                this.columnAllowanceInAdvanced = base.Columns["AllowanceInAdvanced"];
+                this.columnOtherDeductions = base.Columns["OtherDeductions"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1030,6 +1082,14 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnNETSALARY);
                 this.columnPositionName = new global::System.Data.DataColumn("PositionName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPositionName);
+                this.columnDateOfJoining = new global::System.Data.DataColumn("DateOfJoining", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateOfJoining);
+                this.columnBankName = new global::System.Data.DataColumn("BankName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBankName);
+                this.columnAllowanceInAdvanced = new global::System.Data.DataColumn("AllowanceInAdvanced", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAllowanceInAdvanced);
+                this.columnOtherDeductions = new global::System.Data.DataColumn("OtherDeductions", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtherDeductions);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1729,6 +1789,70 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime DateOfJoining {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMonthlySalary.DateOfJoiningColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateOfJoining\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.DateOfJoiningColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string BankName {
+                get {
+                    try {
+                        return ((string)(this[this.tableMonthlySalary.BankNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BankName\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.BankNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal AllowanceInAdvanced {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableMonthlySalary.AllowanceInAdvancedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AllowanceInAdvanced\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.AllowanceInAdvancedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal OtherDeductions {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableMonthlySalary.OtherDeductionsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OtherDeductions\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.OtherDeductionsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsSalaryMonthNull() {
                 return this.IsNull(this.tableMonthlySalary.SalaryMonthColumn);
             }
@@ -1809,6 +1933,54 @@ namespace NUBE.PAYROLL.PL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPositionNameNull() {
                 this[this.tableMonthlySalary.PositionNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateOfJoiningNull() {
+                return this.IsNull(this.tableMonthlySalary.DateOfJoiningColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateOfJoiningNull() {
+                this[this.tableMonthlySalary.DateOfJoiningColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBankNameNull() {
+                return this.IsNull(this.tableMonthlySalary.BankNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBankNameNull() {
+                this[this.tableMonthlySalary.BankNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAllowanceInAdvancedNull() {
+                return this.IsNull(this.tableMonthlySalary.AllowanceInAdvancedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAllowanceInAdvancedNull() {
+                this[this.tableMonthlySalary.AllowanceInAdvancedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOtherDeductionsNull() {
+                return this.IsNull(this.tableMonthlySalary.OtherDeductionsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOtherDeductionsNull() {
+                this[this.tableMonthlySalary.OtherDeductionsColumn] = global::System.Convert.DBNull;
             }
         }
         

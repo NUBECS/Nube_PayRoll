@@ -208,7 +208,7 @@
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Plus" Height="25" Width="25" />
-                                    <TextBlock Text="Ex-gratia" FontWeight="Bold"/>
+                                    <TextBlock x:Name="txtExgr" Text="" FontWeight="Bold"/> 
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
                         </TextBox>

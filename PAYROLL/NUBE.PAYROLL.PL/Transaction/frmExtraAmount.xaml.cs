@@ -80,10 +80,11 @@ namespace NUBE.PAYROLL.PL.Transaction
                         DataRowView drv = (DataRowView)dgExtraAmount.SelectedItem;
                         DateTime dt;
                         dt = string.IsNullOrEmpty(drv["ENTRYDATE"].ToString()) ? Convert.ToDateTime(dtMonth.SelectedDate) : Convert.ToDateTime(drv["ENTRYDATE"]);
-
-                        frmYearAllowance frm = new frmYearAllowance(dt, Convert.ToInt32(drv["ID"]), Convert.ToInt32(drv["ALLOWANCEID"]), 0, 1);
+                        
+                        frmYearAllowance frm = new frmYearAllowance(dt, Convert.ToInt32(drv["ID"]), Convert.ToInt32(drv["ALLOWANCEID"]), 0, 0, 1);
                         frm.Title = "Bonus & Ex-gratia";
                         frm.txtPCBorBonus.Text = "Bonus";
+                        frm.txtExgr.Text = "Ex-gratia";
                         frm.ShowDialog();
                         FormFill();
 
@@ -131,6 +132,7 @@ namespace NUBE.PAYROLL.PL.Transaction
             {
                 if (!string.IsNullOrEmpty(dtMonth.Text))
                 {
+                    dtBonus.Rows.Clear();
                     DateTime dtDOB = Convert.ToDateTime(dtMonth.SelectedDate);
                     using (SqlConnection con = new SqlConnection(Config.connStr))
                     {

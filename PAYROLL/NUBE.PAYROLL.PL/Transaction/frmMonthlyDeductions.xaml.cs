@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,20 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data;
 using NUBE.PAYROLL.CMN;
 using System.Data.SqlClient;
 
 namespace NUBE.PAYROLL.PL.Transaction
 {
     /// <summary>
-    /// Interaction logic for frmPCB.xaml
+    /// Interaction logic for frmMonthlyDeductions.xaml
     /// </summary>
-    public partial class frmPCB : UserControl
+    public partial class frmMonthlyDeductions : UserControl
     {
         PayrollEntity db = new PayrollEntity();
-        DataTable dtPCB = new DataTable();
-        public frmPCB()
+        DataTable dtMonthlyDeductions = new DataTable();
+        public frmMonthlyDeductions()
         {
             InitializeComponent();
         }
@@ -37,22 +37,27 @@ namespace NUBE.PAYROLL.PL.Transaction
             LoadWindow();
         }
 
-        private void dgPCB_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void dtMonth_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FormFill();
+        }
+
+        private void dgMonthlyDeductions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
             {
-                if ((dgPCB.SelectedItem != null))
+                if ((dgMonthlyDeductions.SelectedItem != null))
                 {
                     if (!string.IsNullOrEmpty(dtMonth.Text))
                     {
-                        DataRowView drv = (DataRowView)dgPCB.SelectedItem;
+                        DataRowView drv = (DataRowView)dgMonthlyDeductions.SelectedItem;
                         DateTime dt;
                         dt = string.IsNullOrEmpty(drv["ENTRYDATE"].ToString()) ? Convert.ToDateTime(dtMonth.SelectedDate) : Convert.ToDateTime(drv["ENTRYDATE"]);
-                        
-                        frmYearAllowance frm = new frmYearAllowance(dt, Convert.ToInt32(drv["ID"]), 0, Convert.ToInt32(drv["PCBID"]),0, 2);
-                        frm.Title = "PCB";
-                        frm.txtPCBorBonus.Text = "PCB";
-                        frm.txtExgratia.Visibility = Visibility.Hidden;
+
+                        frmYearAllowance frm = new frmYearAllowance(dt, Convert.ToInt32(drv["ID"]), 0, 0, Convert.ToInt32(drv["MLYDEDUCTID"]), 3);
+                        frm.Title = "Monthly Allowance";
+                        frm.txtPCBorBonus.Text = "Allowance Adv";
+                        frm.txtExgr.Text = "Other Deductions";
                         frm.ShowDialog();
                         FormFill();
                     }
@@ -62,25 +67,6 @@ namespace NUBE.PAYROLL.PL.Transaction
                         dtMonth.Focus();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogging.SendErrorToText(ex);
-            }
-        }
-
-        private void dtMonth_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            FormFill();
-        }
-
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                txtSearch.Text = "";
-                dtMonth.Text = "";
-                LoadWindow();
             }
             catch (Exception ex)
             {
@@ -108,6 +94,19 @@ namespace NUBE.PAYROLL.PL.Transaction
             Filteration();
         }
 
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                txtSearch.Text = "";
+                dtMonth.Text = "";
+                LoadWindow();
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
+        }
         #endregion
 
         #region FUNCTION
@@ -116,12 +115,28 @@ namespace NUBE.PAYROLL.PL.Transaction
         {
             try
             {
-                var emp = (from x in db.ViewManualPayments select x).ToList();
-                dtPCB.Rows.Clear();
-                dtPCB = AppLib.LINQResultToDataTable(emp);
-                if (dtPCB.Rows.Count > 0)
+                dtMonthlyDeductions.Rows.Clear();
+                using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
-                    dgPCB.ItemsSource = dtPCB.DefaultView;
+                    SqlCommand cmd;
+                    string str = string.Format("SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO,ME.ID,ME.MEMBERSHIPNO, \r" +
+                        " ME.EMPLOYEENAME,ME.GENDER,ME.NRIC,0 PCBID,'' ENTRYDATE, \r" +
+                        " 0 ALLOWANCEINADVANCED,0 OTHERDEDUCTIONS \r" +
+                        " FROM MASTEREMPLOYEE ME(NOLOCK) ");
+
+                    cmd = new SqlCommand(str, con);
+                    cmd.CommandType = CommandType.Text;
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    con.Open();
+                    dtMonthlyDeductions.Rows.Clear();
+                    adp.Fill(dtMonthlyDeductions);
+                    Filteration();
+                    con.Close();
+                }
+
+                if (dtMonthlyDeductions.Rows.Count > 0)
+                {
+                    dgMonthlyDeductions.ItemsSource = dtMonthlyDeductions.DefaultView;
                     Filteration();
                 }
             }
@@ -141,24 +156,24 @@ namespace NUBE.PAYROLL.PL.Transaction
                     using (SqlConnection con = new SqlConnection(Config.connStr))
                     {
                         SqlCommand cmd;
-                        string str = string.Format("SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO,\r" +
-                            " ME.ID,ME.MEMBERSHIPNO,ME.EMPLOYEENAME,ME.SHORTNAME,ME.GENDER,\r" +
-                            " ME.NRIC,ISNULL(PC.ID, 0)PCBID,PC.ENTRYDATE,ISNULL(PC.PCB, 0)PCB\r" +
-                            " FROM MASTEREMPLOYEE ME(NOLOCK)\r" +
-                            " LEFT JOIN PCB PC(NOLOCK) ON PC.EMPLOYEEID = ME.ID AND MONTH(PC.ENTRYDATE)= MONTH('{0:dd/MMM/yyyy}')", dtDOB);
+                        string str = string.Format("SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO,ME.ID,ME.MEMBERSHIPNO, \r" +
+                            " ME.EMPLOYEENAME,ME.SHORTNAME,ME.GENDER,ME.NRIC,ISNULL(PC.ID, 0)MLYDEDUCTID,PC.ENTRYDATE, \r" +
+                            " ISNULL(PC.ALLOWANCEINADVANCED, 0)ALLOWANCEINADVANCED,ISNULL(OTHERDEDUCTIONS,0)OTHERDEDUCTIONS \r" +
+                            " FROM MASTEREMPLOYEE ME(NOLOCK) \r" +
+                            " LEFT JOIN MONTHLYDEDUCTIONS PC(NOLOCK) ON PC.EMPLOYEEID = ME.ID AND MONTH(PC.ENTRYDATE)= MONTH('{0:dd/MMM/yyyy}')", dtDOB);
                         cmd = new SqlCommand(str, con);
                         cmd.CommandType = CommandType.Text;
                         SqlDataAdapter adp = new SqlDataAdapter(cmd);
                         con.Open();
-                        dtPCB.Rows.Clear();
-                        adp.Fill(dtPCB);
+                        dtMonthlyDeductions.Rows.Clear();
+                        adp.Fill(dtMonthlyDeductions);
                         Filteration();
                         con.Close();
                     }
 
-                    if (dtPCB.Rows.Count > 0)
+                    if (dtMonthlyDeductions.Rows.Count > 0)
                     {
-                        //dgPCB.ItemsSource = dtPCB.DefaultView;
+                        // dgMonthlyDeductions.ItemsSource = dtMonthlyDeductions.DefaultView;
                     }
                     else
                     {
@@ -199,20 +214,20 @@ namespace NUBE.PAYROLL.PL.Transaction
 
                     if (!string.IsNullOrEmpty(txtSearch.Text))
                     {
-                        DataView dv = new DataView(dtPCB);
+                        DataView dv = new DataView(dtMonthlyDeductions);
                         dv.RowFilter = sWhere;
                         DataTable dtTemp = new DataTable();
                         dtTemp = dv.ToTable();
-                        dgPCB.ItemsSource = dtTemp.DefaultView;
+                        dgMonthlyDeductions.ItemsSource = dtTemp.DefaultView;
                     }
                     else
                     {
-                        dgPCB.ItemsSource = dtPCB.DefaultView;
+                        dgMonthlyDeductions.ItemsSource = dtMonthlyDeductions.DefaultView;
                     }
                 }
                 else
                 {
-                    dgPCB.ItemsSource = dtPCB.DefaultView;
+                    dgMonthlyDeductions.ItemsSource = dtMonthlyDeductions.DefaultView;
                 }
             }
             catch (Exception ex)
@@ -222,7 +237,5 @@ namespace NUBE.PAYROLL.PL.Transaction
         }
 
         #endregion
-
-
     }
 }

@@ -19,10 +19,12 @@ namespace NUBE.PAYROLL.PL
         public int EmployeeNo { get; set; }
         public Nullable<System.DateTime> SalaryMonth { get; set; }
         public string EmployeeName { get; set; }
+        public Nullable<System.DateTime> DateOfJoining { get; set; }
         public string EPFNumber { get; set; }
         public string SOCSONumber { get; set; }
         public string NRIC { get; set; }
         public string BankAccountNo { get; set; }
+        public string BankName { get; set; }
         public decimal BasicSalary { get; set; }
         public decimal TotalWorkingDays { get; set; }
         public decimal DaysAbsent { get; set; }
@@ -53,6 +55,8 @@ namespace NUBE.PAYROLL.PL
         public decimal KOPERASI { get; set; }
         public decimal NUBESUBSCRIPTION { get; set; }
         public decimal PCB { get; set; }
+        public decimal AllowanceInAdvanced { get; set; }
+        public decimal OtherDeductions { get; set; }
         public decimal TOTALEARNING { get; set; }
         public decimal TOTALDEDUCTION { get; set; }
         public decimal NETSALARY { get; set; }
