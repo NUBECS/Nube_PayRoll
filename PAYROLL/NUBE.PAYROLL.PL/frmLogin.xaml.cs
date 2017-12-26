@@ -26,6 +26,7 @@ namespace NUBE.PAYROLL.PL
         public frmLogin()
         {
             InitializeComponent();
+            lblUpdate.Content = "Update On 15-Nov-2017";
         }
 
         #region EVENTS

@@ -119,7 +119,6 @@ namespace NUBE.PAYROLL.PL
                     ccContent.Content = mi.Content;
                 }
 
-
                 //}
             }
             catch (Exception ex)

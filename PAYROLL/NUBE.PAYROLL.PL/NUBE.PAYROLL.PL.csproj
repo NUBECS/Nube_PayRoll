@@ -303,6 +303,9 @@
     <Compile Include="Transaction\frmIncrementEntry.xaml.cs">
       <DependentUpon>frmIncrementEntry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transaction\frmLeavePermission.xaml.cs">
+      <DependentUpon>frmLeavePermission.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transaction\frmManualCorrection.xaml.cs">
       <DependentUpon>frmManualCorrection.xaml</DependentUpon>
     </Compile>
@@ -367,6 +370,9 @@
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewMasterState.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VIEWMONTHLY_WORKINGDAYS.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewOTCalculation.cs">
@@ -563,6 +569,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transaction\frmIncrementEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmLeavePermission.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

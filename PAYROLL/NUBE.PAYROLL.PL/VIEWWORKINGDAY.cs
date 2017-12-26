@@ -25,14 +25,13 @@ namespace NUBE.PAYROLL.PL
         public Nullable<int> WEEKOFF { get; set; }
         public Nullable<decimal> BASICSALARY { get; set; }
         public Nullable<decimal> ONE_DAY_SALARY { get; set; }
-        public Nullable<decimal> LOP { get; set; }
-        public Nullable<decimal> TOTAL_LOP_MINUTES { get; set; }
         public Nullable<decimal> TOTAL_LATE { get; set; }
+        public Nullable<decimal> LATE_MINUTES { get; set; }
         public Nullable<int> TOTAL_HOURS_APPROVED { get; set; }
         public Nullable<decimal> TOTAL_LOP { get; set; }
         public Nullable<decimal> ONEHOUR { get; set; }
-        public Nullable<decimal> LOP_LEAVE { get; set; }
-        public Nullable<decimal> LOP_HOUR { get; set; }
-        public Nullable<decimal> LOP_M { get; set; }
+        public Nullable<decimal> LOP_FOR_LEAVE { get; set; }
+        public Nullable<decimal> LOP_FOR_LATE { get; set; }
+        public Nullable<decimal> LOSS_OF_PAY { get; set; }
     }
 }

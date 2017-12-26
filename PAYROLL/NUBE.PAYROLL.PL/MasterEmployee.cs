@@ -19,10 +19,8 @@ namespace NUBE.PAYROLL.PL
         {
             this.AttedanceLogs = new HashSet<AttedanceLog>();
             this.AttendanceCorrections = new HashSet<AttendanceCorrection>();
-            this.DailyAttedanceDets = new HashSet<DailyAttedanceDet>();
             this.DailyLateLogs = new HashSet<DailyLateLog>();
             this.LatePermissionDetails = new HashSet<LatePermissionDetail>();
-            this.LeavePermissionDetails = new HashSet<LeavePermissionDetail>();
             this.OTClaims = new HashSet<OTClaim>();
             this.OverTimeDetails = new HashSet<OverTimeDetail>();
             this.PCBs = new HashSet<PCB>();
@@ -30,6 +28,8 @@ namespace NUBE.PAYROLL.PL
             this.YearlyAllowances = new HashSet<YearlyAllowance>();
             this.MonthlyDeductions = new HashSet<MonthlyDeduction>();
             this.MonthlySalaries = new HashSet<MonthlySalary>();
+            this.DailyAttedanceDets = new HashSet<DailyAttedanceDet>();
+            this.LeavePermissionDetails = new HashSet<LeavePermissionDetail>();
         }
     
         public int Id { get; set; }
@@ -107,14 +107,10 @@ namespace NUBE.PAYROLL.PL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttendanceCorrection> AttendanceCorrections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DailyAttedanceDet> DailyAttedanceDets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DailyLateLog> DailyLateLogs { get; set; }
         public virtual EmployeeShift EmployeeShift { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LatePermissionDetail> LatePermissionDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LeavePermissionDetail> LeavePermissionDetails { get; set; }
         public virtual MasterBank MasterBank { get; set; }
         public virtual MasterCity MasterCity { get; set; }
         public virtual MasterCountry MasterCountry { get; set; }
@@ -136,5 +132,9 @@ namespace NUBE.PAYROLL.PL
         public virtual ICollection<MonthlyDeduction> MonthlyDeductions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonthlySalary> MonthlySalaries { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DailyAttedanceDet> DailyAttedanceDets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LeavePermissionDetail> LeavePermissionDetails { get; set; }
     }
 }

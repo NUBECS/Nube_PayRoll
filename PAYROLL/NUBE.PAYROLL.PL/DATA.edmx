@@ -84,6 +84,7 @@
           <Property Name="IsWeekOff" Type="bit" Nullable="false" />
           <Property Name="IsPublicHoliday" Type="bit" Nullable="false" />
           <Property Name="IsModified" Type="bit" Nullable="false" />
+          <Property Name="LeavePermissionId" Type="int" />
         </EntityType>
         <EntityType Name="DailyLateLogs">
           <Key>
@@ -172,6 +173,7 @@
           <Property Name="Reason" Type="nvarchar" MaxLength="100" />
           <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Period" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="LeaveType">
           <Key>
@@ -559,7 +561,7 @@
           <Property Name="Exgratia" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewDailyAttedance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewDailyAttedance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewDailyAttedance">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -587,7 +589,7 @@ warning 6002: The table/view 'BizSoft.dbo.ViewDailyAttedance' does not have a pr
           <Property Name="ISHALFDAYLEAVE" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWDAILYATTEDANCELATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWDAILYATTEDANCELATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWDAILYATTEDANCELATE">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -616,7 +618,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWDAILYATTEDANCELATE' does not have 
           <Property Name="LATEHOURS" Type="nvarchar" MaxLength="61" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWEPF_SOCSO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWEPF_SOCSO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWEPF_SOCSO">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -632,7 +634,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWEPF_SOCSO' does not have a primary
           <Property Name="SOCSOUNION" Type="numeric" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWFULLDAYLEAVE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWFULLDAYLEAVE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWFULLDAYLEAVE">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -643,7 +645,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWFULLDAYLEAVE' does not have a prim
           <Property Name="FULLDAYLEAVE" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWHALFDAYLEAVE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWHALFDAYLEAVE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWHALFDAYLEAVE">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -654,7 +656,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWHALFDAYLEAVE' does not have a prim
           <Property Name="HALFDAYLEAVE" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWLOPHOURS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWLOPHOURS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWLOPHOURS">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -667,7 +669,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWLOPHOURS' does not have a primary 
           <Property Name="TOTAL_LOP" Type="numeric" Precision="38" Scale="0" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewManualPayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewManualPayment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewManualPayment">
           <Key>
             <PropertyRef Name="ID" />
@@ -690,7 +692,7 @@ warning 6002: The table/view 'BizSoft.dbo.ViewManualPayment' does not have a pri
           <Property Name="PCB" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewMasterbankbranch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewMasterbankbranch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewMasterbankbranch">
           <Key>
             <PropertyRef Name="Id" />
@@ -715,7 +717,7 @@ warning 6002: The table/view 'BizSoft.dbo.ViewMasterbankbranch' does not have a 
           <Property Name="CountryId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewMasterCity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewMasterCity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewMasterCity">
           <Key>
             <PropertyRef Name="Id" />
@@ -729,7 +731,7 @@ warning 6002: The table/view 'BizSoft.dbo.ViewMasterCity' does not have a primar
           <Property Name="CountryId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewMasterEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewMasterEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewMasterEmployee">
           <Key>
             <PropertyRef Name="ID" />
@@ -744,7 +746,7 @@ warning 6002: The table/view 'BizSoft.dbo.ViewMasterEmployee' does not have a pr
           <Property Name="GENDER" Type="varchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewMasterPosition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewMasterPosition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewMasterPosition">
           <Key>
             <PropertyRef Name="Id" />
@@ -754,7 +756,7 @@ warning 6002: The table/view 'BizSoft.dbo.ViewMasterPosition' does not have a pr
           <Property Name="ShortName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewMasterState' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewMasterState' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewMasterState">
           <Key>
             <PropertyRef Name="Id" />
@@ -766,14 +768,18 @@ warning 6002: The table/view 'BizSoft.dbo.ViewMasterState' does not have a prima
           <Property Name="CountryName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'BizSoft.dbo.VIEWMONTHLY_WORKINGDAYS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWMONTHLY_WORKINGDAYS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWMONTHLY_WORKINGDAYS">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="int" Nullable="false" />
           <Property Name="ATT_MONTH" Type="int" />
           <Property Name="ATT_YEAR" Type="int" />
           <Property Name="WORKINGDAYS" Type="int" />
-        </EntityType>-->
+        </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.ViewOTCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.ViewOTCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewOTCalculation">
           <Key>
             <PropertyRef Name="ID" />
@@ -790,7 +796,7 @@ warning 6002: The table/view 'BizSoft.dbo.ViewOTCalculation' does not have a pri
           <Property Name="OT06" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWPAYSLIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWPAYSLIP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWPAYSLIP">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -880,14 +886,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWPAYSLIP' does not have a primary k
           <Property Name="OTHERDEDUCTIONS" Type="numeric" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'BizSoft.dbo.VIEWPUBLICHOLIDAY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="VIEWPUBLICHOLIDAY">
-          <Property Name="ATT_MONTH" Type="int" />
-          <Property Name="ATT_YEAR" Type="int" />
-          <Property Name="PUBLICHOLIDAY" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWTOTALOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWTOTALOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWTOTALOT">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -899,7 +898,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWTOTALOT' does not have a primary k
           <Property Name="OT_AMOUNT" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWWEEKOFF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWWEEKOFF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWWEEKOFF">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -910,7 +909,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWEEKOFF' does not have a primary k
           <Property Name="WEEKOFF" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VIEWWORKINGDAYS">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -928,15 +927,14 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="WEEKOFF" Type="int" />
           <Property Name="BASICSALARY" Type="numeric" Precision="18" Scale="2" />
           <Property Name="ONE_DAY_SALARY" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="TOTAL_LOP_MINUTES" Type="numeric" Precision="18" Scale="2" />
           <Property Name="TOTAL_LATE" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="LATE_MINUTES" Type="numeric" Precision="18" Scale="2" />
           <Property Name="TOTAL_HOURS_APPROVED" Type="int" />
           <Property Name="TOTAL_LOP" Type="numeric" Precision="38" Scale="0" />
           <Property Name="ONEHOUR" Type="numeric" Precision="31" Scale="15" />
-          <Property Name="LOP_LEAVE" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="LOP_HOUR" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="LOP" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="LOP_M" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="LOP_FOR_LEAVE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="LOP_FOR_LATE" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="LOSS_OF_PAY" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_AttedanceLogs_MasterEmployee">
           <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
@@ -1496,6 +1494,14 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
     [ViewMasterState].[CountryName] AS [CountryName]
     FROM [dbo].[ViewMasterState] AS [ViewMasterState]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="VIEWMONTHLY_WORKINGDAYS" EntityType="Self.VIEWMONTHLY_WORKINGDAYS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VIEWMONTHLY_WORKINGDAYS].[EMPLOYEEID] AS [EMPLOYEEID], 
+    [VIEWMONTHLY_WORKINGDAYS].[ATT_MONTH] AS [ATT_MONTH], 
+    [VIEWMONTHLY_WORKINGDAYS].[ATT_YEAR] AS [ATT_YEAR], 
+    [VIEWMONTHLY_WORKINGDAYS].[WORKINGDAYS] AS [WORKINGDAYS]
+    FROM [dbo].[VIEWMONTHLY_WORKINGDAYS] AS [VIEWMONTHLY_WORKINGDAYS]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ViewOTCalculation" EntityType="Self.ViewOTCalculation" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ViewOTCalculation].[ID] AS [ID], 
@@ -1591,15 +1597,14 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
     [VIEWWORKINGDAYS].[WEEKOFF] AS [WEEKOFF], 
     [VIEWWORKINGDAYS].[BASICSALARY] AS [BASICSALARY], 
     [VIEWWORKINGDAYS].[ONE_DAY_SALARY] AS [ONE_DAY_SALARY], 
-    [VIEWWORKINGDAYS].[TOTAL_LOP_MINUTES] AS [TOTAL_LOP_MINUTES], 
     [VIEWWORKINGDAYS].[TOTAL_LATE] AS [TOTAL_LATE], 
+    [VIEWWORKINGDAYS].[LATE_MINUTES] AS [LATE_MINUTES], 
     [VIEWWORKINGDAYS].[TOTAL_HOURS_APPROVED] AS [TOTAL_HOURS_APPROVED], 
     [VIEWWORKINGDAYS].[TOTAL_LOP] AS [TOTAL_LOP], 
     [VIEWWORKINGDAYS].[ONEHOUR] AS [ONEHOUR], 
-    [VIEWWORKINGDAYS].[LOP_LEAVE] AS [LOP_LEAVE], 
-    [VIEWWORKINGDAYS].[LOP_HOUR] AS [LOP_HOUR], 
-    [VIEWWORKINGDAYS].[LOP] AS [LOP], 
-    [VIEWWORKINGDAYS].[LOP_M] AS [LOP_M]
+    [VIEWWORKINGDAYS].[LOP_FOR_LEAVE] AS [LOP_FOR_LEAVE], 
+    [VIEWWORKINGDAYS].[LOP_FOR_LATE] AS [LOP_FOR_LATE], 
+    [VIEWWORKINGDAYS].[LOSS_OF_PAY] AS [LOSS_OF_PAY]
     FROM [dbo].[VIEWWORKINGDAYS] AS [VIEWWORKINGDAYS]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_AttedanceLogs_MasterEmployee" Association="Self.FK_AttedanceLogs_MasterEmployee">
@@ -1766,28 +1771,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="UpdateBy" Type="Int32" />
           <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_AttendanceCorrection_MasterEmployee" FromRole="AttendanceCorrection" ToRole="MasterEmployee" />
         </EntityType>
-        <EntityType Name="DailyAttedanceDet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
-          <Property Name="AttDate" Type="DateTime" Precision="3" />
-          <Property Name="InTime" Type="DateTime" Precision="3" />
-          <Property Name="OutTime" Type="DateTime" Precision="3" />
-          <Property Name="TotalWorking_Hours" Type="Int32" Nullable="false" />
-          <Property Name="TotalWorking_Minutes" Type="Int32" Nullable="false" />
-          <Property Name="WithPermission" Type="Boolean" Nullable="false" />
-          <Property Name="OT_Hours" Type="Int32" Nullable="false" />
-          <Property Name="OT_Minutes" Type="Int32" Nullable="false" />
-          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsFullDayLeave" Type="Boolean" Nullable="false" />
-          <Property Name="IsHalfDayLeave" Type="Boolean" Nullable="false" />
-          <Property Name="IsWeekOff" Type="Boolean" Nullable="false" />
-          <Property Name="IsPublicHoliday" Type="Boolean" Nullable="false" />
-          <Property Name="IsModified" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_DailyAttedanceDet_MasterEmployee" FromRole="DailyAttedanceDet" ToRole="MasterEmployee" />
-        </EntityType>
         <EntityType Name="DailyLateLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -1859,28 +1842,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_LatePermissionDetails_MasterEmployee" FromRole="LatePermissionDetails" ToRole="MasterEmployee" />
         </EntityType>
-        <EntityType Name="LeavePermissionDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
-          <Property Name="EntryDate" Type="DateTime" Precision="3" />
-          <Property Name="FromDate" Type="DateTime" Precision="3" />
-          <Property Name="ToDate" Type="DateTime" Precision="3" />
-          <Property Name="LeaveTypeId" Type="Int32" />
-          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="NoOfDays" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="AprovedFromDate" Type="DateTime" Precision="3" />
-          <Property Name="AprovedToDate" Type="DateTime" Precision="3" />
-          <Property Name="NoOfDaysApproved" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_LeavePermissionDetails_MasterEmployee" FromRole="LeavePermissionDetails" ToRole="MasterEmployee" />
-          <NavigationProperty Name="LeaveType" Relationship="Self.FK_LeaveType" FromRole="LeavePermissionDetails" ToRole="LeaveType" />
-        </EntityType>
         <EntityType Name="LeaveType">
           <Key>
             <PropertyRef Name="Id" />
@@ -1891,7 +1852,7 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="IsNoLOP" Type="Boolean" Nullable="false" />
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="LeavePermissionDetails" Relationship="Self.FK_LeaveType" FromRole="LeaveType" ToRole="LeavePermissionDetails" />
+          <NavigationProperty Name="LeavePermissionDetails" Relationship="BizSoftModel.FK_LeaveType" FromRole="LeaveType" ToRole="LeavePermissionDetail" />
         </EntityType>
         <EntityType Name="MasterBank">
           <Key>
@@ -2030,11 +1991,9 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AttedanceLogs" Relationship="Self.FK_AttedanceLogs_MasterEmployee" FromRole="MasterEmployee" ToRole="AttedanceLogs" />
           <NavigationProperty Name="AttendanceCorrections" Relationship="Self.FK_AttendanceCorrection_MasterEmployee" FromRole="MasterEmployee" ToRole="AttendanceCorrection" />
-          <NavigationProperty Name="DailyAttedanceDets" Relationship="Self.FK_DailyAttedanceDet_MasterEmployee" FromRole="MasterEmployee" ToRole="DailyAttedanceDet" />
           <NavigationProperty Name="DailyLateLogs" Relationship="Self.FK_DailyLateLogs_MasterEmployee" FromRole="MasterEmployee" ToRole="DailyLateLogs" />
           <NavigationProperty Name="EmployeeShift" Relationship="Self.FK_ShiftId" FromRole="MasterEmployee" ToRole="EmployeeShift" />
           <NavigationProperty Name="LatePermissionDetails" Relationship="Self.FK_LatePermissionDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="LatePermissionDetails" />
-          <NavigationProperty Name="LeavePermissionDetails" Relationship="Self.FK_LeavePermissionDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="LeavePermissionDetails" />
           <NavigationProperty Name="MasterBank" Relationship="Self.FK_MasterEmployee_MasterBank" FromRole="MasterEmployee" ToRole="MasterBank" />
           <NavigationProperty Name="MasterCity" Relationship="Self.FK_MasterEmployee_MasterCity" FromRole="MasterEmployee" ToRole="MasterCity" />
           <NavigationProperty Name="MasterCountry" Relationship="Self.FK_CountryId" FromRole="MasterEmployee" ToRole="MasterCountry" />
@@ -2049,6 +2008,8 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <NavigationProperty Name="YearlyAllowances" Relationship="Self.FK_YearlyAllowance_MasterEmployee" FromRole="MasterEmployee" ToRole="YearlyAllowance" />
           <NavigationProperty Name="MonthlyDeductions" Relationship="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" FromRole="MasterEmployee" ToRole="MonthlyDeduction" />
           <NavigationProperty Name="MonthlySalaries" Relationship="BizSoftModel.FK_MonthlySalary_MasterEmployee" FromRole="MasterEmployee" ToRole="MonthlySalary" />
+          <NavigationProperty Name="DailyAttedanceDets" Relationship="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" FromRole="MasterEmployee" ToRole="DailyAttedanceDet" />
+          <NavigationProperty Name="LeavePermissionDetails" Relationship="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="LeavePermissionDetail" />
         </EntityType>
         <EntityType Name="MasterNubeBranch">
           <Key>
@@ -2242,239 +2203,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="Exgratia" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_YearlyAllowance_MasterEmployee" FromRole="YearlyAllowance" ToRole="MasterEmployee" />
         </EntityType>
-        <EntityType Name="ViewDailyAttedance">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-            <PropertyRef Name="POSITIONNAME" />
-            <PropertyRef Name="WITHPERMISSION" />
-            <PropertyRef Name="REMARKS" />
-            <PropertyRef Name="ISFULLDAYLEAVE" />
-            <PropertyRef Name="ISHALFDAYLEAVE" />
-          </Key>
-          <Property Name="RNO" Type="Int64" />
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="MEMBERSHIPNO" Type="Int32" />
-          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="POSITIONNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ATTDATE" Type="DateTime" Precision="3" />
-          <Property Name="INTIME" Type="Time" Precision="7" />
-          <Property Name="OUTTIME" Type="Time" Precision="7" />
-          <Property Name="WORKING_HOURS" Type="Int32" />
-          <Property Name="WORKING_MINUTES" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="WITHPERMISSION" Type="Boolean" Nullable="false" />
-          <Property Name="OT_HOURS" Type="Int32" />
-          <Property Name="OT_MINUTES" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="REMARKS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ISFULLDAYLEAVE" Type="Boolean" Nullable="false" />
-          <Property Name="ISHALFDAYLEAVE" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="VIEWDAILYATTEDANCELATE">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-            <PropertyRef Name="POSITIONNAME" />
-            <PropertyRef Name="WITHPERMISSION" />
-            <PropertyRef Name="REMARKS" />
-            <PropertyRef Name="ISFULLDAYLEAVE" />
-            <PropertyRef Name="ISHALFDAYLEAVE" />
-          </Key>
-          <Property Name="RNO" Type="Int64" />
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="MEMBERSHIPNO" Type="Int32" />
-          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="POSITIONNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ATTDATE" Type="DateTime" Precision="3" />
-          <Property Name="INTIME" Type="Time" Precision="7" />
-          <Property Name="OUTTIME" Type="Time" Precision="7" />
-          <Property Name="WORKING_HOURS" Type="Int32" />
-          <Property Name="WORKING_MINUTES" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="WITHPERMISSION" Type="Boolean" Nullable="false" />
-          <Property Name="OT_HOURS" Type="Int32" />
-          <Property Name="OT_MINUTES" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="REMARKS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ISFULLDAYLEAVE" Type="Boolean" Nullable="false" />
-          <Property Name="ISHALFDAYLEAVE" Type="Boolean" Nullable="false" />
-          <Property Name="LATEHOURS" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="VIEWEPF_SOCSO">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-            <PropertyRef Name="EPF" />
-            <PropertyRef Name="EPFUNION" />
-            <PropertyRef Name="SOCSO" />
-            <PropertyRef Name="SOCSOUNION" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="EPF" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="EPFUNION" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="SOCSO" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="SOCSOUNION" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="VIEWFULLDAYLEAVE">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="ATT_MONTH" Type="Int32" />
-          <Property Name="ATT_YEAR" Type="Int32" />
-          <Property Name="FULLDAYLEAVE" Type="Int32" />
-        </EntityType>
-        <EntityType Name="VIEWHALFDAYLEAVE">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="ATT_MONTH" Type="Int32" />
-          <Property Name="ATT_YEAR" Type="Int32" />
-          <Property Name="HALFDAYLEAVE" Type="Int32" />
-        </EntityType>
-        <EntityType Name="ViewManualPayment">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="ALLOWANCEID" />
-            <PropertyRef Name="ENTRYDATE" />
-            <PropertyRef Name="BONUS" />
-            <PropertyRef Name="EXGRATIA" />
-            <PropertyRef Name="PCB" />
-          </Key>
-          <Property Name="RNO" Type="Int64" />
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MEMBERSHIPNO" Type="Int32" />
-          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ALLOWANCEID" Type="Int32" Nullable="false" />
-          <Property Name="ENTRYDATE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="BONUS" Type="Int32" Nullable="false" />
-          <Property Name="EXGRATIA" Type="Int32" Nullable="false" />
-          <Property Name="PCB" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ViewMasterbankbranch">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="BankBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BankId" Type="Int32" />
-          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CityId" Type="Int32" />
-          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NubeBranchId" Type="Int32" />
-          <Property Name="IsHeadQuarters" Type="Boolean" />
-          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NubeBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StateId" Type="Int32" />
-          <Property Name="CountryId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="ViewMasterCity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StateId" Type="Int32" />
-          <Property Name="CountryId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="ViewMasterEmployee">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="RNO" Type="Int64" />
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="MEMBERSHIPNO" Type="Int32" />
-          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SHORTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="ViewMasterPosition">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="ViewMasterState">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CountryId" Type="Int32" />
-          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="ViewOTCalculation">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MEMBERSHIPNO" Type="Int32" />
-          <Property Name="BASICSALARY" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="PH" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="OT01" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="OT02" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="OT03" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="OT04" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="OT05" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="OT06" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="VIEWTOTALOT">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="ATT_MONTH" Type="Int32" />
-          <Property Name="ATT_YEAR" Type="Int32" />
-          <Property Name="TOTAL_OT" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
-          <Property Name="OT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="VIEWWEEKOFF">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="ATT_MONTH" Type="Int32" />
-          <Property Name="ATT_YEAR" Type="Int32" />
-          <Property Name="WEEKOFF" Type="Int32" />
-        </EntityType>
-        <EntityType Name="VIEWWORKINGDAY">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-            <PropertyRef Name="HALFDAYLEAVE" />
-            <PropertyRef Name="FULLDAYLEAVE" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="ATT_MONTH" Type="Int32" />
-          <Property Name="ATT_YEAR" Type="Int32" />
-          <Property Name="WORKINGDAYS" Type="Decimal" Precision="13" Scale="1" />
-          <Property Name="HALFDAYLEAVE" Type="Int32" Nullable="false" />
-          <Property Name="FULLDAYLEAVE" Type="Int32" Nullable="false" />
-          <Property Name="TOTALLEAVE" Type="Int32" />
-          <Property Name="PUBLICHOLIDAY" Type="Int32" />
-          <Property Name="WEEKOFF" Type="Int32" />
-          <Property Name="BASICSALARY" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="ONE_DAY_SALARY" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="LOP" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TOTAL_LOP_MINUTES" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TOTAL_LATE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="TOTAL_HOURS_APPROVED" Type="Int32" />
-          <Property Name="TOTAL_LOP" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ONEHOUR" Type="Decimal" Precision="31" Scale="15" />
-          <Property Name="LOP_LEAVE" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="LOP_HOUR" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="LOP_M" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
         <Association Name="FK_AttedanceLogs_MasterEmployee">
           <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
           <End Role="AttedanceLogs" Type="Self.AttedanceLog" Multiplicity="*" />
@@ -2495,18 +2223,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="AttendanceCorrection">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DailyAttedanceDet_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="DailyAttedanceDet" Type="Self.DailyAttedanceDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DailyAttedanceDet">
               <PropertyRef Name="EmployeeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2544,30 +2260,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             </Principal>
             <Dependent Role="LatePermissionDetails">
               <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LeavePermissionDetails_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="LeavePermissionDetails" Type="Self.LeavePermissionDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LeavePermissionDetails">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LeaveType">
-          <End Role="LeaveType" Type="Self.LeaveType" Multiplicity="0..1" />
-          <End Role="LeavePermissionDetails" Type="Self.LeavePermissionDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LeaveType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LeavePermissionDetails">
-              <PropertyRef Name="LeaveTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2802,13 +2494,11 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
         <EntityContainer Name="PayrollEntity" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AttedanceLogs" EntityType="Self.AttedanceLog" />
           <EntitySet Name="AttendanceCorrections" EntityType="Self.AttendanceCorrection" />
-          <EntitySet Name="DailyAttedanceDets" EntityType="Self.DailyAttedanceDet" />
           <EntitySet Name="DailyLateLogs" EntityType="Self.DailyLateLog" />
           <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShift" />
           <EntitySet Name="EPFConts" EntityType="Self.EPFCont" />
           <EntitySet Name="HolidayLists" EntityType="Self.HolidayList" />
           <EntitySet Name="LatePermissionDetails" EntityType="Self.LatePermissionDetail" />
-          <EntitySet Name="LeavePermissionDetails" EntityType="Self.LeavePermissionDetail" />
           <EntitySet Name="LeaveTypes" EntityType="Self.LeaveType" />
           <EntitySet Name="MasterBanks" EntityType="Self.MasterBank" />
           <EntitySet Name="MasterBankBranches" EntityType="Self.MasterBankBranch" />
@@ -2829,21 +2519,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <EntitySet Name="UserTypeDetails" EntityType="Self.UserTypeDetail" />
           <EntitySet Name="UserTypeFormDetails" EntityType="Self.UserTypeFormDetail" />
           <EntitySet Name="YearlyAllowances" EntityType="Self.YearlyAllowance" />
-          <EntitySet Name="ViewDailyAttedances" EntityType="Self.ViewDailyAttedance" />
-          <EntitySet Name="VIEWDAILYATTEDANCELATEs" EntityType="Self.VIEWDAILYATTEDANCELATE" />
-          <EntitySet Name="VIEWEPF_SOCSO" EntityType="Self.VIEWEPF_SOCSO" />
-          <EntitySet Name="VIEWFULLDAYLEAVEs" EntityType="Self.VIEWFULLDAYLEAVE" />
-          <EntitySet Name="VIEWHALFDAYLEAVEs" EntityType="Self.VIEWHALFDAYLEAVE" />
-          <EntitySet Name="ViewManualPayments" EntityType="Self.ViewManualPayment" />
-          <EntitySet Name="ViewMasterbankbranches" EntityType="Self.ViewMasterbankbranch" />
-          <EntitySet Name="ViewMasterCities" EntityType="Self.ViewMasterCity" />
-          <EntitySet Name="ViewMasterEmployees" EntityType="Self.ViewMasterEmployee" />
-          <EntitySet Name="ViewMasterPositions" EntityType="Self.ViewMasterPosition" />
-          <EntitySet Name="ViewMasterStates" EntityType="Self.ViewMasterState" />
-          <EntitySet Name="ViewOTCalculations" EntityType="Self.ViewOTCalculation" />
-          <EntitySet Name="VIEWTOTALOTs" EntityType="Self.VIEWTOTALOT" />
-          <EntitySet Name="VIEWWEEKOFFs" EntityType="Self.VIEWWEEKOFF" />
-          <EntitySet Name="VIEWWORKINGDAYS" EntityType="Self.VIEWWORKINGDAY" />
           <AssociationSet Name="FK_AttedanceLogs_MasterEmployee" Association="Self.FK_AttedanceLogs_MasterEmployee">
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
             <End Role="AttedanceLogs" EntitySet="AttedanceLogs" />
@@ -2851,10 +2526,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <AssociationSet Name="FK_AttendanceCorrection_MasterEmployee" Association="Self.FK_AttendanceCorrection_MasterEmployee">
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
             <End Role="AttendanceCorrection" EntitySet="AttendanceCorrections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DailyAttedanceDet_MasterEmployee" Association="Self.FK_DailyAttedanceDet_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="DailyAttedanceDet" EntitySet="DailyAttedanceDets" />
           </AssociationSet>
           <AssociationSet Name="FK_DailyLateLogs_MasterEmployee" Association="Self.FK_DailyLateLogs_MasterEmployee">
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
@@ -2867,14 +2538,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <AssociationSet Name="FK_LatePermissionDetails_MasterEmployee" Association="Self.FK_LatePermissionDetails_MasterEmployee">
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
             <End Role="LatePermissionDetails" EntitySet="LatePermissionDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LeavePermissionDetails_MasterEmployee" Association="Self.FK_LeavePermissionDetails_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="LeavePermissionDetails" EntitySet="LeavePermissionDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LeaveType" Association="Self.FK_LeaveType">
-            <End Role="LeaveType" EntitySet="LeaveTypes" />
-            <End Role="LeavePermissionDetails" EntitySet="LeavePermissionDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_MasterBankBranch_MasterBank" Association="Self.FK_MasterBankBranch_MasterBank">
             <End Role="MasterBank" EntitySet="MasterBanks" />
@@ -2972,8 +2635,38 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             <End Role="MasterEmployee" EntitySet="MasterEmployees" />
             <End Role="MonthlySalary" EntitySet="MonthlySalaries" />
           </AssociationSet>
+          <EntitySet Name="DailyAttedanceDets" EntityType="BizSoftModel.DailyAttedanceDet" />
+          <AssociationSet Name="FK_DailyAttedanceDet_MasterEmployee" Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="DailyAttedanceDet" EntitySet="DailyAttedanceDets" />
+          </AssociationSet>
+          <EntitySet Name="ViewDailyAttedances" EntityType="BizSoftModel.ViewDailyAttedance" />
+          <EntitySet Name="VIEWDAILYATTEDANCELATEs" EntityType="BizSoftModel.VIEWDAILYATTEDANCELATE" />
+          <EntitySet Name="VIEWEPF_SOCSO" EntityType="BizSoftModel.VIEWEPF_SOCSO" />
+          <EntitySet Name="VIEWFULLDAYLEAVEs" EntityType="BizSoftModel.VIEWFULLDAYLEAVE" />
+          <EntitySet Name="VIEWHALFDAYLEAVEs" EntityType="BizSoftModel.VIEWHALFDAYLEAVE" />
           <EntitySet Name="VIEWLOPHOURS" EntityType="BizSoftModel.VIEWLOPHOUR" />
+          <EntitySet Name="ViewManualPayments" EntityType="BizSoftModel.ViewManualPayment" />
+          <EntitySet Name="ViewMasterbankbranches" EntityType="BizSoftModel.ViewMasterbankbranch" />
+          <EntitySet Name="ViewMasterCities" EntityType="BizSoftModel.ViewMasterCity" />
+          <EntitySet Name="ViewMasterEmployees" EntityType="BizSoftModel.ViewMasterEmployee" />
+          <EntitySet Name="ViewMasterPositions" EntityType="BizSoftModel.ViewMasterPosition" />
+          <EntitySet Name="ViewMasterStates" EntityType="BizSoftModel.ViewMasterState" />
+          <EntitySet Name="VIEWMONTHLY_WORKINGDAYS" EntityType="BizSoftModel.VIEWMONTHLY_WORKINGDAYS" />
+          <EntitySet Name="ViewOTCalculations" EntityType="BizSoftModel.ViewOTCalculation" />
           <EntitySet Name="VIEWPAYSLIPs" EntityType="BizSoftModel.VIEWPAYSLIP" />
+          <EntitySet Name="VIEWTOTALOTs" EntityType="BizSoftModel.VIEWTOTALOT" />
+          <EntitySet Name="VIEWWEEKOFFs" EntityType="BizSoftModel.VIEWWEEKOFF" />
+          <EntitySet Name="VIEWWORKINGDAYS" EntityType="BizSoftModel.VIEWWORKINGDAY" />
+          <EntitySet Name="LeavePermissionDetails" EntityType="BizSoftModel.LeavePermissionDetail" />
+          <AssociationSet Name="FK_LeavePermissionDetails_MasterEmployee" Association="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="LeavePermissionDetail" EntitySet="LeavePermissionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeaveType" Association="BizSoftModel.FK_LeaveType">
+            <End Role="LeaveType" EntitySet="LeaveTypes" />
+            <End Role="LeavePermissionDetail" EntitySet="LeavePermissionDetails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserType">
           <Key>
@@ -3127,6 +2820,126 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DailyAttedanceDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="AttDate" Type="DateTime" Precision="3" />
+          <Property Name="InTime" Type="DateTime" Precision="3" />
+          <Property Name="OutTime" Type="DateTime" Precision="3" />
+          <Property Name="TotalWorking_Hours" Type="Int32" Nullable="false" />
+          <Property Name="TotalWorking_Minutes" Type="Int32" Nullable="false" />
+          <Property Name="WithPermission" Type="Boolean" Nullable="false" />
+          <Property Name="OT_Hours" Type="Int32" Nullable="false" />
+          <Property Name="OT_Minutes" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsFullDayLeave" Type="Boolean" Nullable="false" />
+          <Property Name="IsHalfDayLeave" Type="Boolean" Nullable="false" />
+          <Property Name="IsWeekOff" Type="Boolean" Nullable="false" />
+          <Property Name="IsPublicHoliday" Type="Boolean" Nullable="false" />
+          <Property Name="IsModified" Type="Boolean" Nullable="false" />
+          <Property Name="LeavePermissionId" Type="Int32" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" FromRole="DailyAttedanceDet" ToRole="MasterEmployee" />
+        </EntityType>
+        <Association Name="FK_DailyAttedanceDet_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.DailyAttedanceDet" Role="DailyAttedanceDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyAttedanceDet">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ViewDailyAttedance">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+            <PropertyRef Name="POSITIONNAME" />
+            <PropertyRef Name="WITHPERMISSION" />
+            <PropertyRef Name="REMARKS" />
+            <PropertyRef Name="ISFULLDAYLEAVE" />
+            <PropertyRef Name="ISHALFDAYLEAVE" />
+          </Key>
+          <Property Name="RNO" Type="Int64" />
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="MEMBERSHIPNO" Type="Int32" />
+          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSITIONNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTDATE" Type="DateTime" Precision="3" />
+          <Property Name="INTIME" Type="Time" Precision="7" />
+          <Property Name="OUTTIME" Type="Time" Precision="7" />
+          <Property Name="WORKING_HOURS" Type="Int32" />
+          <Property Name="WORKING_MINUTES" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="WITHPERMISSION" Type="Boolean" Nullable="false" />
+          <Property Name="OT_HOURS" Type="Int32" />
+          <Property Name="OT_MINUTES" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="REMARKS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ISFULLDAYLEAVE" Type="Boolean" Nullable="false" />
+          <Property Name="ISHALFDAYLEAVE" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VIEWDAILYATTEDANCELATE">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+            <PropertyRef Name="POSITIONNAME" />
+            <PropertyRef Name="WITHPERMISSION" />
+            <PropertyRef Name="REMARKS" />
+            <PropertyRef Name="ISFULLDAYLEAVE" />
+            <PropertyRef Name="ISHALFDAYLEAVE" />
+          </Key>
+          <Property Name="RNO" Type="Int64" />
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="MEMBERSHIPNO" Type="Int32" />
+          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSITIONNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ATTDATE" Type="DateTime" Precision="3" />
+          <Property Name="INTIME" Type="Time" Precision="7" />
+          <Property Name="OUTTIME" Type="Time" Precision="7" />
+          <Property Name="WORKING_HOURS" Type="Int32" />
+          <Property Name="WORKING_MINUTES" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="WITHPERMISSION" Type="Boolean" Nullable="false" />
+          <Property Name="OT_HOURS" Type="Int32" />
+          <Property Name="OT_MINUTES" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="REMARKS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ISFULLDAYLEAVE" Type="Boolean" Nullable="false" />
+          <Property Name="ISHALFDAYLEAVE" Type="Boolean" Nullable="false" />
+          <Property Name="LATEHOURS" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VIEWEPF_SOCSO">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+            <PropertyRef Name="EPF" />
+            <PropertyRef Name="EPFUNION" />
+            <PropertyRef Name="SOCSO" />
+            <PropertyRef Name="SOCSOUNION" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="EPF" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EPFUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SOCSO" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SOCSOUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="VIEWFULLDAYLEAVE">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="ATT_MONTH" Type="Int32" />
+          <Property Name="ATT_YEAR" Type="Int32" />
+          <Property Name="FULLDAYLEAVE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VIEWHALFDAYLEAVE">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="ATT_MONTH" Type="Int32" />
+          <Property Name="ATT_YEAR" Type="Int32" />
+          <Property Name="HALFDAYLEAVE" Type="Int32" />
+        </EntityType>
         <EntityType Name="VIEWLOPHOUR">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -3137,6 +2950,117 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="TOTAL_LATE" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="TOTAL_HOURS_APPROVED" Type="Int32" />
           <Property Name="TOTAL_LOP" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="ViewManualPayment">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ALLOWANCEID" />
+            <PropertyRef Name="ENTRYDATE" />
+            <PropertyRef Name="BONUS" />
+            <PropertyRef Name="EXGRATIA" />
+            <PropertyRef Name="PCB" />
+          </Key>
+          <Property Name="RNO" Type="Int64" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEMBERSHIPNO" Type="Int32" />
+          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ALLOWANCEID" Type="Int32" Nullable="false" />
+          <Property Name="ENTRYDATE" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="BONUS" Type="Int32" Nullable="false" />
+          <Property Name="EXGRATIA" Type="Int32" Nullable="false" />
+          <Property Name="PCB" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewMasterbankbranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BankBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NubeBranchId" Type="Int32" />
+          <Property Name="IsHeadQuarters" Type="Boolean" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NubeBranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CountryId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ViewMasterCity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CountryId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ViewMasterEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="RNO" Type="Int64" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MEMBERSHIPNO" Type="Int32" />
+          <Property Name="EMPLOYEENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SHORTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewMasterPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewMasterState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VIEWMONTHLY_WORKINGDAYS">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="ATT_MONTH" Type="Int32" />
+          <Property Name="ATT_YEAR" Type="Int32" />
+          <Property Name="WORKINGDAYS" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ViewOTCalculation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEMBERSHIPNO" Type="Int32" />
+          <Property Name="BASICSALARY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PH" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OT01" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OT02" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OT03" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OT04" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OT05" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OT06" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="VIEWPAYSLIP">
           <Key>
@@ -3226,6 +3150,98 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
           <Property Name="ALLOWANCEINADVANCED" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="OTHERDEDUCTIONS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="VIEWTOTALOT">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="ATT_MONTH" Type="Int32" />
+          <Property Name="ATT_YEAR" Type="Int32" />
+          <Property Name="TOTAL_OT" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="OT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="VIEWWEEKOFF">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="ATT_MONTH" Type="Int32" />
+          <Property Name="ATT_YEAR" Type="Int32" />
+          <Property Name="WEEKOFF" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VIEWWORKINGDAY">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+            <PropertyRef Name="HALFDAYLEAVE" />
+            <PropertyRef Name="FULLDAYLEAVE" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="ATT_MONTH" Type="Int32" />
+          <Property Name="ATT_YEAR" Type="Int32" />
+          <Property Name="WORKINGDAYS" Type="Decimal" Precision="13" Scale="1" />
+          <Property Name="HALFDAYLEAVE" Type="Int32" Nullable="false" />
+          <Property Name="FULLDAYLEAVE" Type="Int32" Nullable="false" />
+          <Property Name="TOTALLEAVE" Type="Int32" />
+          <Property Name="PUBLICHOLIDAY" Type="Int32" />
+          <Property Name="WEEKOFF" Type="Int32" />
+          <Property Name="BASICSALARY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ONE_DAY_SALARY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_LATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LATE_MINUTES" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_HOURS_APPROVED" Type="Int32" />
+          <Property Name="TOTAL_LOP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ONEHOUR" Type="Decimal" Precision="31" Scale="15" />
+          <Property Name="LOP_FOR_LEAVE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOP_FOR_LATE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOSS_OF_PAY" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="LeavePermissionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="LeaveTypeId" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="NoOfDays" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AprovedFromDate" Type="DateTime" Precision="3" />
+          <Property Name="AprovedToDate" Type="DateTime" Precision="3" />
+          <Property Name="NoOfDaysApproved" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Period" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" FromRole="LeavePermissionDetail" ToRole="MasterEmployee" />
+          <NavigationProperty Name="LeaveType" Relationship="BizSoftModel.FK_LeaveType" FromRole="LeavePermissionDetail" ToRole="LeaveType" />
+        </EntityType>
+        <Association Name="FK_LeavePermissionDetails_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.LeavePermissionDetail" Role="LeavePermissionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LeavePermissionDetail">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LeaveType">
+          <End Type="BizSoftModel.LeaveType" Role="LeaveType" Multiplicity="0..1" />
+          <End Type="BizSoftModel.LeavePermissionDetail" Role="LeavePermissionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LeaveType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LeavePermissionDetail">
+              <PropertyRef Name="LeaveTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3264,28 +3280,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
                 <ScalarProperty Name="AfterOutTime" ColumnName="AfterOutTime" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DailyAttedanceDets">
-            <EntityTypeMapping TypeName="BizSoftModel.DailyAttedanceDet">
-              <MappingFragment StoreEntitySet="DailyAttedanceDet">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
-                <ScalarProperty Name="InTime" ColumnName="InTime" />
-                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
-                <ScalarProperty Name="TotalWorking_Hours" ColumnName="TotalWorking_Hours" />
-                <ScalarProperty Name="TotalWorking_Minutes" ColumnName="TotalWorking_Minutes" />
-                <ScalarProperty Name="WithPermission" ColumnName="WithPermission" />
-                <ScalarProperty Name="OT_Hours" ColumnName="OT_Hours" />
-                <ScalarProperty Name="OT_Minutes" ColumnName="OT_Minutes" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="IsFullDayLeave" ColumnName="IsFullDayLeave" />
-                <ScalarProperty Name="IsHalfDayLeave" ColumnName="IsHalfDayLeave" />
-                <ScalarProperty Name="IsWeekOff" ColumnName="IsWeekOff" />
-                <ScalarProperty Name="IsPublicHoliday" ColumnName="IsPublicHoliday" />
-                <ScalarProperty Name="IsModified" ColumnName="IsModified" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3356,27 +3350,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
                 <ScalarProperty Name="AprovedFromTime" ColumnName="AprovedFromTime" />
                 <ScalarProperty Name="AprovedToTime" ColumnName="AprovedToTime" />
                 <ScalarProperty Name="NoOfHoursApproved" ColumnName="NoOfHoursApproved" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LeavePermissionDetails">
-            <EntityTypeMapping TypeName="BizSoftModel.LeavePermissionDetail">
-              <MappingFragment StoreEntitySet="LeavePermissionDetails">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="LeaveTypeId" ColumnName="LeaveTypeId" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
-                <ScalarProperty Name="AprovedFromDate" ColumnName="AprovedFromDate" />
-                <ScalarProperty Name="AprovedToDate" ColumnName="AprovedToDate" />
-                <ScalarProperty Name="NoOfDaysApproved" ColumnName="NoOfDaysApproved" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -3714,233 +3687,6 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ViewDailyAttedances">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewDailyAttedance">
-              <MappingFragment StoreEntitySet="ViewDailyAttedance">
-                <ScalarProperty Name="RNO" ColumnName="RNO" />
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
-                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
-                <ScalarProperty Name="POSITIONNAME" ColumnName="POSITIONNAME" />
-                <ScalarProperty Name="ATTDATE" ColumnName="ATTDATE" />
-                <ScalarProperty Name="INTIME" ColumnName="INTIME" />
-                <ScalarProperty Name="OUTTIME" ColumnName="OUTTIME" />
-                <ScalarProperty Name="WORKING_HOURS" ColumnName="WORKING_HOURS" />
-                <ScalarProperty Name="WORKING_MINUTES" ColumnName="WORKING_MINUTES" />
-                <ScalarProperty Name="WITHPERMISSION" ColumnName="WITHPERMISSION" />
-                <ScalarProperty Name="OT_HOURS" ColumnName="OT_HOURS" />
-                <ScalarProperty Name="OT_MINUTES" ColumnName="OT_MINUTES" />
-                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
-                <ScalarProperty Name="ISFULLDAYLEAVE" ColumnName="ISFULLDAYLEAVE" />
-                <ScalarProperty Name="ISHALFDAYLEAVE" ColumnName="ISHALFDAYLEAVE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWDAILYATTEDANCELATEs">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWDAILYATTEDANCELATE">
-              <MappingFragment StoreEntitySet="VIEWDAILYATTEDANCELATE">
-                <ScalarProperty Name="RNO" ColumnName="RNO" />
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
-                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
-                <ScalarProperty Name="POSITIONNAME" ColumnName="POSITIONNAME" />
-                <ScalarProperty Name="ATTDATE" ColumnName="ATTDATE" />
-                <ScalarProperty Name="INTIME" ColumnName="INTIME" />
-                <ScalarProperty Name="OUTTIME" ColumnName="OUTTIME" />
-                <ScalarProperty Name="WORKING_HOURS" ColumnName="WORKING_HOURS" />
-                <ScalarProperty Name="WORKING_MINUTES" ColumnName="WORKING_MINUTES" />
-                <ScalarProperty Name="WITHPERMISSION" ColumnName="WITHPERMISSION" />
-                <ScalarProperty Name="OT_HOURS" ColumnName="OT_HOURS" />
-                <ScalarProperty Name="OT_MINUTES" ColumnName="OT_MINUTES" />
-                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
-                <ScalarProperty Name="ISFULLDAYLEAVE" ColumnName="ISFULLDAYLEAVE" />
-                <ScalarProperty Name="ISHALFDAYLEAVE" ColumnName="ISHALFDAYLEAVE" />
-                <ScalarProperty Name="LATEHOURS" ColumnName="LATEHOURS" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWEPF_SOCSO">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWEPF_SOCSO">
-              <MappingFragment StoreEntitySet="VIEWEPF_SOCSO">
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="EPF" ColumnName="EPF" />
-                <ScalarProperty Name="EPFUNION" ColumnName="EPFUNION" />
-                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
-                <ScalarProperty Name="SOCSOUNION" ColumnName="SOCSOUNION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWFULLDAYLEAVEs">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWFULLDAYLEAVE">
-              <MappingFragment StoreEntitySet="VIEWFULLDAYLEAVE">
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
-                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
-                <ScalarProperty Name="FULLDAYLEAVE" ColumnName="FULLDAYLEAVE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWHALFDAYLEAVEs">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWHALFDAYLEAVE">
-              <MappingFragment StoreEntitySet="VIEWHALFDAYLEAVE">
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
-                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
-                <ScalarProperty Name="HALFDAYLEAVE" ColumnName="HALFDAYLEAVE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewManualPayments">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewManualPayment">
-              <MappingFragment StoreEntitySet="ViewManualPayment">
-                <ScalarProperty Name="RNO" ColumnName="RNO" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
-                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
-                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
-                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
-                <ScalarProperty Name="ALLOWANCEID" ColumnName="ALLOWANCEID" />
-                <ScalarProperty Name="ENTRYDATE" ColumnName="ENTRYDATE" />
-                <ScalarProperty Name="BONUS" ColumnName="BONUS" />
-                <ScalarProperty Name="EXGRATIA" ColumnName="EXGRATIA" />
-                <ScalarProperty Name="PCB" ColumnName="PCB" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewMasterbankbranches">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterbankbranch">
-              <MappingFragment StoreEntitySet="ViewMasterbankbranch">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="BankBranchName" ColumnName="BankBranchName" />
-                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address3" ColumnName="Address3" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
-                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="NubeBranchId" ColumnName="NubeBranchId" />
-                <ScalarProperty Name="IsHeadQuarters" ColumnName="IsHeadQuarters" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="NubeBranchName" ColumnName="NubeBranchName" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewMasterCities">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterCity">
-              <MappingFragment StoreEntitySet="ViewMasterCity">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewMasterEmployees">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterEmployee">
-              <MappingFragment StoreEntitySet="ViewMasterEmployee">
-                <ScalarProperty Name="RNO" ColumnName="RNO" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
-                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
-                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
-                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewMasterPositions">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterPosition">
-              <MappingFragment StoreEntitySet="ViewMasterPosition">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewMasterStates">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterState">
-              <MappingFragment StoreEntitySet="ViewMasterState">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewOTCalculations">
-            <EntityTypeMapping TypeName="BizSoftModel.ViewOTCalculation">
-              <MappingFragment StoreEntitySet="ViewOTCalculation">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
-                <ScalarProperty Name="BASICSALARY" ColumnName="BASICSALARY" />
-                <ScalarProperty Name="PH" ColumnName="PH" />
-                <ScalarProperty Name="OT01" ColumnName="OT01" />
-                <ScalarProperty Name="OT02" ColumnName="OT02" />
-                <ScalarProperty Name="OT03" ColumnName="OT03" />
-                <ScalarProperty Name="OT04" ColumnName="OT04" />
-                <ScalarProperty Name="OT05" ColumnName="OT05" />
-                <ScalarProperty Name="OT06" ColumnName="OT06" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWTOTALOTs">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWTOTALOT">
-              <MappingFragment StoreEntitySet="VIEWTOTALOT">
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
-                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
-                <ScalarProperty Name="TOTAL_OT" ColumnName="TOTAL_OT" />
-                <ScalarProperty Name="OT_AMOUNT" ColumnName="OT_AMOUNT" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWWEEKOFFs">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWWEEKOFF">
-              <MappingFragment StoreEntitySet="VIEWWEEKOFF">
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
-                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
-                <ScalarProperty Name="WEEKOFF" ColumnName="WEEKOFF" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWWORKINGDAYS">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWWORKINGDAY">
-              <MappingFragment StoreEntitySet="VIEWWORKINGDAYS">
-                <ScalarProperty Name="LOP_M" ColumnName="LOP_M" />
-                <ScalarProperty Name="LOP_HOUR" ColumnName="LOP_HOUR" />
-                <ScalarProperty Name="LOP_LEAVE" ColumnName="LOP_LEAVE" />
-                <ScalarProperty Name="ONEHOUR" ColumnName="ONEHOUR" />
-                <ScalarProperty Name="TOTAL_LOP" ColumnName="TOTAL_LOP" />
-                <ScalarProperty Name="TOTAL_HOURS_APPROVED" ColumnName="TOTAL_HOURS_APPROVED" />
-                <ScalarProperty Name="TOTAL_LATE" ColumnName="TOTAL_LATE" />
-                <ScalarProperty Name="TOTAL_LOP_MINUTES" ColumnName="TOTAL_LOP_MINUTES" />
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
-                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
-                <ScalarProperty Name="WORKINGDAYS" ColumnName="WORKINGDAYS" />
-                <ScalarProperty Name="HALFDAYLEAVE" ColumnName="HALFDAYLEAVE" />
-                <ScalarProperty Name="FULLDAYLEAVE" ColumnName="FULLDAYLEAVE" />
-                <ScalarProperty Name="TOTALLEAVE" ColumnName="TOTALLEAVE" />
-                <ScalarProperty Name="PUBLICHOLIDAY" ColumnName="PUBLICHOLIDAY" />
-                <ScalarProperty Name="WEEKOFF" ColumnName="WEEKOFF" />
-                <ScalarProperty Name="BASICSALARY" ColumnName="BASICSALARY" />
-                <ScalarProperty Name="ONE_DAY_SALARY" ColumnName="ONE_DAY_SALARY" />
-                <ScalarProperty Name="LOP" ColumnName="LOP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserTypes">
             <EntityTypeMapping TypeName="BizSoftModel.UserType">
               <MappingFragment StoreEntitySet="UserType">
@@ -4045,6 +3791,105 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DailyAttedanceDets">
+            <EntityTypeMapping TypeName="BizSoftModel.DailyAttedanceDet">
+              <MappingFragment StoreEntitySet="DailyAttedanceDet">
+                <ScalarProperty Name="LeavePermissionId" ColumnName="LeavePermissionId" />
+                <ScalarProperty Name="IsModified" ColumnName="IsModified" />
+                <ScalarProperty Name="IsPublicHoliday" ColumnName="IsPublicHoliday" />
+                <ScalarProperty Name="IsWeekOff" ColumnName="IsWeekOff" />
+                <ScalarProperty Name="IsHalfDayLeave" ColumnName="IsHalfDayLeave" />
+                <ScalarProperty Name="IsFullDayLeave" ColumnName="IsFullDayLeave" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="OT_Minutes" ColumnName="OT_Minutes" />
+                <ScalarProperty Name="OT_Hours" ColumnName="OT_Hours" />
+                <ScalarProperty Name="WithPermission" ColumnName="WithPermission" />
+                <ScalarProperty Name="TotalWorking_Minutes" ColumnName="TotalWorking_Minutes" />
+                <ScalarProperty Name="TotalWorking_Hours" ColumnName="TotalWorking_Hours" />
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="InTime" ColumnName="InTime" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewDailyAttedances">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewDailyAttedance">
+              <MappingFragment StoreEntitySet="ViewDailyAttedance">
+                <ScalarProperty Name="ISHALFDAYLEAVE" ColumnName="ISHALFDAYLEAVE" />
+                <ScalarProperty Name="ISFULLDAYLEAVE" ColumnName="ISFULLDAYLEAVE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="OT_MINUTES" ColumnName="OT_MINUTES" />
+                <ScalarProperty Name="OT_HOURS" ColumnName="OT_HOURS" />
+                <ScalarProperty Name="WITHPERMISSION" ColumnName="WITHPERMISSION" />
+                <ScalarProperty Name="WORKING_MINUTES" ColumnName="WORKING_MINUTES" />
+                <ScalarProperty Name="WORKING_HOURS" ColumnName="WORKING_HOURS" />
+                <ScalarProperty Name="OUTTIME" ColumnName="OUTTIME" />
+                <ScalarProperty Name="INTIME" ColumnName="INTIME" />
+                <ScalarProperty Name="ATTDATE" ColumnName="ATTDATE" />
+                <ScalarProperty Name="POSITIONNAME" ColumnName="POSITIONNAME" />
+                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
+                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+                <ScalarProperty Name="RNO" ColumnName="RNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWDAILYATTEDANCELATEs">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWDAILYATTEDANCELATE">
+              <MappingFragment StoreEntitySet="VIEWDAILYATTEDANCELATE">
+                <ScalarProperty Name="LATEHOURS" ColumnName="LATEHOURS" />
+                <ScalarProperty Name="ISHALFDAYLEAVE" ColumnName="ISHALFDAYLEAVE" />
+                <ScalarProperty Name="ISFULLDAYLEAVE" ColumnName="ISFULLDAYLEAVE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="OT_MINUTES" ColumnName="OT_MINUTES" />
+                <ScalarProperty Name="OT_HOURS" ColumnName="OT_HOURS" />
+                <ScalarProperty Name="WITHPERMISSION" ColumnName="WITHPERMISSION" />
+                <ScalarProperty Name="WORKING_MINUTES" ColumnName="WORKING_MINUTES" />
+                <ScalarProperty Name="WORKING_HOURS" ColumnName="WORKING_HOURS" />
+                <ScalarProperty Name="OUTTIME" ColumnName="OUTTIME" />
+                <ScalarProperty Name="INTIME" ColumnName="INTIME" />
+                <ScalarProperty Name="ATTDATE" ColumnName="ATTDATE" />
+                <ScalarProperty Name="POSITIONNAME" ColumnName="POSITIONNAME" />
+                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
+                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+                <ScalarProperty Name="RNO" ColumnName="RNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWEPF_SOCSO">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWEPF_SOCSO">
+              <MappingFragment StoreEntitySet="VIEWEPF_SOCSO">
+                <ScalarProperty Name="SOCSOUNION" ColumnName="SOCSOUNION" />
+                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
+                <ScalarProperty Name="EPFUNION" ColumnName="EPFUNION" />
+                <ScalarProperty Name="EPF" ColumnName="EPF" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWFULLDAYLEAVEs">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWFULLDAYLEAVE">
+              <MappingFragment StoreEntitySet="VIEWFULLDAYLEAVE">
+                <ScalarProperty Name="FULLDAYLEAVE" ColumnName="FULLDAYLEAVE" />
+                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
+                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWHALFDAYLEAVEs">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWHALFDAYLEAVE">
+              <MappingFragment StoreEntitySet="VIEWHALFDAYLEAVE">
+                <ScalarProperty Name="HALFDAYLEAVE" ColumnName="HALFDAYLEAVE" />
+                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
+                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="VIEWLOPHOURS">
             <EntityTypeMapping TypeName="BizSoftModel.VIEWLOPHOUR">
               <MappingFragment StoreEntitySet="VIEWLOPHOURS">
@@ -4054,6 +3899,120 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
                 <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
                 <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
                 <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewManualPayments">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewManualPayment">
+              <MappingFragment StoreEntitySet="ViewManualPayment">
+                <ScalarProperty Name="PCB" ColumnName="PCB" />
+                <ScalarProperty Name="EXGRATIA" ColumnName="EXGRATIA" />
+                <ScalarProperty Name="BONUS" ColumnName="BONUS" />
+                <ScalarProperty Name="ENTRYDATE" ColumnName="ENTRYDATE" />
+                <ScalarProperty Name="ALLOWANCEID" ColumnName="ALLOWANCEID" />
+                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
+                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RNO" ColumnName="RNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterbankbranches">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterbankbranch">
+              <MappingFragment StoreEntitySet="ViewMasterbankbranch">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="NubeBranchName" ColumnName="NubeBranchName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="IsHeadQuarters" ColumnName="IsHeadQuarters" />
+                <ScalarProperty Name="NubeBranchId" ColumnName="NubeBranchId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="BankBranchName" ColumnName="BankBranchName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterCities">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterCity">
+              <MappingFragment StoreEntitySet="ViewMasterCity">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterEmployees">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterEmployee">
+              <MappingFragment StoreEntitySet="ViewMasterEmployee">
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
+                <ScalarProperty Name="SHORTNAME" ColumnName="SHORTNAME" />
+                <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
+                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RNO" ColumnName="RNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterPositions">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterPosition">
+              <MappingFragment StoreEntitySet="ViewMasterPosition">
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewMasterStates">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewMasterState">
+              <MappingFragment StoreEntitySet="ViewMasterState">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWMONTHLY_WORKINGDAYS">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWMONTHLY_WORKINGDAYS">
+              <MappingFragment StoreEntitySet="VIEWMONTHLY_WORKINGDAYS">
+                <ScalarProperty Name="WORKINGDAYS" ColumnName="WORKINGDAYS" />
+                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
+                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewOTCalculations">
+            <EntityTypeMapping TypeName="BizSoftModel.ViewOTCalculation">
+              <MappingFragment StoreEntitySet="ViewOTCalculation">
+                <ScalarProperty Name="OT06" ColumnName="OT06" />
+                <ScalarProperty Name="OT05" ColumnName="OT05" />
+                <ScalarProperty Name="OT04" ColumnName="OT04" />
+                <ScalarProperty Name="OT03" ColumnName="OT03" />
+                <ScalarProperty Name="OT02" ColumnName="OT02" />
+                <ScalarProperty Name="OT01" ColumnName="OT01" />
+                <ScalarProperty Name="PH" ColumnName="PH" />
+                <ScalarProperty Name="BASICSALARY" ColumnName="BASICSALARY" />
+                <ScalarProperty Name="MEMBERSHIPNO" ColumnName="MEMBERSHIPNO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4107,6 +4066,74 @@ warning 6002: The table/view 'BizSoft.dbo.VIEWWORKINGDAYS' does not have a prima
                 <ScalarProperty Name="EMPLOYEENO" ColumnName="EMPLOYEENO" />
                 <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
                 <ScalarProperty Name="RNO" ColumnName="RNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWTOTALOTs">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWTOTALOT">
+              <MappingFragment StoreEntitySet="VIEWTOTALOT">
+                <ScalarProperty Name="OT_AMOUNT" ColumnName="OT_AMOUNT" />
+                <ScalarProperty Name="TOTAL_OT" ColumnName="TOTAL_OT" />
+                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
+                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWWEEKOFFs">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWWEEKOFF">
+              <MappingFragment StoreEntitySet="VIEWWEEKOFF">
+                <ScalarProperty Name="WEEKOFF" ColumnName="WEEKOFF" />
+                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
+                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWWORKINGDAYS">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWWORKINGDAY">
+              <MappingFragment StoreEntitySet="VIEWWORKINGDAYS">
+                <ScalarProperty Name="LOSS_OF_PAY" ColumnName="LOSS_OF_PAY" />
+                <ScalarProperty Name="LOP_FOR_LATE" ColumnName="LOP_FOR_LATE" />
+                <ScalarProperty Name="LOP_FOR_LEAVE" ColumnName="LOP_FOR_LEAVE" />
+                <ScalarProperty Name="ONEHOUR" ColumnName="ONEHOUR" />
+                <ScalarProperty Name="TOTAL_LOP" ColumnName="TOTAL_LOP" />
+                <ScalarProperty Name="TOTAL_HOURS_APPROVED" ColumnName="TOTAL_HOURS_APPROVED" />
+                <ScalarProperty Name="LATE_MINUTES" ColumnName="LATE_MINUTES" />
+                <ScalarProperty Name="TOTAL_LATE" ColumnName="TOTAL_LATE" />
+                <ScalarProperty Name="ONE_DAY_SALARY" ColumnName="ONE_DAY_SALARY" />
+                <ScalarProperty Name="BASICSALARY" ColumnName="BASICSALARY" />
+                <ScalarProperty Name="WEEKOFF" ColumnName="WEEKOFF" />
+                <ScalarProperty Name="PUBLICHOLIDAY" ColumnName="PUBLICHOLIDAY" />
+                <ScalarProperty Name="TOTALLEAVE" ColumnName="TOTALLEAVE" />
+                <ScalarProperty Name="FULLDAYLEAVE" ColumnName="FULLDAYLEAVE" />
+                <ScalarProperty Name="HALFDAYLEAVE" ColumnName="HALFDAYLEAVE" />
+                <ScalarProperty Name="WORKINGDAYS" ColumnName="WORKINGDAYS" />
+                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
+                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeavePermissionDetails">
+            <EntityTypeMapping TypeName="BizSoftModel.LeavePermissionDetail">
+              <MappingFragment StoreEntitySet="LeavePermissionDetails">
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="NoOfDaysApproved" ColumnName="NoOfDaysApproved" />
+                <ScalarProperty Name="AprovedToDate" ColumnName="AprovedToDate" />
+                <ScalarProperty Name="AprovedFromDate" ColumnName="AprovedFromDate" />
+                <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="LeaveTypeId" ColumnName="LeaveTypeId" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

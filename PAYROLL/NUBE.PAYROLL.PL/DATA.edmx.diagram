@@ -7,13 +7,11 @@
       <Diagram DiagramId="dc5b98d5ebf44c25b844661b8e6f300f" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="BizSoftModel.AttedanceLog" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.AttendanceCorrection" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.DailyAttedanceDet" Width="1.5" PointX="12.75" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.DailyLateLog" Width="1.5" PointX="12.75" PointY="24.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.EmployeeShift" Width="1.5" PointX="8.25" PointY="27.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.EPFCont" Width="1.5" PointX="2.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.HolidayList" Width="1.5" PointX="4.75" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.LatePermissionDetail" Width="1.5" PointX="12.75" PointY="27.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.LeavePermissionDetail" Width="1.5" PointX="15.75" PointY="33.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.LeaveType" Width="1.5" PointX="13.5" PointY="33.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.MasterBank" Width="1.5" PointX="8.25" PointY="38.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.MasterBankBranch" Width="1.5" PointX="7.5" PointY="33" IsExpanded="true" />
@@ -34,29 +32,11 @@
         <EntityTypeShape EntityType="BizSoftModel.UserTypeDetail" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.UserTypeFormDetail" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.YearlyAllowance" Width="1.5" PointX="12.75" PointY="62.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewDailyAttedance" Width="1.5" PointX="8.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWDAILYATTEDANCELATE" Width="1.5" PointX="10.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWEPF_SOCSO" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWFULLDAYLEAVE" Width="1.5" PointX="2.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWHALFDAYLEAVE" Width="1.5" PointX="4.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewManualPayment" Width="1.5" PointX="6.75" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewMasterbankbranch" Width="1.5" PointX="8.75" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewMasterCity" Width="1.5" PointX="12.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewMasterEmployee" Width="1.5" PointX="12.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewMasterPosition" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewMasterState" Width="1.5" PointX="2.75" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.ViewOTCalculation" Width="1.5" PointX="14.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWTOTALOT" Width="1.5" PointX="14.75" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWWEEKOFF" Width="1.5" PointX="4.75" PointY="17.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWWORKINGDAY" Width="1.5" PointX="16.75" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="BizSoftModel.FK_AttedanceLogs_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_AttendanceCorrection_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_DailyLateLogs_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_ShiftId" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_LatePermissionDetails_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_LeaveType" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterBankBranch_MasterBank" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterBank" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterBankBranch_MasterCity" ManuallyRouted="false" />
@@ -84,8 +64,29 @@
         <EntityTypeShape EntityType="BizSoftModel.CompanyDetail" Width="1.5" PointX="17.375" PointY="8.75" />
         <EntityTypeShape EntityType="BizSoftModel.MonthlySalary" Width="1.5" PointX="12.75" PointY="66.25" />
         <AssociationConnector Association="BizSoftModel.FK_MonthlySalary_MasterEmployee" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWLOPHOUR" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWPAYSLIP" Width="1.5" PointX="17.75" PointY="14.75" />
+        <EntityTypeShape EntityType="BizSoftModel.DailyAttedanceDet" Width="1.5" PointX="13.375" PointY="45.75" />
+        <AssociationConnector Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewDailyAttedance" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWDAILYATTEDANCELATE" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWEPF_SOCSO" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWFULLDAYLEAVE" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWHALFDAYLEAVE" Width="1.5" PointX="11.75" PointY="6.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWLOPHOUR" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewManualPayment" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewMasterbankbranch" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewMasterCity" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewMasterEmployee" Width="1.5" PointX="6.75" PointY="12.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewMasterPosition" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewMasterState" Width="1.5" PointX="13.75" PointY="6.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWMONTHLY_WORKINGDAYS" Width="1.5" PointX="8.75" PointY="13.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ViewOTCalculation" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWPAYSLIP" Width="1.5" PointX="15.75" PointY="14.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWTOTALOT" Width="1.5" PointX="15.75" PointY="4.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWWEEKOFF" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWWORKINGDAY" Width="1.5" PointX="4.75" PointY="16.75" />
+        <EntityTypeShape EntityType="BizSoftModel.LeavePermissionDetail" Width="1.5" PointX="15.75" PointY="33.125" />
+        <AssociationConnector Association="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_LeaveType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

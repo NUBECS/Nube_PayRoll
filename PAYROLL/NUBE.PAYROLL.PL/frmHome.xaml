@@ -195,6 +195,11 @@
                                             <Transaction:frmAttendanceCorrection/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
+                                    <Menu:NavMenuItem MenuName="Leave Approval Entry" FormName="LeaveApprovalEntry">
+                                        <Menu:NavMenuItem.Content>
+                                            <Transaction:frmLeavePermission/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
                                     <Menu:NavMenuItem MenuName="PaySlip Generate" FormName="PayslipGenerate">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmPayslipGenerate/>
@@ -226,7 +231,7 @@
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>-->
                                 </ListBox>
-                            </Expander>
+                            </Expander>                            
                         </StackPanel>
                     </DockPanel>
                 </ScrollViewer>
@@ -238,9 +243,5 @@
                 </Grid>
             </DockPanel>
         </materialDesign:DrawerHost>
-    </materialDesign:DialogHost>
-    
-
-
-
+    </materialDesign:DialogHost>    
 </Controls:MetroWindow>

@@ -50,15 +50,12 @@ namespace NUBE.PAYROLL.PL.Transaction
                     MessageBox.Show("Date is Empty!");
                     dtMonth.Focus();
                     return;
-
                     //ListBox lb = sender as ListBox;
                     //CMN.NavMenuItem mi = lb.SelectedItem as CMN.NavMenuItem;
-
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

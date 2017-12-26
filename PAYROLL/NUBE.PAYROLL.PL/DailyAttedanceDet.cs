@@ -30,6 +30,7 @@ namespace NUBE.PAYROLL.PL
         public bool IsWeekOff { get; set; }
         public bool IsPublicHoliday { get; set; }
         public bool IsModified { get; set; }
+        public Nullable<int> LeavePermissionId { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }
     }
