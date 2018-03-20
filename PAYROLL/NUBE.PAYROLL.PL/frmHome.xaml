@@ -55,6 +55,8 @@
             <Thickness x:Key="mnuItemMargin">30,0,0,0</Thickness>
         </ResourceDictionary>
     </Window.Resources>       
+    
+    
     <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">   
         <materialDesign:DrawerHost Name="dhContent" IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}" Margin="0,1,0,-1">
             <materialDesign:DrawerHost.LeftDrawerContent>
@@ -198,6 +200,11 @@
                                     <Menu:NavMenuItem MenuName="Leave Approval Entry" FormName="LeaveApprovalEntry">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmLeavePermission/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
+                                    <Menu:NavMenuItem MenuName="Manual Attendance Entry" FormName="ManualAttendance">
+                                        <Menu:NavMenuItem.Content>
+                                            <Transaction:frmManuallyAttedanceEntry/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
                                     <Menu:NavMenuItem MenuName="PaySlip Generate" FormName="PayslipGenerate">

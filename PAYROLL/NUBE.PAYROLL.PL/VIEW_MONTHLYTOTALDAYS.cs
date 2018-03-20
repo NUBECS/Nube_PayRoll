@@ -12,14 +12,11 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class VIEWEPF_SOCSO
+    public partial class VIEW_MONTHLYTOTALDAYS
     {
         public int EMPLOYEEID { get; set; }
-        public decimal EPF { get; set; }
-        public decimal EPFUNION { get; set; }
-        public decimal SOCSO { get; set; }
-        public decimal SOCSOUNION { get; set; }
-        public string EmployeeName { get; set; }
-        public Nullable<decimal> BasicSalary { get; set; }
+        public Nullable<int> ATT_MONTH { get; set; }
+        public Nullable<int> ATT_YEAR { get; set; }
+        public Nullable<int> DAYS { get; set; }
     }
 }

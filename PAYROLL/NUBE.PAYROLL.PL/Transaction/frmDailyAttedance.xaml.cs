@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NUBE.PAYROLL.CMN;
+using System.Data.SqlClient;
 
 namespace NUBE.PAYROLL.PL.Transaction
 {
@@ -27,6 +28,32 @@ namespace NUBE.PAYROLL.PL.Transaction
         public frmDailyAttedance()
         {
             InitializeComponent();
+            try
+            {
+                using (SqlConnection con = new SqlConnection(Config.connStr))
+                {
+                    string str = " SELECT EM.ID,EM.EMPLOYEENAME \r" +
+                                 " FROM MASTEREMPLOYEE EM(NOLOCK) \r " +
+                                 " WHERE EM.ISCANCEL=0 \r " +
+                                 " ORDER BY EM.EMPLOYEENAME ";
+                    SqlCommand cmd = new SqlCommand(str, con);
+                    SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                    con.Open();
+                    cmd.CommandTimeout = 0;
+                    DataTable dtEmployee = new DataTable();
+                    adp.Fill(dtEmployee);
+                    if (dtEmployee.Rows.Count > 0)
+                    {
+                        cmbEmployee.ItemsSource = dtEmployee.DefaultView;
+                        cmbEmployee.SelectedValuePath = "ID";
+                        cmbEmployee.DisplayMemberPath = "EMPLOYEENAME";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogging.SendErrorToText(ex);
+            }
         }
 
         #region EVENTS
@@ -50,14 +77,24 @@ namespace NUBE.PAYROLL.PL.Transaction
         {
             try
             {
-                if (!string.IsNullOrEmpty(dtpDate.Text))
+                if (string.IsNullOrEmpty(dtpDate.Text))
                 {
-                    LoadAttedance();
+                    MessageBox.Show("From Date is Empty!");
+                    dtpDate.Focus();
+                }
+                else if (string.IsNullOrEmpty(dtpToDate.Text))
+                {
+                    MessageBox.Show("To Date is Empty!");
+                    dtpToDate.Focus();
+                }
+                else if ((dtpDate.SelectedDate) > (dtpToDate.SelectedDate))
+                {
+                    MessageBox.Show("From Date is Must be Less Than To Date !");
+                    dtpToDate.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Entry Date is Empty!");
-                    dtpDate.Focus();
+                    LoadAttedance();
                 }
             }
             catch (Exception ex)
@@ -90,10 +127,67 @@ namespace NUBE.PAYROLL.PL.Transaction
         void LoadAttedance()
         {
             DateTime dtdate = Convert.ToDateTime(dtpDate.SelectedDate);
-            var att = (from x in db.ViewDailyAttedances where x.ATTDATE == dtdate select x).ToList();
-            var late = (from x in db.VIEWDAILYATTEDANCELATEs where x.ATTDATE == dtdate select x).ToList();
-            DataTable dt = AppLib.LINQResultToDataTable(att);
-            DataTable dtLate = AppLib.LINQResultToDataTable(late);
+            DateTime dtTodate = Convert.ToDateTime(dtpToDate.SelectedDate);
+
+            DataTable dt = new DataTable();
+            DataTable dtLate = new DataTable();
+
+            string sWhere = "";
+            if (!string.IsNullOrEmpty(cmbEmployee.Text))
+            {
+                sWhere = sWhere + " AND DA.EMPLOYEEID=" + Convert.ToInt32(cmbEmployee.SelectedValue);
+            }
+            else
+            {
+                sWhere = "";
+            }
+
+            using (SqlConnection con = new SqlConnection(Config.connStr))
+            {
+                string str = string.Format(" SELECT ROW_NUMBER() OVER(ORDER BY EMPLOYEENAME,DA.ATTDATE ASC) AS RNO,DA.EMPLOYEEID,ME.MEMBERSHIPNO,ME.EMPLOYEENAME,\r" +
+                                           " ISNULL(MP.POSITIONNAME, '')POSITIONNAME, CONVERT(VARCHAR, DA.ATTDATE, 105) ATTDATE, CAST(DA.INTIME AS TIME)INTIME, CAST(DA.OUTTIME AS TIME)OUTTIME,\r" +
+                                           " ((ISNULL(DA.TOTALWORKING_HOURS, 0)) + DBO.MINUTES_TO_HOUR((ISNULL(DA.TOTALWORKING_MINUTES, 0))))WORKING_HOURS,\r" +
+                                           " CONVERT(NUMERIC(18, 2), '0.' + DBO.MINUTES_TO_MINUTES((ISNULL(DA.TOTALWORKING_MINUTES, 0))))WORKING_MINUTES,\r" +
+                                           " DA.WITHPERMISSION, ((ISNULL(DA.OT_HOURS, 0)) + DBO.MINUTES_TO_HOUR((ISNULL(DA.OT_MINUTES, 0))))OT_HOURS,\r" +
+                                           " DBO.MINUTES_TO_MINUTES((ISNULL(DA.OT_MINUTES, 0))) OT_MINUTES,\r" +
+                                           " ISNULL(DA.REMARKS, '')REMARKS, DA.ISFULLDAYLEAVE, DA.ISHALFDAYLEAVE\r" +
+                                           " FROM DAILYATTEDANCEDET DA(NOLOCK)\r" +
+                                           " LEFT JOIN MASTEREMPLOYEE ME(NOLOCK) ON ME.ID = DA.EMPLOYEEID\r" +
+                                           " LEFT JOIN MASTERPOSITION MP(NOLOCK) ON MP.ID = ME.POSITIONID\r" +
+                                           " WHERE ATTDATE BETWEEN '{0:dd/MMM/yyyy}' AND '{1:dd/MMM/yyyy}' AND DA.ISPUBLICHOLIDAY=0 AND DA.ISWEEKOFF=0 \r " + sWhere, dtdate, dtTodate);
+                SqlCommand cmd = new SqlCommand(str, con);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                con.Open();
+                cmd.CommandTimeout = 0;
+                adp.Fill(dt);
+
+                string strLate = string.Format(" SELECT ROW_NUMBER() OVER(ORDER BY EMPLOYEENAME,DA.ATTDATE ASC) AS RNO,DA.EMPLOYEEID,ME.MEMBERSHIPNO,ME.EMPLOYEENAME,\r" +
+                                               " ISNULL(MP.POSITIONNAME, '')POSITIONNAME, CONVERT(VARCHAR, DA.ATTDATE, 105) ATTDATE, CAST(DA.INTIME AS TIME)INTIME, CAST(DA.OUTTIME AS TIME)OUTTIME,\r" +
+                                               " (SUM(ISNULL(DA.TOTALWORKING_HOURS, 0)) + DBO.MINUTES_TO_HOUR(SUM(ISNULL(DA.TOTALWORKING_MINUTES, 0))))WORKING_HOURS,\r" +
+                                               " CONVERT(NUMERIC(18, 2), '0.' + DBO.MINUTES_TO_MINUTES(SUM(ISNULL(DA.TOTALWORKING_MINUTES, 0))))WORKING_MINUTES,\r" +
+                                               " DA.WITHPERMISSION,(SUM(ISNULL(DA.OT_HOURS, 0)) + DBO.MINUTES_TO_HOUR(SUM(ISNULL(DA.OT_MINUTES, 0))))OT_HOURS,\r" +
+                                               " DBO.MINUTES_TO_MINUTES(SUM(ISNULL(DA.OT_MINUTES, 0))) OT_MINUTES,\r" +
+                                               " ISNULL(DA.REMARKS, '')REMARKS, DA.ISFULLDAYLEAVE, DA.ISHALFDAYLEAVE,\r" +
+                                               " DBO.MINUTES_TO_HOUR(ISNULL(LT.LATEMINUTES, 0)) + '.' + DBO.MINUTES_TO_MINUTES(ISNULL(LT.LATEMINUTES, 0))LATEHOURS\r" +
+                                               " FROM DAILYATTEDANCEDET DA(NOLOCK)\r" +
+                                               " LEFT JOIN MASTEREMPLOYEE ME(NOLOCK) ON ME.ID = DA.EMPLOYEEID\r" +
+                                               " LEFT JOIN EMPLOYEESHIFT ES(NOLOCK) ON ES.ID = ME.SHIFTID\r" +
+                                               " LEFT JOIN MASTERPOSITION MP(NOLOCK) ON MP.ID = ME.POSITIONID\r" +
+                                               " LEFT JOIN DAILYLATELOGS LT(NOLOCK) ON LT.EMPLOYEEID = da.EmployeeId and LT.EntryDate = da.AttDate\r" +
+                                               " WHERE ISNULL(LT.LATEMINUTES, 0) > 0 AND DA.ATTDATE BETWEEN '{0:dd/MMM/yyyy}' AND '{1:dd/MMM/yyyy}' AND DA.ISPUBLICHOLIDAY=0 AND DA.ISWEEKOFF=0 \r " + sWhere +
+                                               " GROUP BY DA.EMPLOYEEID, ME.MEMBERSHIPNO, ME.EMPLOYEENAME, MP.POSITIONNAME, DA.ATTDATE, DA.INTIME, DA.OUTTIME, LT.LATEMINUTES,\r" +
+                                               " DA.WITHPERMISSION, DA.REMARKS, DA.ISFULLDAYLEAVE, DA.ISHALFDAYLEAVE\r", dtdate, dtTodate);
+                SqlCommand cmsd = new SqlCommand(strLate, con);
+                SqlDataAdapter adps = new SqlDataAdapter(cmsd);
+                cmsd.CommandTimeout = 0;
+                adps.Fill(dtLate);
+            }
+
+            //var att = (from x in db.ViewDailyAttedances where x.ATTDATE >= dtdate && x.ATTDATE <= dtTodate && x. == iEId select x).ToList();
+            //var late = (from x in db.VIEWDAILYATTEDANCELATEs where x.ATTDATE >= dtdate && x.ATTDATE <= dtTodate && x.EMPLOYEEID == iEId select x).ToList();
+            //dt = AppLib.LINQResultToDataTable(att);
+            //dtLate = AppLib.LINQResultToDataTable(late);
+
             if (dt.Rows.Count > 0)
             {
                 DataTable dtPresent = new DataTable();
@@ -103,19 +197,19 @@ namespace NUBE.PAYROLL.PL.Transaction
 
                 DataView dv = new DataView(dt);
                 dv.RowFilter = "ISFULLDAYLEAVE<>1";
-                dtPresent = dv.ToTable();                
+                dtPresent = dv.ToTable();
 
                 dv = new DataView(dt);
                 dv.RowFilter = "ISFULLDAYLEAVE<>0";
-                dtLeave = dv.ToTable();                
+                dtLeave = dv.ToTable();
 
                 dv = new DataView(dt);
                 dv.RowFilter = "ISHALFDAYLEAVE<>0";
-                dtHalf = dv.ToTable();              
+                dtHalf = dv.ToTable();
 
                 dv = new DataView(dt);
                 dv.RowFilter = " OT_HOURS>0 OR OT_MINUTES>0";
-                dtOT = dv.ToTable();                
+                dtOT = dv.ToTable();
 
                 int i = 0;
                 foreach (DataRow dr in dtPresent.Rows)
@@ -213,6 +307,8 @@ namespace NUBE.PAYROLL.PL.Transaction
         void ClearForm()
         {
             dtpDate.Text = "";
+            dtpToDate.Text = "";
+            cmbEmployee.Text = "";
             dgPresent.ItemsSource = null;
             dgLeave.ItemsSource = null;
             dgHalf.ItemsSource = null;

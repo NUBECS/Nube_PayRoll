@@ -20,10 +20,11 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> WORKINGDAYS { get; set; }
         public int HALFDAYLEAVE { get; set; }
         public int FULLDAYLEAVE { get; set; }
-        public Nullable<int> TOTALLEAVE { get; set; }
+        public Nullable<decimal> TOTALLEAVE { get; set; }
         public Nullable<int> PUBLICHOLIDAY { get; set; }
         public Nullable<int> WEEKOFF { get; set; }
         public Nullable<decimal> BASICSALARY { get; set; }
+        public Nullable<int> TOTAL { get; set; }
         public Nullable<decimal> ONE_DAY_SALARY { get; set; }
         public Nullable<decimal> TOTAL_LATE { get; set; }
         public Nullable<decimal> LATE_MINUTES { get; set; }
@@ -31,7 +32,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> TOTAL_LOP { get; set; }
         public Nullable<decimal> ONEHOUR { get; set; }
         public Nullable<decimal> LOP_FOR_LEAVE { get; set; }
-        public Nullable<decimal> LOP_FOR_LATE { get; set; }
+        public int LOP_FOR_LATE { get; set; }
         public Nullable<decimal> LOSS_OF_PAY { get; set; }
     }
 }

@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="NUBE.PAYROLL.PL.Transaction.frmLeavePermission"
+﻿<UserControl x:Class="NUBE.PAYROLL.PL.Transaction.frmManuallyAttedanceEntry"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NUBE.PAYROLL.PL.Transaction"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="1200" Background="White" Loaded="UserControl_Loaded" Name="LeavePermission">
+             d:DesignHeight="650" d:DesignWidth="1200" Background="White" Loaded="UserControl_Loaded" Name="ManualAttendance">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="5" Margin="0,0,0,-15" />
         <Grid Grid.Row="0" Background="{DynamicResource bgFormHead}">
-            <TextBlock Foreground="{DynamicResource fgFormHead}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{DynamicResource ftfFormHead}" FontSize="{DynamicResource fnsFormHead}"><Run Text="Leave Approval Entry"/></TextBlock>
+            <TextBlock Foreground="{DynamicResource fgFormHead}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{DynamicResource ftfFormHead}" FontSize="{DynamicResource fnsFormHead}"><Run Text="Manual Attendance Entry"/></TextBlock>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -32,12 +32,12 @@
                 </ComboBox>
                 <Button x:Name="btnSearch" Margin="20,10,10,10" Content="Search" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnSearch_Click"/>
                 <Button x:Name="btnClear" Margin="10" Content="Clear" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnClear_Click"/>
-                <CheckBox x:Name="chkIsPermission" Content="With Permission" Margin="10" FontWeight="Bold" Click="chkIsPermission_Click"/>
+                <CheckBox x:Name="chkIs" Content="With Permission" Margin="10" FontWeight="Bold"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" >
             <GroupBox >
-                <DataGrid x:Name="dgHalf" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5"  Height="373" VerticalAlignment="Top" MouseDoubleClick="dgHalf_MouseDoubleClick" >
+                <DataGrid x:Name="dgManualAttendance" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5"  Height="373" VerticalAlignment="Top" MouseDoubleClick="dgManualAttendance_MouseDoubleClick" >
                     <DataGrid.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -71,7 +71,19 @@
                     <DatePicker x:Name="dtpLeaveStartDate" Margin="20,10,0,0" materialDesign:HintAssist.Hint="Leave Start Date"  Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Width="120" FontWeight="Bold" SelectedDateChanged="dtpLeaveStartDate_SelectedDateChanged"  />
                     <DatePicker x:Name="dtpLeaveEndDate" Margin="10,10,0,0" materialDesign:HintAssist.Hint="Leave End Date"  Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Width="120" FontWeight="Bold" SelectedDateChanged="dtpLeaveEndDate_SelectedDateChanged"  />
                     <TextBox x:Name="txtTotalNoOfDays" IsReadOnly="True" Margin="10,0,0,0" Width="100" materialDesign:HintAssist.Hint="Total No Of Days" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
-                    <ComboBox x:Name="cmbLeaveTime" Margin="10,-10,0,0" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="160">
+                    <ComboBox x:Name="cmbLeaveType" Margin="10,10,0,0" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="160">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="30" />
+                                <TextBlock Text="Type"/>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                        <ComboBoxItem>Full Day Present</ComboBoxItem>
+                        <ComboBoxItem>Half Present</ComboBoxItem>
+                        <!--<ComboBoxItem>OT</ComboBoxItem>-->
+                        <!--<ComboBoxItem>Half Day OT</ComboBoxItem>-->
+                    </ComboBox>
+                    <!--<ComboBox x:Name="cmbLeaveTime" Margin="10,-10,0,0" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="160">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="30" />
@@ -81,20 +93,13 @@
                         <ComboBoxItem>Full Day</ComboBoxItem>
                         <ComboBoxItem>First-half</ComboBoxItem>
                         <ComboBoxItem>Second-half</ComboBoxItem>
-                    </ComboBox>
+                    </ComboBox>-->
                 </StackPanel>
-                <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">                    
-                    <ComboBox x:Name="cmbLeaveType" Margin="10,10,0,0" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="160">
-                        <materialDesign:HintAssist.Hint>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="30" />
-                                <TextBlock Text="Leave Type"/>
-                            </StackPanel>
-                        </materialDesign:HintAssist.Hint>
-                    </ComboBox>
+                <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    
                     <TextBox x:Name="txtRemarks" Margin="20,0,0,0" Width="200" materialDesign:HintAssist.Hint="Reason" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
                     <Button x:Name="btnSave" Margin="20,10,10,10" Content="Save" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnSave_Click"/>
-                    <Button x:Name="btnCancel" Margin="20,10,10,10" Content="Cancel Permission" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Click="btnCancel_Click"/>
+                    <!--<Button x:Name="btnCancel" Margin="20,10,10,10" Content="Cancel Permission" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Click="btnCancel_Click"/>-->
                 </StackPanel>
             </StackPanel>
         </Grid>

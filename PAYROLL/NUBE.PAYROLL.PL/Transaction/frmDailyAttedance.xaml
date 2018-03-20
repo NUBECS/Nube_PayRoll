@@ -61,8 +61,17 @@
         <Grid Grid.Row="1">
             <Grid Grid.Column="0" >
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <DatePicker x:Name="dtpDate" Margin="0,10,10,10" materialDesign:HintAssist.Hint="Entry Date"  Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Width="120" FontWeight="Bold" SelectedDateChanged="dtpDate_SelectedDateChanged"  />
-                    <Button x:Name="btnSearch" Margin="10" Content="Search" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnSearch_Click"/>
+                    <DatePicker x:Name="dtpDate" Margin="0,10,10,10" materialDesign:HintAssist.Hint="From Date"  Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Width="120" FontWeight="Bold" SelectedDateChanged="dtpDate_SelectedDateChanged"  />
+                    <DatePicker x:Name="dtpToDate" Margin="10,10,10,10" materialDesign:HintAssist.Hint="To Date"  Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Width="120" FontWeight="Bold" SelectedDateChanged="dtpDate_SelectedDateChanged"  />
+                    <ComboBox Margin="10,0,0,0" x:Name="cmbEmployee" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="185">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                <TextBlock Text="Employee Name"/>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                    </ComboBox>
+                    <Button x:Name="btnSearch" Margin="20,10,10,10" Content="Search" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnSearch_Click"/>
                     <Button x:Name="btnClear" Margin="10" Content="Clear" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnClear_Click"/>
                 </StackPanel>
             </Grid>
@@ -124,6 +133,7 @@
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Position" FontWeight="Bold" Width="150" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
@@ -153,6 +163,7 @@
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="180" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="350" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Position" FontWeight="Bold" Width="200" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
@@ -180,6 +191,7 @@
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Position" FontWeight="Bold" Width="150" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
@@ -190,7 +202,7 @@
                         </DataGrid>
                     </TabItem>
 
-                    <TabItem Header="Latecommer's" FontSize="16">
+                    <TabItem Header="Latecommer's" FontSize="16" Margin="-4,0,4,0">
                         <DataGrid x:Name="dgLatecommer" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5"  Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
@@ -209,6 +221,7 @@
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Position" FontWeight="Bold" Width="150" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
@@ -239,6 +252,7 @@
 
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Position" FontWeight="Bold" Width="100" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />

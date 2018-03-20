@@ -57,11 +57,7 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
         public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
         public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
-        public virtual DbSet<ViewDailyAttedance> ViewDailyAttedances { get; set; }
-        public virtual DbSet<VIEWDAILYATTEDANCELATE> VIEWDAILYATTEDANCELATEs { get; set; }
         public virtual DbSet<VIEWEPF_SOCSO> VIEWEPF_SOCSO { get; set; }
-        public virtual DbSet<VIEWFULLDAYLEAVE> VIEWFULLDAYLEAVEs { get; set; }
-        public virtual DbSet<VIEWHALFDAYLEAVE> VIEWHALFDAYLEAVEs { get; set; }
         public virtual DbSet<VIEWLOPHOUR> VIEWLOPHOURS { get; set; }
         public virtual DbSet<ViewManualPayment> ViewManualPayments { get; set; }
         public virtual DbSet<ViewMasterbankbranch> ViewMasterbankbranches { get; set; }
@@ -69,12 +65,18 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<ViewMasterEmployee> ViewMasterEmployees { get; set; }
         public virtual DbSet<ViewMasterPosition> ViewMasterPositions { get; set; }
         public virtual DbSet<ViewMasterState> ViewMasterStates { get; set; }
-        public virtual DbSet<VIEWMONTHLY_WORKINGDAYS> VIEWMONTHLY_WORKINGDAYS { get; set; }
         public virtual DbSet<ViewOTCalculation> ViewOTCalculations { get; set; }
-        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
         public virtual DbSet<VIEWTOTALOT> VIEWTOTALOTs { get; set; }
         public virtual DbSet<VIEWWEEKOFF> VIEWWEEKOFFs { get; set; }
-        public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
         public virtual DbSet<LeavePermissionDetail> LeavePermissionDetails { get; set; }
+        public virtual DbSet<VIEW_MONTHLYTOTALDAYS> VIEW_MONTHLYTOTALDAYS { get; set; }
+        public virtual DbSet<ViewDailyAttedance> ViewDailyAttedances { get; set; }
+        public virtual DbSet<VIEWDAILYATTEDANCELATE> VIEWDAILYATTEDANCELATEs { get; set; }
+        public virtual DbSet<VIEWFULLDAYLEAVE> VIEWFULLDAYLEAVEs { get; set; }
+        public virtual DbSet<VIEWHALFDAYLEAVE> VIEWHALFDAYLEAVEs { get; set; }
+        public virtual DbSet<VIEWMONTHLY_WORKINGDAYS> VIEWMONTHLY_WORKINGDAYS { get; set; }
+        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
+        public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
+        public virtual DbSet<ManualOTEntry> ManualOTEntries { get; set; }
     }
 }

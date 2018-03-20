@@ -19,7 +19,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<int> MEMBERSHIPNO { get; set; }
         public string EMPLOYEENAME { get; set; }
         public string POSITIONNAME { get; set; }
-        public Nullable<System.DateTime> ATTDATE { get; set; }
+        public string ATTDATE { get; set; }
         public Nullable<System.TimeSpan> INTIME { get; set; }
         public Nullable<System.TimeSpan> OUTTIME { get; set; }
         public Nullable<int> WORKING_HOURS { get; set; }

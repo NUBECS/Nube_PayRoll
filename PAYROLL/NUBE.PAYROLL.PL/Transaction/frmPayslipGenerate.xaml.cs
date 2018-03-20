@@ -145,20 +145,20 @@ namespace NUBE.PAYROLL.PL.Transaction
                             else
                             {
                                 RptPaySlip.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.rptPaySlip.rdlc";
-                                ReportParameter[] NB = new ReportParameter[7];
-                                NB[0] = new ReportParameter("Month", string.Format("{0:MMM yyyy}", dtpDate.SelectedDate));
+                                ReportParameter NB = new ReportParameter();
+                                NB = new ReportParameter("Month", string.Format("{0:MMM yyyy}", dtpDate.SelectedDate));
                                 PayrollEntity db = new PayrollEntity();
                                 var mas = (from x in db.CompanyDetails where x.Id == 1 select x).FirstOrDefault();
 
-                                if (mas != null)
-                                {
-                                    NB[1] = new ReportParameter("CompanyPrintName", mas.PrintName.ToString());
-                                    NB[2] = new ReportParameter("RobNo", mas.RobNo == "NULL" ? "" : mas.RobNo.ToString());
-                                    NB[3] = new ReportParameter("Address1", mas.AddressLine1 == "NULL" ? "" : mas.AddressLine1.ToString());
-                                    NB[4] = new ReportParameter("Address2", mas.AddressLine2 == "NULL" ? "" : mas.AddressLine2.ToString());
-                                    NB[5] = new ReportParameter("Address3", mas.AddressLine3 == "NULL" ? "" : mas.AddressLine3.ToString());
-                                    NB[6] = new ReportParameter("TelNo", mas.TelephoneNo == "NULL" ? "" : mas.TelephoneNo.ToString());
-                                }
+                                //if (mas != null)
+                                //{
+                                //    NB[1] = new ReportParameter("CompanyPrintName", mas.PrintName.ToString());
+                                //    NB[2] = new ReportParameter("RobNo", mas.RobNo == "NULL" ? "" : mas.RobNo.ToString());
+                                //    NB[3] = new ReportParameter("Address1", mas.AddressLine1 == "NULL" ? "" : mas.AddressLine1.ToString());
+                                //    NB[4] = new ReportParameter("Address2", mas.AddressLine2 == "NULL" ? "" : mas.AddressLine2.ToString());
+                                //    NB[5] = new ReportParameter("Address3", mas.AddressLine3 == "NULL" ? "" : mas.AddressLine3.ToString());
+                                //    NB[6] = new ReportParameter("TelNo", mas.TelephoneNo == "NULL" ? "" : mas.TelephoneNo.ToString());
+                                //}
                                 RptPaySlip.LocalReport.SetParameters(NB);
                             }
 
