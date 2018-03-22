@@ -322,6 +322,11 @@ namespace NUBE.PAYROLL.PL.Transaction
             txtOT.Text = "";
         }
 
-        #endregion              
+        #endregion
+
+        private void btnPrintView_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

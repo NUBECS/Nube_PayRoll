@@ -26,7 +26,8 @@ namespace NUBE.PAYROLL.PL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=payroll;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ntc.my;Initial Catalog=RipuTest;User ID=nubesw;Password=BizSoft2017+;" +
+            "")]
         public string payrollConnectionString {
             get {
                 return ((string)(this["payrollConnectionString"]));
@@ -36,8 +37,8 @@ namespace NUBE.PAYROLL.PL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SADAMHUSSAIN\\DENARIUSOFT;Initial Catalog=BizSoft;Persist Security Inf" +
-            "o=True;User ID=essl;Password=essl@123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ntc.my;Initial Catalog=RipuTest;User ID=nubesw;Password=BizSoft2017+;" +
+            "")]
         public string BizSoftConnectionString {
             get {
                 return ((string)(this["BizSoftConnectionString"]));

@@ -71,7 +71,8 @@
                             </StackPanel>
                         </materialDesign:HintAssist.Hint>
                     </ComboBox>
-                    <Button x:Name="btnSearch" Margin="20,10,10,10" Content="Search" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnSearch_Click"/>
+                    <Button x:Name="btnSearch" Margin="20,10,10,10" Content="Gried View" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="105" Height="35" Click="btnSearch_Click"/>
+                    <Button x:Name="btnPrintView" Margin="20,10,10,10" Content="Print View" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="105" Height="35" Click="btnPrintView_Click"/>
                     <Button x:Name="btnClear" Margin="10" Content="Clear" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnClear_Click"/>
                 </StackPanel>
             </Grid>

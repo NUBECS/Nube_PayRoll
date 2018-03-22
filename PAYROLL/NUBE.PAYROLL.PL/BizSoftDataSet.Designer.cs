@@ -26,6 +26,8 @@ namespace NUBE.PAYROLL.PL {
         
         private MonthlySalaryDataTable tableMonthlySalary;
         
+        private SPTESTDAILYATTENDANCEDataTable tableSPTESTDAILYATTENDANCE;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,6 +59,9 @@ namespace NUBE.PAYROLL.PL {
                 if ((ds.Tables["MonthlySalary"] != null)) {
                     base.Tables.Add(new MonthlySalaryDataTable(ds.Tables["MonthlySalary"]));
                 }
+                if ((ds.Tables["SPTESTDAILYATTENDANCE"] != null)) {
+                    base.Tables.Add(new SPTESTDAILYATTENDANCEDataTable(ds.Tables["SPTESTDAILYATTENDANCE"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -82,6 +87,16 @@ namespace NUBE.PAYROLL.PL {
         public MonthlySalaryDataTable MonthlySalary {
             get {
                 return this.tableMonthlySalary;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public SPTESTDAILYATTENDANCEDataTable SPTESTDAILYATTENDANCE {
+            get {
+                return this.tableSPTESTDAILYATTENDANCE;
             }
         }
         
@@ -155,6 +170,9 @@ namespace NUBE.PAYROLL.PL {
                 if ((ds.Tables["MonthlySalary"] != null)) {
                     base.Tables.Add(new MonthlySalaryDataTable(ds.Tables["MonthlySalary"]));
                 }
+                if ((ds.Tables["SPTESTDAILYATTENDANCE"] != null)) {
+                    base.Tables.Add(new SPTESTDAILYATTENDANCEDataTable(ds.Tables["SPTESTDAILYATTENDANCE"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -194,6 +212,12 @@ namespace NUBE.PAYROLL.PL {
                     this.tableMonthlySalary.InitVars();
                 }
             }
+            this.tableSPTESTDAILYATTENDANCE = ((SPTESTDAILYATTENDANCEDataTable)(base.Tables["SPTESTDAILYATTENDANCE"]));
+            if ((initTable == true)) {
+                if ((this.tableSPTESTDAILYATTENDANCE != null)) {
+                    this.tableSPTESTDAILYATTENDANCE.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -206,11 +230,19 @@ namespace NUBE.PAYROLL.PL {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableMonthlySalary = new MonthlySalaryDataTable();
             base.Tables.Add(this.tableMonthlySalary);
+            this.tableSPTESTDAILYATTENDANCE = new SPTESTDAILYATTENDANCEDataTable();
+            base.Tables.Add(this.tableSPTESTDAILYATTENDANCE);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeMonthlySalary() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeSPTESTDAILYATTENDANCE() {
             return false;
         }
         
@@ -271,6 +303,9 @@ namespace NUBE.PAYROLL.PL {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void MonthlySalaryRowChangeEventHandler(object sender, MonthlySalaryRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void SPTESTDAILYATTENDANCERowChangeEventHandler(object sender, SPTESTDAILYATTENDANCERowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1266,6 +1301,498 @@ namespace NUBE.PAYROLL.PL {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SPTESTDAILYATTENDANCEDataTable : global::System.Data.TypedTableBase<SPTESTDAILYATTENDANCERow> {
+            
+            private global::System.Data.DataColumn columnRNO;
+            
+            private global::System.Data.DataColumn columnEMPLOYEEID;
+            
+            private global::System.Data.DataColumn columnMEMBERSHIPNO;
+            
+            private global::System.Data.DataColumn columnEMPLOYEENAME;
+            
+            private global::System.Data.DataColumn columnPOSITIONNAME;
+            
+            private global::System.Data.DataColumn columnATTDATE;
+            
+            private global::System.Data.DataColumn columnINTIME;
+            
+            private global::System.Data.DataColumn columnOUTTIME;
+            
+            private global::System.Data.DataColumn columnWORKING_HOURS;
+            
+            private global::System.Data.DataColumn columnWORKING_MINUTES;
+            
+            private global::System.Data.DataColumn columnWITHPERMISSION;
+            
+            private global::System.Data.DataColumn columnOT_HOURS;
+            
+            private global::System.Data.DataColumn columnOT_MINUTES;
+            
+            private global::System.Data.DataColumn columnREMARKS;
+            
+            private global::System.Data.DataColumn columnISFULLDAYLEAVE;
+            
+            private global::System.Data.DataColumn columnISHALFDAYLEAVE;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SPTESTDAILYATTENDANCEDataTable() {
+                this.TableName = "SPTESTDAILYATTENDANCE";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SPTESTDAILYATTENDANCEDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected SPTESTDAILYATTENDANCEDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RNOColumn {
+                get {
+                    return this.columnRNO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EMPLOYEEIDColumn {
+                get {
+                    return this.columnEMPLOYEEID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MEMBERSHIPNOColumn {
+                get {
+                    return this.columnMEMBERSHIPNO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EMPLOYEENAMEColumn {
+                get {
+                    return this.columnEMPLOYEENAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn POSITIONNAMEColumn {
+                get {
+                    return this.columnPOSITIONNAME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ATTDATEColumn {
+                get {
+                    return this.columnATTDATE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn INTIMEColumn {
+                get {
+                    return this.columnINTIME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OUTTIMEColumn {
+                get {
+                    return this.columnOUTTIME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WORKING_HOURSColumn {
+                get {
+                    return this.columnWORKING_HOURS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WORKING_MINUTESColumn {
+                get {
+                    return this.columnWORKING_MINUTES;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WITHPERMISSIONColumn {
+                get {
+                    return this.columnWITHPERMISSION;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OT_HOURSColumn {
+                get {
+                    return this.columnOT_HOURS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OT_MINUTESColumn {
+                get {
+                    return this.columnOT_MINUTES;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn REMARKSColumn {
+                get {
+                    return this.columnREMARKS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ISFULLDAYLEAVEColumn {
+                get {
+                    return this.columnISFULLDAYLEAVE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ISHALFDAYLEAVEColumn {
+                get {
+                    return this.columnISHALFDAYLEAVE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SPTESTDAILYATTENDANCERow this[int index] {
+                get {
+                    return ((SPTESTDAILYATTENDANCERow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddSPTESTDAILYATTENDANCERow(SPTESTDAILYATTENDANCERow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SPTESTDAILYATTENDANCERow AddSPTESTDAILYATTENDANCERow(
+                        long RNO, 
+                        int EMPLOYEEID, 
+                        int MEMBERSHIPNO, 
+                        string EMPLOYEENAME, 
+                        string POSITIONNAME, 
+                        string ATTDATE, 
+                        System.TimeSpan INTIME, 
+                        System.TimeSpan OUTTIME, 
+                        int WORKING_HOURS, 
+                        decimal WORKING_MINUTES, 
+                        bool WITHPERMISSION, 
+                        int OT_HOURS, 
+                        string OT_MINUTES, 
+                        string REMARKS, 
+                        bool ISFULLDAYLEAVE, 
+                        bool ISHALFDAYLEAVE) {
+                SPTESTDAILYATTENDANCERow rowSPTESTDAILYATTENDANCERow = ((SPTESTDAILYATTENDANCERow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        RNO,
+                        EMPLOYEEID,
+                        MEMBERSHIPNO,
+                        EMPLOYEENAME,
+                        POSITIONNAME,
+                        ATTDATE,
+                        INTIME,
+                        OUTTIME,
+                        WORKING_HOURS,
+                        WORKING_MINUTES,
+                        WITHPERMISSION,
+                        OT_HOURS,
+                        OT_MINUTES,
+                        REMARKS,
+                        ISFULLDAYLEAVE,
+                        ISHALFDAYLEAVE};
+                rowSPTESTDAILYATTENDANCERow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSPTESTDAILYATTENDANCERow);
+                return rowSPTESTDAILYATTENDANCERow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SPTESTDAILYATTENDANCEDataTable cln = ((SPTESTDAILYATTENDANCEDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SPTESTDAILYATTENDANCEDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnRNO = base.Columns["RNO"];
+                this.columnEMPLOYEEID = base.Columns["EMPLOYEEID"];
+                this.columnMEMBERSHIPNO = base.Columns["MEMBERSHIPNO"];
+                this.columnEMPLOYEENAME = base.Columns["EMPLOYEENAME"];
+                this.columnPOSITIONNAME = base.Columns["POSITIONNAME"];
+                this.columnATTDATE = base.Columns["ATTDATE"];
+                this.columnINTIME = base.Columns["INTIME"];
+                this.columnOUTTIME = base.Columns["OUTTIME"];
+                this.columnWORKING_HOURS = base.Columns["WORKING_HOURS"];
+                this.columnWORKING_MINUTES = base.Columns["WORKING_MINUTES"];
+                this.columnWITHPERMISSION = base.Columns["WITHPERMISSION"];
+                this.columnOT_HOURS = base.Columns["OT_HOURS"];
+                this.columnOT_MINUTES = base.Columns["OT_MINUTES"];
+                this.columnREMARKS = base.Columns["REMARKS"];
+                this.columnISFULLDAYLEAVE = base.Columns["ISFULLDAYLEAVE"];
+                this.columnISHALFDAYLEAVE = base.Columns["ISHALFDAYLEAVE"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnRNO = new global::System.Data.DataColumn("RNO", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRNO);
+                this.columnEMPLOYEEID = new global::System.Data.DataColumn("EMPLOYEEID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMPLOYEEID);
+                this.columnMEMBERSHIPNO = new global::System.Data.DataColumn("MEMBERSHIPNO", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMEMBERSHIPNO);
+                this.columnEMPLOYEENAME = new global::System.Data.DataColumn("EMPLOYEENAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMPLOYEENAME);
+                this.columnPOSITIONNAME = new global::System.Data.DataColumn("POSITIONNAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPOSITIONNAME);
+                this.columnATTDATE = new global::System.Data.DataColumn("ATTDATE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnATTDATE);
+                this.columnINTIME = new global::System.Data.DataColumn("INTIME", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnINTIME);
+                this.columnOUTTIME = new global::System.Data.DataColumn("OUTTIME", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOUTTIME);
+                this.columnWORKING_HOURS = new global::System.Data.DataColumn("WORKING_HOURS", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWORKING_HOURS);
+                this.columnWORKING_MINUTES = new global::System.Data.DataColumn("WORKING_MINUTES", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWORKING_MINUTES);
+                this.columnWITHPERMISSION = new global::System.Data.DataColumn("WITHPERMISSION", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWITHPERMISSION);
+                this.columnOT_HOURS = new global::System.Data.DataColumn("OT_HOURS", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOT_HOURS);
+                this.columnOT_MINUTES = new global::System.Data.DataColumn("OT_MINUTES", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOT_MINUTES);
+                this.columnREMARKS = new global::System.Data.DataColumn("REMARKS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnREMARKS);
+                this.columnISFULLDAYLEAVE = new global::System.Data.DataColumn("ISFULLDAYLEAVE", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnISFULLDAYLEAVE);
+                this.columnISHALFDAYLEAVE = new global::System.Data.DataColumn("ISHALFDAYLEAVE", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnISHALFDAYLEAVE);
+                this.columnRNO.ReadOnly = true;
+                this.columnEMPLOYEEID.AllowDBNull = false;
+                this.columnEMPLOYEENAME.MaxLength = 50;
+                this.columnPOSITIONNAME.ReadOnly = true;
+                this.columnPOSITIONNAME.MaxLength = 50;
+                this.columnATTDATE.ReadOnly = true;
+                this.columnATTDATE.MaxLength = 30;
+                this.columnINTIME.ReadOnly = true;
+                this.columnOUTTIME.ReadOnly = true;
+                this.columnWORKING_HOURS.ReadOnly = true;
+                this.columnWORKING_MINUTES.ReadOnly = true;
+                this.columnWITHPERMISSION.AllowDBNull = false;
+                this.columnOT_HOURS.ReadOnly = true;
+                this.columnOT_MINUTES.ReadOnly = true;
+                this.columnOT_MINUTES.MaxLength = 30;
+                this.columnREMARKS.ReadOnly = true;
+                this.columnREMARKS.MaxLength = 100;
+                this.columnISFULLDAYLEAVE.AllowDBNull = false;
+                this.columnISHALFDAYLEAVE.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SPTESTDAILYATTENDANCERow NewSPTESTDAILYATTENDANCERow() {
+                return ((SPTESTDAILYATTENDANCERow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SPTESTDAILYATTENDANCERow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SPTESTDAILYATTENDANCERow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SPTESTDAILYATTENDANCERowChanged != null)) {
+                    this.SPTESTDAILYATTENDANCERowChanged(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SPTESTDAILYATTENDANCERowChanging != null)) {
+                    this.SPTESTDAILYATTENDANCERowChanging(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SPTESTDAILYATTENDANCERowDeleted != null)) {
+                    this.SPTESTDAILYATTENDANCERowDeleted(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SPTESTDAILYATTENDANCERowDeleting != null)) {
+                    this.SPTESTDAILYATTENDANCERowDeleting(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveSPTESTDAILYATTENDANCERow(SPTESTDAILYATTENDANCERow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BizSoftDataSet ds = new BizSoftDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SPTESTDAILYATTENDANCEDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class MonthlySalaryRow : global::System.Data.DataRow {
@@ -1985,6 +2512,402 @@ namespace NUBE.PAYROLL.PL {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SPTESTDAILYATTENDANCERow : global::System.Data.DataRow {
+            
+            private SPTESTDAILYATTENDANCEDataTable tableSPTESTDAILYATTENDANCE;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SPTESTDAILYATTENDANCERow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSPTESTDAILYATTENDANCE = ((SPTESTDAILYATTENDANCEDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long RNO {
+                get {
+                    try {
+                        return ((long)(this[this.tableSPTESTDAILYATTENDANCE.RNOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RNO\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.RNOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int EMPLOYEEID {
+                get {
+                    return ((int)(this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEEIDColumn]));
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEEIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int MEMBERSHIPNO {
+                get {
+                    try {
+                        return ((int)(this[this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MEMBERSHIPNO\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EMPLOYEENAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EMPLOYEENAME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string POSITIONNAME {
+                get {
+                    try {
+                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'POSITIONNAME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ATTDATE {
+                get {
+                    try {
+                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ATTDATE\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.TimeSpan INTIME {
+                get {
+                    try {
+                        return ((global::System.TimeSpan)(this[this.tableSPTESTDAILYATTENDANCE.INTIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'INTIME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.INTIMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.TimeSpan OUTTIME {
+                get {
+                    try {
+                        return ((global::System.TimeSpan)(this[this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OUTTIME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int WORKING_HOURS {
+                get {
+                    try {
+                        return ((int)(this[this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'WORKING_HOURS\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal WORKING_MINUTES {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'WORKING_MINUTES\' in table \'SPTESTDAILYATTENDANCE\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool WITHPERMISSION {
+                get {
+                    return ((bool)(this[this.tableSPTESTDAILYATTENDANCE.WITHPERMISSIONColumn]));
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.WITHPERMISSIONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int OT_HOURS {
+                get {
+                    try {
+                        return ((int)(this[this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OT_HOURS\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OT_MINUTES {
+                get {
+                    try {
+                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OT_MINUTES\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string REMARKS {
+                get {
+                    try {
+                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.REMARKSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'REMARKS\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.REMARKSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool ISFULLDAYLEAVE {
+                get {
+                    return ((bool)(this[this.tableSPTESTDAILYATTENDANCE.ISFULLDAYLEAVEColumn]));
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.ISFULLDAYLEAVEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool ISHALFDAYLEAVE {
+                get {
+                    return ((bool)(this[this.tableSPTESTDAILYATTENDANCE.ISHALFDAYLEAVEColumn]));
+                }
+                set {
+                    this[this.tableSPTESTDAILYATTENDANCE.ISHALFDAYLEAVEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRNONull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.RNOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRNONull() {
+                this[this.tableSPTESTDAILYATTENDANCE.RNOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMEMBERSHIPNONull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMEMBERSHIPNONull() {
+                this[this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEMPLOYEENAMENull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEMPLOYEENAMENull() {
+                this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPOSITIONNAMENull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPOSITIONNAMENull() {
+                this[this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsATTDATENull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetATTDATENull() {
+                this[this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsINTIMENull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.INTIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetINTIMENull() {
+                this[this.tableSPTESTDAILYATTENDANCE.INTIMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOUTTIMENull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOUTTIMENull() {
+                this[this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWORKING_HOURSNull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWORKING_HOURSNull() {
+                this[this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWORKING_MINUTESNull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWORKING_MINUTESNull() {
+                this[this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOT_HOURSNull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOT_HOURSNull() {
+                this[this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOT_MINUTESNull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOT_MINUTESNull() {
+                this[this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsREMARKSNull() {
+                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.REMARKSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetREMARKSNull() {
+                this[this.tableSPTESTDAILYATTENDANCE.REMARKSColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -2004,6 +2927,40 @@ namespace NUBE.PAYROLL.PL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public MonthlySalaryRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class SPTESTDAILYATTENDANCERowChangeEvent : global::System.EventArgs {
+            
+            private SPTESTDAILYATTENDANCERow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SPTESTDAILYATTENDANCERowChangeEvent(SPTESTDAILYATTENDANCERow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SPTESTDAILYATTENDANCERow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3210,6 +4167,189 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     decimal Original_NETSALARY, 
                     string Original_PositionName) {
             return this.Update(EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, EPFNumber, SOCSONumber, NRIC, BankAccountNo, BasicSalary, TotalWorkingDays, DaysAbsent, OTHours, OT_Amount, LOP, POB, NEC, SECONDMENT, SPECIAL, COLA, MOBILEALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, PCB, TOTALEARNING, TOTALDEDUCTION, NETSALARY, PositionName, Original_Id, Original_EmployeeId, Original_EmployeeNo, Original_SalaryMonth, Original_EmployeeName, Original_EPFNumber, Original_SOCSONumber, Original_NRIC, Original_BankAccountNo, Original_BasicSalary, Original_TotalWorkingDays, Original_DaysAbsent, Original_OTHours, Original_OT_Amount, Original_LOP, Original_POB, Original_NEC, Original_SECONDMENT, Original_SPECIAL, Original_COLA, Original_MOBILEALLOWANCE, Original_ALLOWANCE, Original_BONUS, Original_EXGRATIA, Original_EPF, Original_EPFUNION, Original_SOCSO, Original_SOCSOUNION, Original_INCOMETAX, Original_GMIS, Original_GELA, Original_BIMBLOAN, Original_HOMECARLOANS, Original_OTHERLOAN, Original_TOTALLOAN, Original_OTHERS, Original_KOPERASI, Original_NUBESUBSCRIPTION, Original_PCB, Original_TOTALEARNING, Original_TOTALDEDUCTION, Original_NETSALARY, Original_PositionName, Original_Id);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class SPTESTDAILYATTENDANCETableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public SPTESTDAILYATTENDANCETableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "SPTESTDAILYATTENDANCE";
+            tableMapping.ColumnMappings.Add("RNO", "RNO");
+            tableMapping.ColumnMappings.Add("EMPLOYEEID", "EMPLOYEEID");
+            tableMapping.ColumnMappings.Add("MEMBERSHIPNO", "MEMBERSHIPNO");
+            tableMapping.ColumnMappings.Add("EMPLOYEENAME", "EMPLOYEENAME");
+            tableMapping.ColumnMappings.Add("POSITIONNAME", "POSITIONNAME");
+            tableMapping.ColumnMappings.Add("ATTDATE", "ATTDATE");
+            tableMapping.ColumnMappings.Add("INTIME", "INTIME");
+            tableMapping.ColumnMappings.Add("OUTTIME", "OUTTIME");
+            tableMapping.ColumnMappings.Add("WORKING_HOURS", "WORKING_HOURS");
+            tableMapping.ColumnMappings.Add("WORKING_MINUTES", "WORKING_MINUTES");
+            tableMapping.ColumnMappings.Add("WITHPERMISSION", "WITHPERMISSION");
+            tableMapping.ColumnMappings.Add("OT_HOURS", "OT_HOURS");
+            tableMapping.ColumnMappings.Add("OT_MINUTES", "OT_MINUTES");
+            tableMapping.ColumnMappings.Add("REMARKS", "REMARKS");
+            tableMapping.ColumnMappings.Add("ISFULLDAYLEAVE", "ISFULLDAYLEAVE");
+            tableMapping.ColumnMappings.Add("ISHALFDAYLEAVE", "ISHALFDAYLEAVE");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::NUBE.PAYROLL.PL.Properties.Settings.Default.BizSoftConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.SPTESTDAILYATTENDANCE";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable dataTable = new BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
     
