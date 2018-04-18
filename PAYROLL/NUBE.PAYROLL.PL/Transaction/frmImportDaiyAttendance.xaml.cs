@@ -122,7 +122,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                             string sWhere = "";
                             Boolean bIsError = false;
                             String sQuery = " SELECT ID EMPLOYEEID,SHIFTID,ISNULL(UNPAIDLEAVE,0)UNPAIDLEAVE FROM MASTEREMPLOYEE(NOLOCK) \r" +
-                                            " WHERE ISRESIGNED=0 \r GROUP BY ID,SHIFTID,UNPAIDLEAVE \r" +
+                                            "-- WHERE ISRESIGNED=0 \r GROUP BY ID,SHIFTID,UNPAIDLEAVE \r" +
                                             " ORDER BY ID ";
 
                             cmd = new SqlCommand(sQuery, con);

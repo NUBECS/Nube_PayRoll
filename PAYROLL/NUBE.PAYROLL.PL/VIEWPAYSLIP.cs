@@ -28,7 +28,8 @@ namespace NUBE.PAYROLL.PL
         public decimal DAYSABSENT { get; set; }
         public decimal OTHOURS { get; set; }
         public decimal OT_AMOUNT { get; set; }
-        public decimal LOP { get; set; }
+        public decimal LOP_LEAVE { get; set; }
+        public decimal LOP_LATE { get; set; }
         public decimal POB { get; set; }
         public decimal NEC { get; set; }
         public decimal SECONDMENT { get; set; }

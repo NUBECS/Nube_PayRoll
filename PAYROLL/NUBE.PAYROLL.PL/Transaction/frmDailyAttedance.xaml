@@ -71,8 +71,8 @@
                             </StackPanel>
                         </materialDesign:HintAssist.Hint>
                     </ComboBox>
-                    <Button x:Name="btnSearch" Margin="20,10,10,10" Content="Gried View" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="105" Height="35" Click="btnSearch_Click"/>
-                    <Button x:Name="btnPrintView" Margin="20,10,10,10" Content="Print View" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="105" Height="35" Click="btnPrintView_Click"/>
+                    <Button x:Name="btnSearch" Margin="20,10,10,10" Content="Grid View" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="105" Height="35" Click="btnSearch_Click"/>
+                    <Button x:Name="btnPrintView" Margin="20,10,10,10" Content="Print View" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="105" Height="34" Click="btnPrintView_Click" />
                     <Button x:Name="btnClear" Margin="10" Content="Clear" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnClear_Click"/>
                 </StackPanel>
             </Grid>
@@ -80,7 +80,7 @@
 
         <Grid Grid.Row="2">
             <GroupBox  Margin="10">
-                <TabControl x:Name="tabControl" Height="415" SelectionChanged="tabControl_SelectionChanged" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"  RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-1" >
+                <TabControl x:Name="tabControl"  Height="416" SelectionChanged="tabControl_SelectionChanged" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"  RenderTransformOrigin="0.507,0.493" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-2" Width="842" >
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
                             <Setter Property="Template">
@@ -115,8 +115,8 @@
                         </TransformGroup>
                     </TabControl.RenderTransform>
 
-                    <TabItem Header="Present" FontSize="16">
-                        <DataGrid x:Name="dgPresent" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5" Height="373" VerticalAlignment="Top" >
+                    <TabItem Header="Present" Name="tbGPresent" FontSize="16" Margin="-1,0,1,0">
+                        <DataGrid x:Name="dgPresent" CanUserSortColumns="True"  CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5,8,5" Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -133,20 +133,48 @@
 
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="55" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="120" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="93" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="270" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="100" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="90" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="90" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="90" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+
+                    <TabItem Header="Leave" Name="tbGLeave" FontSize="16">
+                        <DataGrid x:Name="dgLeave" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,12,5"  Height="373" VerticalAlignment="Top" >
+                            <DataGrid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="0.774"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="6.227"/>
+                                </TransformGroup>
+                            </DataGrid.RenderTransform>
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </Style>
+
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="55" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="120" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="110" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="320" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="Position" FontWeight="Bold" Width="150" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="100" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="100" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="200" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="150" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
 
-                    <TabItem Header="Leave" FontSize="16">
-                        <DataGrid x:Name="dgLeave" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="373" VerticalAlignment="Top" >
+                    <TabItem Header="Half Day Leave" Name="tbGHalfDay" FontSize="16">
+                        <DataGrid x:Name="dgHalf" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5,12,5"  Height="375" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -163,18 +191,20 @@
 
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="180" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="350" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="200" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="200" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="55" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="120" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="100" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="270" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="120" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="90" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="90" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="80" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
 
-                    <TabItem Header="Half Day Leave" FontSize="16">
-                        <DataGrid x:Name="dgHalf" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5"  Height="373" VerticalAlignment="Top" >
+                    <TabItem Header="Latecommer's" Name="tbGLateCommers" FontSize="16" Margin="-4,0,4,0">
+                        <DataGrid x:Name="dgLatecommer" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5,8,5"  Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -191,50 +221,20 @@
 
                             </DataGrid.ColumnHeaderStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="150" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="100" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="100" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="200" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="55" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="115" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="95" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="260" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="120" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="90" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="90" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Late Hours" FontWeight="Bold" Width="85" Binding="{Binding LATEHOURS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="100" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
 
-                    <TabItem Header="Latecommer's" FontSize="16" Margin="-4,0,4,0">
-                        <DataGrid x:Name="dgLatecommer" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5"  Height="373" VerticalAlignment="Top" >
-                            <DataGrid.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform AngleX="0.774"/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="6.227"/>
-                                </TransformGroup>
-                            </DataGrid.RenderTransform>
-                            <DataGrid.ColumnHeaderStyle>
-                                <Style TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="FontWeight" Value="Bold" />
-                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                </Style>
-
-                            </DataGrid.ColumnHeaderStyle>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="150" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="100" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="100" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Late Hours" FontWeight="Bold" Width="100" Binding="{Binding LATEHOURS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="200" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </TabItem>
-
-                    <TabItem Header="OT" FontSize="16">
+                    <TabItem Header="OT" Name="tbGOT" FontSize="16">
                         <DataGrid x:Name="dgOT" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="373" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
@@ -252,17 +252,44 @@
                             </DataGrid.ColumnHeaderStyle>
 
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="150" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="150" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="300" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="100" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="100" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="100" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="55" Binding="{Binding RNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Attendance Date" FontWeight="Bold" Width="120" Binding="{Binding ATTDATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="95" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="270" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Position" FontWeight="Bold" Width="90" Binding="{Binding POSITIONNAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="In Time" FontWeight="Bold" Width="90" Binding="{Binding INTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Out Time" FontWeight="Bold" Width="90" Binding="{Binding OUTTIME, Mode=TwoWay, StringFormat=t}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                                 <DataGridTextColumn Header="OT Hours" FontWeight="Bold" Width="80" Visibility="Collapsed" Binding="{Binding OTHOURS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="150" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                                <DataGridTextColumn Header="Remarks" FontWeight="Bold" Width="90" Binding="{Binding REMARKS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                             </DataGrid.Columns>
                         </DataGrid>
+                    </TabItem>
+
+                    <TabItem Header="Present" FontSize="16" Name="tbPresent" Visibility="Hidden">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                            <rv:ReportViewer x:Name="rptPresentReport"/>
+                        </WindowsFormsHost>
+                    </TabItem>
+
+                    <TabItem Header="Leave" FontSize="16" Name="tbLeave" Visibility="Hidden">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                            <rv:ReportViewer x:Name="rptLeaveReport"/>
+                        </WindowsFormsHost>
+                    </TabItem>
+                    <TabItem Header="Half Day Leave" Name="tbHalfDate" FontSize="16" Visibility="Hidden">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                            <rv:ReportViewer x:Name="rptHalfDayReport"/>
+                        </WindowsFormsHost>
+                    </TabItem>
+                    <TabItem Header="LateCommer's" Name="tbLate" FontSize="16" Visibility="Hidden">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                            <rv:ReportViewer x:Name="rptLateCommers"/>
+                        </WindowsFormsHost>
+                    </TabItem>
+                    <TabItem Header="OT" Name="tbOT" FontSize="16" Visibility="Hidden">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                            <rv:ReportViewer x:Name="rptOTReport"/>
+                        </WindowsFormsHost>
                     </TabItem>
 
                 </TabControl>

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\HUSSAIN\NUBE\PAYROLL\NUBE\PAYROLL\NUBE.PAYROLL.DAL\PAYROLL.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\nube\Source\PAYROLL 22 03 2018\PAYROLL\NUBE.PAYROLL.DAL\PAYROLL.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

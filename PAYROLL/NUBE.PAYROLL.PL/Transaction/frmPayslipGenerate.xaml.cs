@@ -69,19 +69,51 @@ namespace NUBE.PAYROLL.PL.Transaction
                         using (SqlConnection con = new SqlConnection(Config.connStr))
                         {
                             con.Open();
-                            SqlCommand cmd = new SqlCommand("SPMONTHLYSALARY", con);
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+
+                            string str = string.Format(" SELECT * FROM MONTHLYSALARY(NOLOCK) WHERE MONTH(SALARYMONTH)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(SALARYMONTH)=YEAR('{0:dd/MMM/yyyy}')", dtpDate.SelectedDate);
+                            SqlCommand cmd = new SqlCommand(str, con);
+                            cmd.CommandType = CommandType.Text;
+                            SqlDataAdapter adp = new SqlDataAdapter(cmd);
                             cmd.CommandTimeout = 0;
-                            int i = cmd.ExecuteNonQuery();
-                            if (i == 0)
+                            DataTable dtPayslip = new DataTable();
+                            adp.Fill(dtPayslip);
+                            if (dtPayslip.Rows.Count > 0)
                             {
-                                MessageBox.Show("Can't Generate Payslip, Contact Administrator", "Error");
+                                if (MessageBox.Show("Already Payslip generated! , Are you sure to Regenerate Salary Slip ? \r " + "Old Data's will be Deleted ", "Clear Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                                {
+                                    cmd = new SqlCommand("SPMONTHLYSALARY", con);
+                                    cmd.CommandType = CommandType.StoredProcedure;
+                                    cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+                                    cmd.CommandTimeout = 0;
+                                    int i = cmd.ExecuteNonQuery();
+                                    if (i == 0)
+                                    {
+                                        MessageBox.Show("Can't Generate Payslip, Contact Administrator", "Error");
+                                    }
+                                    else
+                                    {
+                                        ReportSummary();
+                                    }
+                                }
                             }
                             else
                             {
-                                ReportSummary();
+                                cmd = new SqlCommand("SPMONTHLYSALARY", con);
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Parameters.Add(new SqlParameter("@ENTRYDATE", string.Format("{0:dd/MMM/yyyy}", dtpDate.SelectedDate)));
+                                cmd.CommandTimeout = 0;
+                                int i = cmd.ExecuteNonQuery();
+                                if (i == 0)
+                                {
+                                    MessageBox.Show("Can't Generate Payslip, Contact Administrator", "Error");
+                                }
+                                else
+                                {
+                                    ReportSummary();
+                                }
                             }
+                           
+
                         }
                     }
                 }
@@ -124,7 +156,6 @@ namespace NUBE.PAYROLL.PL.Transaction
                             dv.RowFilter = "EMPLOYEENO=" + txtMembershipNo.Text;
                             dtPayslip = dv.ToTable();
                         }
-
                         if (dtPayslip.Rows.Count > 0)
                         {
                             RptPaySlip.Reset();

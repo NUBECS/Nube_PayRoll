@@ -86,7 +86,7 @@
 
 
 
-                        <TextBox   x:Name="txtAddress1" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto">
+                        <TextBox   x:Name="txtAddress1" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" AcceptsReturn="True"  VerticalScrollBarVisibility="Auto" TextChanged="txtAddress1_TextChanged">
                             <materialDesign:HintAssist.Hint>
                                 <StackPanel Orientation="Horizontal" Width="331">
                                     <materialDesign:PackIcon  Kind="AccountLocation" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -198,7 +198,7 @@
 
                         <StackPanel Orientation="Horizontal" Height="40">
                             <CheckBox Margin="0,10,0,0" x:Name="ChkUserLogin"  FontWeight="Bold" FontSize="14" Content="Is User Login" Width="185" Click="ChkUserLogin_Click"/>
-                            <CheckBox Margin="10,10,0,0" x:Name="ChkIsAdmin"  FontWeight="Bold" FontSize="14" Content="Is Admin" Width="185" Click="ChkUserLogin_Click"/>                            
+                            <CheckBox Margin="10,10,0,0" x:Name="ChkIsAdmin"  FontWeight="Bold" FontSize="14" Content="Is Admin" Width="185" Click="ChkUserLogin_Click"/>
                         </StackPanel>
 
                         <GroupBox x:Name="grbUserName" Margin="0,5,0,0" Header="MOBILE LOGIN DETAILS" Height="100" Width="380" >
@@ -242,7 +242,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </ComboBox>
-                            <DatePicker  Margin="10,20,0,0"  x:Name="dtDOB" FontWeight="Bold" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Date Of Birth" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  VerticalAlignment="Top" Width="110" FontSize="14" Height="30" SelectedDateChanged="dtDOB_SelectedDateChanged"/>
+                            <DatePicker  Margin="10,20,0,0"  x:Name="dtDOB" FontWeight="Bold" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Date Of Birth"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  VerticalAlignment="Top" Width="110" FontSize="14" Height="30" SelectedDateChanged="dtDOB_SelectedDateChanged" />
                             <TextBox x:Name="txtAge" Margin="10,0,0,0" IsReadOnly="True" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="60">
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="151">
@@ -322,7 +322,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <TextBox Margin="0,0,0,0"  x:Name="txtEPFNo" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185" >
+                            <TextBox Margin="0,0,0,0"  x:Name="txtEPFNo" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Visibility="Collapsed"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185" >
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="151">
                                         <materialDesign:PackIcon  Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -330,7 +330,7 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
-                            <TextBox Margin="10,0,0,0"  x:Name="txtSOCSONo" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185" >
+                            <TextBox Visibility="Collapsed" Margin="10,0,0,0"  x:Name="txtSOCSONo" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="185" >
                                 <materialDesign:HintAssist.Hint>
                                     <StackPanel Orientation="Horizontal" Width="151">
                                         <materialDesign:PackIcon  Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
@@ -338,9 +338,10 @@
                                     </StackPanel>
                                 </materialDesign:HintAssist.Hint>
                             </TextBox>
+
                         </StackPanel>
 
-                        <GroupBox x:Name="grbEPFSOCSODEDUCTIONS" Margin="0,5,0,0" Header="EPF/SOCSO DEDUCTIONS" Height="90" Width="380" >
+                        <GroupBox x:Name="grbEPFSOCSODEDUCTIONS" Margin="0,5,0,0" Header="EPF/SOCSO DEDUCTIONS" Visibility="Collapsed" Height="90" Width="380" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -360,7 +361,7 @@
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox x:Name="grbEMPLOYERSCONTRIBUTION" Margin="0,5,0,0" Header="EMPLOYERS' CONTRIBUTION" Height="100" Width="380" >
+                        <GroupBox x:Name="grbEMPLOYERSCONTRIBUTION" Margin="0,5,0,0" Header="EMPLOYERS' CONTRIBUTION" Visibility="Collapsed" Height="100" Width="380" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
@@ -380,7 +381,83 @@
                                 </Grid>
                             </Grid>
                         </GroupBox>
+                        <GroupBox x:Name="grbEPFSOCSO"  Margin="0,5,0,0" Header="EPF/SOCSO/SIP CONTRIBUTIONS"  Height="150" Width="380" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
+                                <Grid Grid.Row="0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox x:Name="ChkEPF1" FontWeight="Bold" FontSize="14" Content="EPF " Width="100"  VerticalAlignment="Top" Margin="0,19,0,0"/>
+                                        <CheckBox x:Name="ChkSOCSO1" Margin="14,19,0,0" FontWeight="Bold" FontSize="14" Content="SOCSO" Width="115"/>
+                                        <CheckBox x:Name="ChkSIP" Margin="25,19,0,0" FontWeight="Bold" FontSize="14" Content="SIP" Width="100"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox Margin="0,0,0,10"  x:Name="txtEPFNo1" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="100" Height="48" VerticalAlignment="Bottom" TextChanged="txtEPFNo1_TextChanged" >
+                                            <materialDesign:HintAssist.Hint>
+                                                <StackPanel Orientation="Horizontal" Width="100">
+                                                    <materialDesign:PackIcon  Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                    <TextBlock Text="EPF No" />
+                                                </StackPanel>
+                                            </materialDesign:HintAssist.Hint>
+                                        </TextBox>
+                                        <TextBox Margin="10,0,0,10"  x:Name="txtSOCSONo1" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="130" >
+                                            <materialDesign:HintAssist.Hint>
+                                                <StackPanel Orientation="Horizontal" Width="120">
+                                                    <materialDesign:PackIcon  Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                    <TextBlock Text="SOCSO No" />
+                                                </StackPanel>
+                                            </materialDesign:HintAssist.Hint>
+                                        </TextBox>
+                                        <TextBox Margin="10,0,0,10"  x:Name="txtSIPNumber" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="100" >
+                                            <materialDesign:HintAssist.Hint>
+                                                <StackPanel Orientation="Horizontal" Width="151">
+                                                    <materialDesign:PackIcon  Kind="Account" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                    <TextBlock Text="SIP No" />
+                                                </StackPanel>
+                                            </materialDesign:HintAssist.Hint>
+                                        </TextBox>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox x:Name="grbTotalLoans" Margin="0,5,0,0" Header="LOAN DETAILS"  Height="116" >
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.997,0.488" >
+                                    <TextBox x:Name="txtTotalOtherLoan" Margin="0,0,0,0" PreviewTextInput="NumericOnly" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="120" >
+                                        <materialDesign:HintAssist.Hint>
+                                            <StackPanel Orientation="Horizontal" Width="151">
+                                                <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                <TextBlock Text="Total Amount" />
+                                            </StackPanel>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
+
+                                    <TextBox x:Name="txtPaidAmount" PreviewTextInput="NumericOnly" IsReadOnly="True" IsReadOnlyCaretVisible="True" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="120" Margin="5,0,0,5">
+                                        <materialDesign:HintAssist.Hint>
+                                            <StackPanel Orientation="Horizontal" Width="151">
+                                                <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                <TextBlock Text="Paid Amount" />
+                                            </StackPanel>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
+                                    <TextBox x:Name="txtBalance" PreviewTextInput="NumericOnly" IsReadOnly="True" FontWeight="Bold" FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TransitionAssist.DisableTransitions="True" Width="120" Margin="5,0,0,5">
+                                        <materialDesign:HintAssist.Hint>
+                                            <StackPanel Orientation="Horizontal" Width="130">
+                                                <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
+                                                <TextBlock Text="Balance" />
+                                            </StackPanel>
+                                        </materialDesign:HintAssist.Hint>
+                                    </TextBox>
+                                </StackPanel>
+                            </Grid>
+
+                        </GroupBox>
                         <GroupBox x:Name="grbResign" Margin="0,5,0,0" Header="RESIGNATION DETAILS" Height="130" Width="380" >
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -420,7 +497,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Grid.Column="1"  >
+                <Grid Grid.Row="0" Grid.Column="1">
                     <StackPanel Orientation="Vertical" x:Name = "pnlForm3" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <GroupBox x:Name="grbAllowances" Margin="0,5,0,0" Header="ALLOWANCES" Height="220" Width="380" >
                             <Grid>
@@ -502,13 +579,13 @@
                             </Grid>
                         </GroupBox>
 
-                        <GroupBox x:Name="grbDeduction1" Margin="0,5,0,0" Header="STANDING INSTRUCTION DEDUCTIONS" Height="185" Width="380" >
+                        <GroupBox x:Name="grbDeduction1" Margin="0,5,0,0" Header="STANDING INSTRUCTION DEDUCTIONS(MONTHLY)" Height="185" Width="380" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
-                                    
+
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
                                     <StackPanel Orientation="Horizontal">
@@ -528,7 +605,7 @@
                                                 </StackPanel>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>
-                                        
+
                                     </StackPanel>
                                 </Grid>
 
@@ -576,7 +653,7 @@
                                     </StackPanel>
                                 </Grid>
                                 <Grid Grid.Row="3">
-                                    
+
                                 </Grid>
                             </Grid>
                         </GroupBox>
@@ -584,7 +661,7 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>                                    
+                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="0">
                                     <StackPanel Orientation="Horizontal">
@@ -605,7 +682,7 @@
                                         </TextBox>
 
                                     </StackPanel>
-                                </Grid>                                
+                                </Grid>
                             </Grid>
                         </GroupBox>
 

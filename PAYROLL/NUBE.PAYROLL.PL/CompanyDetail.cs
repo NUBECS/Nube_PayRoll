@@ -35,5 +35,7 @@ namespace NUBE.PAYROLL.PL
         public string UserId { get; set; }
         public string Password { get; set; }
         public bool IsNUBE { get; set; }
+        public Nullable<System.DateTime> ATTSTARTDATE { get; set; }
+        public Nullable<System.DateTime> ATTENDDATE { get; set; }
     }
 }

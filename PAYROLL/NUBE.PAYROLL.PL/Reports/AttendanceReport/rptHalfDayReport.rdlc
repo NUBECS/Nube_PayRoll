@@ -2,71 +2,37 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Textbox Name="Textbox1">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>PRESENT REPORT </Value>
-                <Style>
-                  <FontSize>14pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.28787cm</Top>
-        <Left>0.29104cm</Left>
-        <Height>0.78521cm</Height>
-        <Width>17.36959cm</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Tablix Name="Tablix3">
+      <Tablix Name="Tablix2">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.00951cm</Width>
+              <Width>0.99187cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.10312cm</Width>
+              <Width>1.91792cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.3677cm</Width>
+              <Width>2.34125cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.42924cm</Width>
+              <Width>4.69604cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.94437cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>1.73272cm</Width>
+              <Width>1.89146cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.73271cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.05021cm</Width>
+              <Width>1.75917cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.3148cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.87781cm</Height>
+              <Height>0.86458cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -104,7 +70,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox23">
+                    <Textbox Name="Textbox24">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -274,7 +240,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox35">
+                    <Textbox Name="Textbox42">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -315,7 +281,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Remarks</Value>
+                              <Value>REMARKS</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -343,7 +309,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.0101cm</Height>
+              <Height>0.86458cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -359,7 +325,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -387,12 +353,12 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!ATTDATE.Value</Value>
-                              <Style>
-                                <Format>d</Format>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ATTDATE</rd:DefaultName>
@@ -454,7 +420,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>EMPLOYEENAME</rd:DefaultName>
@@ -484,7 +452,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>POSITIONNAME</rd:DefaultName>
@@ -511,13 +481,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!INTIME.Value</Value>
-                              <Style>
-                                <Format>t</Format>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -545,13 +513,11 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!OUTTIME.Value</Value>
-                              <Style>
-                                <Format>t</Format>
-                              </Style>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -583,7 +549,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -627,23 +593,57 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>Present</DataSetName>
-        <Top>1.61078cm</Top>
-        <Left>0.29104cm</Left>
-        <Height>1.88791cm</Height>
-        <Width>17.36959cm</Width>
-        <ZIndex>1</ZIndex>
+        <DataSetName>HalfDay</DataSetName>
+        <Top>1.45203cm</Top>
+        <Left>0.21953cm</Left>
+        <Height>1.72916cm</Height>
+        <Width>17.64521cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>HALFDAY LEAVE REPORT </Value>
+                <Style>
+                  <FontSize>14pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox1</rd:DefaultName>
+        <Top>0.25562cm</Top>
+        <Left>0.21953cm</Left>
+        <Height>0.78521cm</Height>
+        <Width>17.64521cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>4.91667in</Height>
+    <Height>5.34375in</Height>
     <Style />
   </Body>
-  <Width>7.2655in</Width>
+  <Width>7.16009in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -661,11 +661,11 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>ab6c9ae7-8ce8-43ac-92a3-1546f9df28f2</rd:DataSourceID>
+      <rd:DataSourceID>389ad7f4-969f-4d7a-a5ce-b55da83c5a2e</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="Present">
+    <DataSet Name="HalfDay">
       <Query>
         <DataSourceName>BizSoftDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -738,7 +738,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>BizSoftDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Backup\Hussain\NUBE\Payroll\PAYROLL 25 01 2018\PAYROLL\NUBE.PAYROLL.PL\BizSoftDataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Backup\Hussain\Source\PAYROLL\PAYROLL 22 03 2018\PAYROLL\NUBE.PAYROLL.PL\BizSoftDataSet.xsd</rd:SchemaPath>
         <rd:TableName>SPTESTDAILYATTENDANCE</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -747,5 +747,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>79de5737-1ca5-4d32-8f43-9f0be09f8e2d</rd:ReportID>
+  <rd:ReportID>63b0af94-a547-4389-a128-76bd35a67373</rd:ReportID>
 </Report>

@@ -82,6 +82,7 @@ namespace NUBE.PAYROLL.PL.Master
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             txtSearch.Text = "";
+            rbtIsWorkingEmployees.IsChecked = true;
             LoadWindow();
         }
 
@@ -119,12 +120,20 @@ namespace NUBE.PAYROLL.PL.Master
                 ExceptionLogging.SendErrorToText(ex);
             }
         }
-
-        private void chkIsResigned_Click(object sender, RoutedEventArgs e)
+        private void rbtIsAllEmployees_Click(object sender, RoutedEventArgs e)
         {
             Filteration();
         }
 
+        private void rbtIsWorkingEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            Filteration();
+        }
+
+        private void rbtIsResigned_Click(object sender, RoutedEventArgs e)
+        {
+            Filteration();
+        }
         private void txtSearch_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             Filteration();
@@ -208,7 +217,7 @@ namespace NUBE.PAYROLL.PL.Master
                     }
                 }
 
-                if (chkIsResigned.IsChecked == true)
+                if (rbtIsResigned.IsChecked == true)
                 {
                     if (!string.IsNullOrEmpty(sWhere))
                     {
@@ -219,6 +228,17 @@ namespace NUBE.PAYROLL.PL.Master
                         sWhere = "RESIGNED=TRUE";
                     }
                 }
+                else if (rbtIsWorkingEmployees.IsChecked == true)
+                {
+                    if (!string.IsNullOrEmpty(sWhere))
+                    {
+                        sWhere = sWhere + "RESIGNED=FALSE";
+                    }
+                    else
+                    {
+                        sWhere = "RESIGNED=FALSE";
+                    }
+                }
 
                 if (!string.IsNullOrEmpty(sWhere))
                 {
@@ -226,6 +246,12 @@ namespace NUBE.PAYROLL.PL.Master
                     dv.RowFilter = sWhere;
                     DataTable dtTemp = new DataTable();
                     dtTemp = dv.ToTable();
+                    int iRNo = 0;
+                    foreach (DataRow dr in dtTemp.Rows)
+                    {
+                        iRNo = iRNo + 1;
+                        dr["RNO"] = iRNo;
+                    }
                     dgEmployee.ItemsSource = dtTemp.DefaultView;
                 }
                 else
@@ -239,8 +265,7 @@ namespace NUBE.PAYROLL.PL.Master
             }
         }
 
-        #endregion
-
+        #endregion      
     }
 }
 

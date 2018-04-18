@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dc5b98d5ebf44c25b844661b8e6f300f" Name="Diagram1" ZoomLevel="55">
+      <Diagram DiagramId="dc5b98d5ebf44c25b844661b8e6f300f" Name="Diagram1" ZoomLevel="44">
         <EntityTypeShape EntityType="BizSoftModel.AttedanceLog" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.AttendanceCorrection" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.DailyLateLog" Width="1.5" PointX="12.75" PointY="24.5" IsExpanded="true" />
@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="BizSoftModel.MasterBankBranch" Width="1.5" PointX="7.5" PointY="33" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.MasterCity" Width="1.5" PointX="5.25" PointY="34" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.MasterCountry" Width="1.5" PointX="0.75" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BizSoftModel.MasterEmployee" Width="1.5" PointX="10.5" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.MasterNubeBranch" Width="1.5" PointX="8.25" PointY="41.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.MasterPosition" Width="1.5" PointX="8.25" PointY="44.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.MasterRace" Width="1.5" PointX="8.25" PointY="48" IsExpanded="true" />
@@ -32,41 +31,19 @@
         <EntityTypeShape EntityType="BizSoftModel.UserTypeDetail" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.UserTypeFormDetail" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.YearlyAllowance" Width="1.5" PointX="12.75" PointY="62.375" IsExpanded="true" />
-        <AssociationConnector Association="BizSoftModel.FK_AttedanceLogs_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_AttendanceCorrection_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_DailyLateLogs_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_ShiftId" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_LatePermissionDetails_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterBankBranch_MasterBank" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterBank" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterBankBranch_MasterCity" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterBankBranch_MasterNubeBranch" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterCity_MasterState" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterCity" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_CountryId" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_MasterState_MasterCountry" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterPosition" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterRace" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_NubeId" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_OTClaim_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_OverTimeDetails_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_PCB_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_StateId" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_TempAttendanceTimings_MasterEmployee" ManuallyRouted="false" />
-        <AssociationConnector Association="BizSoftModel.FK_YearlyAllowance_MasterEmployee" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_PositionDetails_MasterPosition" ManuallyRouted="false" />
         <AssociationConnector Association="BizSoftModel.FK_UserTypeDetail_UserTypeFormDetail" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BizSoftModel.UserType" Width="1.5" PointX="3" PointY="5.25" />
         <AssociationConnector Association="BizSoftModel.FK_UserAccount_UserType" />
         <AssociationConnector Association="BizSoftModel.FK_UserTypeDetail_UserType" />
         <EntityTypeShape EntityType="BizSoftModel.MonthlyDeduction" Width="1.5" PointX="12.75" PointY="42.125" />
-        <AssociationConnector Association="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" />
         <EntityTypeShape EntityType="BizSoftModel.CompanyDetail" Width="1.5" PointX="17.375" PointY="8.75" />
-        <EntityTypeShape EntityType="BizSoftModel.MonthlySalary" Width="1.5" PointX="12.75" PointY="66.25" />
-        <AssociationConnector Association="BizSoftModel.FK_MonthlySalary_MasterEmployee" />
         <EntityTypeShape EntityType="BizSoftModel.DailyAttedanceDet" Width="1.5" PointX="13.375" PointY="45.75" />
-        <AssociationConnector Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWEPF_SOCSO" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BizSoftModel.VIEWLOPHOUR" Width="1.5" PointX="12.75" PointY="0.75" />
         <EntityTypeShape EntityType="BizSoftModel.ViewManualPayment" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="BizSoftModel.ViewMasterbankbranch" Width="1.5" PointX="2.75" PointY="12.75" />
@@ -78,7 +55,6 @@
         <EntityTypeShape EntityType="BizSoftModel.VIEWTOTALOT" Width="1.5" PointX="15.75" PointY="4.75" />
         <EntityTypeShape EntityType="BizSoftModel.VIEWWEEKOFF" Width="1.5" PointX="16.75" PointY="0.75" />
         <EntityTypeShape EntityType="BizSoftModel.LeavePermissionDetail" Width="1.5" PointX="15.75" PointY="33.125" />
-        <AssociationConnector Association="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" />
         <AssociationConnector Association="BizSoftModel.FK_LeaveType" />
         <EntityTypeShape EntityType="BizSoftModel.VIEW_MONTHLYTOTALDAYS" Width="1.5" PointX="9.75" PointY="8.75" />
         <EntityTypeShape EntityType="BizSoftModel.ViewDailyAttedance" Width="1.5" PointX="9.75" PointY="11.75" />
@@ -86,9 +62,35 @@
         <EntityTypeShape EntityType="BizSoftModel.VIEWFULLDAYLEAVE" Width="1.5" PointX="5.75" PointY="16.75" />
         <EntityTypeShape EntityType="BizSoftModel.VIEWHALFDAYLEAVE" Width="1.5" PointX="7.75" PointY="16.75" />
         <EntityTypeShape EntityType="BizSoftModel.VIEWMONTHLY_WORKINGDAYS" Width="1.5" PointX="9.75" PointY="16.75" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWPAYSLIP" Width="1.5" PointX="17.75" PointY="14.75" />
         <EntityTypeShape EntityType="BizSoftModel.VIEWWORKINGDAY" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="BizSoftModel.SIPCont" Width="1.5" PointX="3.375" PointY="19.75" />
+        <EntityTypeShape EntityType="BizSoftModel.LoanPayment" Width="1.5" PointX="18.375" PointY="3.75" />
         <EntityTypeShape EntityType="BizSoftModel.ManualOTEntry" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.MonthlySalary" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWEPF_SOCSO" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.ManualUnpaidLeave" Width="1.5" PointX="18.375" PointY="15.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWPAYSLIP" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="BizSoftModel.MasterEmployee" Width="1.5" PointX="10.5" PointY="25.25" />
+        <AssociationConnector Association="BizSoftModel.FK_AttedanceLogs_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_AttendanceCorrection_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_DailyLateLogs_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_ShiftId" />
+        <AssociationConnector Association="BizSoftModel.FK_LatePermissionDetails_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterBank" />
+        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterCity" />
+        <AssociationConnector Association="BizSoftModel.FK_CountryId" />
+        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterPosition" />
+        <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterRace" />
+        <AssociationConnector Association="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_NubeId" />
+        <AssociationConnector Association="BizSoftModel.FK_OTClaim_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_OverTimeDetails_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_PCB_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_StateId" />
+        <AssociationConnector Association="BizSoftModel.FK_TempAttendanceTimings_MasterEmployee" />
+        <AssociationConnector Association="BizSoftModel.FK_YearlyAllowance_MasterEmployee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

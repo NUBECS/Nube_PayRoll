@@ -120,6 +120,12 @@
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
 
+                                    <Menu:NavMenuItem MenuName="SIP Contribution" FormName ="SIP">
+                                        <Menu:NavMenuItem.Content>
+                                            <Master:frmSIPContribution/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
+
                                     <Menu:NavMenuItem MenuName="Holiday List" FormName ="HOLIDAYLIST">
                                         <Menu:NavMenuItem.Content>
                                             <Master:frmHolidayList/>
@@ -202,9 +208,14 @@
                                             <Transaction:frmLeavePermission/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
-                                    <Menu:NavMenuItem MenuName="Manual Attendance Entry" FormName="ManualAttendance">
+                                    <Menu:NavMenuItem MenuName="Manual OT Entry" FormName="ManualAttendance">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmManuallyAttedanceEntry/>
+                                        </Menu:NavMenuItem.Content>
+                                    </Menu:NavMenuItem>
+                                    <Menu:NavMenuItem MenuName="LOP Correction" FormName="LOP Correction">
+                                        <Menu:NavMenuItem.Content>
+                                            <Transaction:frmManualUnpaidLeave/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
                                     <Menu:NavMenuItem MenuName="PaySlip Generate" FormName="PayslipGenerate">

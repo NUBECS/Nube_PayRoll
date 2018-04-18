@@ -9,3 +9,10 @@
         }
     }
 }
+
+namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
+    
+    
+    public partial class SPTESTDAILYATTENDANCETableAdapter {
+    }
+}

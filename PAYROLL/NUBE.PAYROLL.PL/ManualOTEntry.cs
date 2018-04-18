@@ -15,15 +15,12 @@ namespace NUBE.PAYROLL.PL
     public partial class ManualOTEntry
     {
         public int Id { get; set; }
-        public Nullable<System.DateTime> OTMonth { get; set; }
+        public Nullable<int> Year { get; set; }
+        public Nullable<int> Month { get; set; }
         public Nullable<int> EmployeeId { get; set; }
-        public string EmployeeName { get; set; }
-        public Nullable<decimal> TotalNoOfHours { get; set; }
+        public Nullable<decimal> TotalOtHours { get; set; }
+        public Nullable<decimal> TotalOtAmount { get; set; }
+        public Nullable<System.DateTime> EntryDate { get; set; }
         public string Remarks { get; set; }
-        public int CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public int UpdatedBy { get; set; }
-        public Nullable<System.DateTime> UpdatedOn { get; set; }
-        public bool IsCancel { get; set; }
     }
 }

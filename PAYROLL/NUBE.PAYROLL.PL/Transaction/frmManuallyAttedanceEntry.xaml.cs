@@ -26,8 +26,11 @@ namespace NUBE.PAYROLL.PL.Transaction
         PayrollEntity db = new PayrollEntity();
         DataTable dtDailyAttedance = new DataTable();
         int iEmployeeId = 0;
+        int iAtt_Year = 0;
+        int iAtt_Month = 0;
+        decimal dPerHourAmount = 0;
         Boolean bIsValid = false;
-                
+
         public frmManuallyAttedanceEntry()
         {
             InitializeComponent();
@@ -49,7 +52,9 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            PersonDetailsClear();
             QueryExec();
+
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -58,10 +63,9 @@ namespace NUBE.PAYROLL.PL.Transaction
             {
                 fClear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                ExceptionLogging.SendErrorToText(ex);
             }
         }
 
@@ -73,41 +77,15 @@ namespace NUBE.PAYROLL.PL.Transaction
                 {
                     PersonDetailsClear();
                     DataRowView drv = (DataRowView)dgManualAttendance.SelectedItem;
-                    iEmployeeId = Convert.ToInt32(drv["EMPLOYEEID"]);
+                    iEmployeeId = Convert.ToInt32(drv["ID"]);
+                    iAtt_Year = Convert.ToInt32(drv["ATT_YEAR"]);
+                    iAtt_Month = Convert.ToInt32(drv["ATT_MONTH"]);
                     txtEmployeeNo.Text = drv["MEMBERSHIPNO"].ToString();
                     txtEmployeeName.Text = drv["EMPLOYEENAME"].ToString();
-                    //if (chkIsPermission.IsChecked == true)
-                    //{
-                    //    iLeavePermissionId = Convert.ToInt32(drv["LEAVEPERMISSIONID"]);
-                    //    using (SqlConnection con = new SqlConnection(Config.connStr))
-                    //    {
-                    //        string str = " SELECT FROMDATE,TODATE,LEAVETYPEID,NOOFDAYS,REASON,PERIOD FROM LEAVEPERMISSIONDETAILS(NOLOCK) WHERE ID=" + iLeavePermissionId;
-                    //        SqlCommand cmd = new SqlCommand(str, con);
-                    //        SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                    //        con.Open();
-                    //        cmd.CommandTimeout = 0;
-                    //        DataTable dt = new DataTable();
-                    //        adp.Fill(dt);
-                    //        if (dt.Rows.Count > 0)
-                    //        {
-                    //            dtpLeaveStartDate.SelectedDate = Convert.ToDateTime(dt.Rows[0]["FROMDATE"]);
-                    //            dtpLeaveEndDate.SelectedDate = Convert.ToDateTime(dt.Rows[0]["TODATE"]);
-                    //            cmbLeaveType.SelectedValue = Convert.ToInt32(dt.Rows[0]["LEAVETYPEID"]);
-                    //            txtTotalNoOfDays.Text = dt.Rows[0]["NOOFDAYS"].ToString();
-                    //            txtRemarks.Text = dt.Rows[0]["REASON"].ToString();                                
-                    //        }
-                    //        else
-                    //        {
-                    //            dtpLeaveStartDate.SelectedDate = Convert.ToDateTime(drv["ATTDATE"]);
-                    //            dtpLeaveEndDate.SelectedDate = Convert.ToDateTime(drv["ATTDATE"]);
-                    //        }
-                    //    }
-                    //}
-                    //else
-                    //{
-                    dtpLeaveStartDate.SelectedDate = Convert.ToDateTime(drv["ATTDATE"]);
-                    dtpLeaveEndDate.SelectedDate = Convert.ToDateTime(drv["ATTDATE"]);
-                    //}
+                    txtTotalAmount.Text = drv["OT_AMOUNT"].ToString();
+                    dPerHourAmount = Convert.ToDecimal(drv["OT_PER_HOUR"]);
+                    txtTotalOTHours.Text = drv["TOTAL_OT"].ToString();
+                    txtRemarks.Text = drv["REMARKS"].ToString();
                 }
             }
             catch (Exception ex)
@@ -120,81 +98,28 @@ namespace NUBE.PAYROLL.PL.Transaction
         {
             try
             {
-                if (string.IsNullOrEmpty(txtEmployeeNo.Text))
+                Validate();
+                if (bIsValid == false)
                 {
-                    MessageBox.Show("Employee No is Empty!", "Empty");
-                    txtEmployeeNo.Focus();
-                }
-                else if (string.IsNullOrEmpty(txtEmployeeName.Text))
-                {
-                    MessageBox.Show("Employee Name is Empty!", "Empty");
-                    txtEmployeeName.Focus();
-                }
-                else if (string.IsNullOrEmpty(dtpLeaveStartDate.Text))
-                {
-                    MessageBox.Show("Leave Start Date is Empty!", "Empty");
-                    dtpLeaveStartDate.Focus();
-                }
-                else if (string.IsNullOrEmpty(dtpLeaveEndDate.Text))
-                {
-                    MessageBox.Show("Leave End Date is Empty!", "Empty");
-                    dtpLeaveEndDate.Focus();
-                }
-                else if (string.IsNullOrEmpty(cmbLeaveType.Text))
-                {
-                    MessageBox.Show("Leave Type is Empty!", "Empty");
-                    cmbLeaveType.Focus();
-                }
-                else
-                {
-                    bIsValid = false;
-                    Validate();
-                    if (bIsValid == false && (dtpLeaveStartDate.SelectedDate == dtpLeaveEndDate.SelectedDate))
+                    var da = (from x in db.ManualOTEntries where x.EmployeeId == iEmployeeId && x.Year == iAtt_Year && x.Month == iAtt_Month select x).FirstOrDefault();
+                    if (da != null)
                     {
-                        DateTime sDate = Convert.ToDateTime(dtpLeaveStartDate.SelectedDate);
-                        var da = (from x in db.DailyAttedanceDets where x.EmployeeId == iEmployeeId && (x.IsFullDayLeave == true || x.IsHalfDayLeave == true) && x.IsWeekOff == false && x.IsPublicHoliday == false && x.AttDate == sDate select x).FirstOrDefault();
-                        if (da != null)
-                        {
-                            if (cmbLeaveType.Text == "Half Present")
-                            {
-                                da.IsHalfDayLeave = true;
-                                da.IsFullDayLeave = false;
-                            }
-                            else
-                            {
-                                da.IsHalfDayLeave = false;
-                                da.IsFullDayLeave = false;
-                            }
-                            da.IsModified = true;
-                            db.SaveChanges();
-                        }
-                        MessageBox.Show("Saved Sucessfully!", "Sucess");
-                        QueryExec();
+                        db.ManualOTEntries.Remove(da);
+                        db.SaveChanges();
                     }
-                    else if (bIsValid == false)
-                    {
-                        for (DateTime date = Convert.ToDateTime(dtpLeaveStartDate.SelectedDate); date <= Convert.ToDateTime(dtpLeaveEndDate.SelectedDate); date = date.AddDays(1))
-                        {
-                            var da = (from x in db.DailyAttedanceDets where x.EmployeeId == iEmployeeId && (x.IsFullDayLeave == true || x.IsHalfDayLeave == true) && x.IsWeekOff == false && x.IsPublicHoliday == false && x.AttDate == date select x).FirstOrDefault();
-                            if (da != null)
-                            {
-                                if (cmbLeaveType.Text == "Half Present")
-                                {
-                                    da.IsHalfDayLeave = true;
-                                    da.IsFullDayLeave = false;
-                                }
-                                else
-                                {
-                                    da.IsHalfDayLeave = false;
-                                    da.IsFullDayLeave = false;
-                                }
-                                da.IsModified = true;
-                                db.SaveChanges();
-                            }
-                        }
-                        MessageBox.Show("Saved Sucessfully!", "Sucess");
-                        QueryExec();
-                    }
+
+                    ManualOTEntry OT = new ManualOTEntry();
+                    OT.Year = iAtt_Year;
+                    OT.Month = iAtt_Month;
+                    OT.EmployeeId = iEmployeeId;
+                    OT.TotalOtHours = Convert.ToDecimal(txtTotalOTHours.Text);
+                    OT.TotalOtAmount = Convert.ToDecimal(txtTotalAmount.Text);
+                    OT.EntryDate = DateTime.Now;
+                    OT.Remarks = txtRemarks.Text;
+                    db.ManualOTEntries.Add(OT);
+                    db.SaveChanges();
+                    PersonDetailsClear();
+                    QueryExec();                   
                 }
             }
             catch (Exception ex)
@@ -202,34 +127,27 @@ namespace NUBE.PAYROLL.PL.Transaction
                 ExceptionLogging.SendErrorToText(ex);
             }
         }
-
-        private void dtpLeaveStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void NumericOnly(object sender, TextCompositionEventArgs e)
         {
-            try
-            {
-                if (dtpLeaveStartDate.SelectedDate != null && dtpLeaveEndDate.SelectedDate != null)
-                {
-                    DateChangingFunct();
-                }
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogging.SendErrorToText(ex);
-            }
+            Config.CheckIsNumeric(e);
+        }
+        private void txtTotalOTHours_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+        private void txtTotalOTHours_KeyUp(object sender, KeyEventArgs e)
+        {
         }
 
-        private void dtpLeaveEndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void dgManualAttendance_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                if (dtpLeaveStartDate.SelectedDate != null && dtpLeaveEndDate.SelectedDate != null)
-                {
-                    DateChangingFunct();
-                }
+                PersonDetailsClear();
             }
             catch (Exception ex)
             {
-                ExceptionLogging.SendErrorToText(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -241,36 +159,29 @@ namespace NUBE.PAYROLL.PL.Transaction
         {
             try
             {
-                string sWhere = "", sJoin = "", sSelect = "";
-                PersonDetailsClear();
+                string sWhere = "";
+
 
                 if (!string.IsNullOrEmpty(cmbEmployee.Text))
                 {
-                    sWhere = " AND DA.EMPLOYEEID=" + Convert.ToInt32(cmbEmployee.SelectedValue);
+                    sWhere = " AND EMP.ID=" + Convert.ToInt32(cmbEmployee.SelectedValue);
                 }
-
-                //if (chkIsPermission.IsChecked == true)
-                //{
-                //    sWhere = sWhere + " AND DA.WITHPERMISSION=1 \r";
-                //    sSelect = ",ISNULL(DA.LEAVEPERMISSIONID,0)LEAVEPERMISSIONID ";
-                //    sJoin = " LEFT JOIN LEAVEPERMISSIONDETAILS LD(NOLOCK) ON LD.EMPLOYEEID=DA.EMPLOYEEID AND LD.ID=DA.LEAVEPERMISSIONID \r";
-                //}
-                //else
-                //{
-                //sWhere = sWhere + " AND DA.WITHPERMISSION=0 \r";
-                sSelect = "";
-                sJoin = "";
-                //}
 
                 using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
-                    string str = string.Format(" SELECT DA.EMPLOYEEID,EM.MEMBERSHIPNO,EM.EMPLOYEENAME,DA.ATTDATE,WITHPERMISSION,DA.REMARKS, \r" +
-                                              " CASE WHEN ISNULL(DA.ISFULLDAYLEAVE, 0) <> 0 THEN 'FULL DAY' ELSE 'HALF DAY' END LEAVE " + sSelect + " \r" +
-                                              " FROM DAILYATTEDANCEDET DA(NOLOCK) \r" +
-                                              " LEFT JOIN MASTEREMPLOYEE EM(NOLOCK)ON EM.ID=DA.EMPLOYEEID \r" + sJoin +
-                                              " WHERE(DA.ISFULLDAYLEAVE = 1 OR DA.ISHALFDAYLEAVE = 1) AND DA.ISWEEKOFF = 0 AND EM.UNPAIDLEAVE=1 \r" +
-                                              " AND DA.ISPUBLICHOLIDAY = 0 AND DA.ATTDATE BETWEEN '{0:dd/MMM/yyyy}' AND '{1:dd/MMM/yyyy}' \r" + sWhere +
-                                              " ORDER BY EM.EMPLOYEENAME,DA.ATTDATE", dtpFromDate.SelectedDate, dtpToDate.SelectedDate);
+                    string str = string.Format(" SELECT EMP.ID,EMP.MEMBERSHIPNO,EMP.EMPLOYEENAME,WK.ATT_YEAR,WK.ATT_MONTH,WK.WORKINGDAYS,  \r" +
+                                " CASE WHEN ISNULL(MT.TOTALOTHOURS,0)<>0 THEN ISNULL(MT.TOTALOTHOURS,0) ELSE ISNULL(OT.TOTAL_OT,0.0) END TOTAL_OT,  \r" +
+                                " CONVERT(NUMERIC(18, 2), ((EMP.BASICSALARY / WK.WORKINGDAYS) / 8) + ((((EMP.BASICSALARY / WK.WORKINGDAYS) / 8) * 10) / 100))OT_PER_HOUR, \r" +
+                                " CASE WHEN ISNULL(MT.TOTALOTAMOUNT,0)<>0 THEN ISNULL(MT.TOTALOTAMOUNT,0) ELSE CONVERT(NUMERIC(18, 2), \r" +
+                                " ISNULL(OT.TOTAL_OT, 0) * (((EMP.BASICSALARY / WK.WORKINGDAYS) / 8) + ((((EMP.BASICSALARY / WK.WORKINGDAYS) / 8) * 10) / 100))) END OT_AMOUNT,' ' REMARKS  \r" +
+                                " FROM MASTEREMPLOYEE EMP(NOLOCK)  \r" +
+                                " CROSS APPLY DBO.[MONTHLYATT]('{0:dd/MMM/yyyy}',EMP.ID) WK \r" +
+                                " LEFT JOIN VIEWTOTALOT OT(NOLOCK) ON OT.EMPLOYEEID = EMP.ID AND OT.ATT_YEAR = WK.ATT_YEAR AND OT.ATT_MONTH = WK.ATT_MONTH  \r" +
+                                " LEFT JOIN MANUALOTENTRY MT(NOLOCK) ON MT.EMPLOYEEID=EMP.ID AND MT.YEAR=WK.ATT_YEAR AND MT.MONTH=WK.ATT_MONTH \r" +
+                                " WHERE EMP.ISRESIGNED = 0 \r" + sWhere +
+                                " GROUP BY EMP.ID,EMP.MEMBERSHIPNO,EMP.EMPLOYEENAME,WK.ATT_YEAR,WK.ATT_MONTH,WK.WORKINGDAYS,MT.TOTALOTHOURS,OT.TOTAL_OT, \r" +
+                                " EMP.BASICSALARY,WK.WORKINGDAYS,MT.TOTALOTAMOUNT ", dtpEntryDate.SelectedDate);
+
                     SqlCommand cmd = new SqlCommand(str, con);
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);
                     con.Open();
@@ -296,61 +207,72 @@ namespace NUBE.PAYROLL.PL.Transaction
 
         void Validate()
         {
-            for (DateTime date = Convert.ToDateTime(dtpLeaveStartDate.SelectedDate); date <= Convert.ToDateTime(dtpLeaveEndDate.SelectedDate); date = date.AddDays(1))
+            bIsValid = false;
+            if (string.IsNullOrEmpty(txtEmployeeNo.Text))
             {
-                var da = (from x in db.DailyAttedanceDets where x.EmployeeId == iEmployeeId && (x.IsFullDayLeave == true || x.IsHalfDayLeave == true) && x.IsWeekOff == false && x.IsPublicHoliday == false && x.AttDate == date select x).FirstOrDefault();
-                if (da == null)
-                {
-                    MessageBox.Show(txtEmployeeName.Text + " Present on that Date - " + string.Format("{0:dd/MMM/yyyy}", date) + " Please select other date!");
-                    dtpLeaveEndDate.Focus();
-                    bIsValid = true;
-                }
+                MessageBox.Show("Employee No is Empty!", "Empty");
+                txtEmployeeNo.Focus();
+                bIsValid = true;
             }
-        }
-
-        void DateChangingFunct()
-        {
-            if (dtpLeaveEndDate.SelectedDate < dtpLeaveStartDate.SelectedDate)
+            else if (string.IsNullOrEmpty(txtEmployeeName.Text))
             {
-                MessageBox.Show("Leave Start Date is must Less than Leave End Date !", "Incorrect Date Format");
-                dtpLeaveStartDate.SelectedDate = dtpLeaveEndDate.SelectedDate;
-                dtpLeaveEndDate.Focus();
+                MessageBox.Show("Employee Name is Empty!", "Empty");
+                txtEmployeeName.Focus();
+                bIsValid = true;
             }
-
-            if (dtpLeaveStartDate.SelectedDate != dtpLeaveEndDate.SelectedDate)
+            else if (string.IsNullOrEmpty(txtTotalOTHours.Text))
             {
-                TimeSpan dfDays = (Convert.ToDateTime(dtpLeaveEndDate.SelectedDate) - Convert.ToDateTime(dtpLeaveStartDate.SelectedDate));
-                txtTotalNoOfDays.Text = (dfDays.TotalDays + 1).ToString();
+                MessageBox.Show("Total OT Hours is Empty!", "Empty");
+                txtTotalOTHours.Focus();
+                bIsValid = true;
             }
-            else
+            else if (string.IsNullOrEmpty(txtTotalAmount.Text))
             {
-                txtTotalNoOfDays.Text = "1";
+                MessageBox.Show("Total Amount is Empty!", "Empty");
+                txtTotalAmount.Focus();
+                bIsValid = true;
+            }
+            else if (iEmployeeId == 0)
+            {
+                MessageBox.Show("Please Try Again! Employee Code is Empty", "Employee Id Not Match");
+                bIsValid = true;
+                PersonDetailsClear();
+            }
+            else if (iAtt_Year == 0)
+            {
+                MessageBox.Show("Please Try Again! Year is Empty", "Year Not Match");
+                bIsValid = true;
+                PersonDetailsClear();
+            }
+            else if (iAtt_Month == 0)
+            {
+                MessageBox.Show("Please Try Again! Month is Empty", "Month Not Match");
+                bIsValid = true;
+                PersonDetailsClear();
             }
         }
 
         void PersonDetailsClear()
         {
             iEmployeeId = 0;
-            txtEmployeeName.Text = "";
+            iAtt_Year = 0;
+            iAtt_Month = 0;
             txtEmployeeNo.Text = "";
+            txtEmployeeName.Text = "";
+            txtTotalAmount.Text = "";
+            txtTotalOTHours.Text = "";
             txtRemarks.Text = "";
-            txtTotalNoOfDays.Text = "";
-            dtpLeaveStartDate.Text = "";
-            dtpLeaveEndDate.Text = "";
-            cmbLeaveType.Text = "";
+            dPerHourAmount = 0;
         }
 
         void fClear()
         {
             PersonDetailsClear();
-            dtpFromDate.Text = "";
-            dtpToDate.Text = "";
+            dtpEntryDate.Text = "";
             dgManualAttendance.ItemsSource = null;
             cmbEmployee.Text = "";
             bIsValid = false;
-            iEmployeeId = 0;
         }
-
 
         void LoadForm()
         {
@@ -364,6 +286,31 @@ namespace NUBE.PAYROLL.PL.Transaction
             }
         }
 
-        #endregion        
+
+
+        #endregion
+
+        private void txtTotalOTHours_KeyUp_1(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtTotalOTHours_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtTotalOTHours_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtTotalOTHours.Text))
+            {
+                decimal dOtHour = Convert.ToDecimal(txtTotalOTHours.Text);
+                if (dOtHour > 0 && dPerHourAmount > 0)
+                {
+                    dOtHour = Math.Abs((dOtHour * dPerHourAmount) + (((dOtHour * dPerHourAmount) * 10) / 100));
+                    txtTotalAmount.Text = dOtHour.ToString();
+                }
+            }
+        }
     }
 }

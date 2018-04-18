@@ -63,6 +63,8 @@
           <Property Name="UserId" Type="varchar" MaxLength="20" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="IsNUBE" Type="bit" Nullable="false" />
+          <Property Name="ATTSTARTDATE" Type="datetime" />
+          <Property Name="ATTENDDATE" Type="datetime" />
         </EntityType>
         <EntityType Name="DailyAttedanceDet">
           <Key>
@@ -186,21 +188,42 @@
           <Property Name="IsCancel" Type="bit" Nullable="false" />
           <Property Name="CancelOn" Type="datetime" />
         </EntityType>
+        <EntityType Name="LoanPayment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employeeid" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="LoanName" Type="nchar" MaxLength="50" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="ManualOTEntry">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OTMonth" Type="datetime" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="int" />
           <Property Name="EmployeeId" Type="int" />
-          <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
-          <Property Name="TotalNoOfHours" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="TotalOtHours" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalOtAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="datetime" />
           <Property Name="Remarks" Type="nvarchar" MaxLength="100" />
-          <Property Name="CreatedBy" Type="int" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="int" Nullable="false" />
-          <Property Name="UpdatedOn" Type="datetime" />
-          <Property Name="IsCancel" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManualUnpaidLeave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="DaysAbsent" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="LOP_Leave" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LOP_Late" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="MasterBank">
           <Key>
@@ -327,6 +350,11 @@
           <Property Name="MobileAllowance" Type="numeric" Precision="18" Scale="2" />
           <Property Name="IsCancel" Type="bit" Nullable="false" />
           <Property Name="CancelOn" Type="datetime" />
+          <Property Name="SIPNumber" Type="varchar" MaxLength="50" />
+          <Property Name="SIP" Type="bit" />
+          <Property Name="OtherLoanTotal" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PaidAmount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="BalanceAmount" Type="numeric" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="MasterNubeBranch">
           <Key>
@@ -401,7 +429,8 @@
           <Property Name="DaysAbsent" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="OTHours" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="OT_Amount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="LOP" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LOP_Leave" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LOP_Late" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="POB" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NEC" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SECONDMENT" Type="numeric" Precision="18" Scale="2" Nullable="false" />
@@ -432,6 +461,9 @@
           <Property Name="TOTALDEDUCTION" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NETSALARY" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="PositionName" Type="varchar" MaxLength="50" />
+          <Property Name="SIPNumber" Type="varchar" MaxLength="50" />
+          <Property Name="SIP" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SIPUNION" Type="numeric" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="OTClaim">
           <Key>
@@ -491,6 +523,20 @@
           <Property Name="MaxYear" Type="numeric" Precision="18" Scale="0" />
           <Property Name="NoOfLeave" Type="numeric" Precision="18" Scale="0" />
           <Property Name="NoOfMedicalLeave" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="IsCancel" Type="bit" Nullable="false" />
+          <Property Name="CancelOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SIPCont">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinRM" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="MaxRM" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Majikan" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Pekerja" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Caruman" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="JenisSahaja" Type="numeric" Precision="18" Scale="2" />
           <Property Name="IsCancel" Type="bit" Nullable="false" />
           <Property Name="CancelOn" Type="datetime" />
         </EntityType>
@@ -653,6 +699,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWEPF_SOCSO' does not have a pri
             <PropertyRef Name="EPFUNION" />
             <PropertyRef Name="SOCSO" />
             <PropertyRef Name="SOCSOUNION" />
+            <PropertyRef Name="SIP" />
+            <PropertyRef Name="SIPUNION" />
           </Key>
           <Property Name="EMPLOYEEID" Type="int" Nullable="false" />
           <Property Name="EmployeeName" Type="varchar" MaxLength="50" />
@@ -661,6 +709,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWEPF_SOCSO' does not have a pri
           <Property Name="EPFUNION" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SOCSO" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SOCSOUNION" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SIP" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SIPUNION" Type="numeric" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'RipuPayroll.dbo.VIEWFULLDAYLEAVE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -835,7 +885,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWPAYSLIP' does not have a prima
             <PropertyRef Name="DAYSABSENT" />
             <PropertyRef Name="OTHOURS" />
             <PropertyRef Name="OT_AMOUNT" />
-            <PropertyRef Name="LOP" />
+            <PropertyRef Name="LOP_LEAVE" />
+            <PropertyRef Name="LOP_LATE" />
             <PropertyRef Name="POB" />
             <PropertyRef Name="NEC" />
             <PropertyRef Name="SECONDMENT" />
@@ -880,7 +931,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWPAYSLIP' does not have a prima
           <Property Name="DAYSABSENT" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="OTHOURS" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="OT_AMOUNT" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="LOP" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LOP_LEAVE" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LOP_LATE" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="POB" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="NEC" Type="numeric" Precision="18" Scale="2" Nullable="false" />
           <Property Name="SECONDMENT" Type="numeric" Precision="18" Scale="2" Nullable="false" />
@@ -1183,18 +1235,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MonthlySalary_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MonthlySalary">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_NubeId">
           <End Role="MasterNubeBranch" Type="Self.MasterNubeBranch" Multiplicity="0..1" />
           <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
@@ -1351,7 +1391,9 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <EntitySet Name="LatePermissionDetails" EntityType="Self.LatePermissionDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeavePermissionDetails" EntityType="Self.LeavePermissionDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LeaveType" EntityType="Self.LeaveType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanPayment" EntityType="Self.LoanPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ManualOTEntry" EntityType="Self.ManualOTEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManualUnpaidLeave" EntityType="Self.ManualUnpaidLeave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MasterBank" EntityType="Self.MasterBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MasterBankBranch" EntityType="Self.MasterBankBranch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MasterCity" EntityType="Self.MasterCity" Schema="dbo" store:Type="Tables" />
@@ -1367,6 +1409,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <EntitySet Name="OverTimeDetails" EntityType="Self.OverTimeDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PCB" EntityType="Self.PCB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PositionDetails" EntityType="Self.PositionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIPCont" EntityType="Self.SIPCont" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SocsoCont" EntityType="Self.SocsoCont" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TempAttendanceTimings" EntityType="Self.TempAttendanceTimings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
@@ -1431,7 +1474,9 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
     [VIEWEPF_SOCSO].[EPF] AS [EPF], 
     [VIEWEPF_SOCSO].[EPFUNION] AS [EPFUNION], 
     [VIEWEPF_SOCSO].[SOCSO] AS [SOCSO], 
-    [VIEWEPF_SOCSO].[SOCSOUNION] AS [SOCSOUNION]
+    [VIEWEPF_SOCSO].[SOCSOUNION] AS [SOCSOUNION], 
+    [VIEWEPF_SOCSO].[SIP] AS [SIP], 
+    [VIEWEPF_SOCSO].[SIPUNION] AS [SIPUNION]
     FROM [dbo].[VIEWEPF_SOCSO] AS [VIEWEPF_SOCSO]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="VIEWFULLDAYLEAVE" EntityType="Self.VIEWFULLDAYLEAVE" store:Type="Views" store:Schema="dbo">
@@ -1574,7 +1619,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
     [VIEWPAYSLIP].[DAYSABSENT] AS [DAYSABSENT], 
     [VIEWPAYSLIP].[OTHOURS] AS [OTHOURS], 
     [VIEWPAYSLIP].[OT_AMOUNT] AS [OT_AMOUNT], 
-    [VIEWPAYSLIP].[LOP] AS [LOP], 
+    [VIEWPAYSLIP].[LOP_LEAVE] AS [LOP_LEAVE], 
+    [VIEWPAYSLIP].[LOP_LATE] AS [LOP_LATE], 
     [VIEWPAYSLIP].[POB] AS [POB], 
     [VIEWPAYSLIP].[NEC] AS [NEC], 
     [VIEWPAYSLIP].[SECONDMENT] AS [SECONDMENT], 
@@ -1722,10 +1768,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
             <End Role="MasterEmployee" EntitySet="MasterEmployee" />
             <End Role="MonthlyDeductions" EntitySet="MonthlyDeductions" />
           </AssociationSet>
-          <AssociationSet Name="FK_MonthlySalary_MasterEmployee" Association="Self.FK_MonthlySalary_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployee" />
-            <End Role="MonthlySalary" EntitySet="MonthlySalary" />
-          </AssociationSet>
           <AssociationSet Name="FK_NubeId" Association="Self.FK_NubeId">
             <End Role="MasterNubeBranch" EntitySet="MasterNubeBranch" />
             <End Role="MasterEmployee" EntitySet="MasterEmployee" />
@@ -1795,7 +1837,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="IsNotLogOut" Type="Boolean" Nullable="false" />
           <Property Name="IsModified" Type="Boolean" Nullable="false" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_AttedanceLogs_MasterEmployee" FromRole="AttedanceLogs" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_AttedanceLogs_MasterEmployee" FromRole="AttedanceLog" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="AttendanceCorrection">
           <Key>
@@ -1812,7 +1854,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="AfterOutTime" Type="DateTime" Precision="3" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="Int32" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_AttendanceCorrection_MasterEmployee" FromRole="AttendanceCorrection" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_AttendanceCorrection_MasterEmployee" FromRole="AttendanceCorrection" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="DailyLateLog">
           <Key>
@@ -1824,7 +1866,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="InTime" Type="DateTime" Precision="3" />
           <Property Name="OutTime" Type="DateTime" Precision="3" />
           <Property Name="LateMinutes" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_DailyLateLogs_MasterEmployee" FromRole="DailyLateLogs" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_DailyLateLogs_MasterEmployee" FromRole="DailyLateLog" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="EmployeeShift">
           <Key>
@@ -1842,7 +1884,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="GraceTime" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_ShiftId" FromRole="EmployeeShift" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_ShiftId" FromRole="EmployeeShift" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="EPFCont">
           <Key>
@@ -1883,7 +1925,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_LatePermissionDetails_MasterEmployee" FromRole="LatePermissionDetails" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_LatePermissionDetails_MasterEmployee" FromRole="LatePermissionDetail" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="LeaveType">
           <Key>
@@ -1907,7 +1949,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MasterBankBranches" Relationship="Self.FK_MasterBankBranch_MasterBank" FromRole="MasterBank" ToRole="MasterBankBranch" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_MasterEmployee_MasterBank" FromRole="MasterBank" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_MasterEmployee_MasterBank" FromRole="MasterBank" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="MasterBankBranch">
           <Key>
@@ -1945,7 +1987,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MasterBankBranches" Relationship="Self.FK_MasterBankBranch_MasterCity" FromRole="MasterCity" ToRole="MasterBankBranch" />
           <NavigationProperty Name="MasterState" Relationship="Self.FK_MasterCity_MasterState" FromRole="MasterCity" ToRole="MasterState" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_MasterEmployee_MasterCity" FromRole="MasterCity" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_MasterEmployee_MasterCity" FromRole="MasterCity" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="MasterCountry">
           <Key>
@@ -1956,103 +1998,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_CountryId" FromRole="MasterCountry" ToRole="MasterEmployee" />
           <NavigationProperty Name="MasterStates" Relationship="Self.FK_MasterState_MasterCountry" FromRole="MasterCountry" ToRole="MasterState" />
-        </EntityType>
-        <EntityType Name="MasterEmployee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MembershipNo" Type="Int32" />
-          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BloodGroup" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="BankId" Type="Int32" />
-          <Property Name="NubeBranchId" Type="Int32" />
-          <Property Name="PositionId" Type="Int32" />
-          <Property Name="RaceId" Type="Int32" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
-          <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
-          <Property Name="IdentyMark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CityId" Type="Int32" />
-          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmergencyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OpeningBalance" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="POB" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="NEC" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="SECONDMENT" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="SPECIAL" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="COLA" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="IsOverTimeEligible" Type="Boolean" />
-          <Property Name="EPFContributionRate" Type="Boolean" />
-          <Property Name="EPFContribution" Type="Boolean" />
-          <Property Name="SOCSOContribution" Type="Boolean" />
-          <Property Name="KOPERASI" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="NubeSubscription" Type="Boolean" />
-          <Property Name="GMIS" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="BIMBLoan" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="GELA" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="HomeCarLoans" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="OtherLoans" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="PCB" Type="Boolean" Nullable="false" />
-          <Property Name="UnpaidLeave" Type="Boolean" Nullable="false" />
-          <Property Name="IsOtherEligible" Type="Boolean" Nullable="false" />
-          <Property Name="Others" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="RatioOfContribution" Type="Boolean" Nullable="false" />
-          <Property Name="EPF" Type="Boolean" Nullable="false" />
-          <Property Name="SOCSO" Type="Boolean" />
-          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsResigned" Type="Boolean" Nullable="false" />
-          <Property Name="ResignedReason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ResignedDate" Type="DateTime" Precision="3" />
-          <Property Name="EPFNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SOCSONumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="StateId" Type="Int32" />
-          <Property Name="CountryId" Type="Int32" />
-          <Property Name="IncomeTax" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="NoOfCL" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="NoOfML" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="IsUserLogin" Type="Boolean" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-          <Property Name="ShiftId" Type="Int32" Nullable="false" />
-          <Property Name="MobileAllowance" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="IsCancel" Type="Boolean" Nullable="false" />
-          <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AttedanceLogs" Relationship="Self.FK_AttedanceLogs_MasterEmployee" FromRole="MasterEmployee" ToRole="AttedanceLogs" />
-          <NavigationProperty Name="AttendanceCorrections" Relationship="Self.FK_AttendanceCorrection_MasterEmployee" FromRole="MasterEmployee" ToRole="AttendanceCorrection" />
-          <NavigationProperty Name="DailyLateLogs" Relationship="Self.FK_DailyLateLogs_MasterEmployee" FromRole="MasterEmployee" ToRole="DailyLateLogs" />
-          <NavigationProperty Name="EmployeeShift" Relationship="Self.FK_ShiftId" FromRole="MasterEmployee" ToRole="EmployeeShift" />
-          <NavigationProperty Name="LatePermissionDetails" Relationship="Self.FK_LatePermissionDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="LatePermissionDetails" />
-          <NavigationProperty Name="MasterBank" Relationship="Self.FK_MasterEmployee_MasterBank" FromRole="MasterEmployee" ToRole="MasterBank" />
-          <NavigationProperty Name="MasterCity" Relationship="Self.FK_MasterEmployee_MasterCity" FromRole="MasterEmployee" ToRole="MasterCity" />
-          <NavigationProperty Name="MasterCountry" Relationship="Self.FK_CountryId" FromRole="MasterEmployee" ToRole="MasterCountry" />
-          <NavigationProperty Name="MasterPosition" Relationship="Self.FK_MasterEmployee_MasterPosition" FromRole="MasterEmployee" ToRole="MasterPosition" />
-          <NavigationProperty Name="MasterRace" Relationship="Self.FK_MasterEmployee_MasterRace" FromRole="MasterEmployee" ToRole="MasterRace" />
-          <NavigationProperty Name="MasterNubeBranch" Relationship="Self.FK_NubeId" FromRole="MasterEmployee" ToRole="MasterNubeBranch" />
-          <NavigationProperty Name="OTClaims" Relationship="Self.FK_OTClaim_MasterEmployee" FromRole="MasterEmployee" ToRole="OTClaim" />
-          <NavigationProperty Name="OverTimeDetails" Relationship="Self.FK_OverTimeDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="OverTimeDetails" />
-          <NavigationProperty Name="PCBs" Relationship="Self.FK_PCB_MasterEmployee" FromRole="MasterEmployee" ToRole="PCB" />
-          <NavigationProperty Name="MasterState" Relationship="Self.FK_StateId" FromRole="MasterEmployee" ToRole="MasterState" />
-          <NavigationProperty Name="TempAttendanceTimings" Relationship="Self.FK_TempAttendanceTimings_MasterEmployee" FromRole="MasterEmployee" ToRole="TempAttendanceTimings" />
-          <NavigationProperty Name="YearlyAllowances" Relationship="Self.FK_YearlyAllowance_MasterEmployee" FromRole="MasterEmployee" ToRole="YearlyAllowance" />
-          <NavigationProperty Name="MonthlyDeductions" Relationship="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" FromRole="MasterEmployee" ToRole="MonthlyDeduction" />
-          <NavigationProperty Name="MonthlySalaries" Relationship="BizSoftModel.FK_MonthlySalary_MasterEmployee" FromRole="MasterEmployee" ToRole="MonthlySalary" />
-          <NavigationProperty Name="DailyAttedanceDets" Relationship="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" FromRole="MasterEmployee" ToRole="DailyAttedanceDet" />
-          <NavigationProperty Name="LeavePermissionDetails" Relationship="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="LeavePermissionDetail" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_CountryId" FromRole="MasterCountry" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="MasterNubeBranch">
           <Key>
@@ -2064,7 +2011,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MasterBankBranches" Relationship="Self.FK_MasterBankBranch_MasterNubeBranch" FromRole="MasterNubeBranch" ToRole="MasterBankBranch" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_NubeId" FromRole="MasterNubeBranch" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_NubeId" FromRole="MasterNubeBranch" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="MasterPosition">
           <Key>
@@ -2075,8 +2022,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_MasterEmployee_MasterPosition" FromRole="MasterPosition" ToRole="MasterEmployee" />
           <NavigationProperty Name="PositionDetails" Relationship="Self.FK_PositionDetails_MasterPosition" FromRole="MasterPosition" ToRole="PositionDetails" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_MasterEmployee_MasterPosition" FromRole="MasterPosition" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="MasterRace">
           <Key>
@@ -2087,7 +2034,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_MasterEmployee_MasterRace" FromRole="MasterRace" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_MasterEmployee_MasterRace" FromRole="MasterRace" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="MasterState">
           <Key>
@@ -2101,7 +2048,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="CancelOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MasterCities" Relationship="Self.FK_MasterCity_MasterState" FromRole="MasterState" ToRole="MasterCity" />
           <NavigationProperty Name="MasterCountry" Relationship="Self.FK_MasterState_MasterCountry" FromRole="MasterState" ToRole="MasterCountry" />
-          <NavigationProperty Name="MasterEmployees" Relationship="Self.FK_StateId" FromRole="MasterState" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployees" Relationship="BizSoftModel.FK_StateId" FromRole="MasterState" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="OTClaim">
           <Key>
@@ -2122,7 +2069,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="Meals" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsApproved" Type="Boolean" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_OTClaim_MasterEmployee" FromRole="OTClaim" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_OTClaim_MasterEmployee" FromRole="OTClaim" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="OverTimeDetail">
           <Key>
@@ -2142,7 +2089,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="Approved_OT_Minutes" Type="Int32" Nullable="false" />
           <Property Name="IsWeekOff" Type="Boolean" Nullable="false" />
           <Property Name="IsPublicHoliday" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_OverTimeDetails_MasterEmployee" FromRole="OverTimeDetails" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_OverTimeDetails_MasterEmployee" FromRole="OverTimeDetail" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="PCB">
           <Key>
@@ -2152,7 +2099,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <Property Name="PCB1" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_PCB_MasterEmployee" FromRole="PCB" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_PCB_MasterEmployee" FromRole="PCB" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="PositionDetail">
           <Key>
@@ -2190,7 +2137,7 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="PunchTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_TempAttendanceTimings_MasterEmployee" FromRole="TempAttendanceTimings" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_TempAttendanceTimings_MasterEmployee" FromRole="TempAttendanceTiming" ToRole="MasterEmployee" />
         </EntityType>
         <EntityType Name="UserAccount">
           <Key>
@@ -2244,68 +2191,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <Property Name="Bonus" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Exgratia" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="MasterEmployee" Relationship="Self.FK_YearlyAllowance_MasterEmployee" FromRole="YearlyAllowance" ToRole="MasterEmployee" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_YearlyAllowance_MasterEmployee" FromRole="YearlyAllowance" ToRole="MasterEmployee" />
         </EntityType>
-        <Association Name="FK_AttedanceLogs_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="AttedanceLogs" Type="Self.AttedanceLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AttedanceLogs">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AttendanceCorrection_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="AttendanceCorrection" Type="Self.AttendanceCorrection" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AttendanceCorrection">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DailyLateLogs_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="DailyLateLogs" Type="Self.DailyLateLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DailyLateLogs">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ShiftId">
-          <End Role="EmployeeShift" Type="Self.EmployeeShift" Multiplicity="1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EmployeeShift">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="ShiftId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LatePermissionDetails_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="LatePermissionDetails" Type="Self.LatePermissionDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LatePermissionDetails">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MasterBankBranch_MasterBank">
           <End Role="MasterBank" Type="Self.MasterBank" Multiplicity="0..1" />
           <End Role="MasterBankBranch" Type="Self.MasterBankBranch" Multiplicity="*" />
@@ -2314,18 +2201,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="MasterBankBranch">
-              <PropertyRef Name="BankId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MasterEmployee_MasterBank">
-          <End Role="MasterBank" Type="Self.MasterBank" Multiplicity="0..1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterBank">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
               <PropertyRef Name="BankId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2366,30 +2241,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MasterEmployee_MasterCity">
-          <End Role="MasterCity" Type="Self.MasterCity" Multiplicity="0..1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterCity">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="CityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CountryId">
-          <End Role="MasterCountry" Type="Self.MasterCountry" Multiplicity="0..1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterCountry">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="CountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MasterState_MasterCountry">
           <End Role="MasterCountry" Type="Self.MasterCountry" Multiplicity="0..1" />
           <End Role="MasterState" Type="Self.MasterState" Multiplicity="*" />
@@ -2399,114 +2250,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
             </Principal>
             <Dependent Role="MasterState">
               <PropertyRef Name="CountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MasterEmployee_MasterPosition">
-          <End Role="MasterPosition" Type="Self.MasterPosition" Multiplicity="0..1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterPosition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="PositionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MasterEmployee_MasterRace">
-          <End Role="MasterRace" Type="Self.MasterRace" Multiplicity="0..1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterRace">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="RaceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NubeId">
-          <End Role="MasterNubeBranch" Type="Self.MasterNubeBranch" Multiplicity="0..1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterNubeBranch">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="NubeBranchId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OTClaim_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="OTClaim" Type="Self.OTClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="OTClaim">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OverTimeDetails_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="OverTimeDetails" Type="Self.OverTimeDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="OverTimeDetails">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PCB_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="PCB" Type="Self.PCB" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PCB">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StateId">
-          <End Role="MasterState" Type="Self.MasterState" Multiplicity="0..1" />
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterState">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MasterEmployee">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TempAttendanceTimings_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="TempAttendanceTimings" Type="Self.TempAttendanceTiming" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TempAttendanceTimings">
-              <PropertyRef Name="EmployeeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_YearlyAllowance_MasterEmployee">
-          <End Role="MasterEmployee" Type="Self.MasterEmployee" Multiplicity="1" />
-          <End Role="YearlyAllowance" Type="Self.YearlyAllowance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="YearlyAllowance">
-              <PropertyRef Name="EmployeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2547,7 +2290,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <EntitySet Name="MasterBankBranches" EntityType="Self.MasterBankBranch" />
           <EntitySet Name="MasterCities" EntityType="Self.MasterCity" />
           <EntitySet Name="MasterCountries" EntityType="Self.MasterCountry" />
-          <EntitySet Name="MasterEmployees" EntityType="Self.MasterEmployee" />
           <EntitySet Name="MasterNubeBranches" EntityType="Self.MasterNubeBranch" />
           <EntitySet Name="MasterPositions" EntityType="Self.MasterPosition" />
           <EntitySet Name="MasterRaces" EntityType="Self.MasterRace" />
@@ -2562,33 +2304,9 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <EntitySet Name="UserTypeDetails" EntityType="Self.UserTypeDetail" />
           <EntitySet Name="UserTypeFormDetails" EntityType="Self.UserTypeFormDetail" />
           <EntitySet Name="YearlyAllowances" EntityType="Self.YearlyAllowance" />
-          <AssociationSet Name="FK_AttedanceLogs_MasterEmployee" Association="Self.FK_AttedanceLogs_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="AttedanceLogs" EntitySet="AttedanceLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AttendanceCorrection_MasterEmployee" Association="Self.FK_AttendanceCorrection_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="AttendanceCorrection" EntitySet="AttendanceCorrections" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DailyLateLogs_MasterEmployee" Association="Self.FK_DailyLateLogs_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="DailyLateLogs" EntitySet="DailyLateLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ShiftId" Association="Self.FK_ShiftId">
-            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LatePermissionDetails_MasterEmployee" Association="Self.FK_LatePermissionDetails_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="LatePermissionDetails" EntitySet="LatePermissionDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_MasterBankBranch_MasterBank" Association="Self.FK_MasterBankBranch_MasterBank">
             <End Role="MasterBank" EntitySet="MasterBanks" />
             <End Role="MasterBankBranch" EntitySet="MasterBankBranches" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MasterEmployee_MasterBank" Association="Self.FK_MasterEmployee_MasterBank">
-            <End Role="MasterBank" EntitySet="MasterBanks" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
           </AssociationSet>
           <AssociationSet Name="FK_MasterBankBranch_MasterCity" Association="Self.FK_MasterBankBranch_MasterCity">
             <End Role="MasterCity" EntitySet="MasterCities" />
@@ -2602,53 +2320,9 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
             <End Role="MasterState" EntitySet="MasterStates" />
             <End Role="MasterCity" EntitySet="MasterCities" />
           </AssociationSet>
-          <AssociationSet Name="FK_MasterEmployee_MasterCity" Association="Self.FK_MasterEmployee_MasterCity">
-            <End Role="MasterCity" EntitySet="MasterCities" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CountryId" Association="Self.FK_CountryId">
-            <End Role="MasterCountry" EntitySet="MasterCountries" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
           <AssociationSet Name="FK_MasterState_MasterCountry" Association="Self.FK_MasterState_MasterCountry">
             <End Role="MasterCountry" EntitySet="MasterCountries" />
             <End Role="MasterState" EntitySet="MasterStates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MasterEmployee_MasterPosition" Association="Self.FK_MasterEmployee_MasterPosition">
-            <End Role="MasterPosition" EntitySet="MasterPositions" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MasterEmployee_MasterRace" Association="Self.FK_MasterEmployee_MasterRace">
-            <End Role="MasterRace" EntitySet="MasterRaces" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NubeId" Association="Self.FK_NubeId">
-            <End Role="MasterNubeBranch" EntitySet="MasterNubeBranches" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OTClaim_MasterEmployee" Association="Self.FK_OTClaim_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="OTClaim" EntitySet="OTClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OverTimeDetails_MasterEmployee" Association="Self.FK_OverTimeDetails_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="OverTimeDetails" EntitySet="OverTimeDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PCB_MasterEmployee" Association="Self.FK_PCB_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="PCB" EntitySet="PCBs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StateId" Association="Self.FK_StateId">
-            <End Role="MasterState" EntitySet="MasterStates" />
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TempAttendanceTimings_MasterEmployee" Association="Self.FK_TempAttendanceTimings_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="TempAttendanceTimings" EntitySet="TempAttendanceTimings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_YearlyAllowance_MasterEmployee" Association="Self.FK_YearlyAllowance_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="YearlyAllowance" EntitySet="YearlyAllowances" />
           </AssociationSet>
           <AssociationSet Name="FK_PositionDetails_MasterPosition" Association="Self.FK_PositionDetails_MasterPosition">
             <End Role="MasterPosition" EntitySet="MasterPositions" />
@@ -2668,22 +2342,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
             <End Role="UserTypeDetail" EntitySet="UserTypeDetails" />
           </AssociationSet>
           <EntitySet Name="MonthlyDeductions" EntityType="BizSoftModel.MonthlyDeduction" />
-          <AssociationSet Name="FK_MonthlyDeductions_MasterEmployee" Association="BizSoftModel.FK_MonthlyDeductions_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="MonthlyDeduction" EntitySet="MonthlyDeductions" />
-          </AssociationSet>
           <EntitySet Name="CompanyDetails" EntityType="BizSoftModel.CompanyDetail" />
-          <EntitySet Name="MonthlySalaries" EntityType="BizSoftModel.MonthlySalary" />
-          <AssociationSet Name="FK_MonthlySalary_MasterEmployee" Association="BizSoftModel.FK_MonthlySalary_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="MonthlySalary" EntitySet="MonthlySalaries" />
-          </AssociationSet>
           <EntitySet Name="DailyAttedanceDets" EntityType="BizSoftModel.DailyAttedanceDet" />
-          <AssociationSet Name="FK_DailyAttedanceDet_MasterEmployee" Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="DailyAttedanceDet" EntitySet="DailyAttedanceDets" />
-          </AssociationSet>
-          <EntitySet Name="VIEWEPF_SOCSO" EntityType="BizSoftModel.VIEWEPF_SOCSO" />
           <EntitySet Name="VIEWLOPHOURS" EntityType="BizSoftModel.VIEWLOPHOUR" />
           <EntitySet Name="ViewManualPayments" EntityType="BizSoftModel.ViewManualPayment" />
           <EntitySet Name="ViewMasterbankbranches" EntityType="BizSoftModel.ViewMasterbankbranch" />
@@ -2695,10 +2355,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <EntitySet Name="VIEWTOTALOTs" EntityType="BizSoftModel.VIEWTOTALOT" />
           <EntitySet Name="VIEWWEEKOFFs" EntityType="BizSoftModel.VIEWWEEKOFF" />
           <EntitySet Name="LeavePermissionDetails" EntityType="BizSoftModel.LeavePermissionDetail" />
-          <AssociationSet Name="FK_LeavePermissionDetails_MasterEmployee" Association="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee">
-            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
-            <End Role="LeavePermissionDetail" EntitySet="LeavePermissionDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_LeaveType" Association="BizSoftModel.FK_LeaveType">
             <End Role="LeaveType" EntitySet="LeaveTypes" />
             <End Role="LeavePermissionDetail" EntitySet="LeavePermissionDetails" />
@@ -2709,9 +2365,95 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <EntitySet Name="VIEWFULLDAYLEAVEs" EntityType="BizSoftModel.VIEWFULLDAYLEAVE" />
           <EntitySet Name="VIEWHALFDAYLEAVEs" EntityType="BizSoftModel.VIEWHALFDAYLEAVE" />
           <EntitySet Name="VIEWMONTHLY_WORKINGDAYS" EntityType="BizSoftModel.VIEWMONTHLY_WORKINGDAYS" />
-          <EntitySet Name="VIEWPAYSLIPs" EntityType="BizSoftModel.VIEWPAYSLIP" />
           <EntitySet Name="VIEWWORKINGDAYS" EntityType="BizSoftModel.VIEWWORKINGDAY" />
+          <EntitySet Name="SIPConts" EntityType="BizSoftModel.SIPCont" />
+          <EntitySet Name="LoanPayments" EntityType="BizSoftModel.LoanPayment" />
           <EntitySet Name="ManualOTEntries" EntityType="BizSoftModel.ManualOTEntry" />
+          <EntitySet Name="MonthlySalaries" EntityType="BizSoftModel.MonthlySalary" />
+          <EntitySet Name="VIEWEPF_SOCSO" EntityType="BizSoftModel.VIEWEPF_SOCSO" />
+          <EntitySet Name="ManualUnpaidLeaves" EntityType="BizSoftModel.ManualUnpaidLeave" />
+          <EntitySet Name="VIEWPAYSLIPs" EntityType="BizSoftModel.VIEWPAYSLIP" />
+          <EntitySet Name="MasterEmployees" EntityType="BizSoftModel.MasterEmployee" />
+          <AssociationSet Name="FK_AttedanceLogs_MasterEmployee" Association="BizSoftModel.FK_AttedanceLogs_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="AttedanceLog" EntitySet="AttedanceLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttendanceCorrection_MasterEmployee" Association="BizSoftModel.FK_AttendanceCorrection_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="AttendanceCorrection" EntitySet="AttendanceCorrections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyAttedanceDet_MasterEmployee" Association="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="DailyAttedanceDet" EntitySet="DailyAttedanceDets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DailyLateLogs_MasterEmployee" Association="BizSoftModel.FK_DailyLateLogs_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="DailyLateLog" EntitySet="DailyLateLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftId" Association="BizSoftModel.FK_ShiftId">
+            <End Role="EmployeeShift" EntitySet="EmployeeShifts" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LatePermissionDetails_MasterEmployee" Association="BizSoftModel.FK_LatePermissionDetails_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="LatePermissionDetail" EntitySet="LatePermissionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LeavePermissionDetails_MasterEmployee" Association="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="LeavePermissionDetail" EntitySet="LeavePermissionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterBank" Association="BizSoftModel.FK_MasterEmployee_MasterBank">
+            <End Role="MasterBank" EntitySet="MasterBanks" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterCity" Association="BizSoftModel.FK_MasterEmployee_MasterCity">
+            <End Role="MasterCity" EntitySet="MasterCities" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CountryId" Association="BizSoftModel.FK_CountryId">
+            <End Role="MasterCountry" EntitySet="MasterCountries" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterPosition" Association="BizSoftModel.FK_MasterEmployee_MasterPosition">
+            <End Role="MasterPosition" EntitySet="MasterPositions" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasterEmployee_MasterRace" Association="BizSoftModel.FK_MasterEmployee_MasterRace">
+            <End Role="MasterRace" EntitySet="MasterRaces" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MonthlyDeductions_MasterEmployee" Association="BizSoftModel.FK_MonthlyDeductions_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="MonthlyDeduction" EntitySet="MonthlyDeductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NubeId" Association="BizSoftModel.FK_NubeId">
+            <End Role="MasterNubeBranch" EntitySet="MasterNubeBranches" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OTClaim_MasterEmployee" Association="BizSoftModel.FK_OTClaim_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="OTClaim" EntitySet="OTClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OverTimeDetails_MasterEmployee" Association="BizSoftModel.FK_OverTimeDetails_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="OverTimeDetail" EntitySet="OverTimeDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCB_MasterEmployee" Association="BizSoftModel.FK_PCB_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="PCB" EntitySet="PCBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateId" Association="BizSoftModel.FK_StateId">
+            <End Role="MasterState" EntitySet="MasterStates" />
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempAttendanceTimings_MasterEmployee" Association="BizSoftModel.FK_TempAttendanceTimings_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="TempAttendanceTiming" EntitySet="TempAttendanceTimings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YearlyAllowance_MasterEmployee" Association="BizSoftModel.FK_YearlyAllowance_MasterEmployee">
+            <End Role="MasterEmployee" EntitySet="MasterEmployees" />
+            <End Role="YearlyAllowance" EntitySet="YearlyAllowances" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserType">
           <Key>
@@ -2762,18 +2504,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" FromRole="MonthlyDeduction" ToRole="MasterEmployee" />
         </EntityType>
-        <Association Name="FK_MonthlyDeductions_MasterEmployee">
-          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="0..1" />
-          <End Type="BizSoftModel.MonthlyDeduction" Role="MonthlyDeduction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MonthlyDeduction">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CompanyDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -2799,72 +2529,9 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="UserId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsNUBE" Type="Boolean" Nullable="false" />
+          <Property Name="ATTSTARTDATE" Type="DateTime" Precision="3" />
+          <Property Name="ATTENDDATE" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="MonthlySalary">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
-          <Property Name="EmployeeNo" Type="Int32" Nullable="false" />
-          <Property Name="SalaryMonth" Type="DateTime" Precision="3" />
-          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
-          <Property Name="EPFNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SOCSONumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BasicSalary" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TotalWorkingDays" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="DaysAbsent" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="OTHours" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="OT_Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="LOP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="POB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="NEC" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SECONDMENT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SPECIAL" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="COLA" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="MOBILEALLOWANCE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="ALLOWANCE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="BONUS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="EXGRATIA" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="EPF" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="EPFUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SOCSO" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SOCSOUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="INCOMETAX" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="GMIS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="GELA" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="BIMBLOAN" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="HOMECARLOANS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="OTHERLOAN" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTALLOAN" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="OTHERS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="KOPERASI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="NUBESUBSCRIPTION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="PCB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="AllowanceInAdvanced" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="OtherDeductions" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTALEARNING" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="TOTALDEDUCTION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="NETSALARY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_MonthlySalary_MasterEmployee" FromRole="MonthlySalary" ToRole="MasterEmployee" />
-        </EntityType>
-        <Association Name="FK_MonthlySalary_MasterEmployee">
-          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
-          <End Type="BizSoftModel.MonthlySalary" Role="MonthlySalary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MonthlySalary">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="DailyAttedanceDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -2887,34 +2554,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="IsModified" Type="Boolean" Nullable="false" />
           <Property Name="LeavePermissionId" Type="Int32" />
           <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" FromRole="DailyAttedanceDet" ToRole="MasterEmployee" />
-        </EntityType>
-        <Association Name="FK_DailyAttedanceDet_MasterEmployee">
-          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
-          <End Type="BizSoftModel.DailyAttedanceDet" Role="DailyAttedanceDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DailyAttedanceDet">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="VIEWEPF_SOCSO">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-            <PropertyRef Name="EPF" />
-            <PropertyRef Name="EPFUNION" />
-            <PropertyRef Name="SOCSO" />
-            <PropertyRef Name="SOCSOUNION" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="EPF" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="EPFUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SOCSO" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SOCSOUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="VIEWLOPHOUR">
           <Key>
@@ -3068,21 +2707,9 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Period" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" FromRole="LeavePermissionDetail" ToRole="MasterEmployee" />
           <NavigationProperty Name="LeaveType" Relationship="BizSoftModel.FK_LeaveType" FromRole="LeavePermissionDetail" ToRole="LeaveType" />
+          <NavigationProperty Name="MasterEmployee" Relationship="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" FromRole="LeavePermissionDetail" ToRole="MasterEmployee" />
         </EntityType>
-        <Association Name="FK_LeavePermissionDetails_MasterEmployee">
-          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
-          <End Type="BizSoftModel.LeavePermissionDetail" Role="LeavePermissionDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MasterEmployee">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LeavePermissionDetail">
-              <PropertyRef Name="EmployeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_LeaveType">
           <End Type="BizSoftModel.LeaveType" Role="LeaveType" Multiplicity="0..1" />
           <End Type="BizSoftModel.LeavePermissionDetail" Role="LeavePermissionDetail" Multiplicity="*" />
@@ -3184,6 +2811,161 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="ATT_YEAR" Type="Int32" />
           <Property Name="WORKINGDAYS" Type="Int32" />
         </EntityType>
+        <EntityType Name="VIEWWORKINGDAY">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+            <PropertyRef Name="HALFDAYLEAVE" />
+            <PropertyRef Name="FULLDAYLEAVE" />
+            <PropertyRef Name="LOP_FOR_LATE" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="ATT_MONTH" Type="Int32" />
+          <Property Name="ATT_YEAR" Type="Int32" />
+          <Property Name="WORKINGDAYS" Type="Decimal" Precision="14" Scale="1" />
+          <Property Name="HALFDAYLEAVE" Type="Int32" Nullable="false" />
+          <Property Name="FULLDAYLEAVE" Type="Int32" Nullable="false" />
+          <Property Name="TOTALLEAVE" Type="Decimal" Precision="13" Scale="1" />
+          <Property Name="PUBLICHOLIDAY" Type="Int32" />
+          <Property Name="WEEKOFF" Type="Int32" />
+          <Property Name="BASICSALARY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL" Type="Int32" />
+          <Property Name="ONE_DAY_SALARY" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_LATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LATE_MINUTES" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TOTAL_HOURS_APPROVED" Type="Int32" />
+          <Property Name="TOTAL_LOP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ONEHOUR" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOP_FOR_LEAVE" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOP_FOR_LATE" Type="Int32" Nullable="false" />
+          <Property Name="LOSS_OF_PAY" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="SIPCont">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinRM" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaxRM" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Majikan" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Pekerja" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Caruman" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="JenisSahaja" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsCancel" Type="Boolean" Nullable="false" />
+          <Property Name="CancelOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="LoanPayment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employeeid" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LoanName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ManualOTEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="TotalOtHours" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalOtAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MonthlySalary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeNo" Type="Int32" Nullable="false" />
+          <Property Name="SalaryMonth" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
+          <Property Name="EPFNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SOCSONumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BasicSalary" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TotalWorkingDays" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="DaysAbsent" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OTHours" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OT_Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="LOP_Leave" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="LOP_Late" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="POB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NEC" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SECONDMENT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SPECIAL" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="COLA" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="MOBILEALLOWANCE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ALLOWANCE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BONUS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EXGRATIA" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EPF" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EPFUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SOCSO" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SOCSOUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="INCOMETAX" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="GMIS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="GELA" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="BIMBLOAN" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="HOMECARLOANS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OTHERLOAN" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTALLOAN" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OTHERS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="KOPERASI" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NUBESUBSCRIPTION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PCB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AllowanceInAdvanced" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="OtherDeductions" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTALEARNING" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="TOTALDEDUCTION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NETSALARY" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIPNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SIPUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="VIEWEPF_SOCSO">
+          <Key>
+            <PropertyRef Name="EMPLOYEEID" />
+            <PropertyRef Name="EPF" />
+            <PropertyRef Name="EPFUNION" />
+            <PropertyRef Name="SOCSO" />
+            <PropertyRef Name="SOCSOUNION" />
+            <PropertyRef Name="SIP" />
+            <PropertyRef Name="SIPUNION" />
+          </Key>
+          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EPF" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EPFUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SOCSO" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SOCSOUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SIP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SIPUNION" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ManualUnpaidLeave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="DaysAbsent" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LOP_Leave" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LOP_Late" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="VIEWPAYSLIP">
           <Key>
             <PropertyRef Name="EMPLOYEEID" />
@@ -3193,7 +2975,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
             <PropertyRef Name="DAYSABSENT" />
             <PropertyRef Name="OTHOURS" />
             <PropertyRef Name="OT_AMOUNT" />
-            <PropertyRef Name="LOP" />
+            <PropertyRef Name="LOP_LEAVE" />
+            <PropertyRef Name="LOP_LATE" />
             <PropertyRef Name="POB" />
             <PropertyRef Name="NEC" />
             <PropertyRef Name="SECONDMENT" />
@@ -3238,7 +3021,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="DAYSABSENT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="OTHOURS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="OT_AMOUNT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="LOP" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="LOP_LEAVE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="LOP_LATE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="POB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="NEC" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="SECONDMENT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
@@ -3272,50 +3056,345 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <Property Name="ALLOWANCEINADVANCED" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="OTHERDEDUCTIONS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
-        <EntityType Name="VIEWWORKINGDAY">
-          <Key>
-            <PropertyRef Name="EMPLOYEEID" />
-            <PropertyRef Name="HALFDAYLEAVE" />
-            <PropertyRef Name="FULLDAYLEAVE" />
-            <PropertyRef Name="LOP_FOR_LATE" />
-          </Key>
-          <Property Name="EMPLOYEEID" Type="Int32" Nullable="false" />
-          <Property Name="ATT_MONTH" Type="Int32" />
-          <Property Name="ATT_YEAR" Type="Int32" />
-          <Property Name="WORKINGDAYS" Type="Decimal" Precision="14" Scale="1" />
-          <Property Name="HALFDAYLEAVE" Type="Int32" Nullable="false" />
-          <Property Name="FULLDAYLEAVE" Type="Int32" Nullable="false" />
-          <Property Name="TOTALLEAVE" Type="Decimal" Precision="13" Scale="1" />
-          <Property Name="PUBLICHOLIDAY" Type="Int32" />
-          <Property Name="WEEKOFF" Type="Int32" />
-          <Property Name="BASICSALARY" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TOTAL" Type="Int32" />
-          <Property Name="ONE_DAY_SALARY" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TOTAL_LATE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="LATE_MINUTES" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TOTAL_HOURS_APPROVED" Type="Int32" />
-          <Property Name="TOTAL_LOP" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ONEHOUR" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="LOP_FOR_LEAVE" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="LOP_FOR_LATE" Type="Int32" Nullable="false" />
-          <Property Name="LOSS_OF_PAY" Type="Decimal" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="ManualOTEntry">
+        <EntityType Name="MasterEmployee">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OTMonth" Type="DateTime" Precision="3" />
-          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="MembershipNo" Type="Int32" />
           <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TotalNoOfHours" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NRIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroup" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="NubeBranchId" Type="Int32" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="RaceId" Type="Int32" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
+          <Property Name="IdentyMark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmergencyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GSTNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OpeningBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="POB" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NEC" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SECONDMENT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SPECIAL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="COLA" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsOverTimeEligible" Type="Boolean" />
+          <Property Name="EPFContributionRate" Type="Boolean" />
+          <Property Name="EPFContribution" Type="Boolean" />
+          <Property Name="SOCSOContribution" Type="Boolean" />
+          <Property Name="KOPERASI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NubeSubscription" Type="Boolean" />
+          <Property Name="GMIS" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BIMBLoan" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="GELA" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HomeCarLoans" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OtherLoans" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PCB" Type="Boolean" Nullable="false" />
+          <Property Name="UnpaidLeave" Type="Boolean" Nullable="false" />
+          <Property Name="IsOtherEligible" Type="Boolean" Nullable="false" />
+          <Property Name="Others" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RatioOfContribution" Type="Boolean" Nullable="false" />
+          <Property Name="EPF" Type="Boolean" Nullable="false" />
+          <Property Name="SOCSO" Type="Boolean" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsResigned" Type="Boolean" Nullable="false" />
+          <Property Name="ResignedReason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ResignedDate" Type="DateTime" Precision="3" />
+          <Property Name="EPFNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SOCSONumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="IncomeTax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NoOfCL" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="NoOfML" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="IsUserLogin" Type="Boolean" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="ShiftId" Type="Int32" Nullable="false" />
+          <Property Name="MobileAllowance" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="IsCancel" Type="Boolean" Nullable="false" />
+          <Property Name="CancelOn" Type="DateTime" Precision="3" />
+          <Property Name="SIPNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIP" Type="Boolean" />
+          <Property Name="OtherLoanTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="BalanceAmount" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="AttedanceLogs" Relationship="BizSoftModel.FK_AttedanceLogs_MasterEmployee" FromRole="MasterEmployee" ToRole="AttedanceLog" />
+          <NavigationProperty Name="AttendanceCorrections" Relationship="BizSoftModel.FK_AttendanceCorrection_MasterEmployee" FromRole="MasterEmployee" ToRole="AttendanceCorrection" />
+          <NavigationProperty Name="DailyAttedanceDets" Relationship="BizSoftModel.FK_DailyAttedanceDet_MasterEmployee" FromRole="MasterEmployee" ToRole="DailyAttedanceDet" />
+          <NavigationProperty Name="DailyLateLogs" Relationship="BizSoftModel.FK_DailyLateLogs_MasterEmployee" FromRole="MasterEmployee" ToRole="DailyLateLog" />
+          <NavigationProperty Name="EmployeeShift" Relationship="BizSoftModel.FK_ShiftId" FromRole="MasterEmployee" ToRole="EmployeeShift" />
+          <NavigationProperty Name="LatePermissionDetails" Relationship="BizSoftModel.FK_LatePermissionDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="LatePermissionDetail" />
+          <NavigationProperty Name="LeavePermissionDetails" Relationship="BizSoftModel.FK_LeavePermissionDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="LeavePermissionDetail" />
+          <NavigationProperty Name="MasterBank" Relationship="BizSoftModel.FK_MasterEmployee_MasterBank" FromRole="MasterEmployee" ToRole="MasterBank" />
+          <NavigationProperty Name="MasterCity" Relationship="BizSoftModel.FK_MasterEmployee_MasterCity" FromRole="MasterEmployee" ToRole="MasterCity" />
+          <NavigationProperty Name="MasterCountry" Relationship="BizSoftModel.FK_CountryId" FromRole="MasterEmployee" ToRole="MasterCountry" />
+          <NavigationProperty Name="MasterPosition" Relationship="BizSoftModel.FK_MasterEmployee_MasterPosition" FromRole="MasterEmployee" ToRole="MasterPosition" />
+          <NavigationProperty Name="MasterRace" Relationship="BizSoftModel.FK_MasterEmployee_MasterRace" FromRole="MasterEmployee" ToRole="MasterRace" />
+          <NavigationProperty Name="MonthlyDeductions" Relationship="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" FromRole="MasterEmployee" ToRole="MonthlyDeduction" />
+          <NavigationProperty Name="MasterNubeBranch" Relationship="BizSoftModel.FK_NubeId" FromRole="MasterEmployee" ToRole="MasterNubeBranch" />
+          <NavigationProperty Name="OTClaims" Relationship="BizSoftModel.FK_OTClaim_MasterEmployee" FromRole="MasterEmployee" ToRole="OTClaim" />
+          <NavigationProperty Name="OverTimeDetails" Relationship="BizSoftModel.FK_OverTimeDetails_MasterEmployee" FromRole="MasterEmployee" ToRole="OverTimeDetail" />
+          <NavigationProperty Name="PCBs" Relationship="BizSoftModel.FK_PCB_MasterEmployee" FromRole="MasterEmployee" ToRole="PCB" />
+          <NavigationProperty Name="MasterState" Relationship="BizSoftModel.FK_StateId" FromRole="MasterEmployee" ToRole="MasterState" />
+          <NavigationProperty Name="TempAttendanceTimings" Relationship="BizSoftModel.FK_TempAttendanceTimings_MasterEmployee" FromRole="MasterEmployee" ToRole="TempAttendanceTiming" />
+          <NavigationProperty Name="YearlyAllowances" Relationship="BizSoftModel.FK_YearlyAllowance_MasterEmployee" FromRole="MasterEmployee" ToRole="YearlyAllowance" />
         </EntityType>
+        <Association Name="FK_AttedanceLogs_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.AttedanceLog" Role="AttedanceLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttedanceLog">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AttendanceCorrection_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.AttendanceCorrection" Role="AttendanceCorrection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AttendanceCorrection">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyAttedanceDet_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.DailyAttedanceDet" Role="DailyAttedanceDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyAttedanceDet">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DailyLateLogs_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.DailyLateLog" Role="DailyLateLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DailyLateLog">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftId">
+          <End Type="BizSoftModel.EmployeeShift" Role="EmployeeShift" Multiplicity="1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeShift">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LatePermissionDetails_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.LatePermissionDetail" Role="LatePermissionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LatePermissionDetail">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LeavePermissionDetails_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.LeavePermissionDetail" Role="LeavePermissionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LeavePermissionDetail">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterBank">
+          <End Type="BizSoftModel.MasterBank" Role="MasterBank" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterBank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterCity">
+          <End Type="BizSoftModel.MasterCity" Role="MasterCity" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CountryId">
+          <End Type="BizSoftModel.MasterCountry" Role="MasterCountry" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterCountry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterPosition">
+          <End Type="BizSoftModel.MasterPosition" Role="MasterPosition" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterPosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasterEmployee_MasterRace">
+          <End Type="BizSoftModel.MasterRace" Role="MasterRace" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterRace">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MonthlyDeductions_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MonthlyDeduction" Role="MonthlyDeduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MonthlyDeduction">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NubeId">
+          <End Type="BizSoftModel.MasterNubeBranch" Role="MasterNubeBranch" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterNubeBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="NubeBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OTClaim_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.OTClaim" Role="OTClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OTClaim">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OverTimeDetails_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.OverTimeDetail" Role="OverTimeDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OverTimeDetail">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCB_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.PCB" Role="PCB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PCB">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateId">
+          <End Type="BizSoftModel.MasterState" Role="MasterState" Multiplicity="0..1" />
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasterEmployee">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempAttendanceTimings_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.TempAttendanceTiming" Role="TempAttendanceTiming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TempAttendanceTiming">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YearlyAllowance_MasterEmployee">
+          <End Type="BizSoftModel.MasterEmployee" Role="MasterEmployee" Multiplicity="1" />
+          <End Type="BizSoftModel.YearlyAllowance" Role="YearlyAllowance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterEmployee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YearlyAllowance">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3493,81 +3572,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
-                <ScalarProperty Name="CancelOn" ColumnName="CancelOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MasterEmployees">
-            <EntityTypeMapping TypeName="BizSoftModel.MasterEmployee">
-              <MappingFragment StoreEntitySet="MasterEmployee">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="MembershipNo" ColumnName="MembershipNo" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
-                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="NubeBranchId" ColumnName="NubeBranchId" />
-                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
-                <ScalarProperty Name="RaceId" ColumnName="RaceId" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
-                <ScalarProperty Name="IdentyMark" ColumnName="IdentyMark" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="Address3" ColumnName="Address3" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
-                <ScalarProperty Name="EmergencyNo" ColumnName="EmergencyNo" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
-                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
-                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
-                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
-                <ScalarProperty Name="POB" ColumnName="POB" />
-                <ScalarProperty Name="NEC" ColumnName="NEC" />
-                <ScalarProperty Name="SECONDMENT" ColumnName="SECONDMENT" />
-                <ScalarProperty Name="SPECIAL" ColumnName="SPECIAL" />
-                <ScalarProperty Name="COLA" ColumnName="COLA" />
-                <ScalarProperty Name="IsOverTimeEligible" ColumnName="IsOverTimeEligible" />
-                <ScalarProperty Name="EPFContributionRate" ColumnName="EPFContributionRate" />
-                <ScalarProperty Name="EPFContribution" ColumnName="EPFContribution" />
-                <ScalarProperty Name="SOCSOContribution" ColumnName="SOCSOContribution" />
-                <ScalarProperty Name="KOPERASI" ColumnName="KOPERASI" />
-                <ScalarProperty Name="NubeSubscription" ColumnName="NubeSubscription" />
-                <ScalarProperty Name="GMIS" ColumnName="GMIS" />
-                <ScalarProperty Name="BIMBLoan" ColumnName="BIMBLoan" />
-                <ScalarProperty Name="GELA" ColumnName="GELA" />
-                <ScalarProperty Name="HomeCarLoans" ColumnName="HomeCarLoans" />
-                <ScalarProperty Name="OtherLoans" ColumnName="OtherLoans" />
-                <ScalarProperty Name="PCB" ColumnName="PCB" />
-                <ScalarProperty Name="UnpaidLeave" ColumnName="UnpaidLeave" />
-                <ScalarProperty Name="IsOtherEligible" ColumnName="IsOtherEligible" />
-                <ScalarProperty Name="Others" ColumnName="Others" />
-                <ScalarProperty Name="RatioOfContribution" ColumnName="RatioOfContribution" />
-                <ScalarProperty Name="EPF" ColumnName="EPF" />
-                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="IsResigned" ColumnName="IsResigned" />
-                <ScalarProperty Name="ResignedReason" ColumnName="ResignedReason" />
-                <ScalarProperty Name="ResignedDate" ColumnName="ResignedDate" />
-                <ScalarProperty Name="EPFNumber" ColumnName="EPFNumber" />
-                <ScalarProperty Name="SOCSONumber" ColumnName="SOCSONumber" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="IncomeTax" ColumnName="IncomeTax" />
-                <ScalarProperty Name="NoOfCL" ColumnName="NoOfCL" />
-                <ScalarProperty Name="NoOfML" ColumnName="NoOfML" />
-                <ScalarProperty Name="IsUserLogin" ColumnName="IsUserLogin" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
-                <ScalarProperty Name="MobileAllowance" ColumnName="MobileAllowance" />
                 <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
                 <ScalarProperty Name="CancelOn" ColumnName="CancelOn" />
               </MappingFragment>
@@ -3788,6 +3792,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
           <EntitySetMapping Name="CompanyDetails">
             <EntityTypeMapping TypeName="BizSoftModel.CompanyDetail">
               <MappingFragment StoreEntitySet="CompanyDetails">
+                <ScalarProperty Name="ATTENDDATE" ColumnName="ATTENDDATE" />
+                <ScalarProperty Name="ATTSTARTDATE" ColumnName="ATTSTARTDATE" />
                 <ScalarProperty Name="IsNUBE" ColumnName="IsNUBE" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -3812,59 +3818,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MonthlySalaries">
-            <EntityTypeMapping TypeName="BizSoftModel.MonthlySalary">
-              <MappingFragment StoreEntitySet="MonthlySalary">
-                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
-                <ScalarProperty Name="NETSALARY" ColumnName="NETSALARY" />
-                <ScalarProperty Name="TOTALDEDUCTION" ColumnName="TOTALDEDUCTION" />
-                <ScalarProperty Name="TOTALEARNING" ColumnName="TOTALEARNING" />
-                <ScalarProperty Name="OtherDeductions" ColumnName="OtherDeductions" />
-                <ScalarProperty Name="AllowanceInAdvanced" ColumnName="AllowanceInAdvanced" />
-                <ScalarProperty Name="PCB" ColumnName="PCB" />
-                <ScalarProperty Name="NUBESUBSCRIPTION" ColumnName="NUBESUBSCRIPTION" />
-                <ScalarProperty Name="KOPERASI" ColumnName="KOPERASI" />
-                <ScalarProperty Name="OTHERS" ColumnName="OTHERS" />
-                <ScalarProperty Name="TOTALLOAN" ColumnName="TOTALLOAN" />
-                <ScalarProperty Name="OTHERLOAN" ColumnName="OTHERLOAN" />
-                <ScalarProperty Name="HOMECARLOANS" ColumnName="HOMECARLOANS" />
-                <ScalarProperty Name="BIMBLOAN" ColumnName="BIMBLOAN" />
-                <ScalarProperty Name="GELA" ColumnName="GELA" />
-                <ScalarProperty Name="GMIS" ColumnName="GMIS" />
-                <ScalarProperty Name="INCOMETAX" ColumnName="INCOMETAX" />
-                <ScalarProperty Name="SOCSOUNION" ColumnName="SOCSOUNION" />
-                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
-                <ScalarProperty Name="EPFUNION" ColumnName="EPFUNION" />
-                <ScalarProperty Name="EPF" ColumnName="EPF" />
-                <ScalarProperty Name="EXGRATIA" ColumnName="EXGRATIA" />
-                <ScalarProperty Name="BONUS" ColumnName="BONUS" />
-                <ScalarProperty Name="ALLOWANCE" ColumnName="ALLOWANCE" />
-                <ScalarProperty Name="MOBILEALLOWANCE" ColumnName="MOBILEALLOWANCE" />
-                <ScalarProperty Name="COLA" ColumnName="COLA" />
-                <ScalarProperty Name="SPECIAL" ColumnName="SPECIAL" />
-                <ScalarProperty Name="SECONDMENT" ColumnName="SECONDMENT" />
-                <ScalarProperty Name="NEC" ColumnName="NEC" />
-                <ScalarProperty Name="POB" ColumnName="POB" />
-                <ScalarProperty Name="LOP" ColumnName="LOP" />
-                <ScalarProperty Name="OT_Amount" ColumnName="OT_Amount" />
-                <ScalarProperty Name="OTHours" ColumnName="OTHours" />
-                <ScalarProperty Name="DaysAbsent" ColumnName="DaysAbsent" />
-                <ScalarProperty Name="TotalWorkingDays" ColumnName="TotalWorkingDays" />
-                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
-                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
-                <ScalarProperty Name="SOCSONumber" ColumnName="SOCSONumber" />
-                <ScalarProperty Name="EPFNumber" ColumnName="EPFNumber" />
-                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="SalaryMonth" ColumnName="SalaryMonth" />
-                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DailyAttedanceDets">
             <EntityTypeMapping TypeName="BizSoftModel.DailyAttedanceDet">
               <MappingFragment StoreEntitySet="DailyAttedanceDet">
@@ -3885,19 +3838,6 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
                 <ScalarProperty Name="AttDate" ColumnName="AttDate" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VIEWEPF_SOCSO">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWEPF_SOCSO">
-              <MappingFragment StoreEntitySet="VIEWEPF_SOCSO">
-                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
-                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="SOCSOUNION" ColumnName="SOCSOUNION" />
-                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
-                <ScalarProperty Name="EPFUNION" ColumnName="EPFUNION" />
-                <ScalarProperty Name="EPF" ColumnName="EPF" />
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4145,6 +4085,159 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VIEWWORKINGDAYS">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWWORKINGDAY">
+              <MappingFragment StoreEntitySet="VIEWWORKINGDAYS">
+                <ScalarProperty Name="LOSS_OF_PAY" ColumnName="LOSS_OF_PAY" />
+                <ScalarProperty Name="LOP_FOR_LATE" ColumnName="LOP_FOR_LATE" />
+                <ScalarProperty Name="LOP_FOR_LEAVE" ColumnName="LOP_FOR_LEAVE" />
+                <ScalarProperty Name="ONEHOUR" ColumnName="ONEHOUR" />
+                <ScalarProperty Name="TOTAL_LOP" ColumnName="TOTAL_LOP" />
+                <ScalarProperty Name="TOTAL_HOURS_APPROVED" ColumnName="TOTAL_HOURS_APPROVED" />
+                <ScalarProperty Name="LATE_MINUTES" ColumnName="LATE_MINUTES" />
+                <ScalarProperty Name="TOTAL_LATE" ColumnName="TOTAL_LATE" />
+                <ScalarProperty Name="ONE_DAY_SALARY" ColumnName="ONE_DAY_SALARY" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="BASICSALARY" ColumnName="BASICSALARY" />
+                <ScalarProperty Name="WEEKOFF" ColumnName="WEEKOFF" />
+                <ScalarProperty Name="PUBLICHOLIDAY" ColumnName="PUBLICHOLIDAY" />
+                <ScalarProperty Name="TOTALLEAVE" ColumnName="TOTALLEAVE" />
+                <ScalarProperty Name="FULLDAYLEAVE" ColumnName="FULLDAYLEAVE" />
+                <ScalarProperty Name="HALFDAYLEAVE" ColumnName="HALFDAYLEAVE" />
+                <ScalarProperty Name="WORKINGDAYS" ColumnName="WORKINGDAYS" />
+                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
+                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIPConts">
+            <EntityTypeMapping TypeName="BizSoftModel.SIPCont">
+              <MappingFragment StoreEntitySet="SIPCont">
+                <ScalarProperty Name="CancelOn" ColumnName="CancelOn" />
+                <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+                <ScalarProperty Name="JenisSahaja" ColumnName="JenisSahaja" />
+                <ScalarProperty Name="Caruman" ColumnName="Caruman" />
+                <ScalarProperty Name="Pekerja" ColumnName="Pekerja" />
+                <ScalarProperty Name="Majikan" ColumnName="Majikan" />
+                <ScalarProperty Name="MaxRM" ColumnName="MaxRM" />
+                <ScalarProperty Name="MinRM" ColumnName="MinRM" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanPayments">
+            <EntityTypeMapping TypeName="BizSoftModel.LoanPayment">
+              <MappingFragment StoreEntitySet="LoanPayment">
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LoanName" ColumnName="LoanName" />
+                <ScalarProperty Name="Employeeid" ColumnName="Employeeid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManualOTEntries">
+            <EntityTypeMapping TypeName="BizSoftModel.ManualOTEntry">
+              <MappingFragment StoreEntitySet="ManualOTEntry">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="TotalOtAmount" ColumnName="TotalOtAmount" />
+                <ScalarProperty Name="TotalOtHours" ColumnName="TotalOtHours" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonthlySalaries">
+            <EntityTypeMapping TypeName="BizSoftModel.MonthlySalary">
+              <MappingFragment StoreEntitySet="MonthlySalary">
+                <ScalarProperty Name="SIPUNION" ColumnName="SIPUNION" />
+                <ScalarProperty Name="SIP" ColumnName="SIP" />
+                <ScalarProperty Name="SIPNumber" ColumnName="SIPNumber" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="NETSALARY" ColumnName="NETSALARY" />
+                <ScalarProperty Name="TOTALDEDUCTION" ColumnName="TOTALDEDUCTION" />
+                <ScalarProperty Name="TOTALEARNING" ColumnName="TOTALEARNING" />
+                <ScalarProperty Name="OtherDeductions" ColumnName="OtherDeductions" />
+                <ScalarProperty Name="AllowanceInAdvanced" ColumnName="AllowanceInAdvanced" />
+                <ScalarProperty Name="PCB" ColumnName="PCB" />
+                <ScalarProperty Name="NUBESUBSCRIPTION" ColumnName="NUBESUBSCRIPTION" />
+                <ScalarProperty Name="KOPERASI" ColumnName="KOPERASI" />
+                <ScalarProperty Name="OTHERS" ColumnName="OTHERS" />
+                <ScalarProperty Name="TOTALLOAN" ColumnName="TOTALLOAN" />
+                <ScalarProperty Name="OTHERLOAN" ColumnName="OTHERLOAN" />
+                <ScalarProperty Name="HOMECARLOANS" ColumnName="HOMECARLOANS" />
+                <ScalarProperty Name="BIMBLOAN" ColumnName="BIMBLOAN" />
+                <ScalarProperty Name="GELA" ColumnName="GELA" />
+                <ScalarProperty Name="GMIS" ColumnName="GMIS" />
+                <ScalarProperty Name="INCOMETAX" ColumnName="INCOMETAX" />
+                <ScalarProperty Name="SOCSOUNION" ColumnName="SOCSOUNION" />
+                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
+                <ScalarProperty Name="EPFUNION" ColumnName="EPFUNION" />
+                <ScalarProperty Name="EPF" ColumnName="EPF" />
+                <ScalarProperty Name="EXGRATIA" ColumnName="EXGRATIA" />
+                <ScalarProperty Name="BONUS" ColumnName="BONUS" />
+                <ScalarProperty Name="ALLOWANCE" ColumnName="ALLOWANCE" />
+                <ScalarProperty Name="MOBILEALLOWANCE" ColumnName="MOBILEALLOWANCE" />
+                <ScalarProperty Name="COLA" ColumnName="COLA" />
+                <ScalarProperty Name="SPECIAL" ColumnName="SPECIAL" />
+                <ScalarProperty Name="SECONDMENT" ColumnName="SECONDMENT" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="POB" ColumnName="POB" />
+                <ScalarProperty Name="LOP_Late" ColumnName="LOP_Late" />
+                <ScalarProperty Name="LOP_Leave" ColumnName="LOP_Leave" />
+                <ScalarProperty Name="OT_Amount" ColumnName="OT_Amount" />
+                <ScalarProperty Name="OTHours" ColumnName="OTHours" />
+                <ScalarProperty Name="DaysAbsent" ColumnName="DaysAbsent" />
+                <ScalarProperty Name="TotalWorkingDays" ColumnName="TotalWorkingDays" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
+                <ScalarProperty Name="SOCSONumber" ColumnName="SOCSONumber" />
+                <ScalarProperty Name="EPFNumber" ColumnName="EPFNumber" />
+                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="SalaryMonth" ColumnName="SalaryMonth" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VIEWEPF_SOCSO">
+            <EntityTypeMapping TypeName="BizSoftModel.VIEWEPF_SOCSO">
+              <MappingFragment StoreEntitySet="VIEWEPF_SOCSO">
+                <ScalarProperty Name="SIPUNION" ColumnName="SIPUNION" />
+                <ScalarProperty Name="SIP" ColumnName="SIP" />
+                <ScalarProperty Name="SOCSOUNION" ColumnName="SOCSOUNION" />
+                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
+                <ScalarProperty Name="EPFUNION" ColumnName="EPFUNION" />
+                <ScalarProperty Name="EPF" ColumnName="EPF" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManualUnpaidLeaves">
+            <EntityTypeMapping TypeName="BizSoftModel.ManualUnpaidLeave">
+              <MappingFragment StoreEntitySet="ManualUnpaidLeave">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="LOP_Late" ColumnName="LOP_Late" />
+                <ScalarProperty Name="LOP_Leave" ColumnName="LOP_Leave" />
+                <ScalarProperty Name="DaysAbsent" ColumnName="DaysAbsent" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="VIEWPAYSLIPs">
             <EntityTypeMapping TypeName="BizSoftModel.VIEWPAYSLIP">
               <MappingFragment StoreEntitySet="VIEWPAYSLIP">
@@ -4180,7 +4273,8 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
                 <ScalarProperty Name="SECONDMENT" ColumnName="SECONDMENT" />
                 <ScalarProperty Name="NEC" ColumnName="NEC" />
                 <ScalarProperty Name="POB" ColumnName="POB" />
-                <ScalarProperty Name="LOP" ColumnName="LOP" />
+                <ScalarProperty Name="LOP_LATE" ColumnName="LOP_LATE" />
+                <ScalarProperty Name="LOP_LEAVE" ColumnName="LOP_LEAVE" />
                 <ScalarProperty Name="OT_AMOUNT" ColumnName="OT_AMOUNT" />
                 <ScalarProperty Name="OTHOURS" ColumnName="OTHOURS" />
                 <ScalarProperty Name="DAYSABSENT" ColumnName="DAYSABSENT" />
@@ -4198,45 +4292,82 @@ warning 6002: The table/view 'RipuPayroll.dbo.VIEWWORKINGDAYS' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="VIEWWORKINGDAYS">
-            <EntityTypeMapping TypeName="BizSoftModel.VIEWWORKINGDAY">
-              <MappingFragment StoreEntitySet="VIEWWORKINGDAYS">
-                <ScalarProperty Name="LOSS_OF_PAY" ColumnName="LOSS_OF_PAY" />
-                <ScalarProperty Name="LOP_FOR_LATE" ColumnName="LOP_FOR_LATE" />
-                <ScalarProperty Name="LOP_FOR_LEAVE" ColumnName="LOP_FOR_LEAVE" />
-                <ScalarProperty Name="ONEHOUR" ColumnName="ONEHOUR" />
-                <ScalarProperty Name="TOTAL_LOP" ColumnName="TOTAL_LOP" />
-                <ScalarProperty Name="TOTAL_HOURS_APPROVED" ColumnName="TOTAL_HOURS_APPROVED" />
-                <ScalarProperty Name="LATE_MINUTES" ColumnName="LATE_MINUTES" />
-                <ScalarProperty Name="TOTAL_LATE" ColumnName="TOTAL_LATE" />
-                <ScalarProperty Name="ONE_DAY_SALARY" ColumnName="ONE_DAY_SALARY" />
-                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
-                <ScalarProperty Name="BASICSALARY" ColumnName="BASICSALARY" />
-                <ScalarProperty Name="WEEKOFF" ColumnName="WEEKOFF" />
-                <ScalarProperty Name="PUBLICHOLIDAY" ColumnName="PUBLICHOLIDAY" />
-                <ScalarProperty Name="TOTALLEAVE" ColumnName="TOTALLEAVE" />
-                <ScalarProperty Name="FULLDAYLEAVE" ColumnName="FULLDAYLEAVE" />
-                <ScalarProperty Name="HALFDAYLEAVE" ColumnName="HALFDAYLEAVE" />
-                <ScalarProperty Name="WORKINGDAYS" ColumnName="WORKINGDAYS" />
-                <ScalarProperty Name="ATT_YEAR" ColumnName="ATT_YEAR" />
-                <ScalarProperty Name="ATT_MONTH" ColumnName="ATT_MONTH" />
-                <ScalarProperty Name="EMPLOYEEID" ColumnName="EMPLOYEEID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ManualOTEntries">
-            <EntityTypeMapping TypeName="BizSoftModel.ManualOTEntry">
-              <MappingFragment StoreEntitySet="ManualOTEntry">
+          <EntitySetMapping Name="MasterEmployees">
+            <EntityTypeMapping TypeName="BizSoftModel.MasterEmployee">
+              <MappingFragment StoreEntitySet="MasterEmployee">
+                <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="OtherLoanTotal" ColumnName="OtherLoanTotal" />
+                <ScalarProperty Name="SIP" ColumnName="SIP" />
+                <ScalarProperty Name="SIPNumber" ColumnName="SIPNumber" />
+                <ScalarProperty Name="CancelOn" ColumnName="CancelOn" />
                 <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="TotalNoOfHours" ColumnName="TotalNoOfHours" />
+                <ScalarProperty Name="MobileAllowance" ColumnName="MobileAllowance" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsUserLogin" ColumnName="IsUserLogin" />
+                <ScalarProperty Name="NoOfML" ColumnName="NoOfML" />
+                <ScalarProperty Name="NoOfCL" ColumnName="NoOfCL" />
+                <ScalarProperty Name="IncomeTax" ColumnName="IncomeTax" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="SOCSONumber" ColumnName="SOCSONumber" />
+                <ScalarProperty Name="EPFNumber" ColumnName="EPFNumber" />
+                <ScalarProperty Name="ResignedDate" ColumnName="ResignedDate" />
+                <ScalarProperty Name="ResignedReason" ColumnName="ResignedReason" />
+                <ScalarProperty Name="IsResigned" ColumnName="IsResigned" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="SOCSO" ColumnName="SOCSO" />
+                <ScalarProperty Name="EPF" ColumnName="EPF" />
+                <ScalarProperty Name="RatioOfContribution" ColumnName="RatioOfContribution" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="IsOtherEligible" ColumnName="IsOtherEligible" />
+                <ScalarProperty Name="UnpaidLeave" ColumnName="UnpaidLeave" />
+                <ScalarProperty Name="PCB" ColumnName="PCB" />
+                <ScalarProperty Name="OtherLoans" ColumnName="OtherLoans" />
+                <ScalarProperty Name="HomeCarLoans" ColumnName="HomeCarLoans" />
+                <ScalarProperty Name="GELA" ColumnName="GELA" />
+                <ScalarProperty Name="BIMBLoan" ColumnName="BIMBLoan" />
+                <ScalarProperty Name="GMIS" ColumnName="GMIS" />
+                <ScalarProperty Name="NubeSubscription" ColumnName="NubeSubscription" />
+                <ScalarProperty Name="KOPERASI" ColumnName="KOPERASI" />
+                <ScalarProperty Name="SOCSOContribution" ColumnName="SOCSOContribution" />
+                <ScalarProperty Name="EPFContribution" ColumnName="EPFContribution" />
+                <ScalarProperty Name="EPFContributionRate" ColumnName="EPFContributionRate" />
+                <ScalarProperty Name="IsOverTimeEligible" ColumnName="IsOverTimeEligible" />
+                <ScalarProperty Name="COLA" ColumnName="COLA" />
+                <ScalarProperty Name="SPECIAL" ColumnName="SPECIAL" />
+                <ScalarProperty Name="SECONDMENT" ColumnName="SECONDMENT" />
+                <ScalarProperty Name="NEC" ColumnName="NEC" />
+                <ScalarProperty Name="POB" ColumnName="POB" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="GSTNo" ColumnName="GSTNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmergencyNo" ColumnName="EmergencyNo" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="IdentyMark" ColumnName="IdentyMark" />
+                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="NubeBranchId" ColumnName="NubeBranchId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+                <ScalarProperty Name="NRIC" ColumnName="NRIC" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
                 <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
-                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
-                <ScalarProperty Name="OTMonth" ColumnName="OTMonth" />
+                <ScalarProperty Name="MembershipNo" ColumnName="MembershipNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

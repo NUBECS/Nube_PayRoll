@@ -37,7 +37,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<MasterBankBranch> MasterBankBranches { get; set; }
         public virtual DbSet<MasterCity> MasterCities { get; set; }
         public virtual DbSet<MasterCountry> MasterCountries { get; set; }
-        public virtual DbSet<MasterEmployee> MasterEmployees { get; set; }
         public virtual DbSet<MasterNubeBranch> MasterNubeBranches { get; set; }
         public virtual DbSet<MasterPosition> MasterPositions { get; set; }
         public virtual DbSet<MasterRace> MasterRaces { get; set; }
@@ -55,9 +54,7 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<MonthlyDeduction> MonthlyDeductions { get; set; }
         public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
-        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
         public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
-        public virtual DbSet<VIEWEPF_SOCSO> VIEWEPF_SOCSO { get; set; }
         public virtual DbSet<VIEWLOPHOUR> VIEWLOPHOURS { get; set; }
         public virtual DbSet<ViewManualPayment> ViewManualPayments { get; set; }
         public virtual DbSet<ViewMasterbankbranch> ViewMasterbankbranches { get; set; }
@@ -75,8 +72,14 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<VIEWFULLDAYLEAVE> VIEWFULLDAYLEAVEs { get; set; }
         public virtual DbSet<VIEWHALFDAYLEAVE> VIEWHALFDAYLEAVEs { get; set; }
         public virtual DbSet<VIEWMONTHLY_WORKINGDAYS> VIEWMONTHLY_WORKINGDAYS { get; set; }
-        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
         public virtual DbSet<VIEWWORKINGDAY> VIEWWORKINGDAYS { get; set; }
+        public virtual DbSet<SIPCont> SIPConts { get; set; }
+        public virtual DbSet<LoanPayment> LoanPayments { get; set; }
         public virtual DbSet<ManualOTEntry> ManualOTEntries { get; set; }
+        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
+        public virtual DbSet<VIEWEPF_SOCSO> VIEWEPF_SOCSO { get; set; }
+        public virtual DbSet<ManualUnpaidLeave> ManualUnpaidLeaves { get; set; }
+        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
+        public virtual DbSet<MasterEmployee> MasterEmployees { get; set; }
     }
 }

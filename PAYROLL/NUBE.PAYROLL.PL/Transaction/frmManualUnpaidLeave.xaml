@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="NUBE.PAYROLL.PL.Transaction.frmManuallyAttedanceEntry"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:NUBE.PAYROLL.PL.Transaction"
-              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-             mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="1200" Background="White" Loaded="UserControl_Loaded" Name="ManualAttendance">
+﻿<UserControl x:Class="NUBE.PAYROLL.PL.Transaction.frmManualUnpaidLeave"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NUBE.PAYROLL.PL.Transaction"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        mc:Ignorable="d" 
+        d:DesignHeight="650" d:DesignWidth="1200" Background="White" Loaded="ManualAttendance_Loaded"  Name="ManualAttendance">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="5" Margin="0,0,0,-15" />
         <Grid Grid.Row="0" Background="{DynamicResource bgFormHead}">
-            <TextBlock Foreground="{DynamicResource fgFormHead}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{DynamicResource ftfFormHead}" FontSize="{DynamicResource fnsFormHead}"><Run Text="Manual OT Entry"/></TextBlock>
+            <TextBlock Foreground="{DynamicResource fgFormHead}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="{DynamicResource ftfFormHead}" FontSize="{DynamicResource fnsFormHead}"><Run Text="LOP Correction Entry"/></TextBlock>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" >
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -52,12 +52,12 @@
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="100" Binding="{Binding MEMBERSHIPNO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Employee No" FontWeight="Bold" Width="100" Binding="{Binding EMPLOYEENO, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Employee Name" FontWeight="Bold" Width="400" Binding="{Binding EMPLOYEENAME, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="Total Working Days" FontWeight="Bold" Width="140" Binding="{Binding WORKINGDAYS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="Total OT" FontWeight="Bold" Width="120" Binding="{Binding TOTAL_OT, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="OT Amount Per Hour" FontWeight="Bold" Width="150" Binding="{Binding OT_PER_HOUR, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="Total OT Amount" FontWeight="Bold" Width="150" Binding="{Binding OT_AMOUNT, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Working Days" FontWeight="Bold" Width="140" Binding="{Binding TOTALWORKINGDAYS, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Leave Days" FontWeight="Bold" Width="140" Binding="{Binding DAYSABSENT, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="LOP Leave" FontWeight="Bold" Width="150" Binding="{Binding LOP_LEAVE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="LOP Late" FontWeight="Bold" Width="150" Binding="{Binding LOP_LATE, Mode=TwoWay}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />                        
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
@@ -68,8 +68,9 @@
                     <TextBox x:Name="txtEmployeeNo" IsReadOnly="True" Width="100" materialDesign:HintAssist.Hint="Employee No" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
                     <TextBox x:Name="txtEmployeeName" IsReadOnly="True" Margin="10,0,0,0" Width="200" materialDesign:HintAssist.Hint="Employee Name" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
                     <!--<DatePicker x:Name="dtpLeaveEndDate" Margin="10,10,0,0" materialDesign:HintAssist.Hint="Leave End Date"  Style="{DynamicResource MaterialDesignFloatingHintDatePicker}" Width="120" FontWeight="Bold" SelectedDateChanged="dtpLeaveEndDate_SelectedDateChanged"  />-->
-                    <TextBox x:Name="txtTotalOTHours" IsReadOnly="False" Margin="10,0,0,0" Width="100"  materialDesign:HintAssist.Hint="Total OT Hours" KeyDown="txtTotalOTHours_KeyDown" KeyUp="txtTotalOTHours_KeyUp" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"  PreviewTextInput="NumericOnly" TextChanged="txtTotalOTHours_TextChanged" PreviewKeyUp="txtTotalOTHours_PreviewKeyUp"/>
-                    <TextBox x:Name="txtTotalAmount" IsReadOnly="False" Margin="10,0,0,0" Width="100" materialDesign:HintAssist.Hint="Total OT Amount" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"  PreviewTextInput="NumericOnly"/>
+                    <TextBox x:Name="txtTotalDaysAbsent" IsReadOnly="False" Margin="10,0,0,0" Width="110"  materialDesign:HintAssist.Hint="Leave Days" KeyDown="txtTotalOTHours_KeyDown" KeyUp="txtTotalOTHours_KeyUp" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"  PreviewTextInput="NumericOnly" TextChanged="txtTotalOTHours_TextChanged"/>
+                    <TextBox x:Name="txtTotalAmount" IsReadOnly="False" Margin="10,0,0,0" Width="100" materialDesign:HintAssist.Hint="LOP Leave" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"  PreviewTextInput="NumericOnly"/>
+                    <TextBox x:Name="txtLOPLate" IsReadOnly="False" Margin="10,0,0,0" Width="100" materialDesign:HintAssist.Hint="LOP Late" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"  PreviewTextInput="NumericOnly"/>
                     <!--<ComboBox x:Name="cmbLeaveType" Margin="10,10,0,0" IsReadOnly="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" FontWeight="Bold" FontSize="14" Width="160">
                         <materialDesign:HintAssist.Hint>
                             <StackPanel Orientation="Horizontal">
@@ -98,11 +99,11 @@
                 </StackPanel>
                 <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                    <TextBox x:Name="txtRemarks" Margin="20,0,0,0" Width="200" materialDesign:HintAssist.Hint="Remarks" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
+                    <TextBox x:Name="txtRemarks" Visibility="Collapsed" Margin="20,0,0,0" Width="200" materialDesign:HintAssist.Hint="Remarks" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
                     <Button x:Name="btnSave" Margin="20,10,10,10" Content="Save" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="35" Click="btnSave_Click"/>
                     <!--<Button x:Name="btnCancel" Margin="20,10,10,10" Content="Cancel Permission" Foreground="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Click="btnCancel_Click"/>-->
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </Grid> 
     </Grid>
 </UserControl>

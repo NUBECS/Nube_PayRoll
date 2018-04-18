@@ -375,30 +375,32 @@ namespace NUBE.PAYROLL.PL.Transaction
                 }
                 else
                 {
-                    bIsValid = false;
-                    Validate();
-                    if (bIsValid == false)
+                    //bIsValid = false;
+                    //Validate();
+                    //if (bIsValid == false)
+                    //{
+                    var lp = (from x in db.LeavePermissionDetails where x.Id == iLeavePermissionId select x).FirstOrDefault();
+                    if (lp != null)
                     {
-                        var lp = (from x in db.LeavePermissionDetails where x.Id == iLeavePermissionId select x).FirstOrDefault();
-                        if (lp != null)
-                        {
-                            lp.IsApproved = false;
-                            lp.NoOfDaysApproved = 0;
-                            lp.Status = "Rejected";
-                            db.SaveChanges();
-                        }
-
-                        for (DateTime date = Convert.ToDateTime(dtpLeaveStartDate.SelectedDate); date <= Convert.ToDateTime(dtpLeaveEndDate.SelectedDate); date = date.AddDays(1))
-                        {
-                            var da = (from x in db.DailyAttedanceDets where x.EmployeeId == iEmployeeId && (x.IsFullDayLeave == true || x.IsHalfDayLeave == true) && x.IsWeekOff == false && x.IsPublicHoliday == false && x.AttDate == date select x).FirstOrDefault();
-                            if (da != null)
-                            {
-                                da.WithPermission = false;
-                            }
-                        }
+                        lp.IsApproved = false;
+                        lp.NoOfDaysApproved = 0;
+                        lp.Status = "Rejected";
                         db.SaveChanges();
-                        QueryExec();
                     }
+
+
+                    for (DateTime date = Convert.ToDateTime(dtpLeaveStartDate.SelectedDate); date <= Convert.ToDateTime(dtpLeaveEndDate.SelectedDate); date = date.AddDays(1))
+                    {
+                        date = date.Date;
+                        var da = (from x in db.DailyAttedanceDets where x.EmployeeId == iEmployeeId &&  (x.IsHalfDayLeave == true || x.IsFullDayLeave == true) && x.IsWeekOff==false &&  x.IsPublicHoliday == false && x.AttDate == date select x).FirstOrDefault();
+                        if (da != null)
+                        {
+                            da.WithPermission = false;
+                        }
+                           
+                    }
+                    db.SaveChanges();
+                    QueryExec();
                 }
             }
             catch (Exception ex)
@@ -477,6 +479,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                     MessageBox.Show(txtEmployeeName.Text + " Present on that Date - " + string.Format("{0:dd/MMM/yyyy}", date) + " Please select other date!");
                     dtpLeaveEndDate.Focus();
                     bIsValid = true;
+                    return;
                 }
             }
         }

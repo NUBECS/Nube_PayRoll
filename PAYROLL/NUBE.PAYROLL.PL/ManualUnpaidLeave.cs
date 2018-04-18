@@ -12,16 +12,16 @@ namespace NUBE.PAYROLL.PL
     using System;
     using System.Collections.Generic;
     
-    public partial class VIEWEPF_SOCSO
+    public partial class ManualUnpaidLeave
     {
-        public int EMPLOYEEID { get; set; }
-        public string EmployeeName { get; set; }
-        public Nullable<decimal> BasicSalary { get; set; }
-        public decimal EPF { get; set; }
-        public decimal EPFUNION { get; set; }
-        public decimal SOCSO { get; set; }
-        public decimal SOCSOUNION { get; set; }
-        public decimal SIP { get; set; }
-        public decimal SIPUNION { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> Year { get; set; }
+        public Nullable<int> Month { get; set; }
+        public Nullable<int> EmployeeId { get; set; }
+        public Nullable<decimal> DaysAbsent { get; set; }
+        public Nullable<decimal> LOP_Leave { get; set; }
+        public Nullable<decimal> LOP_Late { get; set; }
+        public Nullable<System.DateTime> EntryDate { get; set; }
+        public string Remarks { get; set; }
     }
 }

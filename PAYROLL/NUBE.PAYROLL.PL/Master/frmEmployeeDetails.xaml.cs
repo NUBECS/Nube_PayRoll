@@ -71,7 +71,10 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.DateOfJoining = Convert.ToDateTime(dtDOJ.SelectedDate);
                         emp.Email = txtMail.Text;
                         emp.EPFNumber = txtEPFNo.Text;
+                        emp.EPFNumber = txtEPFNo1.Text;
                         emp.SOCSONumber = txtSOCSONo.Text;
+                        emp.SOCSONumber = txtSOCSONo1.Text;
+                        emp.SIPNumber = txtSIPNumber.Text;
                         emp.ShiftId = Convert.ToInt32(cmbShift.SelectedValue);
                         emp.MobileAllowance = string.IsNullOrEmpty(txtMobileAllowance.Text) ? 0 : Convert.ToDecimal(txtMobileAllowance.Text);
 
@@ -87,12 +90,17 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.EPFContributionRate = Convert.ToBoolean(ChkEPFCONTRIBUTIONRATE.IsChecked);
                         emp.EPFContribution = Convert.ToBoolean(ChkEPFCONTRIBUTION.IsChecked);
                         emp.SOCSOContribution = Convert.ToBoolean(ChkSOCSOCONTRIBUTION.IsChecked);
+                        emp.EPFContribution = Convert.ToBoolean(ChkEPF1.IsChecked);
+                        emp.SOCSOContribution = Convert.ToBoolean(ChkSOCSO1.IsChecked);
+                        emp.SIP = Convert.ToBoolean(ChkSIP.IsChecked);
+
                         emp.KOPERASI = string.IsNullOrEmpty(txtKOPERASI.Text) ? 0 : Convert.ToDecimal(txtKOPERASI.Text);
                         emp.GMIS = string.IsNullOrEmpty(txtGMIS.Text) ? 0 : Convert.ToDecimal(txtGMIS.Text);
                         emp.BIMBLoan = string.IsNullOrEmpty(txtBIMBLOAN.Text) ? 0 : Convert.ToDecimal(txtBIMBLOAN.Text);
                         emp.GELA = string.IsNullOrEmpty(txtGELA.Text) ? 0 : Convert.ToDecimal(txtGELA.Text);
                         emp.HomeCarLoans = string.IsNullOrEmpty(txtHOMECARLOANS.Text) ? 0 : Convert.ToDecimal(txtHOMECARLOANS.Text);
                         emp.OtherLoans = string.IsNullOrEmpty(txtOtherLoans.Text) ? 0 : Convert.ToDecimal(txtOtherLoans.Text);
+                        emp.OtherLoanTotal = string.IsNullOrEmpty(txtTotalOtherLoan.Text) ? 0 : Convert.ToDecimal(txtTotalOtherLoan.Text);
 
                         emp.PCB = Convert.ToBoolean(ChkPCB.IsChecked);
                         emp.UnpaidLeave = Convert.ToBoolean(ChkUNPAIDLEAVE.IsChecked);
@@ -148,7 +156,10 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.DateOfJoining = dtDOJ.SelectedDate;
                         emp.Email = txtMail.Text;
                         emp.EPFNumber = txtEPFNo.Text;
+                        emp.SOCSONumber = txtSOCSONo1.Text;
+                        emp.EPFNumber = txtEPFNo1.Text;
                         emp.SOCSONumber = txtSOCSONo.Text;
+                        emp.SIPNumber = txtSIPNumber.Text;
                         emp.ShiftId = Convert.ToInt32(cmbShift.SelectedValue);
                         emp.MobileAllowance = string.IsNullOrEmpty(txtMobileAllowance.Text) ? 0 : Convert.ToDecimal(txtMobileAllowance.Text);
 
@@ -164,12 +175,16 @@ namespace NUBE.PAYROLL.PL.Master
                         emp.EPFContributionRate = Convert.ToBoolean(ChkEPFCONTRIBUTIONRATE.IsChecked);
                         emp.EPFContribution = Convert.ToBoolean(ChkEPFCONTRIBUTION.IsChecked);
                         emp.SOCSOContribution = Convert.ToBoolean(ChkSOCSOCONTRIBUTION.IsChecked);
+                        emp.EPFContribution = Convert.ToBoolean(ChkEPF1.IsChecked);
+                        emp.SOCSOContribution = Convert.ToBoolean(ChkSOCSO1.IsChecked);
+                        emp.SIP = Convert.ToBoolean(ChkSIP.IsChecked);
                         emp.KOPERASI = string.IsNullOrEmpty(txtKOPERASI.Text) ? 0 : Convert.ToDecimal(txtKOPERASI.Text);
                         emp.GMIS = string.IsNullOrEmpty(txtGMIS.Text) ? 0 : Convert.ToDecimal(txtGMIS.Text);
                         emp.BIMBLoan = string.IsNullOrEmpty(txtBIMBLOAN.Text) ? 0 : Convert.ToDecimal(txtBIMBLOAN.Text);
                         emp.GELA = string.IsNullOrEmpty(txtGELA.Text) ? 0 : Convert.ToDecimal(txtGELA.Text);
                         emp.HomeCarLoans = string.IsNullOrEmpty(txtHOMECARLOANS.Text) ? 0 : Convert.ToDecimal(txtHOMECARLOANS.Text);
                         emp.OtherLoans = string.IsNullOrEmpty(txtOtherLoans.Text) ? 0 : Convert.ToDecimal(txtOtherLoans.Text);
+                        emp.OtherLoanTotal = string.IsNullOrEmpty(txtTotalOtherLoan.Text) ? 0 : Convert.ToDecimal(txtTotalOtherLoan.Text);
 
                         emp.PCB = Convert.ToBoolean(ChkPCB.IsChecked);
                         emp.UnpaidLeave = Convert.ToBoolean(ChkUNPAIDLEAVE.IsChecked);
@@ -320,6 +335,7 @@ namespace NUBE.PAYROLL.PL.Master
 
         private void dtDOB_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+
             try
             {
                 DateTime now = DateTime.Today;
@@ -362,6 +378,9 @@ namespace NUBE.PAYROLL.PL.Master
                     txtEmergencyContactNo.Text = em.EmergencyNo;
                     txtMail.Text = em.Email;
                     txtMobileAllowance.Text = em.MobileAllowance.ToString();
+                    txtPaidAmount.Text = em.PaidAmount.ToString();
+                    txtBalance.Text = em.BalanceAmount.ToString();
+                    txtTotalOtherLoan.Text = em.OtherLoanTotal.ToString();
 
                     cmbBank.SelectedValue = em.BankId;
                     cmbShift.SelectedValue = em.ShiftId;
@@ -380,6 +399,9 @@ namespace NUBE.PAYROLL.PL.Master
                     ChkEPFCONTRIBUTIONRATE.IsChecked = em.EPFContributionRate;
                     ChkEPFCONTRIBUTION.IsChecked = em.EPFContribution;
                     ChkSOCSOCONTRIBUTION.IsChecked = em.SOCSOContribution;
+                    ChkEPF1.IsChecked = em.EPFContribution;
+                    ChkSOCSO1.IsChecked = em.SOCSOContribution;
+                    ChkSIP.IsChecked = em.SIP;
                     txtKOPERASI.Text = em.KOPERASI.ToString();
                     ChkNUBESUBSCRIPTION.IsChecked = em.NubeSubscription;
                     txtGMIS.Text = em.GMIS.ToString();
@@ -399,6 +421,9 @@ namespace NUBE.PAYROLL.PL.Master
                     ChkResigned.IsChecked = em.IsResigned;
                     txtEPFNo.Text = em.EPFNumber;
                     txtSOCSONo.Text = em.SOCSONumber;
+                    txtSIPNumber.Text = em.SIPNumber;
+                    txtEPFNo1.Text = em.EPFNumber;
+                    txtSOCSONo1.Text = em.SOCSONumber;
                     txtIncomeTax.Text = em.IncomeTax.ToString();
 
                     txtNoOfCL.Text = em.NoOfCL.ToString();
@@ -439,11 +464,18 @@ namespace NUBE.PAYROLL.PL.Master
                 {
                     ChkNUBESUBSCRIPTION.Visibility = Visibility.Visible;
                     cmbNubeBranch.Visibility = Visibility.Visible;
-
+                    grbEPFSOCSODEDUCTIONS.Visibility = Visibility.Visible;
+                    grbEMPLOYERSCONTRIBUTION.Visibility = Visibility.Visible;
+                    grbTotalLoans.Visibility = Visibility.Collapsed;
+                    grbEPFSOCSO.Visibility = Visibility.Collapsed;
+                    grbDeduction1.Header = "STANDING INSTRUCTION DEDUCTIONS";
                     var nb = (from x in db.MasterNubeBranches where x.IsCancel == false select x).ToList();
                     cmbNubeBranch.ItemsSource = nb;
                     cmbNubeBranch.SelectedValuePath = "Id";
                     cmbNubeBranch.DisplayMemberPath = "NubeBranchName";
+                    txtEPFNo.Visibility = Visibility.Visible;
+                    txtSOCSONo.Visibility = Visibility.Visible;
+
                 }
                 else
                 {
@@ -580,12 +612,17 @@ namespace NUBE.PAYROLL.PL.Master
             ChkRATIOOFCONTRIBUTION.IsChecked = false;
             ChkEPF.IsChecked = false;
             ChkSOCSO.IsChecked = false;
+            txtTotalOtherLoan.Text = "";
+            txtPaidAmount.Text = "";
+            txtBalance.Text = "";
 
             ChkResigned.IsChecked = false;
             dtResigned.Text = "";
             txtResignReason.Text = "";
             txtEPFNo.Text = "";
             txtSOCSONo.Text = "";
+            txtEPFNo1.Text = "";
+            txtSOCSONo1.Text = "";
             txtMail.Text = "";
             txtIncomeTax.Text = "";
 
@@ -677,9 +714,31 @@ namespace NUBE.PAYROLL.PL.Master
                 cmbCountry.Focus();
                 bValidate = false;
             }
+            else if (!string.IsNullOrEmpty(txtTotalOtherLoan.Text) && string.IsNullOrEmpty(txtOtherLoans.Text))
+            {
+                MessageBox.Show("Monthly Deduct Loan Amount is Empty!","Other Loan Deduction Error");
+                txtOtherLoans.Focus();
+                bValidate = false;
+            }
         }
 
         #endregion
+
+        private void txtnOtherloans_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }      
+
+        private void txtAddress1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtEPFNo1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
 
     }
 }

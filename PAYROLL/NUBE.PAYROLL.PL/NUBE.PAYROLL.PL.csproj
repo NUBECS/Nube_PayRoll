@@ -210,7 +210,13 @@
     <Compile Include="LeaveType.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
+    <Compile Include="LoanPayment.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="ManualOTEntry.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManualUnpaidLeave.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
     <Compile Include="MasterBank.cs">
@@ -261,6 +267,10 @@
     <Compile Include="Master\frmMasterLeaveType.xaml.cs">
       <DependentUpon>frmMasterLeaveType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Master\frmSIPContribution.xaml.cs">
+      <DependentUpon>frmSIPContribution.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Master\frmSocsoContribution.xaml.cs">
       <DependentUpon>frmSocsoContribution.xaml</DependentUpon>
     </Compile>
@@ -285,7 +295,25 @@
     <Compile Include="Reports\LeaveReport.xaml.cs">
       <DependentUpon>LeaveReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RipuTestDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RipuTestDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RipuTestDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RipuTestDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RipuTestDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RipuTestDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="SIPCont.cs">
+      <DependentUpon>DATA.tt</DependentUpon>
+    </Compile>
     <Compile Include="SocsoCont.cs">
       <DependentUpon>DATA.tt</DependentUpon>
     </Compile>
@@ -320,8 +348,8 @@
     <Compile Include="Transaction\frmManuallyAttedanceEntry.xaml.cs">
       <DependentUpon>frmManuallyAttedanceEntry.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Transaction\frmManualOTEntry.xaml.cs">
-      <DependentUpon>frmManualOTEntry.xaml</DependentUpon>
+    <Compile Include="Transaction\frmManualUnpaidLeave.xaml.cs">
+      <DependentUpon>frmManualUnpaidLeave.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transaction\frmMonthlyDeductions.xaml.cs">
       <DependentUpon>frmMonthlyDeductions.xaml</DependentUpon>
@@ -456,6 +484,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\AttendanceReport\rptHalfDayReport.rdlc" />
+    <EmbeddedResource Include="Reports\AttendanceReport\rptLateCommer%27s.rdlc" />
+    <EmbeddedResource Include="Reports\AttendanceReport\rptLeaveReport.rdlc" />
+    <EmbeddedResource Include="Reports\AttendanceReport\rptOTReport.rdlc" />
     <EmbeddedResource Include="Reports\AttendanceReport\rptPresentReport.rdlc" />
     <EmbeddedResource Include="Reports\rptNubePayslip.rdlc" />
     <EmbeddedResource Include="Reports\rptPaySlip.rdlc" />
@@ -484,6 +516,39 @@
       <SubType>Designer</SubType>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="RipuTestDataSet.xsc">
+      <DependentUpon>RipuTestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RipuTestDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RipuTestDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RipuTestDataSet.xss">
+      <DependentUpon>RipuTestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RipuTestDataSet1.xsc">
+      <DependentUpon>RipuTestDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="RipuTestDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RipuTestDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RipuTestDataSet1.xss">
+      <DependentUpon>RipuTestDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="RipuTestDataSet2.xsc">
+      <DependentUpon>RipuTestDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="RipuTestDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RipuTestDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RipuTestDataSet2.xss">
+      <DependentUpon>RipuTestDataSet2.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -559,6 +624,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Master\frmSIPContribution.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
     <Page Include="Master\frmSocsoContribution.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -603,7 +672,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Transaction\frmManualOTEntry.xaml">
+    <Page Include="Transaction\frmManualUnpaidLeave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

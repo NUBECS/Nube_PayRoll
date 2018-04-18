@@ -20,19 +20,17 @@ namespace NUBE.PAYROLL.PL {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("BizSoftDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("RipuTestDataSet1")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class BizSoftDataSet : global::System.Data.DataSet {
+    public partial class RipuTestDataSet1 : global::System.Data.DataSet {
         
         private MonthlySalaryDataTable tableMonthlySalary;
-        
-        private SPTESTDAILYATTENDANCEDataTable tableSPTESTDAILYATTENDANCE;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public BizSoftDataSet() {
+        public RipuTestDataSet1() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -43,7 +41,7 @@ namespace NUBE.PAYROLL.PL {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected BizSoftDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected RipuTestDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -58,9 +56,6 @@ namespace NUBE.PAYROLL.PL {
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 if ((ds.Tables["MonthlySalary"] != null)) {
                     base.Tables.Add(new MonthlySalaryDataTable(ds.Tables["MonthlySalary"]));
-                }
-                if ((ds.Tables["SPTESTDAILYATTENDANCE"] != null)) {
-                    base.Tables.Add(new SPTESTDAILYATTENDANCEDataTable(ds.Tables["SPTESTDAILYATTENDANCE"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -87,16 +82,6 @@ namespace NUBE.PAYROLL.PL {
         public MonthlySalaryDataTable MonthlySalary {
             get {
                 return this.tableMonthlySalary;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SPTESTDAILYATTENDANCEDataTable SPTESTDAILYATTENDANCE {
-            get {
-                return this.tableSPTESTDAILYATTENDANCE;
             }
         }
         
@@ -142,7 +127,7 @@ namespace NUBE.PAYROLL.PL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            BizSoftDataSet cln = ((BizSoftDataSet)(base.Clone()));
+            RipuTestDataSet1 cln = ((RipuTestDataSet1)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -169,9 +154,6 @@ namespace NUBE.PAYROLL.PL {
                 ds.ReadXml(reader);
                 if ((ds.Tables["MonthlySalary"] != null)) {
                     base.Tables.Add(new MonthlySalaryDataTable(ds.Tables["MonthlySalary"]));
-                }
-                if ((ds.Tables["SPTESTDAILYATTENDANCE"] != null)) {
-                    base.Tables.Add(new SPTESTDAILYATTENDANCEDataTable(ds.Tables["SPTESTDAILYATTENDANCE"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -212,37 +194,23 @@ namespace NUBE.PAYROLL.PL {
                     this.tableMonthlySalary.InitVars();
                 }
             }
-            this.tableSPTESTDAILYATTENDANCE = ((SPTESTDAILYATTENDANCEDataTable)(base.Tables["SPTESTDAILYATTENDANCE"]));
-            if ((initTable == true)) {
-                if ((this.tableSPTESTDAILYATTENDANCE != null)) {
-                    this.tableSPTESTDAILYATTENDANCE.InitVars();
-                }
-            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "BizSoftDataSet";
+            this.DataSetName = "RipuTestDataSet1";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/BizSoftDataSet.xsd";
+            this.Namespace = "http://tempuri.org/RipuTestDataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableMonthlySalary = new MonthlySalaryDataTable();
             base.Tables.Add(this.tableMonthlySalary);
-            this.tableSPTESTDAILYATTENDANCE = new SPTESTDAILYATTENDANCEDataTable();
-            base.Tables.Add(this.tableSPTESTDAILYATTENDANCE);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeMonthlySalary() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeSPTESTDAILYATTENDANCE() {
             return false;
         }
         
@@ -257,7 +225,7 @@ namespace NUBE.PAYROLL.PL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            BizSoftDataSet ds = new BizSoftDataSet();
+            RipuTestDataSet1 ds = new RipuTestDataSet1();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -304,9 +272,6 @@ namespace NUBE.PAYROLL.PL {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void MonthlySalaryRowChangeEventHandler(object sender, MonthlySalaryRowChangeEvent e);
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void SPTESTDAILYATTENDANCERowChangeEventHandler(object sender, SPTESTDAILYATTENDANCERowChangeEvent e);
-        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
@@ -324,6 +289,8 @@ namespace NUBE.PAYROLL.PL {
             
             private global::System.Data.DataColumn columnEmployeeName;
             
+            private global::System.Data.DataColumn columnDateOfJoining;
+            
             private global::System.Data.DataColumn columnEPFNumber;
             
             private global::System.Data.DataColumn columnSOCSONumber;
@@ -331,6 +298,8 @@ namespace NUBE.PAYROLL.PL {
             private global::System.Data.DataColumn columnNRIC;
             
             private global::System.Data.DataColumn columnBankAccountNo;
+            
+            private global::System.Data.DataColumn columnBankName;
             
             private global::System.Data.DataColumn columnBasicSalary;
             
@@ -342,9 +311,7 @@ namespace NUBE.PAYROLL.PL {
             
             private global::System.Data.DataColumn columnOT_Amount;
             
-            private global::System.Data.DataColumn columnLOP_Leave;
-            
-            private global::System.Data.DataColumn columnLOP_Late;
+            private global::System.Data.DataColumn columnLOP;
             
             private global::System.Data.DataColumn columnPOB;
             
@@ -394,6 +361,10 @@ namespace NUBE.PAYROLL.PL {
             
             private global::System.Data.DataColumn columnPCB;
             
+            private global::System.Data.DataColumn columnAllowanceInAdvanced;
+            
+            private global::System.Data.DataColumn columnOtherDeductions;
+            
             private global::System.Data.DataColumn columnTOTALEARNING;
             
             private global::System.Data.DataColumn columnTOTALDEDUCTION;
@@ -401,20 +372,6 @@ namespace NUBE.PAYROLL.PL {
             private global::System.Data.DataColumn columnNETSALARY;
             
             private global::System.Data.DataColumn columnPositionName;
-            
-            private global::System.Data.DataColumn columnDateOfJoining;
-            
-            private global::System.Data.DataColumn columnBankName;
-            
-            private global::System.Data.DataColumn columnAllowanceInAdvanced;
-            
-            private global::System.Data.DataColumn columnOtherDeductions;
-            
-            private global::System.Data.DataColumn columnSIP;
-            
-            private global::System.Data.DataColumn columnSIPUNION;
-            
-            private global::System.Data.DataColumn columnSIPNumber;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -491,6 +448,14 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DateOfJoiningColumn {
+                get {
+                    return this.columnDateOfJoining;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn EPFNumberColumn {
                 get {
                     return this.columnEPFNumber;
@@ -518,6 +483,14 @@ namespace NUBE.PAYROLL.PL {
             public global::System.Data.DataColumn BankAccountNoColumn {
                 get {
                     return this.columnBankAccountNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BankNameColumn {
+                get {
+                    return this.columnBankName;
                 }
             }
             
@@ -563,17 +536,9 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn LOP_LeaveColumn {
+            public global::System.Data.DataColumn LOPColumn {
                 get {
-                    return this.columnLOP_Leave;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn LOP_LateColumn {
-                get {
-                    return this.columnLOP_Late;
+                    return this.columnLOP;
                 }
             }
             
@@ -771,6 +736,22 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AllowanceInAdvancedColumn {
+                get {
+                    return this.columnAllowanceInAdvanced;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OtherDeductionsColumn {
+                get {
+                    return this.columnOtherDeductions;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn TOTALEARNINGColumn {
                 get {
                     return this.columnTOTALEARNING;
@@ -798,62 +779,6 @@ namespace NUBE.PAYROLL.PL {
             public global::System.Data.DataColumn PositionNameColumn {
                 get {
                     return this.columnPositionName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DateOfJoiningColumn {
-                get {
-                    return this.columnDateOfJoining;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn BankNameColumn {
-                get {
-                    return this.columnBankName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn AllowanceInAdvancedColumn {
-                get {
-                    return this.columnAllowanceInAdvanced;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn OtherDeductionsColumn {
-                get {
-                    return this.columnOtherDeductions;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SIPColumn {
-                get {
-                    return this.columnSIP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SIPUNIONColumn {
-                get {
-                    return this.columnSIPUNION;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn SIPNumberColumn {
-                get {
-                    return this.columnSIPNumber;
                 }
             }
             
@@ -899,17 +824,18 @@ namespace NUBE.PAYROLL.PL {
                         int EmployeeNo, 
                         System.DateTime SalaryMonth, 
                         string EmployeeName, 
+                        System.DateTime DateOfJoining, 
                         string EPFNumber, 
                         string SOCSONumber, 
                         string NRIC, 
                         string BankAccountNo, 
+                        string BankName, 
                         decimal BasicSalary, 
                         decimal TotalWorkingDays, 
                         decimal DaysAbsent, 
                         decimal OTHours, 
                         decimal OT_Amount, 
-                        decimal LOP_Leave, 
-                        decimal LOP_Late, 
+                        decimal LOP, 
                         decimal POB, 
                         decimal NEC, 
                         decimal SECONDMENT, 
@@ -934,17 +860,12 @@ namespace NUBE.PAYROLL.PL {
                         decimal KOPERASI, 
                         decimal NUBESUBSCRIPTION, 
                         decimal PCB, 
+                        decimal AllowanceInAdvanced, 
+                        decimal OtherDeductions, 
                         decimal TOTALEARNING, 
                         decimal TOTALDEDUCTION, 
                         decimal NETSALARY, 
-                        string PositionName, 
-                        System.DateTime DateOfJoining, 
-                        string BankName, 
-                        decimal AllowanceInAdvanced, 
-                        decimal OtherDeductions, 
-                        string SIP, 
-                        string SIPUNION, 
-                        string SIPNumber) {
+                        string PositionName) {
                 MonthlySalaryRow rowMonthlySalaryRow = ((MonthlySalaryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -952,17 +873,18 @@ namespace NUBE.PAYROLL.PL {
                         EmployeeNo,
                         SalaryMonth,
                         EmployeeName,
+                        DateOfJoining,
                         EPFNumber,
                         SOCSONumber,
                         NRIC,
                         BankAccountNo,
+                        BankName,
                         BasicSalary,
                         TotalWorkingDays,
                         DaysAbsent,
                         OTHours,
                         OT_Amount,
-                        LOP_Leave,
-                        LOP_Late,
+                        LOP,
                         POB,
                         NEC,
                         SECONDMENT,
@@ -987,17 +909,12 @@ namespace NUBE.PAYROLL.PL {
                         KOPERASI,
                         NUBESUBSCRIPTION,
                         PCB,
+                        AllowanceInAdvanced,
+                        OtherDeductions,
                         TOTALEARNING,
                         TOTALDEDUCTION,
                         NETSALARY,
-                        PositionName,
-                        DateOfJoining,
-                        BankName,
-                        AllowanceInAdvanced,
-                        OtherDeductions,
-                        SIP,
-                        SIPUNION,
-                        SIPNumber};
+                        PositionName};
                 rowMonthlySalaryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMonthlySalaryRow);
                 return rowMonthlySalaryRow;
@@ -1032,17 +949,18 @@ namespace NUBE.PAYROLL.PL {
                 this.columnEmployeeNo = base.Columns["EmployeeNo"];
                 this.columnSalaryMonth = base.Columns["SalaryMonth"];
                 this.columnEmployeeName = base.Columns["EmployeeName"];
+                this.columnDateOfJoining = base.Columns["DateOfJoining"];
                 this.columnEPFNumber = base.Columns["EPFNumber"];
                 this.columnSOCSONumber = base.Columns["SOCSONumber"];
                 this.columnNRIC = base.Columns["NRIC"];
                 this.columnBankAccountNo = base.Columns["BankAccountNo"];
+                this.columnBankName = base.Columns["BankName"];
                 this.columnBasicSalary = base.Columns["BasicSalary"];
                 this.columnTotalWorkingDays = base.Columns["TotalWorkingDays"];
                 this.columnDaysAbsent = base.Columns["DaysAbsent"];
                 this.columnOTHours = base.Columns["OTHours"];
                 this.columnOT_Amount = base.Columns["OT_Amount"];
-                this.columnLOP_Leave = base.Columns["LOP_Leave"];
-                this.columnLOP_Late = base.Columns["LOP_Late"];
+                this.columnLOP = base.Columns["LOP"];
                 this.columnPOB = base.Columns["POB"];
                 this.columnNEC = base.Columns["NEC"];
                 this.columnSECONDMENT = base.Columns["SECONDMENT"];
@@ -1067,17 +985,12 @@ namespace NUBE.PAYROLL.PL {
                 this.columnKOPERASI = base.Columns["KOPERASI"];
                 this.columnNUBESUBSCRIPTION = base.Columns["NUBESUBSCRIPTION"];
                 this.columnPCB = base.Columns["PCB"];
+                this.columnAllowanceInAdvanced = base.Columns["AllowanceInAdvanced"];
+                this.columnOtherDeductions = base.Columns["OtherDeductions"];
                 this.columnTOTALEARNING = base.Columns["TOTALEARNING"];
                 this.columnTOTALDEDUCTION = base.Columns["TOTALDEDUCTION"];
                 this.columnNETSALARY = base.Columns["NETSALARY"];
                 this.columnPositionName = base.Columns["PositionName"];
-                this.columnDateOfJoining = base.Columns["DateOfJoining"];
-                this.columnBankName = base.Columns["BankName"];
-                this.columnAllowanceInAdvanced = base.Columns["AllowanceInAdvanced"];
-                this.columnOtherDeductions = base.Columns["OtherDeductions"];
-                this.columnSIP = base.Columns["SIP"];
-                this.columnSIPUNION = base.Columns["SIPUNION"];
-                this.columnSIPNumber = base.Columns["SIPNumber"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1093,6 +1006,8 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnSalaryMonth);
                 this.columnEmployeeName = new global::System.Data.DataColumn("EmployeeName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmployeeName);
+                this.columnDateOfJoining = new global::System.Data.DataColumn("DateOfJoining", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateOfJoining);
                 this.columnEPFNumber = new global::System.Data.DataColumn("EPFNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEPFNumber);
                 this.columnSOCSONumber = new global::System.Data.DataColumn("SOCSONumber", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1101,6 +1016,8 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnNRIC);
                 this.columnBankAccountNo = new global::System.Data.DataColumn("BankAccountNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBankAccountNo);
+                this.columnBankName = new global::System.Data.DataColumn("BankName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBankName);
                 this.columnBasicSalary = new global::System.Data.DataColumn("BasicSalary", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBasicSalary);
                 this.columnTotalWorkingDays = new global::System.Data.DataColumn("TotalWorkingDays", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -1111,10 +1028,8 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnOTHours);
                 this.columnOT_Amount = new global::System.Data.DataColumn("OT_Amount", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOT_Amount);
-                this.columnLOP_Leave = new global::System.Data.DataColumn("LOP_Leave", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLOP_Leave);
-                this.columnLOP_Late = new global::System.Data.DataColumn("LOP_Late", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLOP_Late);
+                this.columnLOP = new global::System.Data.DataColumn("LOP", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLOP);
                 this.columnPOB = new global::System.Data.DataColumn("POB", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPOB);
                 this.columnNEC = new global::System.Data.DataColumn("NEC", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -1163,6 +1078,10 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnNUBESUBSCRIPTION);
                 this.columnPCB = new global::System.Data.DataColumn("PCB", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPCB);
+                this.columnAllowanceInAdvanced = new global::System.Data.DataColumn("AllowanceInAdvanced", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAllowanceInAdvanced);
+                this.columnOtherDeductions = new global::System.Data.DataColumn("OtherDeductions", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtherDeductions);
                 this.columnTOTALEARNING = new global::System.Data.DataColumn("TOTALEARNING", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTOTALEARNING);
                 this.columnTOTALDEDUCTION = new global::System.Data.DataColumn("TOTALDEDUCTION", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -1171,20 +1090,6 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnNETSALARY);
                 this.columnPositionName = new global::System.Data.DataColumn("PositionName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPositionName);
-                this.columnDateOfJoining = new global::System.Data.DataColumn("DateOfJoining", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDateOfJoining);
-                this.columnBankName = new global::System.Data.DataColumn("BankName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBankName);
-                this.columnAllowanceInAdvanced = new global::System.Data.DataColumn("AllowanceInAdvanced", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAllowanceInAdvanced);
-                this.columnOtherDeductions = new global::System.Data.DataColumn("OtherDeductions", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOtherDeductions);
-                this.columnSIP = new global::System.Data.DataColumn("SIP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSIP);
-                this.columnSIPUNION = new global::System.Data.DataColumn("SIPUNION", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSIPUNION);
-                this.columnSIPNumber = new global::System.Data.DataColumn("SIPNumber", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSIPNumber);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1200,11 +1105,13 @@ namespace NUBE.PAYROLL.PL {
                 this.columnSOCSONumber.MaxLength = 50;
                 this.columnNRIC.MaxLength = 50;
                 this.columnBankAccountNo.MaxLength = 50;
+                this.columnBankName.MaxLength = 50;
                 this.columnBasicSalary.AllowDBNull = false;
                 this.columnTotalWorkingDays.AllowDBNull = false;
                 this.columnDaysAbsent.AllowDBNull = false;
                 this.columnOTHours.AllowDBNull = false;
                 this.columnOT_Amount.AllowDBNull = false;
+                this.columnLOP.AllowDBNull = false;
                 this.columnPOB.AllowDBNull = false;
                 this.columnNEC.AllowDBNull = false;
                 this.columnSECONDMENT.AllowDBNull = false;
@@ -1229,6 +1136,8 @@ namespace NUBE.PAYROLL.PL {
                 this.columnKOPERASI.AllowDBNull = false;
                 this.columnNUBESUBSCRIPTION.AllowDBNull = false;
                 this.columnPCB.AllowDBNull = false;
+                this.columnAllowanceInAdvanced.AllowDBNull = false;
+                this.columnOtherDeductions.AllowDBNull = false;
                 this.columnTOTALEARNING.AllowDBNull = false;
                 this.columnTOTALDEDUCTION.AllowDBNull = false;
                 this.columnNETSALARY.AllowDBNull = false;
@@ -1300,7 +1209,7 @@ namespace NUBE.PAYROLL.PL {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                BizSoftDataSet ds = new BizSoftDataSet();
+                RipuTestDataSet1 ds = new RipuTestDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1319,498 +1228,6 @@ namespace NUBE.PAYROLL.PL {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "MonthlySalaryDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SPTESTDAILYATTENDANCEDataTable : global::System.Data.TypedTableBase<SPTESTDAILYATTENDANCERow> {
-            
-            private global::System.Data.DataColumn columnRNO;
-            
-            private global::System.Data.DataColumn columnEMPLOYEEID;
-            
-            private global::System.Data.DataColumn columnMEMBERSHIPNO;
-            
-            private global::System.Data.DataColumn columnEMPLOYEENAME;
-            
-            private global::System.Data.DataColumn columnPOSITIONNAME;
-            
-            private global::System.Data.DataColumn columnATTDATE;
-            
-            private global::System.Data.DataColumn columnINTIME;
-            
-            private global::System.Data.DataColumn columnOUTTIME;
-            
-            private global::System.Data.DataColumn columnWORKING_HOURS;
-            
-            private global::System.Data.DataColumn columnWORKING_MINUTES;
-            
-            private global::System.Data.DataColumn columnWITHPERMISSION;
-            
-            private global::System.Data.DataColumn columnOT_HOURS;
-            
-            private global::System.Data.DataColumn columnOT_MINUTES;
-            
-            private global::System.Data.DataColumn columnREMARKS;
-            
-            private global::System.Data.DataColumn columnISFULLDAYLEAVE;
-            
-            private global::System.Data.DataColumn columnISHALFDAYLEAVE;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SPTESTDAILYATTENDANCEDataTable() {
-                this.TableName = "SPTESTDAILYATTENDANCE";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal SPTESTDAILYATTENDANCEDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected SPTESTDAILYATTENDANCEDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RNOColumn {
-                get {
-                    return this.columnRNO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn EMPLOYEEIDColumn {
-                get {
-                    return this.columnEMPLOYEEID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MEMBERSHIPNOColumn {
-                get {
-                    return this.columnMEMBERSHIPNO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn EMPLOYEENAMEColumn {
-                get {
-                    return this.columnEMPLOYEENAME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn POSITIONNAMEColumn {
-                get {
-                    return this.columnPOSITIONNAME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ATTDATEColumn {
-                get {
-                    return this.columnATTDATE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn INTIMEColumn {
-                get {
-                    return this.columnINTIME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn OUTTIMEColumn {
-                get {
-                    return this.columnOUTTIME;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn WORKING_HOURSColumn {
-                get {
-                    return this.columnWORKING_HOURS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn WORKING_MINUTESColumn {
-                get {
-                    return this.columnWORKING_MINUTES;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn WITHPERMISSIONColumn {
-                get {
-                    return this.columnWITHPERMISSION;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn OT_HOURSColumn {
-                get {
-                    return this.columnOT_HOURS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn OT_MINUTESColumn {
-                get {
-                    return this.columnOT_MINUTES;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn REMARKSColumn {
-                get {
-                    return this.columnREMARKS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ISFULLDAYLEAVEColumn {
-                get {
-                    return this.columnISFULLDAYLEAVE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ISHALFDAYLEAVEColumn {
-                get {
-                    return this.columnISHALFDAYLEAVE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SPTESTDAILYATTENDANCERow this[int index] {
-                get {
-                    return ((SPTESTDAILYATTENDANCERow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event SPTESTDAILYATTENDANCERowChangeEventHandler SPTESTDAILYATTENDANCERowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddSPTESTDAILYATTENDANCERow(SPTESTDAILYATTENDANCERow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SPTESTDAILYATTENDANCERow AddSPTESTDAILYATTENDANCERow(
-                        long RNO, 
-                        int EMPLOYEEID, 
-                        int MEMBERSHIPNO, 
-                        string EMPLOYEENAME, 
-                        string POSITIONNAME, 
-                        string ATTDATE, 
-                        System.TimeSpan INTIME, 
-                        System.TimeSpan OUTTIME, 
-                        int WORKING_HOURS, 
-                        decimal WORKING_MINUTES, 
-                        bool WITHPERMISSION, 
-                        int OT_HOURS, 
-                        string OT_MINUTES, 
-                        string REMARKS, 
-                        bool ISFULLDAYLEAVE, 
-                        bool ISHALFDAYLEAVE) {
-                SPTESTDAILYATTENDANCERow rowSPTESTDAILYATTENDANCERow = ((SPTESTDAILYATTENDANCERow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        RNO,
-                        EMPLOYEEID,
-                        MEMBERSHIPNO,
-                        EMPLOYEENAME,
-                        POSITIONNAME,
-                        ATTDATE,
-                        INTIME,
-                        OUTTIME,
-                        WORKING_HOURS,
-                        WORKING_MINUTES,
-                        WITHPERMISSION,
-                        OT_HOURS,
-                        OT_MINUTES,
-                        REMARKS,
-                        ISFULLDAYLEAVE,
-                        ISHALFDAYLEAVE};
-                rowSPTESTDAILYATTENDANCERow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSPTESTDAILYATTENDANCERow);
-                return rowSPTESTDAILYATTENDANCERow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                SPTESTDAILYATTENDANCEDataTable cln = ((SPTESTDAILYATTENDANCEDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new SPTESTDAILYATTENDANCEDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal void InitVars() {
-                this.columnRNO = base.Columns["RNO"];
-                this.columnEMPLOYEEID = base.Columns["EMPLOYEEID"];
-                this.columnMEMBERSHIPNO = base.Columns["MEMBERSHIPNO"];
-                this.columnEMPLOYEENAME = base.Columns["EMPLOYEENAME"];
-                this.columnPOSITIONNAME = base.Columns["POSITIONNAME"];
-                this.columnATTDATE = base.Columns["ATTDATE"];
-                this.columnINTIME = base.Columns["INTIME"];
-                this.columnOUTTIME = base.Columns["OUTTIME"];
-                this.columnWORKING_HOURS = base.Columns["WORKING_HOURS"];
-                this.columnWORKING_MINUTES = base.Columns["WORKING_MINUTES"];
-                this.columnWITHPERMISSION = base.Columns["WITHPERMISSION"];
-                this.columnOT_HOURS = base.Columns["OT_HOURS"];
-                this.columnOT_MINUTES = base.Columns["OT_MINUTES"];
-                this.columnREMARKS = base.Columns["REMARKS"];
-                this.columnISFULLDAYLEAVE = base.Columns["ISFULLDAYLEAVE"];
-                this.columnISHALFDAYLEAVE = base.Columns["ISHALFDAYLEAVE"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            private void InitClass() {
-                this.columnRNO = new global::System.Data.DataColumn("RNO", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRNO);
-                this.columnEMPLOYEEID = new global::System.Data.DataColumn("EMPLOYEEID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEMPLOYEEID);
-                this.columnMEMBERSHIPNO = new global::System.Data.DataColumn("MEMBERSHIPNO", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMEMBERSHIPNO);
-                this.columnEMPLOYEENAME = new global::System.Data.DataColumn("EMPLOYEENAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEMPLOYEENAME);
-                this.columnPOSITIONNAME = new global::System.Data.DataColumn("POSITIONNAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPOSITIONNAME);
-                this.columnATTDATE = new global::System.Data.DataColumn("ATTDATE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnATTDATE);
-                this.columnINTIME = new global::System.Data.DataColumn("INTIME", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnINTIME);
-                this.columnOUTTIME = new global::System.Data.DataColumn("OUTTIME", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOUTTIME);
-                this.columnWORKING_HOURS = new global::System.Data.DataColumn("WORKING_HOURS", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnWORKING_HOURS);
-                this.columnWORKING_MINUTES = new global::System.Data.DataColumn("WORKING_MINUTES", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnWORKING_MINUTES);
-                this.columnWITHPERMISSION = new global::System.Data.DataColumn("WITHPERMISSION", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnWITHPERMISSION);
-                this.columnOT_HOURS = new global::System.Data.DataColumn("OT_HOURS", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOT_HOURS);
-                this.columnOT_MINUTES = new global::System.Data.DataColumn("OT_MINUTES", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOT_MINUTES);
-                this.columnREMARKS = new global::System.Data.DataColumn("REMARKS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnREMARKS);
-                this.columnISFULLDAYLEAVE = new global::System.Data.DataColumn("ISFULLDAYLEAVE", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnISFULLDAYLEAVE);
-                this.columnISHALFDAYLEAVE = new global::System.Data.DataColumn("ISHALFDAYLEAVE", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnISHALFDAYLEAVE);
-                this.columnRNO.ReadOnly = true;
-                this.columnEMPLOYEEID.AllowDBNull = false;
-                this.columnEMPLOYEENAME.MaxLength = 50;
-                this.columnPOSITIONNAME.ReadOnly = true;
-                this.columnPOSITIONNAME.MaxLength = 50;
-                this.columnATTDATE.ReadOnly = true;
-                this.columnATTDATE.MaxLength = 30;
-                this.columnINTIME.ReadOnly = true;
-                this.columnOUTTIME.ReadOnly = true;
-                this.columnWORKING_HOURS.ReadOnly = true;
-                this.columnWORKING_MINUTES.ReadOnly = true;
-                this.columnWITHPERMISSION.AllowDBNull = false;
-                this.columnOT_HOURS.ReadOnly = true;
-                this.columnOT_MINUTES.ReadOnly = true;
-                this.columnOT_MINUTES.MaxLength = 30;
-                this.columnREMARKS.ReadOnly = true;
-                this.columnREMARKS.MaxLength = 100;
-                this.columnISFULLDAYLEAVE.AllowDBNull = false;
-                this.columnISHALFDAYLEAVE.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SPTESTDAILYATTENDANCERow NewSPTESTDAILYATTENDANCERow() {
-                return ((SPTESTDAILYATTENDANCERow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SPTESTDAILYATTENDANCERow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(SPTESTDAILYATTENDANCERow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.SPTESTDAILYATTENDANCERowChanged != null)) {
-                    this.SPTESTDAILYATTENDANCERowChanged(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.SPTESTDAILYATTENDANCERowChanging != null)) {
-                    this.SPTESTDAILYATTENDANCERowChanging(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.SPTESTDAILYATTENDANCERowDeleted != null)) {
-                    this.SPTESTDAILYATTENDANCERowDeleted(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.SPTESTDAILYATTENDANCERowDeleting != null)) {
-                    this.SPTESTDAILYATTENDANCERowDeleting(this, new SPTESTDAILYATTENDANCERowChangeEvent(((SPTESTDAILYATTENDANCERow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveSPTESTDAILYATTENDANCERow(SPTESTDAILYATTENDANCERow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                BizSoftDataSet ds = new BizSoftDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SPTESTDAILYATTENDANCEDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1932,6 +1349,22 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime DateOfJoining {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMonthlySalary.DateOfJoiningColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateOfJoining\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.DateOfJoiningColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string EPFNumber {
                 get {
                     try {
@@ -1996,6 +1429,22 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string BankName {
+                get {
+                    try {
+                        return ((string)(this[this.tableMonthlySalary.BankNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BankName\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.BankNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal BasicSalary {
                 get {
                     return ((decimal)(this[this.tableMonthlySalary.BasicSalaryColumn]));
@@ -2051,33 +1500,12 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal LOP_Leave {
+            public decimal LOP {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableMonthlySalary.LOP_LeaveColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LOP_Leave\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
+                    return ((decimal)(this[this.tableMonthlySalary.LOPColumn]));
                 }
                 set {
-                    this[this.tableMonthlySalary.LOP_LeaveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal LOP_Late {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableMonthlySalary.LOP_LateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LOP_Late\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.LOP_LateColumn] = value;
+                    this[this.tableMonthlySalary.LOPColumn] = value;
                 }
             }
             
@@ -2347,6 +1775,28 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal AllowanceInAdvanced {
+                get {
+                    return ((decimal)(this[this.tableMonthlySalary.AllowanceInAdvancedColumn]));
+                }
+                set {
+                    this[this.tableMonthlySalary.AllowanceInAdvancedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal OtherDeductions {
+                get {
+                    return ((decimal)(this[this.tableMonthlySalary.OtherDeductionsColumn]));
+                }
+                set {
+                    this[this.tableMonthlySalary.OtherDeductionsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal TOTALEARNING {
                 get {
                     return ((decimal)(this[this.tableMonthlySalary.TOTALEARNINGColumn]));
@@ -2396,118 +1846,6 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime DateOfJoining {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableMonthlySalary.DateOfJoiningColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DateOfJoining\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.DateOfJoiningColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string BankName {
-                get {
-                    try {
-                        return ((string)(this[this.tableMonthlySalary.BankNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BankName\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.BankNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal AllowanceInAdvanced {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableMonthlySalary.AllowanceInAdvancedColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AllowanceInAdvanced\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.AllowanceInAdvancedColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal OtherDeductions {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableMonthlySalary.OtherDeductionsColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OtherDeductions\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.OtherDeductionsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SIP {
-                get {
-                    try {
-                        return ((string)(this[this.tableMonthlySalary.SIPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SIP\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.SIPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SIPUNION {
-                get {
-                    try {
-                        return ((string)(this[this.tableMonthlySalary.SIPUNIONColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SIPUNION\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.SIPUNIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string SIPNumber {
-                get {
-                    try {
-                        return ((string)(this[this.tableMonthlySalary.SIPNumberColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SIPNumber\' in table \'MonthlySalary\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMonthlySalary.SIPNumberColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsSalaryMonthNull() {
                 return this.IsNull(this.tableMonthlySalary.SalaryMonthColumn);
             }
@@ -2528,6 +1866,18 @@ namespace NUBE.PAYROLL.PL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetEmployeeNameNull() {
                 this[this.tableMonthlySalary.EmployeeNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDateOfJoiningNull() {
+                return this.IsNull(this.tableMonthlySalary.DateOfJoiningColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDateOfJoiningNull() {
+                this[this.tableMonthlySalary.DateOfJoiningColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2580,54 +1930,6 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsLOP_LeaveNull() {
-                return this.IsNull(this.tableMonthlySalary.LOP_LeaveColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetLOP_LeaveNull() {
-                this[this.tableMonthlySalary.LOP_LeaveColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsLOP_LateNull() {
-                return this.IsNull(this.tableMonthlySalary.LOP_LateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetLOP_LateNull() {
-                this[this.tableMonthlySalary.LOP_LateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsPositionNameNull() {
-                return this.IsNull(this.tableMonthlySalary.PositionNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetPositionNameNull() {
-                this[this.tableMonthlySalary.PositionNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDateOfJoiningNull() {
-                return this.IsNull(this.tableMonthlySalary.DateOfJoiningColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDateOfJoiningNull() {
-                this[this.tableMonthlySalary.DateOfJoiningColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsBankNameNull() {
                 return this.IsNull(this.tableMonthlySalary.BankNameColumn);
             }
@@ -2640,458 +1942,14 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsAllowanceInAdvancedNull() {
-                return this.IsNull(this.tableMonthlySalary.AllowanceInAdvancedColumn);
+            public bool IsPositionNameNull() {
+                return this.IsNull(this.tableMonthlySalary.PositionNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetAllowanceInAdvancedNull() {
-                this[this.tableMonthlySalary.AllowanceInAdvancedColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOtherDeductionsNull() {
-                return this.IsNull(this.tableMonthlySalary.OtherDeductionsColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOtherDeductionsNull() {
-                this[this.tableMonthlySalary.OtherDeductionsColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSIPNull() {
-                return this.IsNull(this.tableMonthlySalary.SIPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSIPNull() {
-                this[this.tableMonthlySalary.SIPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSIPUNIONNull() {
-                return this.IsNull(this.tableMonthlySalary.SIPUNIONColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSIPUNIONNull() {
-                this[this.tableMonthlySalary.SIPUNIONColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSIPNumberNull() {
-                return this.IsNull(this.tableMonthlySalary.SIPNumberColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSIPNumberNull() {
-                this[this.tableMonthlySalary.SIPNumberColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class SPTESTDAILYATTENDANCERow : global::System.Data.DataRow {
-            
-            private SPTESTDAILYATTENDANCEDataTable tableSPTESTDAILYATTENDANCE;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal SPTESTDAILYATTENDANCERow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableSPTESTDAILYATTENDANCE = ((SPTESTDAILYATTENDANCEDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public long RNO {
-                get {
-                    try {
-                        return ((long)(this[this.tableSPTESTDAILYATTENDANCE.RNOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RNO\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.RNOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int EMPLOYEEID {
-                get {
-                    return ((int)(this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEEIDColumn]));
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEEIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int MEMBERSHIPNO {
-                get {
-                    try {
-                        return ((int)(this[this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MEMBERSHIPNO\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string EMPLOYEENAME {
-                get {
-                    try {
-                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EMPLOYEENAME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string POSITIONNAME {
-                get {
-                    try {
-                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'POSITIONNAME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ATTDATE {
-                get {
-                    try {
-                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ATTDATE\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.TimeSpan INTIME {
-                get {
-                    try {
-                        return ((global::System.TimeSpan)(this[this.tableSPTESTDAILYATTENDANCE.INTIMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'INTIME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.INTIMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.TimeSpan OUTTIME {
-                get {
-                    try {
-                        return ((global::System.TimeSpan)(this[this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OUTTIME\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int WORKING_HOURS {
-                get {
-                    try {
-                        return ((int)(this[this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'WORKING_HOURS\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public decimal WORKING_MINUTES {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'WORKING_MINUTES\' in table \'SPTESTDAILYATTENDANCE\' is DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool WITHPERMISSION {
-                get {
-                    return ((bool)(this[this.tableSPTESTDAILYATTENDANCE.WITHPERMISSIONColumn]));
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.WITHPERMISSIONColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int OT_HOURS {
-                get {
-                    try {
-                        return ((int)(this[this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OT_HOURS\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string OT_MINUTES {
-                get {
-                    try {
-                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OT_MINUTES\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string REMARKS {
-                get {
-                    try {
-                        return ((string)(this[this.tableSPTESTDAILYATTENDANCE.REMARKSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'REMARKS\' in table \'SPTESTDAILYATTENDANCE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.REMARKSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool ISFULLDAYLEAVE {
-                get {
-                    return ((bool)(this[this.tableSPTESTDAILYATTENDANCE.ISFULLDAYLEAVEColumn]));
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.ISFULLDAYLEAVEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool ISHALFDAYLEAVE {
-                get {
-                    return ((bool)(this[this.tableSPTESTDAILYATTENDANCE.ISHALFDAYLEAVEColumn]));
-                }
-                set {
-                    this[this.tableSPTESTDAILYATTENDANCE.ISHALFDAYLEAVEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRNONull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.RNOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRNONull() {
-                this[this.tableSPTESTDAILYATTENDANCE.RNOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsMEMBERSHIPNONull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetMEMBERSHIPNONull() {
-                this[this.tableSPTESTDAILYATTENDANCE.MEMBERSHIPNOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsEMPLOYEENAMENull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetEMPLOYEENAMENull() {
-                this[this.tableSPTESTDAILYATTENDANCE.EMPLOYEENAMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsPOSITIONNAMENull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetPOSITIONNAMENull() {
-                this[this.tableSPTESTDAILYATTENDANCE.POSITIONNAMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsATTDATENull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetATTDATENull() {
-                this[this.tableSPTESTDAILYATTENDANCE.ATTDATEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsINTIMENull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.INTIMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetINTIMENull() {
-                this[this.tableSPTESTDAILYATTENDANCE.INTIMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOUTTIMENull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOUTTIMENull() {
-                this[this.tableSPTESTDAILYATTENDANCE.OUTTIMEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsWORKING_HOURSNull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetWORKING_HOURSNull() {
-                this[this.tableSPTESTDAILYATTENDANCE.WORKING_HOURSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsWORKING_MINUTESNull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetWORKING_MINUTESNull() {
-                this[this.tableSPTESTDAILYATTENDANCE.WORKING_MINUTESColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOT_HOURSNull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOT_HOURSNull() {
-                this[this.tableSPTESTDAILYATTENDANCE.OT_HOURSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOT_MINUTESNull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOT_MINUTESNull() {
-                this[this.tableSPTESTDAILYATTENDANCE.OT_MINUTESColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsREMARKSNull() {
-                return this.IsNull(this.tableSPTESTDAILYATTENDANCE.REMARKSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetREMARKSNull() {
-                this[this.tableSPTESTDAILYATTENDANCE.REMARKSColumn] = global::System.Convert.DBNull;
+            public void SetPositionNameNull() {
+                this[this.tableMonthlySalary.PositionNameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3128,43 +1986,9 @@ namespace NUBE.PAYROLL.PL {
                 }
             }
         }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class SPTESTDAILYATTENDANCERowChangeEvent : global::System.EventArgs {
-            
-            private SPTESTDAILYATTENDANCERow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SPTESTDAILYATTENDANCERowChangeEvent(SPTESTDAILYATTENDANCERow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SPTESTDAILYATTENDANCERow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
     }
 }
-namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
+namespace NUBE.PAYROLL.PL.RipuTestDataSet1TableAdapters {
     
     
     /// <summary>
@@ -3293,15 +2117,18 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("EmployeeNo", "EmployeeNo");
             tableMapping.ColumnMappings.Add("SalaryMonth", "SalaryMonth");
             tableMapping.ColumnMappings.Add("EmployeeName", "EmployeeName");
+            tableMapping.ColumnMappings.Add("DateOfJoining", "DateOfJoining");
             tableMapping.ColumnMappings.Add("EPFNumber", "EPFNumber");
             tableMapping.ColumnMappings.Add("SOCSONumber", "SOCSONumber");
             tableMapping.ColumnMappings.Add("NRIC", "NRIC");
             tableMapping.ColumnMappings.Add("BankAccountNo", "BankAccountNo");
+            tableMapping.ColumnMappings.Add("BankName", "BankName");
             tableMapping.ColumnMappings.Add("BasicSalary", "BasicSalary");
             tableMapping.ColumnMappings.Add("TotalWorkingDays", "TotalWorkingDays");
             tableMapping.ColumnMappings.Add("DaysAbsent", "DaysAbsent");
             tableMapping.ColumnMappings.Add("OTHours", "OTHours");
             tableMapping.ColumnMappings.Add("OT_Amount", "OT_Amount");
+            tableMapping.ColumnMappings.Add("LOP", "LOP");
             tableMapping.ColumnMappings.Add("POB", "POB");
             tableMapping.ColumnMappings.Add("NEC", "NEC");
             tableMapping.ColumnMappings.Add("SECONDMENT", "SECONDMENT");
@@ -3326,6 +2153,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("KOPERASI", "KOPERASI");
             tableMapping.ColumnMappings.Add("NUBESUBSCRIPTION", "NUBESUBSCRIPTION");
             tableMapping.ColumnMappings.Add("PCB", "PCB");
+            tableMapping.ColumnMappings.Add("AllowanceInAdvanced", "AllowanceInAdvanced");
+            tableMapping.ColumnMappings.Add("OtherDeductions", "OtherDeductions");
             tableMapping.ColumnMappings.Add("TOTALEARNING", "TOTALEARNING");
             tableMapping.ColumnMappings.Add("TOTALDEDUCTION", "TOTALDEDUCTION");
             tableMapping.ColumnMappings.Add("NETSALARY", "NETSALARY");
@@ -3333,32 +2162,37 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [MonthlySalary] WHERE (([Id] = @Original_Id) AND ([EmployeeId] = @Ori" +
-                "ginal_EmployeeId) AND ([EmployeeNo] = @Original_EmployeeNo) AND ((@IsNull_Salary" +
-                "Month = 1 AND [SalaryMonth] IS NULL) OR ([SalaryMonth] = @Original_SalaryMonth))" +
-                " AND ((@IsNull_EmployeeName = 1 AND [EmployeeName] IS NULL) OR ([EmployeeName] =" +
-                " @Original_EmployeeName)) AND ((@IsNull_EPFNumber = 1 AND [EPFNumber] IS NULL) O" +
-                "R ([EPFNumber] = @Original_EPFNumber)) AND ((@IsNull_SOCSONumber = 1 AND [SOCSON" +
-                "umber] IS NULL) OR ([SOCSONumber] = @Original_SOCSONumber)) AND ((@IsNull_NRIC =" +
-                " 1 AND [NRIC] IS NULL) OR ([NRIC] = @Original_NRIC)) AND ((@IsNull_BankAccountNo" +
-                " = 1 AND [BankAccountNo] IS NULL) OR ([BankAccountNo] = @Original_BankAccountNo)" +
-                ") AND ([BasicSalary] = @Original_BasicSalary) AND ([TotalWorkingDays] = @Origina" +
-                "l_TotalWorkingDays) AND ([DaysAbsent] = @Original_DaysAbsent) AND ([OTHours] = @" +
-                "Original_OTHours) AND ([OT_Amount] = @Original_OT_Amount) AND ([POB] = @Original" +
-                "_POB) AND ([NEC] = @Original_NEC) AND ([SECONDMENT] = @Original_SECONDMENT) AND " +
-                "([SPECIAL] = @Original_SPECIAL) AND ([COLA] = @Original_COLA) AND ([MOBILEALLOWA" +
-                "NCE] = @Original_MOBILEALLOWANCE) AND ([ALLOWANCE] = @Original_ALLOWANCE) AND ([" +
-                "BONUS] = @Original_BONUS) AND ([EXGRATIA] = @Original_EXGRATIA) AND ([EPF] = @Or" +
-                "iginal_EPF) AND ([EPFUNION] = @Original_EPFUNION) AND ([SOCSO] = @Original_SOCSO" +
-                ") AND ([SOCSOUNION] = @Original_SOCSOUNION) AND ([INCOMETAX] = @Original_INCOMET" +
-                "AX) AND ([GMIS] = @Original_GMIS) AND ([GELA] = @Original_GELA) AND ([BIMBLOAN] " +
-                "= @Original_BIMBLOAN) AND ([HOMECARLOANS] = @Original_HOMECARLOANS) AND ([OTHERL" +
-                "OAN] = @Original_OTHERLOAN) AND ([TOTALLOAN] = @Original_TOTALLOAN) AND ([OTHERS" +
-                "] = @Original_OTHERS) AND ([KOPERASI] = @Original_KOPERASI) AND ([NUBESUBSCRIPTI" +
-                "ON] = @Original_NUBESUBSCRIPTION) AND ([PCB] = @Original_PCB) AND ([TOTALEARNING" +
-                "] = @Original_TOTALEARNING) AND ([TOTALDEDUCTION] = @Original_TOTALDEDUCTION) AN" +
-                "D ([NETSALARY] = @Original_NETSALARY) AND ((@IsNull_PositionName = 1 AND [Positi" +
-                "onName] IS NULL) OR ([PositionName] = @Original_PositionName)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[MonthlySalary] WHERE (([Id] = @Original_Id) AND ([EmployeeId] " +
+                "= @Original_EmployeeId) AND ([EmployeeNo] = @Original_EmployeeNo) AND ((@IsNull_" +
+                "SalaryMonth = 1 AND [SalaryMonth] IS NULL) OR ([SalaryMonth] = @Original_SalaryM" +
+                "onth)) AND ((@IsNull_EmployeeName = 1 AND [EmployeeName] IS NULL) OR ([EmployeeN" +
+                "ame] = @Original_EmployeeName)) AND ((@IsNull_DateOfJoining = 1 AND [DateOfJoini" +
+                "ng] IS NULL) OR ([DateOfJoining] = @Original_DateOfJoining)) AND ((@IsNull_EPFNu" +
+                "mber = 1 AND [EPFNumber] IS NULL) OR ([EPFNumber] = @Original_EPFNumber)) AND ((" +
+                "@IsNull_SOCSONumber = 1 AND [SOCSONumber] IS NULL) OR ([SOCSONumber] = @Original" +
+                "_SOCSONumber)) AND ((@IsNull_NRIC = 1 AND [NRIC] IS NULL) OR ([NRIC] = @Original" +
+                "_NRIC)) AND ((@IsNull_BankAccountNo = 1 AND [BankAccountNo] IS NULL) OR ([BankAc" +
+                "countNo] = @Original_BankAccountNo)) AND ((@IsNull_BankName = 1 AND [BankName] I" +
+                "S NULL) OR ([BankName] = @Original_BankName)) AND ([BasicSalary] = @Original_Bas" +
+                "icSalary) AND ([TotalWorkingDays] = @Original_TotalWorkingDays) AND ([DaysAbsent" +
+                "] = @Original_DaysAbsent) AND ([OTHours] = @Original_OTHours) AND ([OT_Amount] =" +
+                " @Original_OT_Amount) AND ([LOP] = @Original_LOP) AND ([POB] = @Original_POB) AN" +
+                "D ([NEC] = @Original_NEC) AND ([SECONDMENT] = @Original_SECONDMENT) AND ([SPECIA" +
+                "L] = @Original_SPECIAL) AND ([COLA] = @Original_COLA) AND ([MOBILEALLOWANCE] = @" +
+                "Original_MOBILEALLOWANCE) AND ([ALLOWANCE] = @Original_ALLOWANCE) AND ([BONUS] =" +
+                " @Original_BONUS) AND ([EXGRATIA] = @Original_EXGRATIA) AND ([EPF] = @Original_E" +
+                "PF) AND ([EPFUNION] = @Original_EPFUNION) AND ([SOCSO] = @Original_SOCSO) AND ([" +
+                "SOCSOUNION] = @Original_SOCSOUNION) AND ([INCOMETAX] = @Original_INCOMETAX) AND " +
+                "([GMIS] = @Original_GMIS) AND ([GELA] = @Original_GELA) AND ([BIMBLOAN] = @Origi" +
+                "nal_BIMBLOAN) AND ([HOMECARLOANS] = @Original_HOMECARLOANS) AND ([OTHERLOAN] = @" +
+                "Original_OTHERLOAN) AND ([TOTALLOAN] = @Original_TOTALLOAN) AND ([OTHERS] = @Ori" +
+                "ginal_OTHERS) AND ([KOPERASI] = @Original_KOPERASI) AND ([NUBESUBSCRIPTION] = @O" +
+                "riginal_NUBESUBSCRIPTION) AND ([PCB] = @Original_PCB) AND ([AllowanceInAdvanced]" +
+                " = @Original_AllowanceInAdvanced) AND ([OtherDeductions] = @Original_OtherDeduct" +
+                "ions) AND ([TOTALEARNING] = @Original_TOTALEARNING) AND ([TOTALDEDUCTION] = @Ori" +
+                "ginal_TOTALDEDUCTION) AND ([NETSALARY] = @Original_NETSALARY) AND ((@IsNull_Posi" +
+                "tionName = 1 AND [PositionName] IS NULL) OR ([PositionName] = @Original_Position" +
+                "Name)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3367,6 +2201,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SalaryMonth", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalaryMonth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateOfJoining", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOfJoining", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateOfJoining", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOfJoining", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EPFNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EPFNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EPFNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EPFNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SOCSONumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SOCSONumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -3375,11 +2211,14 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NRIC", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRIC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BankAccountNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankAccountNo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BankAccountNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankAccountNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BankName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BankName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BasicSalary", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BasicSalary", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalWorkingDays", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalWorkingDays", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DaysAbsent", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DaysAbsent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OTHours", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OTHours", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OT_Amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OT_Amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LOP", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LOP", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_POB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "POB", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NEC", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NEC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SECONDMENT", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SECONDMENT", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3404,6 +2243,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_KOPERASI", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "KOPERASI", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NUBESUBSCRIPTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NUBESUBSCRIPTION", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PCB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PCB", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AllowanceInAdvanced", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AllowanceInAdvanced", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OtherDeductions", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OtherDeductions", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TOTALEARNING", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALEARNING", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TOTALDEDUCTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALDEDUCTION", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NETSALARY", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NETSALARY", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3411,40 +2252,46 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PositionName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PositionName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [MonthlySalary] ([EmployeeId], [EmployeeNo], [SalaryMonth], [Employee" +
-                "Name], [EPFNumber], [SOCSONumber], [NRIC], [BankAccountNo], [BasicSalary], [Tota" +
-                "lWorkingDays], [DaysAbsent], [OTHours], [OT_Amount], [POB], [NEC], [SECONDMENT]," +
-                " [SPECIAL], [COLA], [MOBILEALLOWANCE], [ALLOWANCE], [BONUS], [EXGRATIA], [EPF], " +
-                "[EPFUNION], [SOCSO], [SOCSOUNION], [INCOMETAX], [GMIS], [GELA], [BIMBLOAN], [HOM" +
-                "ECARLOANS], [OTHERLOAN], [TOTALLOAN], [OTHERS], [KOPERASI], [NUBESUBSCRIPTION], " +
-                "[PCB], [TOTALEARNING], [TOTALDEDUCTION], [NETSALARY], [PositionName]) VALUES (@E" +
-                "mployeeId, @EmployeeNo, @SalaryMonth, @EmployeeName, @EPFNumber, @SOCSONumber, @" +
-                "NRIC, @BankAccountNo, @BasicSalary, @TotalWorkingDays, @DaysAbsent, @OTHours, @O" +
-                "T_Amount, @POB, @NEC, @SECONDMENT, @SPECIAL, @COLA, @MOBILEALLOWANCE, @ALLOWANCE" +
-                ", @BONUS, @EXGRATIA, @EPF, @EPFUNION, @SOCSO, @SOCSOUNION, @INCOMETAX, @GMIS, @G" +
-                "ELA, @BIMBLOAN, @HOMECARLOANS, @OTHERLOAN, @TOTALLOAN, @OTHERS, @KOPERASI, @NUBE" +
-                "SUBSCRIPTION, @PCB, @TOTALEARNING, @TOTALDEDUCTION, @NETSALARY, @PositionName);\r" +
-                "\nSELECT Id, EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, EPFNumber, SOCSON" +
-                "umber, NRIC, BankAccountNo, BasicSalary, TotalWorkingDays, DaysAbsent, OTHours, " +
-                "OT_Amount, POB, NEC, SECONDMENT, SPECIAL, COLA, MOBILEALLOWANCE, ALLOWANCE, BONU" +
-                "S, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, GMIS, GELA, BIMBLOAN, " +
-                "HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, PCB, TOT" +
-                "ALEARNING, TOTALDEDUCTION, NETSALARY, PositionName FROM MonthlySalary WHERE (Id " +
-                "= SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[MonthlySalary] ([EmployeeId], [EmployeeNo], [SalaryMonth], [Em" +
+                "ployeeName], [DateOfJoining], [EPFNumber], [SOCSONumber], [NRIC], [BankAccountNo" +
+                "], [BankName], [BasicSalary], [TotalWorkingDays], [DaysAbsent], [OTHours], [OT_A" +
+                "mount], [LOP], [POB], [NEC], [SECONDMENT], [SPECIAL], [COLA], [MOBILEALLOWANCE]," +
+                " [ALLOWANCE], [BONUS], [EXGRATIA], [EPF], [EPFUNION], [SOCSO], [SOCSOUNION], [IN" +
+                "COMETAX], [GMIS], [GELA], [BIMBLOAN], [HOMECARLOANS], [OTHERLOAN], [TOTALLOAN], " +
+                "[OTHERS], [KOPERASI], [NUBESUBSCRIPTION], [PCB], [AllowanceInAdvanced], [OtherDe" +
+                "ductions], [TOTALEARNING], [TOTALDEDUCTION], [NETSALARY], [PositionName]) VALUES" +
+                " (@EmployeeId, @EmployeeNo, @SalaryMonth, @EmployeeName, @DateOfJoining, @EPFNum" +
+                "ber, @SOCSONumber, @NRIC, @BankAccountNo, @BankName, @BasicSalary, @TotalWorking" +
+                "Days, @DaysAbsent, @OTHours, @OT_Amount, @LOP, @POB, @NEC, @SECONDMENT, @SPECIAL" +
+                ", @COLA, @MOBILEALLOWANCE, @ALLOWANCE, @BONUS, @EXGRATIA, @EPF, @EPFUNION, @SOCS" +
+                "O, @SOCSOUNION, @INCOMETAX, @GMIS, @GELA, @BIMBLOAN, @HOMECARLOANS, @OTHERLOAN, " +
+                "@TOTALLOAN, @OTHERS, @KOPERASI, @NUBESUBSCRIPTION, @PCB, @AllowanceInAdvanced, @" +
+                "OtherDeductions, @TOTALEARNING, @TOTALDEDUCTION, @NETSALARY, @PositionName);\r\nSE" +
+                "LECT Id, EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, DateOfJoining, EPFNu" +
+                "mber, SOCSONumber, NRIC, BankAccountNo, BankName, BasicSalary, TotalWorkingDays," +
+                " DaysAbsent, OTHours, OT_Amount, LOP, POB, NEC, SECONDMENT, SPECIAL, COLA, MOBIL" +
+                "EALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOME" +
+                "TAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI," +
+                " NUBESUBSCRIPTION, PCB, AllowanceInAdvanced, OtherDeductions, TOTALEARNING, TOTA" +
+                "LDEDUCTION, NETSALARY, PositionName FROM MonthlySalary WHERE (Id = SCOPE_IDENTIT" +
+                "Y())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalaryMonth", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalaryMonth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateOfJoining", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOfJoining", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EPFNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EPFNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SOCSONumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SOCSONumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NRIC", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRIC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BankAccountNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankAccountNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BankName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BasicSalary", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BasicSalary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalWorkingDays", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalWorkingDays", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DaysAbsent", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DaysAbsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OTHours", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OTHours", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OT_Amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OT_Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LOP", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LOP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@POB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "POB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NEC", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NEC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SECONDMENT", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SECONDMENT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3469,71 +2316,84 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KOPERASI", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "KOPERASI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NUBESUBSCRIPTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NUBESUBSCRIPTION", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PCB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PCB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AllowanceInAdvanced", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AllowanceInAdvanced", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtherDeductions", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OtherDeductions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TOTALEARNING", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALEARNING", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TOTALDEDUCTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALDEDUCTION", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NETSALARY", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NETSALARY", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PositionName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PositionName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [MonthlySalary] SET [EmployeeId] = @EmployeeId, [EmployeeNo] = @EmployeeNo" +
-                ", [SalaryMonth] = @SalaryMonth, [EmployeeName] = @EmployeeName, [EPFNumber] = @E" +
-                "PFNumber, [SOCSONumber] = @SOCSONumber, [NRIC] = @NRIC, [BankAccountNo] = @BankA" +
-                "ccountNo, [BasicSalary] = @BasicSalary, [TotalWorkingDays] = @TotalWorkingDays, " +
-                "[DaysAbsent] = @DaysAbsent, [OTHours] = @OTHours, [OT_Amount] = @OT_Amount, [POB" +
-                "] = @POB, [NEC] = @NEC, [SECONDMENT] = @SECONDMENT, [SPECIAL] = @SPECIAL, [COLA]" +
-                " = @COLA, [MOBILEALLOWANCE] = @MOBILEALLOWANCE, [ALLOWANCE] = @ALLOWANCE, [BONUS" +
-                "] = @BONUS, [EXGRATIA] = @EXGRATIA, [EPF] = @EPF, [EPFUNION] = @EPFUNION, [SOCSO" +
-                "] = @SOCSO, [SOCSOUNION] = @SOCSOUNION, [INCOMETAX] = @INCOMETAX, [GMIS] = @GMIS" +
-                ", [GELA] = @GELA, [BIMBLOAN] = @BIMBLOAN, [HOMECARLOANS] = @HOMECARLOANS, [OTHER" +
-                "LOAN] = @OTHERLOAN, [TOTALLOAN] = @TOTALLOAN, [OTHERS] = @OTHERS, [KOPERASI] = @" +
-                "KOPERASI, [NUBESUBSCRIPTION] = @NUBESUBSCRIPTION, [PCB] = @PCB, [TOTALEARNING] =" +
-                " @TOTALEARNING, [TOTALDEDUCTION] = @TOTALDEDUCTION, [NETSALARY] = @NETSALARY, [P" +
-                "ositionName] = @PositionName WHERE (([Id] = @Original_Id) AND ([EmployeeId] = @O" +
-                "riginal_EmployeeId) AND ([EmployeeNo] = @Original_EmployeeNo) AND ((@IsNull_Sala" +
-                "ryMonth = 1 AND [SalaryMonth] IS NULL) OR ([SalaryMonth] = @Original_SalaryMonth" +
-                ")) AND ((@IsNull_EmployeeName = 1 AND [EmployeeName] IS NULL) OR ([EmployeeName]" +
-                " = @Original_EmployeeName)) AND ((@IsNull_EPFNumber = 1 AND [EPFNumber] IS NULL)" +
-                " OR ([EPFNumber] = @Original_EPFNumber)) AND ((@IsNull_SOCSONumber = 1 AND [SOCS" +
-                "ONumber] IS NULL) OR ([SOCSONumber] = @Original_SOCSONumber)) AND ((@IsNull_NRIC" +
-                " = 1 AND [NRIC] IS NULL) OR ([NRIC] = @Original_NRIC)) AND ((@IsNull_BankAccount" +
-                "No = 1 AND [BankAccountNo] IS NULL) OR ([BankAccountNo] = @Original_BankAccountN" +
-                "o)) AND ([BasicSalary] = @Original_BasicSalary) AND ([TotalWorkingDays] = @Origi" +
-                "nal_TotalWorkingDays) AND ([DaysAbsent] = @Original_DaysAbsent) AND ([OTHours] =" +
-                " @Original_OTHours) AND ([OT_Amount] = @Original_OT_Amount) AND ([POB] = @Origin" +
-                "al_POB) AND ([NEC] = @Original_NEC) AND ([SECONDMENT] = @Original_SECONDMENT) AN" +
-                "D ([SPECIAL] = @Original_SPECIAL) AND ([COLA] = @Original_COLA) AND ([MOBILEALLO" +
-                "WANCE] = @Original_MOBILEALLOWANCE) AND ([ALLOWANCE] = @Original_ALLOWANCE) AND " +
-                "([BONUS] = @Original_BONUS) AND ([EXGRATIA] = @Original_EXGRATIA) AND ([EPF] = @" +
-                "Original_EPF) AND ([EPFUNION] = @Original_EPFUNION) AND ([SOCSO] = @Original_SOC" +
-                "SO) AND ([SOCSOUNION] = @Original_SOCSOUNION) AND ([INCOMETAX] = @Original_INCOM" +
-                "ETAX) AND ([GMIS] = @Original_GMIS) AND ([GELA] = @Original_GELA) AND ([BIMBLOAN" +
-                "] = @Original_BIMBLOAN) AND ([HOMECARLOANS] = @Original_HOMECARLOANS) AND ([OTHE" +
-                "RLOAN] = @Original_OTHERLOAN) AND ([TOTALLOAN] = @Original_TOTALLOAN) AND ([OTHE" +
-                "RS] = @Original_OTHERS) AND ([KOPERASI] = @Original_KOPERASI) AND ([NUBESUBSCRIP" +
-                "TION] = @Original_NUBESUBSCRIPTION) AND ([PCB] = @Original_PCB) AND ([TOTALEARNI" +
-                "NG] = @Original_TOTALEARNING) AND ([TOTALDEDUCTION] = @Original_TOTALDEDUCTION) " +
-                "AND ([NETSALARY] = @Original_NETSALARY) AND ((@IsNull_PositionName = 1 AND [Posi" +
-                "tionName] IS NULL) OR ([PositionName] = @Original_PositionName)));\r\nSELECT Id, E" +
-                "mployeeId, EmployeeNo, SalaryMonth, EmployeeName, EPFNumber, SOCSONumber, NRIC, " +
-                "BankAccountNo, BasicSalary, TotalWorkingDays, DaysAbsent, OTHours, OT_Amount, PO" +
-                "B, NEC, SECONDMENT, SPECIAL, COLA, MOBILEALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, " +
-                "EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS," +
-                " OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, PCB, TOTALEARNING, TO" +
-                "TALDEDUCTION, NETSALARY, PositionName FROM MonthlySalary WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[MonthlySalary] SET [EmployeeId] = @EmployeeId, [EmployeeNo] = @Empl" +
+                "oyeeNo, [SalaryMonth] = @SalaryMonth, [EmployeeName] = @EmployeeName, [DateOfJoi" +
+                "ning] = @DateOfJoining, [EPFNumber] = @EPFNumber, [SOCSONumber] = @SOCSONumber, " +
+                "[NRIC] = @NRIC, [BankAccountNo] = @BankAccountNo, [BankName] = @BankName, [Basic" +
+                "Salary] = @BasicSalary, [TotalWorkingDays] = @TotalWorkingDays, [DaysAbsent] = @" +
+                "DaysAbsent, [OTHours] = @OTHours, [OT_Amount] = @OT_Amount, [LOP] = @LOP, [POB] " +
+                "= @POB, [NEC] = @NEC, [SECONDMENT] = @SECONDMENT, [SPECIAL] = @SPECIAL, [COLA] =" +
+                " @COLA, [MOBILEALLOWANCE] = @MOBILEALLOWANCE, [ALLOWANCE] = @ALLOWANCE, [BONUS] " +
+                "= @BONUS, [EXGRATIA] = @EXGRATIA, [EPF] = @EPF, [EPFUNION] = @EPFUNION, [SOCSO] " +
+                "= @SOCSO, [SOCSOUNION] = @SOCSOUNION, [INCOMETAX] = @INCOMETAX, [GMIS] = @GMIS, " +
+                "[GELA] = @GELA, [BIMBLOAN] = @BIMBLOAN, [HOMECARLOANS] = @HOMECARLOANS, [OTHERLO" +
+                "AN] = @OTHERLOAN, [TOTALLOAN] = @TOTALLOAN, [OTHERS] = @OTHERS, [KOPERASI] = @KO" +
+                "PERASI, [NUBESUBSCRIPTION] = @NUBESUBSCRIPTION, [PCB] = @PCB, [AllowanceInAdvanc" +
+                "ed] = @AllowanceInAdvanced, [OtherDeductions] = @OtherDeductions, [TOTALEARNING]" +
+                " = @TOTALEARNING, [TOTALDEDUCTION] = @TOTALDEDUCTION, [NETSALARY] = @NETSALARY, " +
+                "[PositionName] = @PositionName WHERE (([Id] = @Original_Id) AND ([EmployeeId] = " +
+                "@Original_EmployeeId) AND ([EmployeeNo] = @Original_EmployeeNo) AND ((@IsNull_Sa" +
+                "laryMonth = 1 AND [SalaryMonth] IS NULL) OR ([SalaryMonth] = @Original_SalaryMon" +
+                "th)) AND ((@IsNull_EmployeeName = 1 AND [EmployeeName] IS NULL) OR ([EmployeeNam" +
+                "e] = @Original_EmployeeName)) AND ((@IsNull_DateOfJoining = 1 AND [DateOfJoining" +
+                "] IS NULL) OR ([DateOfJoining] = @Original_DateOfJoining)) AND ((@IsNull_EPFNumb" +
+                "er = 1 AND [EPFNumber] IS NULL) OR ([EPFNumber] = @Original_EPFNumber)) AND ((@I" +
+                "sNull_SOCSONumber = 1 AND [SOCSONumber] IS NULL) OR ([SOCSONumber] = @Original_S" +
+                "OCSONumber)) AND ((@IsNull_NRIC = 1 AND [NRIC] IS NULL) OR ([NRIC] = @Original_N" +
+                "RIC)) AND ((@IsNull_BankAccountNo = 1 AND [BankAccountNo] IS NULL) OR ([BankAcco" +
+                "untNo] = @Original_BankAccountNo)) AND ((@IsNull_BankName = 1 AND [BankName] IS " +
+                "NULL) OR ([BankName] = @Original_BankName)) AND ([BasicSalary] = @Original_Basic" +
+                "Salary) AND ([TotalWorkingDays] = @Original_TotalWorkingDays) AND ([DaysAbsent] " +
+                "= @Original_DaysAbsent) AND ([OTHours] = @Original_OTHours) AND ([OT_Amount] = @" +
+                "Original_OT_Amount) AND ([LOP] = @Original_LOP) AND ([POB] = @Original_POB) AND " +
+                "([NEC] = @Original_NEC) AND ([SECONDMENT] = @Original_SECONDMENT) AND ([SPECIAL]" +
+                " = @Original_SPECIAL) AND ([COLA] = @Original_COLA) AND ([MOBILEALLOWANCE] = @Or" +
+                "iginal_MOBILEALLOWANCE) AND ([ALLOWANCE] = @Original_ALLOWANCE) AND ([BONUS] = @" +
+                "Original_BONUS) AND ([EXGRATIA] = @Original_EXGRATIA) AND ([EPF] = @Original_EPF" +
+                ") AND ([EPFUNION] = @Original_EPFUNION) AND ([SOCSO] = @Original_SOCSO) AND ([SO" +
+                "CSOUNION] = @Original_SOCSOUNION) AND ([INCOMETAX] = @Original_INCOMETAX) AND ([" +
+                "GMIS] = @Original_GMIS) AND ([GELA] = @Original_GELA) AND ([BIMBLOAN] = @Origina" +
+                "l_BIMBLOAN) AND ([HOMECARLOANS] = @Original_HOMECARLOANS) AND ([OTHERLOAN] = @Or" +
+                "iginal_OTHERLOAN) AND ([TOTALLOAN] = @Original_TOTALLOAN) AND ([OTHERS] = @Origi" +
+                "nal_OTHERS) AND ([KOPERASI] = @Original_KOPERASI) AND ([NUBESUBSCRIPTION] = @Ori" +
+                "ginal_NUBESUBSCRIPTION) AND ([PCB] = @Original_PCB) AND ([AllowanceInAdvanced] =" +
+                " @Original_AllowanceInAdvanced) AND ([OtherDeductions] = @Original_OtherDeductio" +
+                "ns) AND ([TOTALEARNING] = @Original_TOTALEARNING) AND ([TOTALDEDUCTION] = @Origi" +
+                "nal_TOTALDEDUCTION) AND ([NETSALARY] = @Original_NETSALARY) AND ((@IsNull_Positi" +
+                "onName = 1 AND [PositionName] IS NULL) OR ([PositionName] = @Original_PositionNa" +
+                "me)));\r\nSELECT Id, EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, DateOfJoin" +
+                "ing, EPFNumber, SOCSONumber, NRIC, BankAccountNo, BankName, BasicSalary, TotalWo" +
+                "rkingDays, DaysAbsent, OTHours, OT_Amount, LOP, POB, NEC, SECONDMENT, SPECIAL, C" +
+                "OLA, MOBILEALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNI" +
+                "ON, INCOMETAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS," +
+                " KOPERASI, NUBESUBSCRIPTION, PCB, AllowanceInAdvanced, OtherDeductions, TOTALEAR" +
+                "NING, TOTALDEDUCTION, NETSALARY, PositionName FROM MonthlySalary WHERE (Id = @Id" +
+                ")";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalaryMonth", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalaryMonth", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateOfJoining", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOfJoining", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EPFNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EPFNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SOCSONumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SOCSONumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NRIC", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRIC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BankAccountNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankAccountNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BankName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BasicSalary", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BasicSalary", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalWorkingDays", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalWorkingDays", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DaysAbsent", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DaysAbsent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OTHours", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OTHours", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OT_Amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OT_Amount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LOP", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LOP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@POB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "POB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NEC", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NEC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SECONDMENT", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SECONDMENT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3558,6 +2418,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KOPERASI", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "KOPERASI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NUBESUBSCRIPTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NUBESUBSCRIPTION", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PCB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PCB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AllowanceInAdvanced", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AllowanceInAdvanced", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtherDeductions", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OtherDeductions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TOTALEARNING", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALEARNING", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TOTALDEDUCTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALDEDUCTION", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NETSALARY", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NETSALARY", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3569,6 +2431,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SalaryMonth", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalaryMonth", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateOfJoining", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOfJoining", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateOfJoining", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateOfJoining", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EPFNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EPFNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EPFNumber", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EPFNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SOCSONumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SOCSONumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -3577,11 +2441,14 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NRIC", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRIC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BankAccountNo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankAccountNo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BankAccountNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankAccountNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BankName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BankName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BankName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BasicSalary", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "BasicSalary", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TotalWorkingDays", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TotalWorkingDays", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DaysAbsent", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "DaysAbsent", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OTHours", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OTHours", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OT_Amount", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OT_Amount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LOP", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "LOP", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_POB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "POB", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NEC", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NEC", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SECONDMENT", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "SECONDMENT", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3606,6 +2473,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_KOPERASI", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "KOPERASI", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NUBESUBSCRIPTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NUBESUBSCRIPTION", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PCB", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "PCB", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AllowanceInAdvanced", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "AllowanceInAdvanced", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OtherDeductions", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "OtherDeductions", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TOTALEARNING", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALEARNING", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TOTALDEDUCTION", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "TOTALDEDUCTION", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NETSALARY", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "NETSALARY", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3618,7 +2487,7 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::NUBE.PAYROLL.PL.Properties.Settings.Default.BizSoftConnectionString;
+            this._connection.ConnectionString = global::NUBE.PAYROLL.PL.Properties.Settings.Default.payrollConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3627,7 +2496,7 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT Id, EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, EPFNumber, SOCSONumber, NRIC, BankAccountNo, BasicSalary, TotalWorkingDays, DaysAbsent, OTHours, OT_Amount, POB, NEC, SECONDMENT, SPECIAL, COLA, MOBILEALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, PCB, TOTALEARNING, TOTALDEDUCTION, NETSALARY, PositionName FROM MonthlySalary";
+            this._commandCollection[0].CommandText = @"SELECT Id, EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, DateOfJoining, EPFNumber, SOCSONumber, NRIC, BankAccountNo, BankName, BasicSalary, TotalWorkingDays, DaysAbsent, OTHours, OT_Amount, LOP, POB, NEC, SECONDMENT, SPECIAL, COLA, MOBILEALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, PCB, AllowanceInAdvanced, OtherDeductions, TOTALEARNING, TOTALDEDUCTION, NETSALARY, PositionName FROM dbo.MonthlySalary";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3635,7 +2504,7 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(BizSoftDataSet.MonthlySalaryDataTable dataTable) {
+        public virtual int Fill(RipuTestDataSet1.MonthlySalaryDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3648,9 +2517,9 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual BizSoftDataSet.MonthlySalaryDataTable GetData() {
+        public virtual RipuTestDataSet1.MonthlySalaryDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            BizSoftDataSet.MonthlySalaryDataTable dataTable = new BizSoftDataSet.MonthlySalaryDataTable();
+            RipuTestDataSet1.MonthlySalaryDataTable dataTable = new RipuTestDataSet1.MonthlySalaryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3658,14 +2527,14 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(BizSoftDataSet.MonthlySalaryDataTable dataTable) {
+        public virtual int Update(RipuTestDataSet1.MonthlySalaryDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(BizSoftDataSet dataSet) {
+        public virtual int Update(RipuTestDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "MonthlySalary");
         }
         
@@ -3694,15 +2563,18 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     int Original_EmployeeNo, 
                     global::System.Nullable<global::System.DateTime> Original_SalaryMonth, 
                     string Original_EmployeeName, 
+                    global::System.Nullable<global::System.DateTime> Original_DateOfJoining, 
                     string Original_EPFNumber, 
                     string Original_SOCSONumber, 
                     string Original_NRIC, 
                     string Original_BankAccountNo, 
+                    string Original_BankName, 
                     decimal Original_BasicSalary, 
                     decimal Original_TotalWorkingDays, 
                     decimal Original_DaysAbsent, 
                     decimal Original_OTHours, 
                     decimal Original_OT_Amount, 
+                    decimal Original_LOP, 
                     decimal Original_POB, 
                     decimal Original_NEC, 
                     decimal Original_SECONDMENT, 
@@ -3727,6 +2599,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     decimal Original_KOPERASI, 
                     decimal Original_NUBESUBSCRIPTION, 
                     decimal Original_PCB, 
+                    decimal Original_AllowanceInAdvanced, 
+                    decimal Original_OtherDeductions, 
                     decimal Original_TOTALEARNING, 
                     decimal Original_TOTALDEDUCTION, 
                     decimal Original_NETSALARY, 
@@ -3750,77 +2624,96 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_EmployeeName));
             }
-            if ((Original_EPFNumber == null)) {
+            if ((Original_DateOfJoining.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_DateOfJoining.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_EPFNumber));
-            }
-            if ((Original_SOCSONumber == null)) {
+            if ((Original_EPFNumber == null)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_SOCSONumber));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_EPFNumber));
             }
-            if ((Original_NRIC == null)) {
+            if ((Original_SOCSONumber == null)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_NRIC));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_SOCSONumber));
             }
-            if ((Original_BankAccountNo == null)) {
+            if ((Original_NRIC == null)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_BankAccountNo));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_NRIC));
             }
-            this.Adapter.DeleteCommand.Parameters[15].Value = ((decimal)(Original_BasicSalary));
-            this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_TotalWorkingDays));
-            this.Adapter.DeleteCommand.Parameters[17].Value = ((decimal)(Original_DaysAbsent));
-            this.Adapter.DeleteCommand.Parameters[18].Value = ((decimal)(Original_OTHours));
-            this.Adapter.DeleteCommand.Parameters[19].Value = ((decimal)(Original_OT_Amount));
-            this.Adapter.DeleteCommand.Parameters[20].Value = ((decimal)(Original_POB));
-            this.Adapter.DeleteCommand.Parameters[21].Value = ((decimal)(Original_NEC));
-            this.Adapter.DeleteCommand.Parameters[22].Value = ((decimal)(Original_SECONDMENT));
-            this.Adapter.DeleteCommand.Parameters[23].Value = ((decimal)(Original_SPECIAL));
-            this.Adapter.DeleteCommand.Parameters[24].Value = ((decimal)(Original_COLA));
-            this.Adapter.DeleteCommand.Parameters[25].Value = ((decimal)(Original_MOBILEALLOWANCE));
-            this.Adapter.DeleteCommand.Parameters[26].Value = ((decimal)(Original_ALLOWANCE));
-            this.Adapter.DeleteCommand.Parameters[27].Value = ((decimal)(Original_BONUS));
-            this.Adapter.DeleteCommand.Parameters[28].Value = ((decimal)(Original_EXGRATIA));
-            this.Adapter.DeleteCommand.Parameters[29].Value = ((decimal)(Original_EPF));
-            this.Adapter.DeleteCommand.Parameters[30].Value = ((decimal)(Original_EPFUNION));
-            this.Adapter.DeleteCommand.Parameters[31].Value = ((decimal)(Original_SOCSO));
-            this.Adapter.DeleteCommand.Parameters[32].Value = ((decimal)(Original_SOCSOUNION));
-            this.Adapter.DeleteCommand.Parameters[33].Value = ((decimal)(Original_INCOMETAX));
-            this.Adapter.DeleteCommand.Parameters[34].Value = ((decimal)(Original_GMIS));
-            this.Adapter.DeleteCommand.Parameters[35].Value = ((decimal)(Original_GELA));
-            this.Adapter.DeleteCommand.Parameters[36].Value = ((decimal)(Original_BIMBLOAN));
-            this.Adapter.DeleteCommand.Parameters[37].Value = ((decimal)(Original_HOMECARLOANS));
-            this.Adapter.DeleteCommand.Parameters[38].Value = ((decimal)(Original_OTHERLOAN));
-            this.Adapter.DeleteCommand.Parameters[39].Value = ((decimal)(Original_TOTALLOAN));
-            this.Adapter.DeleteCommand.Parameters[40].Value = ((decimal)(Original_OTHERS));
-            this.Adapter.DeleteCommand.Parameters[41].Value = ((decimal)(Original_KOPERASI));
-            this.Adapter.DeleteCommand.Parameters[42].Value = ((decimal)(Original_NUBESUBSCRIPTION));
-            this.Adapter.DeleteCommand.Parameters[43].Value = ((decimal)(Original_PCB));
-            this.Adapter.DeleteCommand.Parameters[44].Value = ((decimal)(Original_TOTALEARNING));
-            this.Adapter.DeleteCommand.Parameters[45].Value = ((decimal)(Original_TOTALDEDUCTION));
-            this.Adapter.DeleteCommand.Parameters[46].Value = ((decimal)(Original_NETSALARY));
-            if ((Original_PositionName == null)) {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
+            if ((Original_BankAccountNo == null)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[48].Value = ((string)(Original_PositionName));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_BankAccountNo));
+            }
+            if ((Original_BankName == null)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_BankName));
+            }
+            this.Adapter.DeleteCommand.Parameters[19].Value = ((decimal)(Original_BasicSalary));
+            this.Adapter.DeleteCommand.Parameters[20].Value = ((decimal)(Original_TotalWorkingDays));
+            this.Adapter.DeleteCommand.Parameters[21].Value = ((decimal)(Original_DaysAbsent));
+            this.Adapter.DeleteCommand.Parameters[22].Value = ((decimal)(Original_OTHours));
+            this.Adapter.DeleteCommand.Parameters[23].Value = ((decimal)(Original_OT_Amount));
+            this.Adapter.DeleteCommand.Parameters[24].Value = ((decimal)(Original_LOP));
+            this.Adapter.DeleteCommand.Parameters[25].Value = ((decimal)(Original_POB));
+            this.Adapter.DeleteCommand.Parameters[26].Value = ((decimal)(Original_NEC));
+            this.Adapter.DeleteCommand.Parameters[27].Value = ((decimal)(Original_SECONDMENT));
+            this.Adapter.DeleteCommand.Parameters[28].Value = ((decimal)(Original_SPECIAL));
+            this.Adapter.DeleteCommand.Parameters[29].Value = ((decimal)(Original_COLA));
+            this.Adapter.DeleteCommand.Parameters[30].Value = ((decimal)(Original_MOBILEALLOWANCE));
+            this.Adapter.DeleteCommand.Parameters[31].Value = ((decimal)(Original_ALLOWANCE));
+            this.Adapter.DeleteCommand.Parameters[32].Value = ((decimal)(Original_BONUS));
+            this.Adapter.DeleteCommand.Parameters[33].Value = ((decimal)(Original_EXGRATIA));
+            this.Adapter.DeleteCommand.Parameters[34].Value = ((decimal)(Original_EPF));
+            this.Adapter.DeleteCommand.Parameters[35].Value = ((decimal)(Original_EPFUNION));
+            this.Adapter.DeleteCommand.Parameters[36].Value = ((decimal)(Original_SOCSO));
+            this.Adapter.DeleteCommand.Parameters[37].Value = ((decimal)(Original_SOCSOUNION));
+            this.Adapter.DeleteCommand.Parameters[38].Value = ((decimal)(Original_INCOMETAX));
+            this.Adapter.DeleteCommand.Parameters[39].Value = ((decimal)(Original_GMIS));
+            this.Adapter.DeleteCommand.Parameters[40].Value = ((decimal)(Original_GELA));
+            this.Adapter.DeleteCommand.Parameters[41].Value = ((decimal)(Original_BIMBLOAN));
+            this.Adapter.DeleteCommand.Parameters[42].Value = ((decimal)(Original_HOMECARLOANS));
+            this.Adapter.DeleteCommand.Parameters[43].Value = ((decimal)(Original_OTHERLOAN));
+            this.Adapter.DeleteCommand.Parameters[44].Value = ((decimal)(Original_TOTALLOAN));
+            this.Adapter.DeleteCommand.Parameters[45].Value = ((decimal)(Original_OTHERS));
+            this.Adapter.DeleteCommand.Parameters[46].Value = ((decimal)(Original_KOPERASI));
+            this.Adapter.DeleteCommand.Parameters[47].Value = ((decimal)(Original_NUBESUBSCRIPTION));
+            this.Adapter.DeleteCommand.Parameters[48].Value = ((decimal)(Original_PCB));
+            this.Adapter.DeleteCommand.Parameters[49].Value = ((decimal)(Original_AllowanceInAdvanced));
+            this.Adapter.DeleteCommand.Parameters[50].Value = ((decimal)(Original_OtherDeductions));
+            this.Adapter.DeleteCommand.Parameters[51].Value = ((decimal)(Original_TOTALEARNING));
+            this.Adapter.DeleteCommand.Parameters[52].Value = ((decimal)(Original_TOTALDEDUCTION));
+            this.Adapter.DeleteCommand.Parameters[53].Value = ((decimal)(Original_NETSALARY));
+            if ((Original_PositionName == null)) {
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[55].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((string)(Original_PositionName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3847,15 +2740,18 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     int EmployeeNo, 
                     global::System.Nullable<global::System.DateTime> SalaryMonth, 
                     string EmployeeName, 
+                    global::System.Nullable<global::System.DateTime> DateOfJoining, 
                     string EPFNumber, 
                     string SOCSONumber, 
                     string NRIC, 
                     string BankAccountNo, 
+                    string BankName, 
                     decimal BasicSalary, 
                     decimal TotalWorkingDays, 
                     decimal DaysAbsent, 
                     decimal OTHours, 
                     decimal OT_Amount, 
+                    decimal LOP, 
                     decimal POB, 
                     decimal NEC, 
                     decimal SECONDMENT, 
@@ -3880,6 +2776,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     decimal KOPERASI, 
                     decimal NUBESUBSCRIPTION, 
                     decimal PCB, 
+                    decimal AllowanceInAdvanced, 
+                    decimal OtherDeductions, 
                     decimal TOTALEARNING, 
                     decimal TOTALDEDUCTION, 
                     decimal NETSALARY, 
@@ -3898,67 +2796,82 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(EmployeeName));
             }
-            if ((EPFNumber == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            if ((DateOfJoining.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(DateOfJoining.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(EPFNumber));
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((SOCSONumber == null)) {
+            if ((EPFNumber == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(SOCSONumber));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(EPFNumber));
             }
-            if ((NRIC == null)) {
+            if ((SOCSONumber == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(NRIC));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(SOCSONumber));
             }
-            if ((BankAccountNo == null)) {
+            if ((NRIC == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(BankAccountNo));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(NRIC));
             }
-            this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(BasicSalary));
-            this.Adapter.InsertCommand.Parameters[9].Value = ((decimal)(TotalWorkingDays));
-            this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(DaysAbsent));
-            this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(OTHours));
-            this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(OT_Amount));
-            this.Adapter.InsertCommand.Parameters[13].Value = ((decimal)(POB));
-            this.Adapter.InsertCommand.Parameters[14].Value = ((decimal)(NEC));
-            this.Adapter.InsertCommand.Parameters[15].Value = ((decimal)(SECONDMENT));
-            this.Adapter.InsertCommand.Parameters[16].Value = ((decimal)(SPECIAL));
-            this.Adapter.InsertCommand.Parameters[17].Value = ((decimal)(COLA));
-            this.Adapter.InsertCommand.Parameters[18].Value = ((decimal)(MOBILEALLOWANCE));
-            this.Adapter.InsertCommand.Parameters[19].Value = ((decimal)(ALLOWANCE));
-            this.Adapter.InsertCommand.Parameters[20].Value = ((decimal)(BONUS));
-            this.Adapter.InsertCommand.Parameters[21].Value = ((decimal)(EXGRATIA));
-            this.Adapter.InsertCommand.Parameters[22].Value = ((decimal)(EPF));
-            this.Adapter.InsertCommand.Parameters[23].Value = ((decimal)(EPFUNION));
-            this.Adapter.InsertCommand.Parameters[24].Value = ((decimal)(SOCSO));
-            this.Adapter.InsertCommand.Parameters[25].Value = ((decimal)(SOCSOUNION));
-            this.Adapter.InsertCommand.Parameters[26].Value = ((decimal)(INCOMETAX));
-            this.Adapter.InsertCommand.Parameters[27].Value = ((decimal)(GMIS));
-            this.Adapter.InsertCommand.Parameters[28].Value = ((decimal)(GELA));
-            this.Adapter.InsertCommand.Parameters[29].Value = ((decimal)(BIMBLOAN));
-            this.Adapter.InsertCommand.Parameters[30].Value = ((decimal)(HOMECARLOANS));
-            this.Adapter.InsertCommand.Parameters[31].Value = ((decimal)(OTHERLOAN));
-            this.Adapter.InsertCommand.Parameters[32].Value = ((decimal)(TOTALLOAN));
-            this.Adapter.InsertCommand.Parameters[33].Value = ((decimal)(OTHERS));
-            this.Adapter.InsertCommand.Parameters[34].Value = ((decimal)(KOPERASI));
-            this.Adapter.InsertCommand.Parameters[35].Value = ((decimal)(NUBESUBSCRIPTION));
-            this.Adapter.InsertCommand.Parameters[36].Value = ((decimal)(PCB));
-            this.Adapter.InsertCommand.Parameters[37].Value = ((decimal)(TOTALEARNING));
-            this.Adapter.InsertCommand.Parameters[38].Value = ((decimal)(TOTALDEDUCTION));
-            this.Adapter.InsertCommand.Parameters[39].Value = ((decimal)(NETSALARY));
-            if ((PositionName == null)) {
-                this.Adapter.InsertCommand.Parameters[40].Value = global::System.DBNull.Value;
+            if ((BankAccountNo == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[40].Value = ((string)(PositionName));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(BankAccountNo));
+            }
+            if ((BankName == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(BankName));
+            }
+            this.Adapter.InsertCommand.Parameters[10].Value = ((decimal)(BasicSalary));
+            this.Adapter.InsertCommand.Parameters[11].Value = ((decimal)(TotalWorkingDays));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((decimal)(DaysAbsent));
+            this.Adapter.InsertCommand.Parameters[13].Value = ((decimal)(OTHours));
+            this.Adapter.InsertCommand.Parameters[14].Value = ((decimal)(OT_Amount));
+            this.Adapter.InsertCommand.Parameters[15].Value = ((decimal)(LOP));
+            this.Adapter.InsertCommand.Parameters[16].Value = ((decimal)(POB));
+            this.Adapter.InsertCommand.Parameters[17].Value = ((decimal)(NEC));
+            this.Adapter.InsertCommand.Parameters[18].Value = ((decimal)(SECONDMENT));
+            this.Adapter.InsertCommand.Parameters[19].Value = ((decimal)(SPECIAL));
+            this.Adapter.InsertCommand.Parameters[20].Value = ((decimal)(COLA));
+            this.Adapter.InsertCommand.Parameters[21].Value = ((decimal)(MOBILEALLOWANCE));
+            this.Adapter.InsertCommand.Parameters[22].Value = ((decimal)(ALLOWANCE));
+            this.Adapter.InsertCommand.Parameters[23].Value = ((decimal)(BONUS));
+            this.Adapter.InsertCommand.Parameters[24].Value = ((decimal)(EXGRATIA));
+            this.Adapter.InsertCommand.Parameters[25].Value = ((decimal)(EPF));
+            this.Adapter.InsertCommand.Parameters[26].Value = ((decimal)(EPFUNION));
+            this.Adapter.InsertCommand.Parameters[27].Value = ((decimal)(SOCSO));
+            this.Adapter.InsertCommand.Parameters[28].Value = ((decimal)(SOCSOUNION));
+            this.Adapter.InsertCommand.Parameters[29].Value = ((decimal)(INCOMETAX));
+            this.Adapter.InsertCommand.Parameters[30].Value = ((decimal)(GMIS));
+            this.Adapter.InsertCommand.Parameters[31].Value = ((decimal)(GELA));
+            this.Adapter.InsertCommand.Parameters[32].Value = ((decimal)(BIMBLOAN));
+            this.Adapter.InsertCommand.Parameters[33].Value = ((decimal)(HOMECARLOANS));
+            this.Adapter.InsertCommand.Parameters[34].Value = ((decimal)(OTHERLOAN));
+            this.Adapter.InsertCommand.Parameters[35].Value = ((decimal)(TOTALLOAN));
+            this.Adapter.InsertCommand.Parameters[36].Value = ((decimal)(OTHERS));
+            this.Adapter.InsertCommand.Parameters[37].Value = ((decimal)(KOPERASI));
+            this.Adapter.InsertCommand.Parameters[38].Value = ((decimal)(NUBESUBSCRIPTION));
+            this.Adapter.InsertCommand.Parameters[39].Value = ((decimal)(PCB));
+            this.Adapter.InsertCommand.Parameters[40].Value = ((decimal)(AllowanceInAdvanced));
+            this.Adapter.InsertCommand.Parameters[41].Value = ((decimal)(OtherDeductions));
+            this.Adapter.InsertCommand.Parameters[42].Value = ((decimal)(TOTALEARNING));
+            this.Adapter.InsertCommand.Parameters[43].Value = ((decimal)(TOTALDEDUCTION));
+            this.Adapter.InsertCommand.Parameters[44].Value = ((decimal)(NETSALARY));
+            if ((PositionName == null)) {
+                this.Adapter.InsertCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[45].Value = ((string)(PositionName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3985,15 +2898,18 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     int EmployeeNo, 
                     global::System.Nullable<global::System.DateTime> SalaryMonth, 
                     string EmployeeName, 
+                    global::System.Nullable<global::System.DateTime> DateOfJoining, 
                     string EPFNumber, 
                     string SOCSONumber, 
                     string NRIC, 
                     string BankAccountNo, 
+                    string BankName, 
                     decimal BasicSalary, 
                     decimal TotalWorkingDays, 
                     decimal DaysAbsent, 
                     decimal OTHours, 
                     decimal OT_Amount, 
+                    decimal LOP, 
                     decimal POB, 
                     decimal NEC, 
                     decimal SECONDMENT, 
@@ -4018,6 +2934,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     decimal KOPERASI, 
                     decimal NUBESUBSCRIPTION, 
                     decimal PCB, 
+                    decimal AllowanceInAdvanced, 
+                    decimal OtherDeductions, 
                     decimal TOTALEARNING, 
                     decimal TOTALDEDUCTION, 
                     decimal NETSALARY, 
@@ -4027,15 +2945,18 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     int Original_EmployeeNo, 
                     global::System.Nullable<global::System.DateTime> Original_SalaryMonth, 
                     string Original_EmployeeName, 
+                    global::System.Nullable<global::System.DateTime> Original_DateOfJoining, 
                     string Original_EPFNumber, 
                     string Original_SOCSONumber, 
                     string Original_NRIC, 
                     string Original_BankAccountNo, 
+                    string Original_BankName, 
                     decimal Original_BasicSalary, 
                     decimal Original_TotalWorkingDays, 
                     decimal Original_DaysAbsent, 
                     decimal Original_OTHours, 
                     decimal Original_OT_Amount, 
+                    decimal Original_LOP, 
                     decimal Original_POB, 
                     decimal Original_NEC, 
                     decimal Original_SECONDMENT, 
@@ -4060,6 +2981,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     decimal Original_KOPERASI, 
                     decimal Original_NUBESUBSCRIPTION, 
                     decimal Original_PCB, 
+                    decimal Original_AllowanceInAdvanced, 
+                    decimal Original_OtherDeductions, 
                     decimal Original_TOTALEARNING, 
                     decimal Original_TOTALDEDUCTION, 
                     decimal Original_NETSALARY, 
@@ -4079,160 +3002,194 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(EmployeeName));
             }
-            if ((EPFNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            if ((DateOfJoining.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(DateOfJoining.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(EPFNumber));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((SOCSONumber == null)) {
+            if ((EPFNumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(SOCSONumber));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(EPFNumber));
             }
-            if ((NRIC == null)) {
+            if ((SOCSONumber == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(NRIC));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(SOCSONumber));
             }
-            if ((BankAccountNo == null)) {
+            if ((NRIC == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(BankAccountNo));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(NRIC));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(BasicSalary));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(TotalWorkingDays));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(DaysAbsent));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(OTHours));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(OT_Amount));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(POB));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(NEC));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(SECONDMENT));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(SPECIAL));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(COLA));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(MOBILEALLOWANCE));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(ALLOWANCE));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(BONUS));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((decimal)(EXGRATIA));
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(EPF));
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((decimal)(EPFUNION));
-            this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(SOCSO));
-            this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(SOCSOUNION));
-            this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(INCOMETAX));
-            this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(GMIS));
-            this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(GELA));
-            this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(BIMBLOAN));
-            this.Adapter.UpdateCommand.Parameters[30].Value = ((decimal)(HOMECARLOANS));
-            this.Adapter.UpdateCommand.Parameters[31].Value = ((decimal)(OTHERLOAN));
-            this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(TOTALLOAN));
-            this.Adapter.UpdateCommand.Parameters[33].Value = ((decimal)(OTHERS));
-            this.Adapter.UpdateCommand.Parameters[34].Value = ((decimal)(KOPERASI));
-            this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(NUBESUBSCRIPTION));
-            this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(PCB));
-            this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(TOTALEARNING));
-            this.Adapter.UpdateCommand.Parameters[38].Value = ((decimal)(TOTALDEDUCTION));
-            this.Adapter.UpdateCommand.Parameters[39].Value = ((decimal)(NETSALARY));
+            if ((BankAccountNo == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(BankAccountNo));
+            }
+            if ((BankName == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(BankName));
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(BasicSalary));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(TotalWorkingDays));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(DaysAbsent));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(OTHours));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(OT_Amount));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(LOP));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((decimal)(POB));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((decimal)(NEC));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((decimal)(SECONDMENT));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(SPECIAL));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(COLA));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((decimal)(MOBILEALLOWANCE));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((decimal)(ALLOWANCE));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((decimal)(BONUS));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(EXGRATIA));
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((decimal)(EPF));
+            this.Adapter.UpdateCommand.Parameters[26].Value = ((decimal)(EPFUNION));
+            this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(SOCSO));
+            this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(SOCSOUNION));
+            this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(INCOMETAX));
+            this.Adapter.UpdateCommand.Parameters[30].Value = ((decimal)(GMIS));
+            this.Adapter.UpdateCommand.Parameters[31].Value = ((decimal)(GELA));
+            this.Adapter.UpdateCommand.Parameters[32].Value = ((decimal)(BIMBLOAN));
+            this.Adapter.UpdateCommand.Parameters[33].Value = ((decimal)(HOMECARLOANS));
+            this.Adapter.UpdateCommand.Parameters[34].Value = ((decimal)(OTHERLOAN));
+            this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(TOTALLOAN));
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(OTHERS));
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(KOPERASI));
+            this.Adapter.UpdateCommand.Parameters[38].Value = ((decimal)(NUBESUBSCRIPTION));
+            this.Adapter.UpdateCommand.Parameters[39].Value = ((decimal)(PCB));
+            this.Adapter.UpdateCommand.Parameters[40].Value = ((decimal)(AllowanceInAdvanced));
+            this.Adapter.UpdateCommand.Parameters[41].Value = ((decimal)(OtherDeductions));
+            this.Adapter.UpdateCommand.Parameters[42].Value = ((decimal)(TOTALEARNING));
+            this.Adapter.UpdateCommand.Parameters[43].Value = ((decimal)(TOTALDEDUCTION));
+            this.Adapter.UpdateCommand.Parameters[44].Value = ((decimal)(NETSALARY));
             if ((PositionName == null)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(PositionName));
-            }
-            this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_EmployeeId));
-            this.Adapter.UpdateCommand.Parameters[43].Value = ((int)(Original_EmployeeNo));
-            if ((Original_SalaryMonth.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((System.DateTime)(Original_SalaryMonth.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
-            if ((Original_EmployeeName == null)) {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(PositionName));
+            }
+            this.Adapter.UpdateCommand.Parameters[46].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[47].Value = ((int)(Original_EmployeeId));
+            this.Adapter.UpdateCommand.Parameters[48].Value = ((int)(Original_EmployeeNo));
+            if ((Original_SalaryMonth.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((System.DateTime)(Original_SalaryMonth.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_EmployeeName));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
+            if ((Original_EmployeeName == null)) {
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_EmployeeName));
+            }
+            if ((Original_DateOfJoining.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((System.DateTime)(Original_DateOfJoining.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
             if ((Original_EPFNumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_EPFNumber));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((string)(Original_EPFNumber));
             }
             if ((Original_SOCSONumber == null)) {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((string)(Original_SOCSONumber));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((string)(Original_SOCSONumber));
             }
             if ((Original_NRIC == null)) {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((string)(Original_NRIC));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((string)(Original_NRIC));
             }
             if ((Original_BankAccountNo == null)) {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((string)(Original_BankAccountNo));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((string)(Original_BankAccountNo));
             }
-            this.Adapter.UpdateCommand.Parameters[56].Value = ((decimal)(Original_BasicSalary));
-            this.Adapter.UpdateCommand.Parameters[57].Value = ((decimal)(Original_TotalWorkingDays));
-            this.Adapter.UpdateCommand.Parameters[58].Value = ((decimal)(Original_DaysAbsent));
-            this.Adapter.UpdateCommand.Parameters[59].Value = ((decimal)(Original_OTHours));
-            this.Adapter.UpdateCommand.Parameters[60].Value = ((decimal)(Original_OT_Amount));
-            this.Adapter.UpdateCommand.Parameters[61].Value = ((decimal)(Original_POB));
-            this.Adapter.UpdateCommand.Parameters[62].Value = ((decimal)(Original_NEC));
-            this.Adapter.UpdateCommand.Parameters[63].Value = ((decimal)(Original_SECONDMENT));
-            this.Adapter.UpdateCommand.Parameters[64].Value = ((decimal)(Original_SPECIAL));
-            this.Adapter.UpdateCommand.Parameters[65].Value = ((decimal)(Original_COLA));
-            this.Adapter.UpdateCommand.Parameters[66].Value = ((decimal)(Original_MOBILEALLOWANCE));
-            this.Adapter.UpdateCommand.Parameters[67].Value = ((decimal)(Original_ALLOWANCE));
-            this.Adapter.UpdateCommand.Parameters[68].Value = ((decimal)(Original_BONUS));
-            this.Adapter.UpdateCommand.Parameters[69].Value = ((decimal)(Original_EXGRATIA));
-            this.Adapter.UpdateCommand.Parameters[70].Value = ((decimal)(Original_EPF));
-            this.Adapter.UpdateCommand.Parameters[71].Value = ((decimal)(Original_EPFUNION));
-            this.Adapter.UpdateCommand.Parameters[72].Value = ((decimal)(Original_SOCSO));
-            this.Adapter.UpdateCommand.Parameters[73].Value = ((decimal)(Original_SOCSOUNION));
-            this.Adapter.UpdateCommand.Parameters[74].Value = ((decimal)(Original_INCOMETAX));
-            this.Adapter.UpdateCommand.Parameters[75].Value = ((decimal)(Original_GMIS));
-            this.Adapter.UpdateCommand.Parameters[76].Value = ((decimal)(Original_GELA));
-            this.Adapter.UpdateCommand.Parameters[77].Value = ((decimal)(Original_BIMBLOAN));
-            this.Adapter.UpdateCommand.Parameters[78].Value = ((decimal)(Original_HOMECARLOANS));
-            this.Adapter.UpdateCommand.Parameters[79].Value = ((decimal)(Original_OTHERLOAN));
-            this.Adapter.UpdateCommand.Parameters[80].Value = ((decimal)(Original_TOTALLOAN));
-            this.Adapter.UpdateCommand.Parameters[81].Value = ((decimal)(Original_OTHERS));
-            this.Adapter.UpdateCommand.Parameters[82].Value = ((decimal)(Original_KOPERASI));
-            this.Adapter.UpdateCommand.Parameters[83].Value = ((decimal)(Original_NUBESUBSCRIPTION));
-            this.Adapter.UpdateCommand.Parameters[84].Value = ((decimal)(Original_PCB));
-            this.Adapter.UpdateCommand.Parameters[85].Value = ((decimal)(Original_TOTALEARNING));
-            this.Adapter.UpdateCommand.Parameters[86].Value = ((decimal)(Original_TOTALDEDUCTION));
-            this.Adapter.UpdateCommand.Parameters[87].Value = ((decimal)(Original_NETSALARY));
+            if ((Original_BankName == null)) {
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((string)(Original_BankName));
+            }
+            this.Adapter.UpdateCommand.Parameters[65].Value = ((decimal)(Original_BasicSalary));
+            this.Adapter.UpdateCommand.Parameters[66].Value = ((decimal)(Original_TotalWorkingDays));
+            this.Adapter.UpdateCommand.Parameters[67].Value = ((decimal)(Original_DaysAbsent));
+            this.Adapter.UpdateCommand.Parameters[68].Value = ((decimal)(Original_OTHours));
+            this.Adapter.UpdateCommand.Parameters[69].Value = ((decimal)(Original_OT_Amount));
+            this.Adapter.UpdateCommand.Parameters[70].Value = ((decimal)(Original_LOP));
+            this.Adapter.UpdateCommand.Parameters[71].Value = ((decimal)(Original_POB));
+            this.Adapter.UpdateCommand.Parameters[72].Value = ((decimal)(Original_NEC));
+            this.Adapter.UpdateCommand.Parameters[73].Value = ((decimal)(Original_SECONDMENT));
+            this.Adapter.UpdateCommand.Parameters[74].Value = ((decimal)(Original_SPECIAL));
+            this.Adapter.UpdateCommand.Parameters[75].Value = ((decimal)(Original_COLA));
+            this.Adapter.UpdateCommand.Parameters[76].Value = ((decimal)(Original_MOBILEALLOWANCE));
+            this.Adapter.UpdateCommand.Parameters[77].Value = ((decimal)(Original_ALLOWANCE));
+            this.Adapter.UpdateCommand.Parameters[78].Value = ((decimal)(Original_BONUS));
+            this.Adapter.UpdateCommand.Parameters[79].Value = ((decimal)(Original_EXGRATIA));
+            this.Adapter.UpdateCommand.Parameters[80].Value = ((decimal)(Original_EPF));
+            this.Adapter.UpdateCommand.Parameters[81].Value = ((decimal)(Original_EPFUNION));
+            this.Adapter.UpdateCommand.Parameters[82].Value = ((decimal)(Original_SOCSO));
+            this.Adapter.UpdateCommand.Parameters[83].Value = ((decimal)(Original_SOCSOUNION));
+            this.Adapter.UpdateCommand.Parameters[84].Value = ((decimal)(Original_INCOMETAX));
+            this.Adapter.UpdateCommand.Parameters[85].Value = ((decimal)(Original_GMIS));
+            this.Adapter.UpdateCommand.Parameters[86].Value = ((decimal)(Original_GELA));
+            this.Adapter.UpdateCommand.Parameters[87].Value = ((decimal)(Original_BIMBLOAN));
+            this.Adapter.UpdateCommand.Parameters[88].Value = ((decimal)(Original_HOMECARLOANS));
+            this.Adapter.UpdateCommand.Parameters[89].Value = ((decimal)(Original_OTHERLOAN));
+            this.Adapter.UpdateCommand.Parameters[90].Value = ((decimal)(Original_TOTALLOAN));
+            this.Adapter.UpdateCommand.Parameters[91].Value = ((decimal)(Original_OTHERS));
+            this.Adapter.UpdateCommand.Parameters[92].Value = ((decimal)(Original_KOPERASI));
+            this.Adapter.UpdateCommand.Parameters[93].Value = ((decimal)(Original_NUBESUBSCRIPTION));
+            this.Adapter.UpdateCommand.Parameters[94].Value = ((decimal)(Original_PCB));
+            this.Adapter.UpdateCommand.Parameters[95].Value = ((decimal)(Original_AllowanceInAdvanced));
+            this.Adapter.UpdateCommand.Parameters[96].Value = ((decimal)(Original_OtherDeductions));
+            this.Adapter.UpdateCommand.Parameters[97].Value = ((decimal)(Original_TOTALEARNING));
+            this.Adapter.UpdateCommand.Parameters[98].Value = ((decimal)(Original_TOTALDEDUCTION));
+            this.Adapter.UpdateCommand.Parameters[99].Value = ((decimal)(Original_NETSALARY));
             if ((Original_PositionName == null)) {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[101].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[89].Value = ((string)(Original_PositionName));
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[101].Value = ((string)(Original_PositionName));
             }
-            this.Adapter.UpdateCommand.Parameters[90].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[102].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4258,15 +3215,18 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     int EmployeeNo, 
                     global::System.Nullable<global::System.DateTime> SalaryMonth, 
                     string EmployeeName, 
+                    global::System.Nullable<global::System.DateTime> DateOfJoining, 
                     string EPFNumber, 
                     string SOCSONumber, 
                     string NRIC, 
                     string BankAccountNo, 
+                    string BankName, 
                     decimal BasicSalary, 
                     decimal TotalWorkingDays, 
                     decimal DaysAbsent, 
                     decimal OTHours, 
                     decimal OT_Amount, 
+                    decimal LOP, 
                     decimal POB, 
                     decimal NEC, 
                     decimal SECONDMENT, 
@@ -4291,6 +3251,8 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     decimal KOPERASI, 
                     decimal NUBESUBSCRIPTION, 
                     decimal PCB, 
+                    decimal AllowanceInAdvanced, 
+                    decimal OtherDeductions, 
                     decimal TOTALEARNING, 
                     decimal TOTALDEDUCTION, 
                     decimal NETSALARY, 
@@ -4300,15 +3262,18 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     int Original_EmployeeNo, 
                     global::System.Nullable<global::System.DateTime> Original_SalaryMonth, 
                     string Original_EmployeeName, 
+                    global::System.Nullable<global::System.DateTime> Original_DateOfJoining, 
                     string Original_EPFNumber, 
                     string Original_SOCSONumber, 
                     string Original_NRIC, 
                     string Original_BankAccountNo, 
+                    string Original_BankName, 
                     decimal Original_BasicSalary, 
                     decimal Original_TotalWorkingDays, 
                     decimal Original_DaysAbsent, 
                     decimal Original_OTHours, 
                     decimal Original_OT_Amount, 
+                    decimal Original_LOP, 
                     decimal Original_POB, 
                     decimal Original_NEC, 
                     decimal Original_SECONDMENT, 
@@ -4333,194 +3298,13 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
                     decimal Original_KOPERASI, 
                     decimal Original_NUBESUBSCRIPTION, 
                     decimal Original_PCB, 
+                    decimal Original_AllowanceInAdvanced, 
+                    decimal Original_OtherDeductions, 
                     decimal Original_TOTALEARNING, 
                     decimal Original_TOTALDEDUCTION, 
                     decimal Original_NETSALARY, 
                     string Original_PositionName) {
-            return this.Update(EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, EPFNumber, SOCSONumber, NRIC, BankAccountNo, BasicSalary, TotalWorkingDays, DaysAbsent, OTHours, OT_Amount, POB, NEC, SECONDMENT, SPECIAL, COLA, MOBILEALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, PCB, TOTALEARNING, TOTALDEDUCTION, NETSALARY, PositionName, Original_Id, Original_EmployeeId, Original_EmployeeNo, Original_SalaryMonth, Original_EmployeeName, Original_EPFNumber, Original_SOCSONumber, Original_NRIC, Original_BankAccountNo, Original_BasicSalary, Original_TotalWorkingDays, Original_DaysAbsent, Original_OTHours, Original_OT_Amount, Original_POB, Original_NEC, Original_SECONDMENT, Original_SPECIAL, Original_COLA, Original_MOBILEALLOWANCE, Original_ALLOWANCE, Original_BONUS, Original_EXGRATIA, Original_EPF, Original_EPFUNION, Original_SOCSO, Original_SOCSOUNION, Original_INCOMETAX, Original_GMIS, Original_GELA, Original_BIMBLOAN, Original_HOMECARLOANS, Original_OTHERLOAN, Original_TOTALLOAN, Original_OTHERS, Original_KOPERASI, Original_NUBESUBSCRIPTION, Original_PCB, Original_TOTALEARNING, Original_TOTALDEDUCTION, Original_NETSALARY, Original_PositionName, Original_Id);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SPTESTDAILYATTENDANCETableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public SPTESTDAILYATTENDANCETableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SPTESTDAILYATTENDANCE";
-            tableMapping.ColumnMappings.Add("RNO", "RNO");
-            tableMapping.ColumnMappings.Add("EMPLOYEEID", "EMPLOYEEID");
-            tableMapping.ColumnMappings.Add("MEMBERSHIPNO", "MEMBERSHIPNO");
-            tableMapping.ColumnMappings.Add("EMPLOYEENAME", "EMPLOYEENAME");
-            tableMapping.ColumnMappings.Add("POSITIONNAME", "POSITIONNAME");
-            tableMapping.ColumnMappings.Add("ATTDATE", "ATTDATE");
-            tableMapping.ColumnMappings.Add("INTIME", "INTIME");
-            tableMapping.ColumnMappings.Add("OUTTIME", "OUTTIME");
-            tableMapping.ColumnMappings.Add("WORKING_HOURS", "WORKING_HOURS");
-            tableMapping.ColumnMappings.Add("WORKING_MINUTES", "WORKING_MINUTES");
-            tableMapping.ColumnMappings.Add("WITHPERMISSION", "WITHPERMISSION");
-            tableMapping.ColumnMappings.Add("OT_HOURS", "OT_HOURS");
-            tableMapping.ColumnMappings.Add("OT_MINUTES", "OT_MINUTES");
-            tableMapping.ColumnMappings.Add("REMARKS", "REMARKS");
-            tableMapping.ColumnMappings.Add("ISFULLDAYLEAVE", "ISFULLDAYLEAVE");
-            tableMapping.ColumnMappings.Add("ISHALFDAYLEAVE", "ISHALFDAYLEAVE");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::NUBE.PAYROLL.PL.Properties.Settings.Default.BizSoftConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.SPTESTDAILYATTENDANCE";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable dataTable = new BizSoftDataSet.SPTESTDAILYATTENDANCEDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
+            return this.Update(EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, DateOfJoining, EPFNumber, SOCSONumber, NRIC, BankAccountNo, BankName, BasicSalary, TotalWorkingDays, DaysAbsent, OTHours, OT_Amount, LOP, POB, NEC, SECONDMENT, SPECIAL, COLA, MOBILEALLOWANCE, ALLOWANCE, BONUS, EXGRATIA, EPF, EPFUNION, SOCSO, SOCSOUNION, INCOMETAX, GMIS, GELA, BIMBLOAN, HOMECARLOANS, OTHERLOAN, TOTALLOAN, OTHERS, KOPERASI, NUBESUBSCRIPTION, PCB, AllowanceInAdvanced, OtherDeductions, TOTALEARNING, TOTALDEDUCTION, NETSALARY, PositionName, Original_Id, Original_EmployeeId, Original_EmployeeNo, Original_SalaryMonth, Original_EmployeeName, Original_DateOfJoining, Original_EPFNumber, Original_SOCSONumber, Original_NRIC, Original_BankAccountNo, Original_BankName, Original_BasicSalary, Original_TotalWorkingDays, Original_DaysAbsent, Original_OTHours, Original_OT_Amount, Original_LOP, Original_POB, Original_NEC, Original_SECONDMENT, Original_SPECIAL, Original_COLA, Original_MOBILEALLOWANCE, Original_ALLOWANCE, Original_BONUS, Original_EXGRATIA, Original_EPF, Original_EPFUNION, Original_SOCSO, Original_SOCSOUNION, Original_INCOMETAX, Original_GMIS, Original_GELA, Original_BIMBLOAN, Original_HOMECARLOANS, Original_OTHERLOAN, Original_TOTALLOAN, Original_OTHERS, Original_KOPERASI, Original_NUBESUBSCRIPTION, Original_PCB, Original_AllowanceInAdvanced, Original_OtherDeductions, Original_TOTALEARNING, Original_TOTALDEDUCTION, Original_NETSALARY, Original_PositionName, Original_Id);
         }
     }
     
@@ -4615,7 +3399,7 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateUpdatedRows(BizSoftDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(RipuTestDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._monthlySalaryTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.MonthlySalary.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -4634,7 +3418,7 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateInsertedRows(BizSoftDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(RipuTestDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._monthlySalaryTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.MonthlySalary.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -4652,7 +3436,7 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateDeletedRows(BizSoftDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(RipuTestDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._monthlySalaryTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.MonthlySalary.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -4694,7 +3478,7 @@ namespace NUBE.PAYROLL.PL.BizSoftDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public virtual int UpdateAll(BizSoftDataSet dataSet) {
+        public virtual int UpdateAll(RipuTestDataSet1 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

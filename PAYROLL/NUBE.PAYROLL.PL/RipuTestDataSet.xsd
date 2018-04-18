@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RipuTestDataSet" targetNamespace="http://tempuri.org/RipuTestDataSet.xsd" xmlns:mstns="http://tempuri.org/RipuTestDataSet.xsd" xmlns="http://tempuri.org/RipuTestDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="payrollConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="payrollConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.NUBE.PAYROLL.PL.Properties.Settings.GlobalReference.Default.payrollConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VIEWDAILYATTEDANCELATETableAdapter" GeneratorDataComponentClassName="VIEWDAILYATTEDANCELATETableAdapter" Name="VIEWDAILYATTEDANCELATE" UserDataComponentName="VIEWDAILYATTEDANCELATETableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="payrollConnectionString (Settings)" DbObjectName="RipuTest.dbo.VIEWDAILYATTEDANCELATE" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT RNO, EMPLOYEEID, MEMBERSHIPNO, EMPLOYEENAME, POSITIONNAME, ATTDATE, INTIME, OUTTIME, WORKING_HOURS, WORKING_MINUTES, WITHPERMISSION, OT_HOURS, OT_MINUTES, REMARKS, ISFULLDAYLEAVE, ISHALFDAYLEAVE, LATEHOURS FROM dbo.VIEWDAILYATTEDANCELATE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RNO" DataSetColumn="RNO" />
+              <Mapping SourceColumn="EMPLOYEEID" DataSetColumn="EMPLOYEEID" />
+              <Mapping SourceColumn="MEMBERSHIPNO" DataSetColumn="MEMBERSHIPNO" />
+              <Mapping SourceColumn="EMPLOYEENAME" DataSetColumn="EMPLOYEENAME" />
+              <Mapping SourceColumn="POSITIONNAME" DataSetColumn="POSITIONNAME" />
+              <Mapping SourceColumn="ATTDATE" DataSetColumn="ATTDATE" />
+              <Mapping SourceColumn="INTIME" DataSetColumn="INTIME" />
+              <Mapping SourceColumn="OUTTIME" DataSetColumn="OUTTIME" />
+              <Mapping SourceColumn="WORKING_HOURS" DataSetColumn="WORKING_HOURS" />
+              <Mapping SourceColumn="WORKING_MINUTES" DataSetColumn="WORKING_MINUTES" />
+              <Mapping SourceColumn="WITHPERMISSION" DataSetColumn="WITHPERMISSION" />
+              <Mapping SourceColumn="OT_HOURS" DataSetColumn="OT_HOURS" />
+              <Mapping SourceColumn="OT_MINUTES" DataSetColumn="OT_MINUTES" />
+              <Mapping SourceColumn="REMARKS" DataSetColumn="REMARKS" />
+              <Mapping SourceColumn="ISFULLDAYLEAVE" DataSetColumn="ISFULLDAYLEAVE" />
+              <Mapping SourceColumn="ISHALFDAYLEAVE" DataSetColumn="ISHALFDAYLEAVE" />
+              <Mapping SourceColumn="LATEHOURS" DataSetColumn="LATEHOURS" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="RipuTestDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="RipuTestDataSet" msprop:Generator_UserDSName="RipuTestDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VIEWDAILYATTEDANCELATE" msprop:Generator_TableClassName="VIEWDAILYATTEDANCELATEDataTable" msprop:Generator_TableVarName="tableVIEWDAILYATTEDANCELATE" msprop:Generator_TablePropName="VIEWDAILYATTEDANCELATE" msprop:Generator_RowDeletingName="VIEWDAILYATTEDANCELATERowDeleting" msprop:Generator_RowChangingName="VIEWDAILYATTEDANCELATERowChanging" msprop:Generator_RowEvHandlerName="VIEWDAILYATTEDANCELATERowChangeEventHandler" msprop:Generator_RowDeletedName="VIEWDAILYATTEDANCELATERowDeleted" msprop:Generator_UserTableName="VIEWDAILYATTEDANCELATE" msprop:Generator_RowChangedName="VIEWDAILYATTEDANCELATERowChanged" msprop:Generator_RowEvArgName="VIEWDAILYATTEDANCELATERowChangeEvent" msprop:Generator_RowClassName="VIEWDAILYATTEDANCELATERow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RNO" msprop:Generator_ColumnVarNameInTable="columnRNO" msprop:Generator_ColumnPropNameInRow="RNO" msprop:Generator_ColumnPropNameInTable="RNOColumn" msprop:Generator_UserColumnName="RNO" type="xs:long" minOccurs="0" />
+              <xs:element name="EMPLOYEEID" msprop:Generator_ColumnVarNameInTable="columnEMPLOYEEID" msprop:Generator_ColumnPropNameInRow="EMPLOYEEID" msprop:Generator_ColumnPropNameInTable="EMPLOYEEIDColumn" msprop:Generator_UserColumnName="EMPLOYEEID" type="xs:int" />
+              <xs:element name="MEMBERSHIPNO" msprop:Generator_ColumnVarNameInTable="columnMEMBERSHIPNO" msprop:Generator_ColumnPropNameInRow="MEMBERSHIPNO" msprop:Generator_ColumnPropNameInTable="MEMBERSHIPNOColumn" msprop:Generator_UserColumnName="MEMBERSHIPNO" type="xs:int" minOccurs="0" />
+              <xs:element name="EMPLOYEENAME" msprop:Generator_ColumnVarNameInTable="columnEMPLOYEENAME" msprop:Generator_ColumnPropNameInRow="EMPLOYEENAME" msprop:Generator_ColumnPropNameInTable="EMPLOYEENAMEColumn" msprop:Generator_UserColumnName="EMPLOYEENAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="POSITIONNAME" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPOSITIONNAME" msprop:Generator_ColumnPropNameInRow="POSITIONNAME" msprop:Generator_ColumnPropNameInTable="POSITIONNAMEColumn" msprop:Generator_UserColumnName="POSITIONNAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ATTDATE" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnATTDATE" msprop:Generator_ColumnPropNameInRow="ATTDATE" msprop:Generator_ColumnPropNameInTable="ATTDATEColumn" msprop:Generator_UserColumnName="ATTDATE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="INTIME" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnINTIME" msprop:Generator_ColumnPropNameInRow="INTIME" msprop:Generator_ColumnPropNameInTable="INTIMEColumn" msprop:Generator_UserColumnName="INTIME" type="xs:duration" minOccurs="0" />
+              <xs:element name="OUTTIME" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOUTTIME" msprop:Generator_ColumnPropNameInRow="OUTTIME" msprop:Generator_ColumnPropNameInTable="OUTTIMEColumn" msprop:Generator_UserColumnName="OUTTIME" type="xs:duration" minOccurs="0" />
+              <xs:element name="WORKING_HOURS" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnWORKING_HOURS" msprop:Generator_ColumnPropNameInRow="WORKING_HOURS" msprop:Generator_ColumnPropNameInTable="WORKING_HOURSColumn" msprop:Generator_UserColumnName="WORKING_HOURS" type="xs:int" minOccurs="0" />
+              <xs:element name="WORKING_MINUTES" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnWORKING_MINUTES" msprop:Generator_ColumnPropNameInRow="WORKING_MINUTES" msprop:Generator_ColumnPropNameInTable="WORKING_MINUTESColumn" msprop:Generator_UserColumnName="WORKING_MINUTES" type="xs:decimal" minOccurs="0" />
+              <xs:element name="WITHPERMISSION" msprop:Generator_ColumnVarNameInTable="columnWITHPERMISSION" msprop:Generator_ColumnPropNameInRow="WITHPERMISSION" msprop:Generator_ColumnPropNameInTable="WITHPERMISSIONColumn" msprop:Generator_UserColumnName="WITHPERMISSION" type="xs:boolean" />
+              <xs:element name="OT_HOURS" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOT_HOURS" msprop:Generator_ColumnPropNameInRow="OT_HOURS" msprop:Generator_ColumnPropNameInTable="OT_HOURSColumn" msprop:Generator_UserColumnName="OT_HOURS" type="xs:int" minOccurs="0" />
+              <xs:element name="OT_MINUTES" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnOT_MINUTES" msprop:Generator_ColumnPropNameInRow="OT_MINUTES" msprop:Generator_ColumnPropNameInTable="OT_MINUTESColumn" msprop:Generator_UserColumnName="OT_MINUTES" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REMARKS" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnREMARKS" msprop:Generator_ColumnPropNameInRow="REMARKS" msprop:Generator_ColumnPropNameInTable="REMARKSColumn" msprop:Generator_UserColumnName="REMARKS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ISFULLDAYLEAVE" msprop:Generator_ColumnVarNameInTable="columnISFULLDAYLEAVE" msprop:Generator_ColumnPropNameInRow="ISFULLDAYLEAVE" msprop:Generator_ColumnPropNameInTable="ISFULLDAYLEAVEColumn" msprop:Generator_UserColumnName="ISFULLDAYLEAVE" type="xs:boolean" />
+              <xs:element name="ISHALFDAYLEAVE" msprop:Generator_ColumnVarNameInTable="columnISHALFDAYLEAVE" msprop:Generator_ColumnPropNameInRow="ISHALFDAYLEAVE" msprop:Generator_ColumnPropNameInTable="ISHALFDAYLEAVEColumn" msprop:Generator_UserColumnName="ISHALFDAYLEAVE" type="xs:boolean" />
+              <xs:element name="LATEHOURS" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLATEHOURS" msprop:Generator_ColumnPropNameInRow="LATEHOURS" msprop:Generator_ColumnPropNameInTable="LATEHOURSColumn" msprop:Generator_UserColumnName="LATEHOURS" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="61" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
