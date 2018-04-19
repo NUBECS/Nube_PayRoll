@@ -58,6 +58,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                         frm.Title = "Monthly Allowance";
                         frm.txtPCBorBonus.Text = "Allowance Adv";
                         frm.txtExgr.Text = "Other Deductions";
+                        frm.txtDispatchAllowance.Visibility = Visibility.Visible;
                         frm.ShowDialog();
                         FormFill();
                     }
@@ -121,7 +122,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                     SqlCommand cmd;
                     string str = string.Format("SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO,ME.ID,ME.MEMBERSHIPNO, \r" +
                         " ME.EMPLOYEENAME,ME.GENDER,ME.NRIC,0 PCBID,'' ENTRYDATE, \r" +
-                        " 0 ALLOWANCEINADVANCED,0 OTHERDEDUCTIONS \r" +
+                        " 0 ALLOWANCEINADVANCED,0 OTHERDEDUCTIONS,0 DISPATCHALLOWANCE \r" +
                         " FROM MASTEREMPLOYEE ME(NOLOCK) ");
 
                     cmd = new SqlCommand(str, con);
@@ -158,7 +159,8 @@ namespace NUBE.PAYROLL.PL.Transaction
                         SqlCommand cmd;
                         string str = string.Format("SELECT ROW_NUMBER() OVER(ORDER BY ME.EMPLOYEENAME ASC) AS RNO,ME.ID,ME.MEMBERSHIPNO, \r" +
                             " ME.EMPLOYEENAME,ME.SHORTNAME,ME.GENDER,ME.NRIC,ISNULL(PC.ID, 0)MLYDEDUCTID,PC.ENTRYDATE, \r" +
-                            " ISNULL(PC.ALLOWANCEINADVANCED, 0)ALLOWANCEINADVANCED,ISNULL(OTHERDEDUCTIONS,0)OTHERDEDUCTIONS \r" +
+                            " ISNULL(PC.ALLOWANCEINADVANCED, 0)ALLOWANCEINADVANCED,ISNULL(OTHERDEDUCTIONS,0)OTHERDEDUCTIONS, \r" +
+                            " ISNULL(PC.DISPATCHALLOWANCE,0)DISPATCHALLOWANCE \r" +
                             " FROM MASTEREMPLOYEE ME(NOLOCK) \r" +
                             " LEFT JOIN MONTHLYDEDUCTIONS PC(NOLOCK) ON PC.EMPLOYEEID = ME.ID AND MONTH(PC.ENTRYDATE)= MONTH('{0:dd/MMM/yyyy}')", dtDOB);
                         cmd = new SqlCommand(str, con);

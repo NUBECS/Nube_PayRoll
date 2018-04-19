@@ -398,7 +398,9 @@ SELECT Id, EmployeeId, EmployeeNo, SalaryMonth, EmployeeName, EPFNumber, SOCSONu
               <xs:element name="OtherDeductions" msprop:Generator_ColumnVarNameInTable="columnOtherDeductions" msprop:Generator_ColumnPropNameInRow="OtherDeductions" msprop:Generator_ColumnPropNameInTable="OtherDeductionsColumn" msprop:Generator_UserColumnName="OtherDeductions" type="xs:decimal" minOccurs="0" />
               <xs:element name="SIP" msprop:Generator_ColumnVarNameInTable="columnSIP" msprop:Generator_ColumnPropNameInRow="SIP" msprop:Generator_ColumnPropNameInTable="SIPColumn" msprop:Generator_UserColumnName="SIP" type="xs:string" minOccurs="0" />
               <xs:element name="SIPUNION" msprop:Generator_ColumnVarNameInTable="columnSIPUNION" msprop:Generator_ColumnPropNameInRow="SIPUNION" msprop:Generator_ColumnPropNameInTable="SIPUNIONColumn" msprop:Generator_UserColumnName="SIPUNION" type="xs:string" minOccurs="0" />
+              <xs:element name="Remarks" msprop:Generator_ColumnVarNameInTable="columnRemarks" msprop:Generator_ColumnPropNameInRow="Remarks" msprop:Generator_ColumnPropNameInTable="RemarksColumn" msprop:Generator_UserColumnName="Remarks" type="xs:string" minOccurs="0" />
               <xs:element name="SIPNumber" msprop:Generator_ColumnVarNameInTable="columnSIPNumber" msprop:Generator_ColumnPropNameInRow="SIPNumber" msprop:Generator_ColumnPropNameInTable="SIPNumberColumn" msprop:Generator_UserColumnName="SIPNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAllowance" msprop:Generator_ColumnVarNameInTable="columnTotalAllowance" msprop:Generator_ColumnPropNameInRow="TotalAllowance" msprop:Generator_ColumnPropNameInTable="TotalAllowanceColumn" msprop:Generator_UserColumnName="TotalAllowance" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

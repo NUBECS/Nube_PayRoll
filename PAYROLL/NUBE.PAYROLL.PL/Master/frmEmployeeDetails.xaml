@@ -555,7 +555,7 @@
                                             <materialDesign:HintAssist.Hint>
                                                 <StackPanel Orientation="Horizontal" Width="151">
                                                     <materialDesign:PackIcon  Kind="CreditCard" Foreground="{Binding BorderBrush, ElementName=PhoneTextBox}"  Height="25" Width="25" />
-                                                    <TextBlock Text="COLA" />
+                                                    <TextBlock x:Name="txtOtherAllowance" Text="COLA" />
                                                 </StackPanel>
                                             </materialDesign:HintAssist.Hint>
                                         </TextBox>

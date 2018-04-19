@@ -59,13 +59,14 @@
                         <DataGridTextColumn Header="Id" FontWeight="Bold" Width="60" Visibility="Hidden" Binding="{Binding ID}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="S.No" FontWeight="Bold" Width="60" Binding="{Binding RNO}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="M.Code" FontWeight="Bold" Width="100" Binding="{Binding MEMBERSHIPNO}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="Name" FontWeight="Bold" Width="350" Binding="{Binding EMPLOYEENAME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="Gender" FontWeight="Bold" Width="150" Binding="{Binding GENDER}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                        <DataGridTextColumn Header="NRIC" FontWeight="Bold" Width="200" Binding="{Binding NRIC}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Name" FontWeight="Bold" Width="330" Binding="{Binding EMPLOYEENAME}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Gender" FontWeight="Bold" Width="80" Binding="{Binding GENDER}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="NRIC" FontWeight="Bold" Width="150" Binding="{Binding NRIC}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="MLYDEDUCTID" FontWeight="Bold" Width="200" Visibility="Hidden" Binding="{Binding MLYDEDUCTID}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="ENTRYDATE" FontWeight="Bold" Width="200" Visibility="Hidden" Binding="{Binding ENTRYDATE}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Allowance in Advanced" FontWeight="Bold" Width="160" Binding="{Binding ALLOWANCEINADVANCED}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                         <DataGridTextColumn Header="Other Deduction" FontWeight="Bold" Width="160" Binding="{Binding OTHERDEDUCTIONS}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                        <DataGridTextColumn Header="Dispatch Allowance" FontWeight="Bold" Width="180" Binding="{Binding DISPATCHALLOWANCE}" IsReadOnly="True"  EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

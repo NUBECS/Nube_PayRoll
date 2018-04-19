@@ -221,6 +221,10 @@ namespace NUBE.PAYROLL.PL.Transaction
                 {
                     ya.AllowanceInAdvanced = Convert.ToDecimal(txtBonus.Text);
                     ya.OtherDeductions = Convert.ToDecimal(txtExgratia.Text);
+                    if (!string.IsNullOrEmpty(txtDispatchAllowance.Text))
+                    {
+                        ya.DispatchAllowance = Convert.ToDecimal(txtDispatchAllowance.Text);
+                    }
                     db.SaveChanges();
                     MessageBox.Show("Updated Successfully!", "PAYROLL");
                     this.Close();
@@ -233,6 +237,10 @@ namespace NUBE.PAYROLL.PL.Transaction
                 ya.EmployeeId = iEmployeeId;
                 ya.AllowanceInAdvanced = Convert.ToDecimal(txtBonus.Text);
                 ya.OtherDeductions = Convert.ToDecimal(txtExgratia.Text);
+                if (!string.IsNullOrEmpty(txtDispatchAllowance.Text))
+                {
+                    ya.DispatchAllowance = Convert.ToDecimal(txtDispatchAllowance.Text);
+                }
                 ya.CreateBy = 1;
                 ya.CreatedOn = DateTime.Now;
                 db.MonthlyDeductions.Add(ya);
@@ -249,6 +257,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                 txtBonus.Text = "0";
                 txtBonus.Text = "0";
                 txtExgratia.Text = "0";
+                txtDispatchAllowance.Text = "0";
 
                 var emp = (from x in db.MasterEmployees where x.Id == iEmployeeId select x).FirstOrDefault();
                 if (emp != null)
@@ -293,6 +302,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                     {
                         txtBonus.Text = pcb.AllowanceInAdvanced.ToString();
                         txtExgratia.Text = pcb.OtherDeductions.ToString();
+                        txtDispatchAllowance.Text = pcb.DispatchAllowance.ToString();
                     }
                 }
             }

@@ -414,7 +414,11 @@ namespace NUBE.PAYROLL.PL {
             
             private global::System.Data.DataColumn columnSIPUNION;
             
+            private global::System.Data.DataColumn columnRemarks;
+            
             private global::System.Data.DataColumn columnSIPNumber;
+            
+            private global::System.Data.DataColumn columnTotalAllowance;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -851,9 +855,25 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RemarksColumn {
+                get {
+                    return this.columnRemarks;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn SIPNumberColumn {
                 get {
                     return this.columnSIPNumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TotalAllowanceColumn {
+                get {
+                    return this.columnTotalAllowance;
                 }
             }
             
@@ -944,7 +964,9 @@ namespace NUBE.PAYROLL.PL {
                         decimal OtherDeductions, 
                         string SIP, 
                         string SIPUNION, 
-                        string SIPNumber) {
+                        string Remarks, 
+                        string SIPNumber, 
+                        decimal TotalAllowance) {
                 MonthlySalaryRow rowMonthlySalaryRow = ((MonthlySalaryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -997,7 +1019,9 @@ namespace NUBE.PAYROLL.PL {
                         OtherDeductions,
                         SIP,
                         SIPUNION,
-                        SIPNumber};
+                        Remarks,
+                        SIPNumber,
+                        TotalAllowance};
                 rowMonthlySalaryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMonthlySalaryRow);
                 return rowMonthlySalaryRow;
@@ -1077,7 +1101,9 @@ namespace NUBE.PAYROLL.PL {
                 this.columnOtherDeductions = base.Columns["OtherDeductions"];
                 this.columnSIP = base.Columns["SIP"];
                 this.columnSIPUNION = base.Columns["SIPUNION"];
+                this.columnRemarks = base.Columns["Remarks"];
                 this.columnSIPNumber = base.Columns["SIPNumber"];
+                this.columnTotalAllowance = base.Columns["TotalAllowance"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1183,8 +1209,12 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnSIP);
                 this.columnSIPUNION = new global::System.Data.DataColumn("SIPUNION", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSIPUNION);
+                this.columnRemarks = new global::System.Data.DataColumn("Remarks", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRemarks);
                 this.columnSIPNumber = new global::System.Data.DataColumn("SIPNumber", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSIPNumber);
+                this.columnTotalAllowance = new global::System.Data.DataColumn("TotalAllowance", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalAllowance);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -2492,6 +2522,22 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Remarks {
+                get {
+                    try {
+                        return ((string)(this[this.tableMonthlySalary.RemarksColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Remarks\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.RemarksColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string SIPNumber {
                 get {
                     try {
@@ -2503,6 +2549,22 @@ namespace NUBE.PAYROLL.PL {
                 }
                 set {
                     this[this.tableMonthlySalary.SIPNumberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal TotalAllowance {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableMonthlySalary.TotalAllowanceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalAllowance\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.TotalAllowanceColumn] = value;
                 }
             }
             
@@ -2688,6 +2750,18 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRemarksNull() {
+                return this.IsNull(this.tableMonthlySalary.RemarksColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRemarksNull() {
+                this[this.tableMonthlySalary.RemarksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsSIPNumberNull() {
                 return this.IsNull(this.tableMonthlySalary.SIPNumberColumn);
             }
@@ -2696,6 +2770,18 @@ namespace NUBE.PAYROLL.PL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetSIPNumberNull() {
                 this[this.tableMonthlySalary.SIPNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsTotalAllowanceNull() {
+                return this.IsNull(this.tableMonthlySalary.TotalAllowanceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetTotalAllowanceNull() {
+                this[this.tableMonthlySalary.TotalAllowanceColumn] = global::System.Convert.DBNull;
             }
         }
         

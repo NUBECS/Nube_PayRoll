@@ -1,19 +1,11 @@
 ﻿using MahApps.Metro.Controls;
+using NUBE.PAYROLL.CMN;
 using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using NUBE.PAYROLL.CMN;
-using System.Data;
 
 namespace NUBE.PAYROLL.PL.Master
 {
@@ -475,12 +467,14 @@ namespace NUBE.PAYROLL.PL.Master
                     cmbNubeBranch.DisplayMemberPath = "NubeBranchName";
                     txtEPFNo.Visibility = Visibility.Visible;
                     txtSOCSONo.Visibility = Visibility.Visible;
+                    txtOtherAllowance.Text = "COLA";
 
                 }
                 else
                 {
                     ChkNUBESUBSCRIPTION.Visibility = Visibility.Collapsed;
                     cmbNubeBranch.Visibility = Visibility.Collapsed;
+                    txtOtherAllowance.Text = "Other Allowance";
                 }
 
                 ChkResigned.IsChecked = false;

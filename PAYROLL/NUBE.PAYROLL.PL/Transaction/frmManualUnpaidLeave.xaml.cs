@@ -87,7 +87,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                     txtTotalAmount.Text = drv["LOP_LEAVE"].ToString();
                     txtTotalDaysAbsent.Text = drv["DAYSABSENT"].ToString();
                     txtLOPLate.Text = drv["LOP_LATE"].ToString();
-                    //txtRemarks.Text = drv["REMARKS"].ToString();
+                    txtRemarks.Text = drv["REMARKS"].ToString();
                     //QueryExec();
                 }
             }
@@ -126,12 +126,16 @@ namespace NUBE.PAYROLL.PL.Transaction
 
                     if (sl != null)
                     {
-                        sl.TOTALDEDUCTION = sl.TOTALDEDUCTION - (sl.LOP_Late + sl.LOP_Leave);
-                        sl.LOP_Leave = dLeave;
+                        sl.TOTALDEDUCTION = sl.TOTALDEDUCTION - (sl.LOP_LATE + sl.LOP_LEAVE);
+                        sl.LOP_LEAVE = dLeave;
                         sl.DaysAbsent = dDaysAbsent;
-                        sl.LOP_Late = dLate;
-                        sl.TOTALDEDUCTION = sl.TOTALDEDUCTION + (sl.LOP_Late + sl.LOP_Leave);
+                        sl.LOP_LATE = dLate;
+                        sl.TOTALDEDUCTION = sl.TOTALDEDUCTION + (sl.LOP_LATE + sl.LOP_LEAVE);
                         sl.NETSALARY = sl.TOTALEARNING - sl.TOTALDEDUCTION;
+                        if (!string.IsNullOrEmpty(txtRemarks.Text))
+                        {
+                            sl.Remarks = txtRemarks.Text;
+                        }                        
 
                         var da = (from x in db.ManualUnpaidLeaves where x.EmployeeId == iEmployeeId && x.Year == dtEntryDate.Year && x.Month == dtEntryDate.Month select x).FirstOrDefault();
                         if (da != null)
@@ -148,7 +152,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                         leave.LOP_Leave = dLeave;
                         leave.LOP_Late = dLate;
                         leave.EntryDate = DateTime.Now;
-                        leave.Remarks = txtRemarks.Text;
+                        //leave.Remarks = txtRemarks.Text;
                         db.ManualUnpaidLeaves.Add(leave);
 
                         db.SaveChanges();                        
@@ -210,10 +214,10 @@ namespace NUBE.PAYROLL.PL.Transaction
 
                 using (SqlConnection con = new SqlConnection(Config.connStr))
                 {
-                    string str = string.Format(" SELECT ID,EMPLOYEEID,EMPLOYEENO,EMPLOYEENAME,SALARYMONTH,TOTALWORKINGDAYS,DAYSABSENT,LOP_LEAVE,LOP_LATE \r" +
+                    string str = string.Format(" SELECT ID,EMPLOYEEID,EMPLOYEENO,EMPLOYEENAME,SALARYMONTH,TOTALWORKINGDAYS,DAYSABSENT,LOP_LEAVE,LOP_LATE,ISNULL(REMARKS,'')REMARKS \r" +
                                                " FROM MONTHLYSALARY(NOLOCK) \r" +
                                                " WHERE MONTH(SALARYMONTH)=MONTH('{0:dd/MMM/yyyy}') AND YEAR(SALARYMONTH)= YEAR('{0:dd/MMM/yyyy}') \r" + sWhere +
-                                               " GROUP BY ID,EMPLOYEEID,EMPLOYEENO,EMPLOYEENAME,SALARYMONTH,TOTALWORKINGDAYS,DAYSABSENT,LOP_LEAVE,LOP_LATE ", dtpEntryDate.SelectedDate);
+                                               " GROUP BY ID,EMPLOYEEID,EMPLOYEENO,EMPLOYEENAME,SALARYMONTH,TOTALWORKINGDAYS,DAYSABSENT,LOP_LEAVE,LOP_LATE,REMARKS ", dtpEntryDate.SelectedDate);
 
                     SqlCommand cmd = new SqlCommand(str, con);
                     SqlDataAdapter adp = new SqlDataAdapter(cmd);

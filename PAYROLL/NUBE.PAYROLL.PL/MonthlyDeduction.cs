@@ -21,6 +21,7 @@ namespace NUBE.PAYROLL.PL
         public Nullable<decimal> OtherDeductions { get; set; }
         public Nullable<int> CreateBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
+        public decimal DispatchAllowance { get; set; }
     
         public virtual MasterEmployee MasterEmployee { get; set; }
     }

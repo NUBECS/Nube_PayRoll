@@ -30,8 +30,8 @@ namespace NUBE.PAYROLL.PL
         public decimal DaysAbsent { get; set; }
         public decimal OTHours { get; set; }
         public decimal OT_Amount { get; set; }
-        public decimal LOP_Leave { get; set; }
-        public decimal LOP_Late { get; set; }
+        public decimal LOP_LEAVE { get; set; }
+        public decimal LOP_LATE { get; set; }
         public decimal POB { get; set; }
         public decimal NEC { get; set; }
         public decimal SECONDMENT { get; set; }
@@ -39,6 +39,8 @@ namespace NUBE.PAYROLL.PL
         public decimal COLA { get; set; }
         public decimal MOBILEALLOWANCE { get; set; }
         public decimal ALLOWANCE { get; set; }
+        public decimal DISPATCHALLOWANCE { get; set; }
+        public decimal TotalAllowance { get; set; }
         public decimal BONUS { get; set; }
         public decimal EXGRATIA { get; set; }
         public decimal EPF { get; set; }
@@ -65,5 +67,8 @@ namespace NUBE.PAYROLL.PL
         public string SIPNumber { get; set; }
         public decimal SIP { get; set; }
         public decimal SIPUNION { get; set; }
+        public string Remarks { get; set; }
+    
+        public virtual MasterEmployee MasterEmployee { get; set; }
     }
 }

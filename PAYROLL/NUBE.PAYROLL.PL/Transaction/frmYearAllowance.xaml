@@ -140,7 +140,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="250"/>
+            <RowDefinition Height="275"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Column="1" Grid.Row="1" >
@@ -212,6 +212,17 @@
                                 </StackPanel>
                             </materialDesign:HintAssist.Hint>
                         </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Margin="0,0,0,0" x:Name="txtDispatchAllowance" Visibility="Collapsed" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold" FontSize="14" Width="160" PreviewTextInput="NumericOnly" >
+                            <materialDesign:HintAssist.Hint>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Plus" Height="25" Width="25" />
+                                    <TextBlock Text="DispatchAllowance" FontWeight="Bold"/>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+                        
                     </StackPanel>
                 </StackPanel>
                 <!--</GroupBox>-->

@@ -52,7 +52,6 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<UserTypeFormDetail> UserTypeFormDetails { get; set; }
         public virtual DbSet<YearlyAllowance> YearlyAllowances { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
-        public virtual DbSet<MonthlyDeduction> MonthlyDeductions { get; set; }
         public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
         public virtual DbSet<DailyAttedanceDet> DailyAttedanceDets { get; set; }
         public virtual DbSet<VIEWLOPHOUR> VIEWLOPHOURS { get; set; }
@@ -76,10 +75,11 @@ namespace NUBE.PAYROLL.PL
         public virtual DbSet<SIPCont> SIPConts { get; set; }
         public virtual DbSet<LoanPayment> LoanPayments { get; set; }
         public virtual DbSet<ManualOTEntry> ManualOTEntries { get; set; }
-        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
-        public virtual DbSet<VIEWEPF_SOCSO> VIEWEPF_SOCSO { get; set; }
         public virtual DbSet<ManualUnpaidLeave> ManualUnpaidLeaves { get; set; }
-        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
         public virtual DbSet<MasterEmployee> MasterEmployees { get; set; }
+        public virtual DbSet<MonthlyDeduction> MonthlyDeductions { get; set; }
+        public virtual DbSet<VIEWEPF_SOCSO> VIEWEPF_SOCSO { get; set; }
+        public virtual DbSet<VIEWPAYSLIP> VIEWPAYSLIPs { get; set; }
+        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
     }
 }

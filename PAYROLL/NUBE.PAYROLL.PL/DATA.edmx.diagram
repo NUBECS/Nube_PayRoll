@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dc5b98d5ebf44c25b844661b8e6f300f" Name="Diagram1" ZoomLevel="44">
+      <Diagram DiagramId="dc5b98d5ebf44c25b844661b8e6f300f" Name="Diagram1" ZoomLevel="51">
         <EntityTypeShape EntityType="BizSoftModel.AttedanceLog" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.AttendanceCorrection" Width="1.5" PointX="12.75" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BizSoftModel.DailyLateLog" Width="1.5" PointX="12.75" PointY="24.5" IsExpanded="true" />
@@ -41,7 +41,6 @@
         <EntityTypeShape EntityType="BizSoftModel.UserType" Width="1.5" PointX="3" PointY="5.25" />
         <AssociationConnector Association="BizSoftModel.FK_UserAccount_UserType" />
         <AssociationConnector Association="BizSoftModel.FK_UserTypeDetail_UserType" />
-        <EntityTypeShape EntityType="BizSoftModel.MonthlyDeduction" Width="1.5" PointX="12.75" PointY="42.125" />
         <EntityTypeShape EntityType="BizSoftModel.CompanyDetail" Width="1.5" PointX="17.375" PointY="8.75" />
         <EntityTypeShape EntityType="BizSoftModel.DailyAttedanceDet" Width="1.5" PointX="13.375" PointY="45.75" />
         <EntityTypeShape EntityType="BizSoftModel.VIEWLOPHOUR" Width="1.5" PointX="12.75" PointY="0.75" />
@@ -66,10 +65,7 @@
         <EntityTypeShape EntityType="BizSoftModel.SIPCont" Width="1.5" PointX="3.375" PointY="19.75" />
         <EntityTypeShape EntityType="BizSoftModel.LoanPayment" Width="1.5" PointX="18.375" PointY="3.75" />
         <EntityTypeShape EntityType="BizSoftModel.ManualOTEntry" Width="1.5" PointX="8.375" PointY="0.75" />
-        <EntityTypeShape EntityType="BizSoftModel.MonthlySalary" Width="1.5" PointX="20.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWEPF_SOCSO" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="BizSoftModel.ManualUnpaidLeave" Width="1.5" PointX="18.375" PointY="15.75" />
-        <EntityTypeShape EntityType="BizSoftModel.VIEWPAYSLIP" Width="1.5" PointX="5.375" PointY="19.75" />
         <EntityTypeShape EntityType="BizSoftModel.MasterEmployee" Width="1.5" PointX="10.5" PointY="25.25" />
         <AssociationConnector Association="BizSoftModel.FK_AttedanceLogs_MasterEmployee" />
         <AssociationConnector Association="BizSoftModel.FK_AttendanceCorrection_MasterEmployee" />
@@ -83,7 +79,6 @@
         <AssociationConnector Association="BizSoftModel.FK_CountryId" />
         <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterPosition" />
         <AssociationConnector Association="BizSoftModel.FK_MasterEmployee_MasterRace" />
-        <AssociationConnector Association="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" />
         <AssociationConnector Association="BizSoftModel.FK_NubeId" />
         <AssociationConnector Association="BizSoftModel.FK_OTClaim_MasterEmployee" />
         <AssociationConnector Association="BizSoftModel.FK_OverTimeDetails_MasterEmployee" />
@@ -91,6 +86,12 @@
         <AssociationConnector Association="BizSoftModel.FK_StateId" />
         <AssociationConnector Association="BizSoftModel.FK_TempAttendanceTimings_MasterEmployee" />
         <AssociationConnector Association="BizSoftModel.FK_YearlyAllowance_MasterEmployee" />
+        <EntityTypeShape EntityType="BizSoftModel.MonthlyDeduction" Width="1.5" PointX="12.75" PointY="20.625" />
+        <AssociationConnector Association="BizSoftModel.FK_MonthlyDeductions_MasterEmployee" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWEPF_SOCSO" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BizSoftModel.VIEWPAYSLIP" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="BizSoftModel.MonthlySalary" Width="1.5" PointX="12.75" PointY="66.125" />
+        <AssociationConnector Association="BizSoftModel.FK_MonthlySalary_MasterEmployee" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

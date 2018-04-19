@@ -26,7 +26,7 @@ namespace NUBE.PAYROLL.PL
         public frmLogin()
         {
             InitializeComponent();
-            lblUpdate.Content = "Update On 29-Jan-2018";
+            lblUpdate.Content = "Update On 19-Apr-2018 4PM";
         }
 
         #region EVENTS
@@ -79,7 +79,7 @@ namespace NUBE.PAYROLL.PL
             }            
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Contact Administrator");
             }
         }
 
@@ -134,7 +134,7 @@ namespace NUBE.PAYROLL.PL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Contact Administrator");
                 }
             }
         }

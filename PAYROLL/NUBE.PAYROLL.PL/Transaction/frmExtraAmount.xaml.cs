@@ -85,6 +85,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                         frm.Title = "Bonus & Ex-gratia";
                         frm.txtPCBorBonus.Text = "Bonus";
                         frm.txtExgr.Text = "Ex-gratia";
+                        frm.txtDispatchAllowance.Visibility = Visibility.Collapsed;
                         frm.ShowDialog();
                         FormFill();
 
