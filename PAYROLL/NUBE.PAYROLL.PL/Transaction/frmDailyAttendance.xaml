@@ -79,8 +79,8 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <GroupBox  Margin="10">
-                <TabControl x:Name="tabControl"  Height="416" SelectionChanged="tabControl_SelectionChanged" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"  RenderTransformOrigin="0.507,0.493" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-2" Width="842" >
+            <GroupBox  Margin="128,10,36,0">
+                <TabControl x:Name="tabControl"  Height="429"  VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"  RenderTransformOrigin="0.507,0.493" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" Width="919" Margin="0,0,0,1"   >
                     <TabControl.Resources>
                         <Style TargetType="{x:Type TabItem}">
                             <Setter Property="Template">
@@ -116,7 +116,7 @@
                     </TabControl.RenderTransform>
 
                     <TabItem Header="Present" Name="tbGPresent" FontSize="16" Margin="-1,0,1,0">
-                        <DataGrid x:Name="dgPresent" CanUserSortColumns="True"  CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5,8,5" Height="373" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgPresent" CanUserSortColumns="True"  CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="6,5,8,5" Height="397" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -146,7 +146,7 @@
                     </TabItem>
 
                     <TabItem Header="Leave" Name="tbGLeave" FontSize="16">
-                        <DataGrid x:Name="dgLeave" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,12,5"  Height="373" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgLeave" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,12,5"  Height="389" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -174,7 +174,7 @@
                     </TabItem>
 
                     <TabItem Header="Half Day Leave" Name="tbGHalfDay" FontSize="16">
-                        <DataGrid x:Name="dgHalf" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5,12,5"  Height="375" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgHalf" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="0,5,12,5"  Height="392" VerticalAlignment="Top" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -235,7 +235,7 @@
                     </TabItem>
 
                     <TabItem Header="OT" Name="tbGOT" FontSize="16">
-                        <DataGrid x:Name="dgOT" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="373" VerticalAlignment="Top" >
+                        <DataGrid x:Name="dgOT" CanUserSortColumns="True" CanUserAddRows="False"  AutoGenerateColumns="False" BorderBrush="Black" Background="White" Foreground="Black" RenderTransformOrigin="0.5,0.5" Margin="5,5,10,5"  Height="391" VerticalAlignment="Top" SelectionChanged="dgOT_SelectionChanged" >
                             <DataGrid.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -266,18 +266,18 @@
                     </TabItem>
 
                     <TabItem Header="Present" FontSize="16" Name="tbPresent" Visibility="Hidden">
-                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="385"  Margin="5,10,05,-72">
                             <rv:ReportViewer x:Name="rptPresentReport"/>
                         </WindowsFormsHost>
                     </TabItem>
 
                     <TabItem Header="Leave" FontSize="16" Name="tbLeave" Visibility="Hidden">
-                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="385"  Margin="5,10,05,-72">
                             <rv:ReportViewer x:Name="rptLeaveReport"/>
                         </WindowsFormsHost>
                     </TabItem>
                     <TabItem Header="Half Day Leave" Name="tbHalfDate" FontSize="16" Visibility="Hidden">
-                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="385"  Margin="5,10,05,-72">
                             <rv:ReportViewer x:Name="rptHalfDayReport"/>
                         </WindowsFormsHost>
                     </TabItem>
@@ -287,7 +287,7 @@
                         </WindowsFormsHost>
                     </TabItem>
                     <TabItem Header="OT" Name="tbOT" FontSize="16" Visibility="Hidden">
-                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="350"  Margin="5,10,05,-72">
+                        <WindowsFormsHost  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="385"  Margin="5,10,05,-72">
                             <rv:ReportViewer x:Name="rptOTReport"/>
                         </WindowsFormsHost>
                     </TabItem>
@@ -297,7 +297,7 @@
         </Grid>
 
         <Grid Grid.Row="3">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="146,6,75,6" VerticalAlignment="Center">
                 <TextBox x:Name="txtTotalMember" Width="150" materialDesign:HintAssist.Hint="Total Member's" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
                 <TextBox x:Name="txtPresent" Margin="10,0,0,0" Width="150" materialDesign:HintAssist.Hint="Total Present" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>
                 <TextBox x:Name="txtLeave" Margin="10,0,0,0" Width="150" materialDesign:HintAssist.Hint="Total Leave" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  FontWeight="Bold"/>

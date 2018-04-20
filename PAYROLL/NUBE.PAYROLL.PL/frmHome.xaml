@@ -218,7 +218,7 @@
                             </Expander>
 
                             <Expander Header="Reports" FontWeight="Bold" FontSize="16">
-                                <ListBox SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
+                                <ListBox x:Name="lstReports" SelectedIndex="0" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate DataType="BizMenu:BizMenuItem">
                                             <TextBlock Text="{Binding MenuName}" Margin="32 0 32 0" FontSize="16"  />
@@ -229,12 +229,12 @@
                                             <Transaction:frmDailyAttedance/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
-                                    <!--<Menu:NavMenuItem MenuName="Monthly Attedance" FormName="DailyAttedance">
+                                    <Menu:NavMenuItem MenuName="Consolidate Salary Report (A3)" FormName="Consolidate Salary Report">
                                         <Menu:NavMenuItem.Content>
-                                            <Transaction:frmDailyAttedance/>
+                                            <Transaction:frmSalaryA3Format/>
                                         </Menu:NavMenuItem.Content>
                                     </Menu:NavMenuItem>
-                                    <Menu:NavMenuItem MenuName="Leave Report" FormName="DailyAttedance">
+                                    <!--<Menu:NavMenuItem MenuName="Leave Report" FormName="DailyAttedance">
                                         <Menu:NavMenuItem.Content>
                                             <Transaction:frmDailyAttedance/>
                                         </Menu:NavMenuItem.Content>

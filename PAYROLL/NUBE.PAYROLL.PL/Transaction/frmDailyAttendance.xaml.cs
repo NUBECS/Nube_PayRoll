@@ -423,7 +423,7 @@ namespace NUBE.PAYROLL.PL.Transaction
                 rptOTReport.LocalReport.ReportEmbeddedResource = "NUBE.PAYROLL.PL.Reports.AttendanceReport.rptOTReport.rdlc";
                 rptOTReport.RefreshReport();
 
-                
+
                 rptLateCommers.Reset();
                 ReportDataSource late = new ReportDataSource("LateCommers", dtLate);
                 rptLateCommers.LocalReport.DataSources.Add(late);
@@ -588,6 +588,11 @@ namespace NUBE.PAYROLL.PL.Transaction
             {
                 ExceptionLogging.SendErrorToText(ex);
             }
+        }
+
+        private void dgOT_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

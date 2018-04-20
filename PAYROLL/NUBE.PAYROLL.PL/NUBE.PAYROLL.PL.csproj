@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Images\Payroll\PROJECT ICON\DNR LOGO.ico</ApplicationIcon>
+    <ApplicationIcon>Images\Payroll\PROJECT ICON\NBU LOGO.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -327,8 +327,8 @@
     <Compile Include="Transaction\frmAttendanceCorrection.xaml.cs">
       <DependentUpon>frmAttendanceCorrection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Transaction\frmDailyAttedance.xaml.cs">
-      <DependentUpon>frmDailyAttedance.xaml</DependentUpon>
+    <Compile Include="Transaction\frmDailyAttendance.xaml.cs">
+      <DependentUpon>frmDailyAttendance.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transaction\frmExtraAmount.xaml.cs">
       <DependentUpon>frmExtraAmount.xaml</DependentUpon>
@@ -362,6 +362,9 @@
     </Compile>
     <Compile Include="Transaction\frmPopupBox.xaml.cs">
       <DependentUpon>frmPopupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\frmSalaryA3Format.xaml.cs">
+      <DependentUpon>frmSalaryA3Format.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transaction\frmYearAllowance.xaml.cs">
       <DependentUpon>frmYearAllowance.xaml</DependentUpon>
@@ -491,6 +494,7 @@
     <EmbeddedResource Include="Reports\AttendanceReport\rptPresentReport.rdlc" />
     <EmbeddedResource Include="Reports\rptNubePayslip.rdlc" />
     <EmbeddedResource Include="Reports\rptPaySlip.rdlc" />
+    <EmbeddedResource Include="Reports\rptSalaryFormat.rdlc" />
     <None Include="BizSoftDataSet.xsc">
       <DependentUpon>BizSoftDataSet.xsd</DependentUpon>
     </None>
@@ -644,9 +648,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Transaction\frmDailyAttedance.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Transaction\frmDailyAttendance.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Transaction\frmExtraAmount.xaml">
       <SubType>Designer</SubType>
@@ -691,6 +695,10 @@
     <Page Include="Transaction\frmPopupBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\frmSalaryA3Format.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Transaction\frmYearAllowance.xaml">
       <SubType>Designer</SubType>

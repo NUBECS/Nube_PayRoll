@@ -12,7 +12,7 @@ namespace NUBE.PAYROLL.PL.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,8 +26,8 @@ namespace NUBE.PAYROLL.PL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ntc.my;Initial Catalog=RipuTest;User ID=nubesw;Password=BizSoft2017+;" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ntc.my;Initial Catalog=RipuPayroll;User ID=nubesw;Password=BizSoft201" +
+            "7+;")]
         public string payrollConnectionString {
             get {
                 return ((string)(this["payrollConnectionString"]));
@@ -37,8 +37,8 @@ namespace NUBE.PAYROLL.PL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ntc.my;Initial Catalog=RipuTest;User ID=nubesw;Password=BizSoft2017+;" +
-            "")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ntc.my;Initial Catalog=RipuPayroll;User ID=nubesw;Password=BizSoft201" +
+            "7+;")]
         public string BizSoftConnectionString {
             get {
                 return ((string)(this["BizSoftConnectionString"]));
@@ -48,8 +48,7 @@ namespace NUBE.PAYROLL.PL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-4MEHKQVH\\DENARIUSOFT2012;Initial Catalog=RipuTest;Integrated S" +
-            "ecurity=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ntc.my;Initial Catalog=RipuPayroll;Integrated Security=True")]
         public string RipuTestConnectionString {
             get {
                 return ((string)(this["RipuTestConnectionString"]));

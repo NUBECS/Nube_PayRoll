@@ -336,6 +336,8 @@ namespace NUBE.PAYROLL.PL {
             
             private global::System.Data.DataColumn columnTotalWorkingDays;
             
+            private global::System.Data.DataColumn columnDispatchAllowance;
+            
             private global::System.Data.DataColumn columnDaysAbsent;
             
             private global::System.Data.DataColumn columnOTHours;
@@ -538,6 +540,14 @@ namespace NUBE.PAYROLL.PL {
             public global::System.Data.DataColumn TotalWorkingDaysColumn {
                 get {
                     return this.columnTotalWorkingDays;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DispatchAllowanceColumn {
+                get {
+                    return this.columnDispatchAllowance;
                 }
             }
             
@@ -925,6 +935,7 @@ namespace NUBE.PAYROLL.PL {
                         string BankAccountNo, 
                         decimal BasicSalary, 
                         decimal TotalWorkingDays, 
+                        decimal DispatchAllowance, 
                         decimal DaysAbsent, 
                         decimal OTHours, 
                         decimal OT_Amount, 
@@ -980,6 +991,7 @@ namespace NUBE.PAYROLL.PL {
                         BankAccountNo,
                         BasicSalary,
                         TotalWorkingDays,
+                        DispatchAllowance,
                         DaysAbsent,
                         OTHours,
                         OT_Amount,
@@ -1062,6 +1074,7 @@ namespace NUBE.PAYROLL.PL {
                 this.columnBankAccountNo = base.Columns["BankAccountNo"];
                 this.columnBasicSalary = base.Columns["BasicSalary"];
                 this.columnTotalWorkingDays = base.Columns["TotalWorkingDays"];
+                this.columnDispatchAllowance = base.Columns["DispatchAllowance"];
                 this.columnDaysAbsent = base.Columns["DaysAbsent"];
                 this.columnOTHours = base.Columns["OTHours"];
                 this.columnOT_Amount = base.Columns["OT_Amount"];
@@ -1131,6 +1144,8 @@ namespace NUBE.PAYROLL.PL {
                 base.Columns.Add(this.columnBasicSalary);
                 this.columnTotalWorkingDays = new global::System.Data.DataColumn("TotalWorkingDays", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalWorkingDays);
+                this.columnDispatchAllowance = new global::System.Data.DataColumn("DispatchAllowance", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDispatchAllowance);
                 this.columnDaysAbsent = new global::System.Data.DataColumn("DaysAbsent", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDaysAbsent);
                 this.columnOTHours = new global::System.Data.DataColumn("OTHours", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -2048,6 +2063,22 @@ namespace NUBE.PAYROLL.PL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public decimal DispatchAllowance {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableMonthlySalary.DispatchAllowanceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DispatchAllowance\' in table \'MonthlySalary\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMonthlySalary.DispatchAllowanceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal DaysAbsent {
                 get {
                     return ((decimal)(this[this.tableMonthlySalary.DaysAbsentColumn]));
@@ -2638,6 +2669,18 @@ namespace NUBE.PAYROLL.PL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetBankAccountNoNull() {
                 this[this.tableMonthlySalary.BankAccountNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDispatchAllowanceNull() {
+                return this.IsNull(this.tableMonthlySalary.DispatchAllowanceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDispatchAllowanceNull() {
+                this[this.tableMonthlySalary.DispatchAllowanceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

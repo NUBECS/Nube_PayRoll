@@ -59,6 +59,18 @@ namespace NUBE.PAYROLL.PL
                     }
                 }
             }
+
+            foreach (CMN.NavMenuItem m in lstReports.Items)
+            {
+                if (m.MenuName == "Consolidate Salary Report (A3)")
+                {
+                    if (Config.bIsNubeServer == true)
+                    {
+                        lstReports.Items.Remove(m);
+                        break;
+                    }
+                }
+            }
         }
 
         public void ShowWelcome()
